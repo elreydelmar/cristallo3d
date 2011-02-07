@@ -27,4 +27,6 @@ struct Ligne
 
 void afficher_point(Point point);
 
+void afficher_matrice(Matrice4 M);
+
 #endif // GEOMETRIE_H_INCLUDED
