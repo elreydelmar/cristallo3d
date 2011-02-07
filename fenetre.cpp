@@ -1,30 +1,77 @@
 #include "fenetre.h"
 
-LRESULT CALLBACK procedureFenetrePrincipale(HWND fenetrePrincipale, UINT message, WPARAM wParam, LPARAM lParam)
+int init_fenetre(Fenetre* fenetre, HINSTANCE instance, Contexte_GL** contexte_gl)
 {
-    switch (message)
-    {
-        case WM_CREATE:
-            return 0;
+    *fenetre = ouvrir_fenetre(instance);
 
-        case WM_DESTROY:
-            PostQuitMessage(0);
-            return 0;
+    // Chargement de OpenGL
+    *contexte_gl = (Contexte_GL*) malloc(sizeof(Contexte_GL));
 
-        default:
-            return DefWindowProc(fenetrePrincipale, message, wParam, lParam);
-    }
-}
-
-int ouvrir_fenetre(Fenetre* fenetre)
-{
+    Rect position;
+        position.x = 0;
+        position.y = 0;
+        position.w = 2*WIDTH/3;
+        position.h = HEIGHT;
+    init_gl(fenetre, *contexte_gl, position);
 
     return 0;
 }
 
-int  init_gl(HWND parent, HINSTANCE _instance, Contexte_GL* contexte, Rect position)
+Fenetre ouvrir_fenetre(HINSTANCE instance)
 {
-    contexte->hWnd = CreateWindow("STATIC", NULL, WS_CHILD | WS_VISIBLE, position.x, position.y, position.w, position.h, parent, NULL, _instance, NULL);
+    Fenetre fenetre;
+
+    fenetre.classe.style = 0;
+    fenetre.classe.lpfnWndProc = evenement;
+    fenetre.classe.cbClsExtra = 0;
+    fenetre.classe.cbWndExtra = 0;
+    fenetre.classe.hInstance = NULL;
+    fenetre.classe.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+    fenetre.classe.hCursor = LoadCursor(NULL, IDC_ARROW);
+    fenetre.classe.hbrBackground = (HBRUSH)(1 + COLOR_BTNFACE);
+    fenetre.classe.lpszMenuName =  NULL;
+    fenetre.classe.lpszClassName = "classeF";
+
+    fenetre.instance = instance;
+
+
+    // On prévoit quand même le cas où ça échoue
+    RegisterClass(&(fenetre.classe));
+
+    fenetre.handle = CreateWindow("classeF", "OpenGL", WS_OVERLAPPEDWINDOW,
+                                   CW_USEDEFAULT, CW_USEDEFAULT, WIDTH, HEIGHT,
+                                                   NULL, NULL, fenetre.instance, NULL);
+    return fenetre;
+}
+
+void afficher_fenetre(Fenetre* fenetre, int mode)
+{
+    ShowWindow(fenetre->handle, mode);
+}
+
+void update_fenetre(Fenetre* fenetre)
+{
+    UpdateWindow(fenetre->handle);
+}
+
+int fermer_fenetre(Fenetre* fenetre)
+{
+    DestroyWindow(fenetre->handle);
+    UnregisterClass("classF",fenetre->instance);
+
+    return 0;
+}
+
+int end_fenetre(Fenetre* fenetre, Contexte_GL* contexte_gl)
+{
+    delete_gl(contexte_gl);
+    fermer_fenetre(fenetre);
+    return 0;
+}
+
+int  init_gl(Fenetre* fenetre, Contexte_GL* contexte, Rect position)
+{
+    contexte->hWnd = CreateWindow("STATIC", NULL, WS_CHILD | WS_VISIBLE, position.x, position.y, position.w, position.h, fenetre->handle, NULL, fenetre->instance, NULL);
 
     PIXELFORMATDESCRIPTOR pfd;
     int iFormat;

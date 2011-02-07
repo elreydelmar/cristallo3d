@@ -1,6 +1,7 @@
 #ifndef FENETRE_H_INCLUDED
 #define FENETRE_H_INCLUDED
 
+#include "evenement.h"
 #include <windows.h>
 #include <gl\gl.h>
 #include <gl\glu.h>
@@ -28,22 +29,16 @@ struct Contexte_GL
     HGLRC rc;
 };
 
-typedef struct Fenetre Fenetre;
-struct Fenetre
-{
-    HWND handle;
-    MSG message;
-    WNDCLASS classe;
-    HINSTANCE instance;
-};
-
-LRESULT CALLBACK procedureFenetrePrincipale(HWND, UINT, WPARAM, LPARAM);
-
 // Fonctions Windows
-int ouvrir_fenetre(Fenetre* fenetre);
+int init_fenetre(Fenetre* fenetre, HINSTANCE instance, Contexte_GL** contexte_gl);
+Fenetre ouvrir_fenetre(HINSTANCE instance);
+void afficher_fenetre(Fenetre* fenetre, int mode);
+void update_fenetre(Fenetre* fenetre);
+int fermer_fenetre(Fenetre* fenetre);
+int end_fenetre(Fenetre* fenetre, Contexte_GL* contexte_gl);
 
 // Fonctions OpenGL
-int  init_gl(HWND parent, HINSTANCE _instance, Contexte_GL* contexte, Rect position);
+int  init_gl(Fenetre* fenetre, Contexte_GL* contexte, Rect position);
 int  delete_gl(Contexte_GL* contexte);
 void update_gl(Contexte_GL* contexte);
 
