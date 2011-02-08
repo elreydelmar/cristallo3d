@@ -8,8 +8,7 @@
 #include <gl\glaux.h>
 
 /* Les constantes */
-#define WIDTH 800
-#define HEIGHT 600
+#include "const_fenetre.h"
 
 /* Les types */
 typedef struct Rect Rect;
@@ -42,7 +41,8 @@ int  init_gl(Fenetre* fenetre, Contexte_GL* contexte, Rect position);
 int  delete_gl(Contexte_GL* contexte);
 void update_gl(Contexte_GL* contexte);
 
-void sample_dessin();
+void sample_dessin_2d();
+void sample_dessin_3d();
 
 
 #endif // FENETRE_H_INCLUDED

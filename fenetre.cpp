@@ -10,7 +10,7 @@ int init_fenetre(Fenetre* fenetre, HINSTANCE instance, Contexte_GL** contexte_gl
     Rect position;
         position.x = 0;
         position.y = 0;
-        position.w = 2*WIDTH/3;
+        position.w = WIDTH - WIDTH_COLONNE;
         position.h = HEIGHT;
     init_gl(fenetre, *contexte_gl, position);
 
@@ -71,7 +71,7 @@ int end_fenetre(Fenetre* fenetre, Contexte_GL* contexte_gl)
 
 int  init_gl(Fenetre* fenetre, Contexte_GL* contexte, Rect position)
 {
-    contexte->hWnd = CreateWindow("STATIC", NULL, WS_CHILD | WS_VISIBLE, position.x, position.y, position.w, position.h, fenetre->handle, NULL, fenetre->instance, NULL);
+    contexte->hWnd = CreateWindow("STATIC", "contexte_gl", WS_CHILD | WS_VISIBLE, position.x, position.y, position.w, position.h, fenetre->handle, NULL, fenetre->instance, NULL);
 
     PIXELFORMATDESCRIPTOR pfd;
     int iFormat;
@@ -114,8 +114,7 @@ int  delete_gl(Contexte_GL* contexte)
     return 0;
 }
 
-
-void sample_dessin()
+void sample_dessin_2d()
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -123,6 +122,19 @@ void sample_dessin()
         glColor3ub(255,0,0);    glVertex2d(-0.75,-0.75);
         glColor3ub(0,255,0);    glVertex2d(0,0.75);
         glColor3ub(0,0,255);    glVertex2d(0.75,-0.75);
+    glEnd();
+
+    glFlush();
+}
+
+void sample_dessin_3d()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glBegin(GL_TRIANGLES);
+        glColor3ub(255,0,0);    glVertex3d(-0.75,-0.75,-10.);
+        glColor3ub(0,255,0);    glVertex3d(0,0.75,-10.);
+        glColor3ub(0,0,255);    glVertex3d(0.75,-0.75,-10.);
     glEnd();
 
     glFlush();

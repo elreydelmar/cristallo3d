@@ -14,7 +14,7 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
     {
         traiter_evenement(&fenetre);
 
-        sample_dessin();
+        sample_dessin_3d();
 
         update_gl(contexte_opengl);
     }
