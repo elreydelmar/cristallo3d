@@ -41,6 +41,9 @@ Fenetre ouvrir_fenetre(HINSTANCE instance)
     fenetre.handle = CreateWindow("classeF", "OpenGL", WS_OVERLAPPEDWINDOW,
                                    CW_USEDEFAULT, CW_USEDEFAULT, WIDTH, HEIGHT,
                                                    NULL, NULL, fenetre.instance, NULL);
+
+    creer_boutons(fenetre.handle, WIDTH - WIDTH_COLONNE, fenetre.instance);
+
     return fenetre;
 }
 
@@ -68,6 +71,63 @@ int end_fenetre(Fenetre* fenetre, Contexte_GL* contexte_gl)
     fermer_fenetre(fenetre);
     return 0;
 }
+
+void creer_boutons(HWND fenetrePrincipale, int x, HINSTANCE instance)
+{
+
+    HWND Cadre_camera=CreateWindow(
+        "BUTTON",
+        "Camera",
+        WS_CHILD|WS_VISIBLE|BS_GROUPBOX,
+        x+10,Y_CAMERA,
+        150,HEIGHT_CAMERA,
+        fenetrePrincipale,
+        NULL,
+        instance,
+        NULL);
+    /*{
+        HWND hControle;
+        // Modèle de bouton ... 4 types : BS_GROUPBOX, BS_PUSHBUTTON, BS_RADIOBUTTON (carré), BS_CHECKBOX (rond)
+        hControle=CreateWindow(
+            "BUTTON",
+            "Button 1",
+            WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, //d'autres flags (cad options) possibles avec |BS_(...) / e.g.:(...)|BS_PUSHBUTTON|BS_MULTILINE,
+            10+10,10+20, //coordonnées de l'origine du rectange (x, y)
+            100,20,  //longueur et hauteur du rectangle
+            fenetrePrincipale,
+            (HMENU)ID_PUSHBUTTON_1, //ID du bouton, sert à le linker à une fonctionnalité ... à #define au préalable
+            instance,
+            NULL);
+
+    }*/
+    HWND Cadre_maille=CreateWindow(
+        "BUTTON",
+        "Maille",
+        WS_CHILD|WS_VISIBLE|BS_GROUPBOX,
+        x+10,Y_MAILLE,
+        150,HEIGHT_MAILLE,
+        fenetrePrincipale,
+        NULL,
+        instance,
+        NULL);
+    {
+
+    }
+    HWND Cadre_valeur=CreateWindow(
+        "BUTTON",
+        "Mise en valeur",
+        WS_CHILD|WS_VISIBLE|BS_GROUPBOX,
+        x+10,Y_VALEUR,
+        150,HEIGHT_VALEUR,
+        fenetrePrincipale,
+        NULL,
+        instance,
+        NULL);
+    {
+
+    }
+}
+
 
 int  init_gl(Fenetre* fenetre, Contexte_GL* contexte, Rect position)
 {

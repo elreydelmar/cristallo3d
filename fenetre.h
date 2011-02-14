@@ -35,6 +35,7 @@ void afficher_fenetre(Fenetre* fenetre, int mode);
 void update_fenetre(Fenetre* fenetre);
 int fermer_fenetre(Fenetre* fenetre);
 int end_fenetre(Fenetre* fenetre, Contexte_GL* contexte_gl);
+void creer_boutons(HWND fenetrePrincipale, int x, HINSTANCE instance);
 
 // Fonctions OpenGL
 int  init_gl(Fenetre* fenetre, Contexte_GL* contexte, Rect position);
