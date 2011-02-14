@@ -6,6 +6,11 @@ void afficher_point(Point point)
     printf("Point (%lf, %lf, %lf)\n",point.x, point.y, point.z);
 }
 
+void afficher_ligne(Ligne l)
+{
+    printf ("l: (%lf,%lf,%lf),(%lf,%lf,%lf)\n", l.P.x, l.P.y, l.P.z, l.Q.x, l.Q.y, l.Q.z);
+}
+
 void afficher_matrice(Matrice4 M)
 {
     int i;
@@ -113,4 +118,68 @@ double cofacteur(Matrice4 M, int i, int j)
         }
     }
 
+}
+
+Point add_pts (Point P, Point Q)
+{
+    Point R;
+    R.x=P.x+Q.x;
+    R.y=P.y+Q.y;
+    R.z=P.z+Q.z;
+    return R;
+}
+
+Point sub_pts (Point P, Point Q)
+{
+    Point R;
+    R.x=P.x-Q.x;
+    R.y=P.y-Q.y;
+    R.z=P.z-Q.z;
+    return R;
+}
+
+Point mult_scal_pts (double k, Point P)
+{
+    Point Q;
+    Q.x=k*P.x;
+    Q.y=k*P.y;
+    Q.z=k*P.z;
+    return Q;
+}
+
+double prod_scal (Point P, Point Q)
+{
+    double s;
+    s=P.x*Q.x+P.y*Q.y+P.z*Q.z;
+    return s;
+}
+
+Point prod_vect (Point P, Point Q)
+{
+    Point R;
+    R.x=P.y*Q.z-P.z*Q.y;
+    R.y=P.z*Q.x-P.x*Q.z;
+    R.z=P.x*Q.y-P.y*Q.x;
+    return R;
+}
+
+double norme (Point P)
+{
+    double n=sqrt(prod_scal (P,P));
+    return n;
+}
+
+void normer (Point* P)
+{
+    *P = mult_scal_pts (1/norme(*P),*P);
+}
+
+Point mult_mat_point (Matrice4 M, Point P)
+{
+    Point retour;
+    retour.x = M.m[0][0]*P.x + M.m[0][1]*P.y +  M.m[0][2]*P.z + M.m[0][3]*1;
+    retour.y = M.m[1][0]*P.x + M.m[1][1]*P.y +  M.m[1][2]*P.z + M.m[1][3]*1;
+    retour.z = M.m[2][0]*P.x + M.m[2][1]*P.y +  M.m[2][2]*P.z + M.m[2][3]*1;
+
+    return retour;
 }

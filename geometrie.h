@@ -41,6 +41,16 @@ struct Ligne
 // Fonctions de test
 void afficher_point(Point point);
 void afficher_matrice(Matrice4 M);
+void afficher_ligne (Ligne l);
+
+// Fonctions Vectorielles
+Point add_pts (Point P, Point Q); // Somme
+Point sub_pts (Point P, Point Q); // Difference
+Point mult_scal_pts (double k, Point P); // multiplication d'un point par un scalaire
+double prod_scal (Point P, Point Q); // Produit scalaire
+Point prod_vect (Point P, Point Q); // Produit vectoriel
+double norme (Point P);
+void normer (Point* P);
 
 // Fonctions Matricielles
 void set_null(Matrice4* M);
@@ -50,5 +60,6 @@ Matrice4 sub_mat(Matrice4 M, Matrice4 N);   // Difference
 Matrice4 mult_mat(Matrice4 M, Matrice4 N);  // Produit
 double det(Matrice4 M); // determinant
 double cofacteur(Matrice4 M, int i, int j); // donne la valeur dans la comatrice A FINIR
+Point mult_mat_point (Matrice4 M, Point P); // Produit matrice point
 
 #endif // GEOMETRIE_H_INCLUDED
