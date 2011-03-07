@@ -24,62 +24,82 @@ void afficher_matrice(Matrice4 M)
 }
 
 // Fonctions des matrices
-void set_null(Matrice4* M)
+void set_null(Matrice4 M)
 {
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            M->m[i][j] = 0.;
+            M.m[i][j] = 0.;
     }
 }
 
-void set_id(Matrice4* M)
+void set_id(Matrice4 M)
 {
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            M->m[i][j] = (i == j) ? 1. : 0.;
+            M.m[i][j] = (i == j) ? 1. : 0.;
     }
 }
 
-Matrice4 add_mat(Matrice4 M, Matrice4 N)
+void copie_matrice(Matrice4 M, Matrice4 acopier)
 {
-    Matrice4 retour;
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            retour.m[i][j] = M.m[i][j] + N.m[i][j];
+            M.m[i][j] = acopier.m[i][j];
     }
-    return retour;
 }
 
-Matrice4 sub_mat(Matrice4 M, Matrice4 N)
+void add_mat(Matrice4 M, Matrice4 N, Matrice4 reponse)
 {
-    Matrice4 retour;
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            retour.m[i][j] = M.m[i][j] - N.m[i][j];
+            reponse.m[i][j] = M.m[i][j] + N.m[i][j];
     }
-    return retour;
 }
 
-Matrice4 mult_mat(Matrice4 M, Matrice4 N)
+void sub_mat(Matrice4 M, Matrice4 N, Matrice4 reponse)
 {
-    Matrice4 retour;
     int i,j;
+    for(i=0; i<4; i++)
+    {
+        for(j=0; j<4; j++)
+            reponse.m[i][j] = M.m[i][j] - N.m[i][j];
+    }
+}
+
+void mult_mat(Matrice4 Ml, Matrice4 Nl, Matrice4 reponse)
+{
+    Matrice M,N;
+    int i,j;
+    copie_matrice(M,Ml);
+    copie_matrice(N,Nl);
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
         {
-            retour.m[i][j] = M.m[i][0]*N.m[0][j] + M.m[i][1]*N.m[1][j] +  M.m[i][2]*N.m[2][j] + M.m[i][3]*N.m[3][j];
+            reponse.m[i][j] = M.m[i][0]*N.m[0][j] + M.m[i][1]*N.m[1][j] +  M.m[i][2]*N.m[2][j] + M.m[i][3]*N.m[3][j];
         }
     }
-    return retour;
+}
+
+void scalaire(double alpha, Matrice4 Ml, Matrice4 reponse)
+{
+    Matrice M;
+    copie_matrice(M,Ml);
+    for(i=0; i<4; i++)
+    {
+        for(j=0; j<4; j++)
+        {
+            reponse.m[i][j] = alpha*M[i][j];
+        }
+    }
 }
 
 double det(Matrice4 M)
@@ -118,6 +138,54 @@ double cofacteur(Matrice4 M, int i, int j)
         }
     }
 
+    double signe = (i%2 == j%2) ? 1.0 : -1.0;
+
+    // On calcule le derminant de la matrice N
+    double determinant = 0.;
+    for(i1=0; i1<3; i1++)
+    {
+        determinant += N[0][i1]*N[1][(i1+1)%3]*N[2][(i1+2)%3];
+        determinant -= N[3][i1]*N[2][(i1+1)%3]*N[1][(i1+2)%3];
+    }
+
+    return determinant*signe;
+}
+
+void comatrice(Matrice4 Ml, Matrice4 reponse)
+{
+    Matrice M;
+    copie_matrice(M,Ml);
+    int i,j;
+    for(i=0; i<4; i++)
+    {
+        for(j=0; j<4; j++)
+            reponse.m[i][j] = cofacteur(M,i,j);
+    }
+}
+
+void transposee(Matrice4 Ml, Matrice4 reponse)
+{
+    Matrice M;
+    copie_matrice(M,Ml);
+    int i,j;
+    for(i=0; i<4; i++)
+    {
+        for(j=0; j<4; j++)
+            reponse.m[i][j] = M.m[j][i];
+    }
+}
+
+void inverse(Matrice4 M, Matrice4 reponse)
+{
+    double determinant = det(M);
+    if(determinant == 0)
+         set_null(reponse);
+    else
+    {
+        comatrice(reponse, M);
+        transposee(reponse, reponse);
+        scalaire(1/determinant, reponse, reponse);
+    }
 }
 
 Point add_pts (Point P, Point Q)
