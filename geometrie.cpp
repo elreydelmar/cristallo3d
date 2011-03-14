@@ -21,83 +21,86 @@ void afficher_matrice(Matrice4 M)
             printf ("%lf ",M.m[i][j]);
         printf("\n");
     }
+    printf("\n");
 }
 
 // Fonctions des matrices
-void set_null(Matrice4 M)
+void set_null(Matrice4* M)
 {
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            M.m[i][j] = 0.;
+            M->m[i][j] = 0.;
     }
 }
 
-void set_id(Matrice4 M)
+void set_id(Matrice4* M)
 {
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            M.m[i][j] = (i == j) ? 1. : 0.;
+            M->m[i][j] = (i == j) ? 1. : 0.;
     }
 }
 
-void copie_matrice(Matrice4 M, Matrice4 acopier)
+void copie_matrice(Matrice4* M, Matrice4 acopier)
 {
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            M.m[i][j] = acopier.m[i][j];
+            M->m[i][j] = acopier.m[i][j];
     }
 }
 
-void add_mat(Matrice4 M, Matrice4 N, Matrice4 reponse)
+void add_mat(Matrice4 M, Matrice4 N, Matrice4* reponse)
 {
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            reponse.m[i][j] = M.m[i][j] + N.m[i][j];
+            reponse->m[i][j] = M.m[i][j] + N.m[i][j];
     }
 }
 
-void sub_mat(Matrice4 M, Matrice4 N, Matrice4 reponse)
+void sub_mat(Matrice4 M, Matrice4 N, Matrice4* reponse)
 {
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            reponse.m[i][j] = M.m[i][j] - N.m[i][j];
+            reponse->m[i][j] = M.m[i][j] - N.m[i][j];
     }
 }
 
-void mult_mat(Matrice4 Ml, Matrice4 Nl, Matrice4 reponse)
+void mult_mat(Matrice4 Ml, Matrice4 Nl, Matrice4* reponse)
 {
     Matrice M,N;
     int i,j;
-    copie_matrice(M,Ml);
-    copie_matrice(N,Nl);
+    copie_matrice(&M,Ml);
+    copie_matrice(&N,Nl);
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
         {
-            reponse.m[i][j] = M.m[i][0]*N.m[0][j] + M.m[i][1]*N.m[1][j] +  M.m[i][2]*N.m[2][j] + M.m[i][3]*N.m[3][j];
+            reponse->m[i][j] = M.m[i][0]*N.m[0][j] + M.m[i][1]*N.m[1][j] +  M.m[i][2]*N.m[2][j] + M.m[i][3]*N.m[3][j];
         }
     }
 }
 
-void scalaire(double alpha, Matrice4 Ml, Matrice4 reponse)
+void scalaire(double alpha, Matrice4 Ml, Matrice4* reponse)
 {
     Matrice M;
-    copie_matrice(M,Ml);
+    copie_matrice(&M,Ml);
+    int i;
+    int j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
         {
-            reponse.m[i][j] = alpha*M[i][j];
+            reponse->m[i][j] = alpha*M.m[i][j];
         }
     }
 }
@@ -105,13 +108,18 @@ void scalaire(double alpha, Matrice4 Ml, Matrice4 reponse)
 double det(Matrice4 M)
 {
     double determinant = 0;
+    double d[4];
+    d[0] = M.m[1][1]*M.m[2][2]*M.m[3][3]+M.m[1][2]*M.m[2][3]*M.m[3][1]+M.m[1][3]*M.m[2][1]*M.m[3][2]-M.m[3][1]*M.m[2][2]*M.m[1][3]-M.m[3][2]*M.m[2][3]*M.m[1][1]-M.m[3][3]*M.m[2][1]*M.m[1][2];
+    d[1] = M.m[0][1]*M.m[2][2]*M.m[3][3]+M.m[0][2]*M.m[2][3]*M.m[3][1]+M.m[0][3]*M.m[2][1]*M.m[3][2]-M.m[3][1]*M.m[2][2]*M.m[0][3]-M.m[3][2]*M.m[2][3]*M.m[0][1]-M.m[3][3]*M.m[2][1]*M.m[0][2];
+    d[2] = M.m[0][1]*M.m[1][2]*M.m[3][3]+M.m[0][2]*M.m[1][3]*M.m[3][1]+M.m[0][3]*M.m[1][1]*M.m[3][2]-M.m[3][1]*M.m[1][2]*M.m[0][3]-M.m[3][2]*M.m[1][3]*M.m[0][1]-M.m[3][3]*M.m[1][1]*M.m[0][2];
+    d[3] = M.m[0][1]*M.m[1][2]*M.m[2][3]+M.m[0][2]*M.m[1][3]*M.m[2][1]+M.m[0][3]*M.m[1][1]*M.m[2][2]-M.m[2][1]*M.m[1][2]*M.m[0][3]-M.m[2][2]*M.m[1][3]*M.m[0][1]-M.m[2][3]*M.m[1][1]*M.m[0][2];
     int i;
-    for(i=0; i<3; i++)
+    int j=1;
+    for(i=0; i<4; i++)
     {
-        determinant += M.m[0][i]*M.m[1][(i+1)%4]*M.m[2][(i+2)%4]*M.m[3][(i+3)%4];
-        determinant -= M.m[3][i]*M.m[2][(i+1)%4]*M.m[1][(i+2)%4]*M.m[0][(i+3)%4];
+        determinant += j*M.m[i][0]*d[i];
+        j=-j;
     }
-
     return determinant;
 }
 
@@ -151,40 +159,40 @@ double cofacteur(Matrice4 M, int i, int j)
     return determinant*signe;
 }
 
-void comatrice(Matrice4 Ml, Matrice4 reponse)
+void comatrice(Matrice4 Ml, Matrice4* reponse)
 {
     Matrice M;
-    copie_matrice(M,Ml);
+    copie_matrice(&M,Ml);
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            reponse.m[i][j] = cofacteur(M,i,j);
+            reponse->m[i][j] = cofacteur(M,i,j);
     }
 }
 
-void transposee(Matrice4 Ml, Matrice4 reponse)
+void transposee(Matrice4 Ml, Matrice4* reponse)
 {
     Matrice M;
-    copie_matrice(M,Ml);
+    copie_matrice(&M,Ml);
     int i,j;
     for(i=0; i<4; i++)
     {
         for(j=0; j<4; j++)
-            reponse.m[i][j] = M.m[j][i];
+            reponse->m[i][j] = M.m[j][i];
     }
 }
 
-void inverse(Matrice4 M, Matrice4 reponse)
+void inverse(Matrice4 M, Matrice4* reponse)
 {
     double determinant = det(M);
     if(determinant == 0)
          set_null(reponse);
     else
     {
-        comatrice(reponse, M);
-        transposee(reponse, reponse);
-        scalaire(1/determinant, reponse, reponse);
+        comatrice(M, reponse);
+        transposee(*reponse, reponse);
+        scalaire(1/determinant, *reponse, reponse);
     }
 }
 
