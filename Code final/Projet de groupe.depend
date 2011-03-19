@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1300201276 source:c:\users\pc\documents\programmation\projet de groupe\main.cpp
+	"evenement.h"
+
+1300205237 c:\users\pc\documents\programmation\projet de groupe\fenetre.h
+	<windows.h>
+	<gl\gl.h>
+	<gl\glu.h>
+	<gl\glaux.h>
+	"boutons.h"
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1297003834 source:c:\users\pc\documents\programmation\projet de groupe\fenetre.c
+	"fenetre.h"
+
+1297010162 source:c:\users\pc\documents\programmation\projet de groupe\main.c
+	"fenetre.h"
+
+1297003834 c:\users\pc\documents\programmation\projet de groupe\fenetre.c
+	"fenetre.h"
+
+1300298519 source:c:\users\pc\documents\programmation\projet de groupe\fenetre.cpp
+	"fenetre.h"
+
+1300206476 c:\users\pc\documents\programmation\projet de groupe\evenement.h
+	"fenetre.h"
+
+1300206428 source:c:\users\pc\documents\programmation\projet de groupe\evenement.cpp
+	"evenement.h"
+
+1300022221 c:\users\pc\documents\programmation\projet de groupe\affichage.h
+	<windows.h>
+	<commctrl.h>
+
+1300092633 source:c:\users\pc\documents\programmation\projet de groupe\affichage.cpp
+	"affichage.h"
+
+1300393777 c:\users\pc\documents\programmation\projet de groupe\const_fenetre.h
+
+1297674048 source:c:\users\pc\documents\programmation\projet de groupe\debug.cpp
+	"debug.h"
+
+1297674048 c:\users\pc\documents\programmation\projet de groupe\debug.h
+	<windows.h>
+
+1300394706 c:\users\pc\documents\programmation\projet de groupe\boutons.h
+	<windows.h>
+	<commctrl.h>
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1300393761 source:c:\users\pc\documents\programmation\projet de groupe\boutons.cpp
+	"boutons.h"
+
+1300362679 c:\users\pc\documents\programmation\projet de groupe\type_fenetre.h
+
