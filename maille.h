@@ -13,9 +13,7 @@ struct Maille
     double b;
     double c;
     int nbatomes;
-    Point* atomes; /*C est un tableau de  taille nbatones que arnaud a défini*/
-
-
+    Point* atomes; /*C est un tableau de taille nbatomes de type Point que Arnaud a défini*/
 };
 
 
