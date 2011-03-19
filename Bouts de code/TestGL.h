@@ -3,9 +3,17 @@
 
 struct Couleur
 {
-    int r;
-    int v;
-    int b;
+    unsigned char r;
+    unsigned char v;
+    unsigned char b;
 };
+
+void dessiner_repere(unsigned int echelle = 1);
+
+void set_couleur(Couleur couleur);
+void set_point(Point p);
+
+void dessiner_point(Point point, Couleur couleur);
+void dessiner_ligne/*adapter*/(Ligne ligne/*adapter*/, Couleur couleur);
 
 #endif // TESTGL_H_INCLUDED
