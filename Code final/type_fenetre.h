@@ -21,6 +21,7 @@ struct Fenetre
     HWND maille;
 
     // Les boutons
+    // Camera
     HWND freefly;
     HWND trackball;
     HWND anaglyphe;
@@ -36,6 +37,7 @@ struct Fenetre
         HWND salle;
         HWND amphi;
 
+    // Maille
     HWND adresse;
     HWND parcourir;
     HWND generer_maille;

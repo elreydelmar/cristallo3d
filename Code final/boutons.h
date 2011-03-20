@@ -15,6 +15,10 @@
 #define ID_T_RETRO 115
 #define ID_S_DISTANCE 116
 #define ID_T_DISTANCE 117
+#define ID_ORDI 118
+#define ID_SALLE 119
+#define ID_AMPHI 120
+#define ID_ADRESSE 121
 
 
 void afficher_boutons(Fenetre* fenetre);
