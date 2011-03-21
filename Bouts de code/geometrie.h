@@ -14,6 +14,23 @@ struct Point
     double z;
 };
 
+typedef struct Sphere Sphere;
+struct Sphere
+{
+    double radius;
+    double slices;
+    double stacks;
+};
+
+typedef struct Cylindre Cylindre;
+struct Cylindre
+{
+    double base;
+    double top;
+    double height;
+    double slices;
+};
+
 /*
     Matrice :
     (0,0) (0,1) (0,2) (0,3)
