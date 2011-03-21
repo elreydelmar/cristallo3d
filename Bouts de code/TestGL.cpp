@@ -5,6 +5,7 @@
 #include "TestGL.h"
 
 
+
 void dessiner_repere(unsigned int echelle = 1)
 {
     glPushMatrix();
@@ -30,34 +31,51 @@ void dessiner_point(Point point, Couleur couleur, double x, double y, double z)
     glBegin(GL_POINTS);
     glTranslated(x,y,z); //à utiliser entre chaque atome/cylindre reliant les atomes
     glColor3ub(couleur.r,couleur.v,couleur.b);
-    glVertex3i(point.x,point.y,point.z);
+    glVertex3d(point.x,point.y,point.z);
     glEnd();
     glPopMatrix();
 }
 
 
-void dessiner_ligne/*adapter*/(Ligne ligne/*adapter*/, Couleur couleur, double x, double y, double z)
+void dessiner_ligne(Ligne ligne, Couleur couleur, double x, double y, double z)
 {
     glPushMatrix();
-    glBegin(GL_LINES/*adapter le GL*/);
+    glBegin(GL_LINES);
     glTranslated(x,y,z); //à utiliser entre chaque atome/cylindre reliant les atomes
     glColor3ub(couleur.r,couleur.v,couleur.b);
-    /*adapter les sommets à la figure géométrique*/
-    glVertex3i(ligne.P.x,ligne.P.y,ligne.P.z);
-    glVertex3i(ligne.Q.x,ligne.Q.y,ligne.Q.z);
+    glVertex3d(ligne.P.x,ligne.P.y,ligne.P.z);
+    glVertex3d(ligne.Q.x,ligne.Q.y,ligne.Q.z);
     glEnd();
     glPopMatrix();
 }
 
 
-void dessiner_cylindre(Cylindre cylindre, Couleur couleur, double x, double y, double z)
+void dessiner_cube(double arete, Couleur couleur)
+{
+    glPushMatrix();
+    glLoadIdentity( );
+    glBegin(GL_QUAD_STRIP);
+    glColor3ub(couleur.r,couleur.v,couleur.b);
+    glVertex3d(arete/2,arete/2,arete/2);
+    glVertex3d(-arete/2,arete/2,arete/2);
+    glVertex3d(-arete/2,-arete/2,arete/2);
+    glVertex3d(arete/2,-arete/2,arete/2);
+    glVertex3d(arete/2,-arete/2,-arete/2);
+    glVertex3d(-arete/2,-arete/2,-arete/2);
+    glVertex3d(-arete/2,arete/2,-arete/2);
+    glVertex3d(arete/2,arete/2,-arete/2);
+    glEnd();
+    glPopMatrix();
+}
+
+
+void dessiner_cylindre(Cylindre cylindre, Couleur couleur)
 {
     glPushMatrix();
 
     GLUquadric* params = gluNewQuadric();
     gluQuadricTexture(params,GL_FALSE);
     /*glBindTexture(GL_TEXTURE_2D,texture);*/
-    glTranslated(x,y,z); //à utiliser entre chaque atome/cylindre reliant les atomes
     gluCylinder(params,cylindre.base,cylindre.top,cylindre.height,cylindre.slices, 1);
 
     gluDeleteQuadric(params);
@@ -65,16 +83,20 @@ void dessiner_cylindre(Cylindre cylindre, Couleur couleur, double x, double y, d
 }
 
 
-void dessiner_sphere(Sphere sphere, Couleur couleur, double x, double y, double z)
+void dessiner_sphere(Sphere sphere, Couleur couleur, Point centre)
 {
+    glPushMatrix();
+
+    glLoadIdentity( );
     glPushMatrix();
 
     GLUquadric* params = gluNewQuadric();
     gluQuadricTexture(params,GL_FALSE);
     /*glBindTexture(GL_TEXTURE_2D,texture);*/
-    glTranslated(x,y,z); //à utiliser entre chaque atome/cylindre reliant les atomes
+    glTranslated(centre.x,centre.y,centre.z);
     gluSphere(params,sphere.radius,sphere.slices,sphere.stacks);
 
     gluDeleteQuadric(params);
+    glPopMatrix();
     glPopMatrix();
 }
