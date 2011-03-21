@@ -1,32 +1,21 @@
 #include "fichier.h"
 
-void ouvrir_maille (char* fichier)
-{FILE* cif = NULL;
+void ouvrir_fichier(char* nom_du_fichier)
+{
+    FILE* cif = NULL;
     cif=fopen("fichier.cif", "r");
-    return 0;
-};
-
-
-
-double* lecture_cell_length_a (char* fichier) {
- double* r=NULL;
-r=strstr( char* fichier, "_cell_length_a");
-return r;
-
-    };
-
-
-
-
-
-double valeur_cell_length_a (char* fichier,double* lecture_cell_length_a)
-  double num;
-
-
-{if lecture_cell_length_a != 0  {
-
-
+    return cif;
 }
 
-else{puts "erreur, longueur du vecteur a introuvable"}
+
+char lire_lettre(FILE* nom_du_fichier)
+ fprintf()
+
+
+
+
+void fermeture_fichier(FILE* nom_du_fichier)
+{
+    fclose(nom_du_fichier);
+
 }
