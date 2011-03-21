@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1300097618 source:c:\users\biboutcho\documents\pdg\lecture fichier\main.cpp
+	"fichier.h"
+
+1300097573 c:\users\biboutcho\documents\pdg\lecture fichier\fichier.h
+	<stdlib.h>
+	<stdio.h>
+
+1300097592 source:c:\users\biboutcho\documents\pdg\lecture fichier\fichier.cpp
+	"fichier.h"
+
