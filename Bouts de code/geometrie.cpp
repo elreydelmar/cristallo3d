@@ -126,37 +126,18 @@ double det(Matrice4 M)
 double cofacteur(Matrice4 M, int i, int j)
 {
     // Calcul de la matrice auxiliaire
-    double N[3][3];
-    int i1 = 0, j1 = 0;
-    int i2,j2;
-    for(i2=0; i2<4; i2++)
-    {
-        if(i2 != i)
-        {
-            j1 = 0;
-            for(j2=0; j2<4; j2++)
-            {
-                if(j2 != j)
-                {
-                    N[i1][j1] = M.m[i2][j2];
-                    j1++;
-                }
-            }
-            i1++;
-        }
-    }
-
-    double signe = (i%2 == j%2) ? 1.0 : -1.0;
+    Matrice N;
+    copie_matrice(&N,M);
+    int i1, j1;
+    for (i1=0; i1<4; i1++)
+    N.m[i1][j]=0;
+    for (j1=0; j1<4; j1++)
+    N.m[i][j1]=0;
+    N.m[i][j]=1;
+    double signe = (i%1 == j%1) ? 1.0 : -1.0;
 
     // On calcule le derminant de la matrice N
-    double determinant = 0.;
-    for(i1=0; i1<3; i1++)
-    {
-        determinant += N[0][i1]*N[1][(i1+1)%3]*N[2][(i1+2)%3];
-        determinant -= N[3][i1]*N[2][(i1+1)%3]*N[1][(i1+2)%3];
-    }
-
-    return determinant*signe;
+    return det(N)*signe;
 }
 
 void comatrice(Matrice4 Ml, Matrice4* reponse)
