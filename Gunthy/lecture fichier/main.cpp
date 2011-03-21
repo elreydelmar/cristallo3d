@@ -1,7 +1,10 @@
 #include "fichier.h"
 
 int main ()
-{                          /*lecture de cell*/
-    ouvrir_fichier("nimps.cif");
-    return 0;
+{
+    FILE* fichier;
+    fichier=ouvrir_fichier("nimps.cif")  ;                  /*lecture de cell*/
+
+
+    fermeture_fichier(fichier);
 }

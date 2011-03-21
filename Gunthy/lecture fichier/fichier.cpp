@@ -3,7 +3,7 @@
 void ouvrir_fichier(char* nom_du_fichier)
 {
     FILE* cif = NULL;
-    cif=fopen("fichier.cif", "r");
+    cif=fopen(nom_du_fichier, "r");
     return cif;
 }
 
