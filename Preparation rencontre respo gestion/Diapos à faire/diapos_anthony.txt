@@ -1,0 +1,24 @@
+// diapo : mise en place du projet
+
+I - Mise en place du projet
+
+- Rencontre avec le tuteur pour l'élaboration du cahier des charges
+- Plusieurs contraintes sont apparues : temps, budget, réalisation ; 
+      Choix d'une méthode peu abrasive, peu coûteuse et facile à réaliser
+- Listing et organisation des tâches à réaliser pour le projet
+[ IMAGE du WBS (wbs.png) qui peut faire une nouvelle diapo si ça rentre pas]
+
+...
+// les diapos d'arnaud
+...
+
+Outils mis en place
+
+- Un GANTT a été mis en place 
+[ IMAGE du GANTT qui peut faire une nouvelle diapo si ça rentre pas]
+- On a ouvert un forum (http://cristallo3d.forumsactifs.com/)
+ contient : - ce qu'il y a à faire pour la prochain séance
+	    - ce qu'il a été fait au cours de chacune des séances
+	    - des listes de recherches déjà effectuées
+	    - des aides pour la programmation
+- On a créé un serveur (SVN) en ligne pour stocker nos codes et documents
