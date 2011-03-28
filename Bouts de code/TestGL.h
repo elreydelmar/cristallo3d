@@ -24,6 +24,6 @@ void set_couleur(Couleur couleur);
 void set_point(Point p);
 
 void dessiner_point(Point point, Couleur couleur);
-void dessiner_ligne(Ligne ligne, Couleur couleur);
+void dessiner_ligne(Couleur couleur, Ligne ligne, int baton, int rayon);
 
 #endif // TESTGL_H_INCLUDED

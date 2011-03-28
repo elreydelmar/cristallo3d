@@ -37,11 +37,10 @@ void dessiner_point(Point point, Couleur couleur, double x, double y, double z)
 }
 
 
-void dessiner_ligne(Ligne ligne, Couleur couleur, double x, double y, double z)
+void dessiner_ligne(Couleur couleur, Ligne ligne, int baton, int rayon) // dessine la ligne. Si baton vaut 1, on met a la place de la ligne un cylindre de rayon rayon
 {
     glPushMatrix();
     glBegin(GL_LINES);
-    glTranslated(x,y,z); //à utiliser entre chaque atome/cylindre reliant les atomes
     glColor3ub(couleur.r,couleur.v,couleur.b);
     glVertex3d(ligne.P.x,ligne.P.y,ligne.P.z);
     glVertex3d(ligne.Q.x,ligne.Q.y,ligne.Q.z);

@@ -43,8 +43,6 @@
 		<Unit filename="boutons.cpp" />
 		<Unit filename="boutons.h" />
 		<Unit filename="const_fenetre.h" />
-		<Unit filename="debug.cpp" />
-		<Unit filename="debug.h" />
 		<Unit filename="evenement.cpp" />
 		<Unit filename="evenement.h" />
 		<Unit filename="fenetre.cpp" />

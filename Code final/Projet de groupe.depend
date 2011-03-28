@@ -55,3 +55,37 @@
 
 1300362679 c:\users\pc\documents\programmation\projet de groupe\type_fenetre.h
 
+1300697286 source:c:\users\arnaud\documents\projet de groupe\svn\code final\evenement.cpp
+	"evenement.h"
+
+1300697286 c:\users\arnaud\documents\projet de groupe\svn\code final\evenement.h
+	"fenetre.h"
+
+1300697286 c:\users\arnaud\documents\projet de groupe\svn\code final\fenetre.h
+	<windows.h>
+	<gl\gl.h>
+	<gl\glu.h>
+	<gl\glaux.h>
+	"boutons.h"
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1301292879 c:\users\arnaud\documents\projet de groupe\svn\code final\boutons.h
+	<windows.h>
+	<commctrl.h>
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1301292879 c:\users\arnaud\documents\projet de groupe\svn\code final\const_fenetre.h
+
+1301292879 c:\users\arnaud\documents\projet de groupe\svn\code final\type_fenetre.h
+
+1300697286 source:c:\users\arnaud\documents\projet de groupe\svn\code final\fenetre.cpp
+	"fenetre.h"
+
+1300697286 source:c:\users\arnaud\documents\projet de groupe\svn\code final\main.cpp
+	"evenement.h"
+
+1301292879 source:c:\users\arnaud\documents\projet de groupe\svn\code final\boutons.cpp
+	"boutons.h"
+
