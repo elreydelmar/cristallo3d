@@ -71,7 +71,7 @@ int detection_reel(FILE* fichier, double* reel)
     {
        caractere = lire_lettre(fichier);
        // 4 cas : chiffre, virgule, fin de ligne, autre
-       if(caractere == '\n')
+       if(caractere == '_')
        {
            retour+= 2;
            sortie = 1;
