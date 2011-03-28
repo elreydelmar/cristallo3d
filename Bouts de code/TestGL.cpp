@@ -50,20 +50,52 @@ void dessiner_ligne(Ligne ligne, Couleur couleur, double x, double y, double z)
 }
 
 
-void dessiner_cube(double arete, Couleur couleur)
+void dessiner_cube(double arete, Couleur couleur, unsigned int echelle = 1)
 {
     glPushMatrix();
-    glLoadIdentity( );
-    glBegin(GL_QUAD_STRIP);
+
+    glBegin(GL_LINES);
+
     glColor3ub(couleur.r,couleur.v,couleur.b);
-    glVertex3d(arete/2,arete/2,arete/2);
-    glVertex3d(-arete/2,arete/2,arete/2);
-    glVertex3d(-arete/2,-arete/2,arete/2);
-    glVertex3d(arete/2,-arete/2,arete/2);
-    glVertex3d(arete/2,-arete/2,-arete/2);
-    glVertex3d(-arete/2,-arete/2,-arete/2);
-    glVertex3d(-arete/2,arete/2,-arete/2);
-    glVertex3d(arete/2,arete/2,-arete/2);
+
+        glVertex3d(arete/2,arete/2,arete/2);
+        glVertex3d(-arete/2,arete/2,arete/2);
+
+        glVertex3d(-arete/2,arete/2,arete/2);
+        glVertex3d(-arete/2,-arete/2,arete/2);
+
+        glVertex3d(-arete/2,-arete/2,arete/2);
+        glVertex3d(arete/2,-arete/2,arete/2);
+
+        glVertex3d(arete/2,-arete/2,arete/2);
+        glVertex3d(arete/2,arete/2,arete/2);
+
+
+        glVertex3d(arete/2,arete/2,arete/2);
+        glVertex3d(arete/2,arete/2,-arete/2);
+
+        glVertex3d(-arete/2,arete/2,arete/2);
+        glVertex3d(-arete/2,arete/2,-arete/2);
+
+        glVertex3d(-arete/2,-arete/2,arete/2);
+        glVertex3d(-arete/2,-arete/2,-arete/2);
+
+        glVertex3d(arete/2,-arete/2,arete/2);
+        glVertex3d(arete/2,-arete/2,-arete/2);
+
+
+        glVertex3d(arete/2,arete/2,-arete/2);
+        glVertex3d(-arete/2,arete/2,-arete/2);
+
+        glVertex3d(-arete/2,arete/2,-arete/2);
+        glVertex3d(-arete/2,-arete/2,-arete/2);
+
+        glVertex3d(-arete/2,-arete/2,-arete/2);
+        glVertex3d(arete/2,-arete/2,-arete/2);
+
+        glVertex3d(arete/2,-arete/2,-arete/2);
+        glVertex3d(arete/2,arete/2,-arete/2);
+
     glEnd();
     glPopMatrix();
 }
@@ -76,6 +108,7 @@ void dessiner_cylindre(Cylindre cylindre, Couleur couleur)
     GLUquadric* params = gluNewQuadric();
     gluQuadricTexture(params,GL_FALSE);
     /*glBindTexture(GL_TEXTURE_2D,texture);*/
+    glColor3ub(couleur.r,couleur.v,couleur.b);
     gluCylinder(params,cylindre.base,cylindre.top,cylindre.height,cylindre.slices, 1);
 
     gluDeleteQuadric(params);
@@ -87,16 +120,13 @@ void dessiner_sphere(Sphere sphere, Couleur couleur, Point centre)
 {
     glPushMatrix();
 
-    glLoadIdentity( );
-    glPushMatrix();
-
     GLUquadric* params = gluNewQuadric();
     gluQuadricTexture(params,GL_FALSE);
     /*glBindTexture(GL_TEXTURE_2D,texture);*/
     glTranslated(centre.x,centre.y,centre.z);
+    glColor3ub(couleur.r,couleur.v,couleur.b);
     gluSphere(params,sphere.radius,sphere.slices,sphere.stacks);
 
     gluDeleteQuadric(params);
-    glPopMatrix();
     glPopMatrix();
 }
