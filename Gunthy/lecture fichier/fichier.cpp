@@ -12,9 +12,9 @@ char lire_lettre(FILE* fichier)
      return c;
 }
 
-int aller_fin_de_ligne(FILE* fichier)
+int aller_prochaine_commande(FILE* fichier)
 {
-      while(lire_lettre(fichier)!='\n') {}
+      while(lire_lettre(fichier)!='_') {}
       return 2;
 }
 
@@ -24,7 +24,7 @@ int charger_maille(char* nom_du_fichier, Maille* maille)
     if(fichier == NULL)
         return ERR_OUVERTURE_FICHIER;
 
-    while(nouvelle_ligne(fichier, maille)) {}  // Nouvelle ligne renvoie 0 si end of file
+    automate(file, maille);
 
     fermeture_fichier(fichier);
     return 0;
