@@ -3,6 +3,13 @@
 
 #include "geometrie.h"
 
+typedef struct Atome Atome;
+struct Atome
+{
+    char element[6];
+    Point position; // attention , a adapter en fonction a,b,c alpha,beta,gamma
+};
+
 typedef struct Maille Maille;
 struct Maille
 {
@@ -13,7 +20,7 @@ struct Maille
     double b;
     double c;
     int nbatomes;
-    Point* atomes; /*C est un tableau de taille nbatomes de type Point que Arnaud a défini*/
+    Atome* atomes; /*C est un tableau de taille nbatomes de type Point que Arnaud a défini*/
 };
 
 
