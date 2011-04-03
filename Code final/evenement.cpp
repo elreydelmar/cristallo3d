@@ -1,5 +1,7 @@
 #include "evenement.h"
 
+EventStatus* event_status = NULL;
+
 LRESULT CALLBACK evenement(HWND fenetrePrincipale, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -9,6 +11,10 @@ LRESULT CALLBACK evenement(HWND fenetrePrincipale, UINT message, WPARAM wParam, 
 
         case WM_DESTROY:
             PostQuitMessage(0);
+            return 0;
+
+        case WM_COMMAND:
+            evenement_bouton(fenetrePrincipale,message,wParam,lParam);
             return 0;
 
         case WM_SIZE:
@@ -34,59 +40,37 @@ void traiter_evenement()
     DispatchMessage(&(g_fenetre->message));
 }
 
-/*
-void creer_boutons(HWND hParent, HINSTANCE instance)
+// Controle de event status
+
+void init_event_status()
 {
-
-        // FreeFly ou TrackBall
-        creer_radiobouton("FreeFly", "TrackBall", ID_FREEFLY, ID_TRACKBALL, Cadre_camera, instance, pos);
-        // Anaglyphe ou non
-        pos.y += pos.h + Y_ESPACE;
-        creer_check_box("Anaglyphe", ID_ANAGLYPHE, Cadre_camera, instance, pos);
-
-        // Slider
-
-
+    if(event_status == NULL)
     {
-        HWND hControle;
-        // Modèle de bouton ... 4 types : BS_GROUPBOX, BS_PUSHBUTTON, BS_RADIOBUTTON (carré), BS_CHECKBOX (rond)
-        hControle=CreateWindow(
-            "BUTTON",
-            "Button 1",
-            WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, //d'autres flags (cad options) possibles avec |BS_(...) / e.g.:(...)|BS_PUSHBUTTON|BS_MULTILINE,
-            10+10,10+20, //coordonnées de l'origine du rectange (x, y)
-            100,20,  //longueur et hauteur du rectangle
-            fenetre->handle,
-            (HMENU)ID_PUSHBUTTON_1, //ID du bouton, sert à le linker à une fonctionnalité ... à #define au préalable
-            instance,
-            NULL);
-
-    }*/
-    /*
-    HWND Cadre_maille=CreateWindow(
-        "BUTTON",
-        "Maille",
-        WS_CHILD|WS_VISIBLE|BS_GROUPBOX,
-        ALINEA_MENU,Y_MAILLE,
-        WIDTH_MENU,HEIGHT_MAILLE,
-        hParent,
-        NULL,
-        instance,
-        NULL);
-
-
-            HWND Cadre_valeur=CreateWindow(
-        "BUTTON",
-        "Mise en valeur",
-        WS_CHILD|WS_VISIBLE|BS_GROUPBOX,
-        ALINEA_MENU,Y_VALEUR,
-        WIDTH_MENU,HEIGHT_VALEUR,
-        hParent,
-        NULL,
-        instance,
-        NULL);
-    {
-
+        event_status = (EventStatus*) malloc(sizeof(EventStatus));
     }
 }
-*/
+
+void delete_event_status()
+{
+    if(event_status != NULL)
+    {
+        free(event_status);
+        event_status = NULL;
+    }
+}
+
+void evenement_bouton(HWND fenetrePrincipale, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    // On fait un switch du bouton
+     UINT id=LOWORD(wParam);
+
+     switch(id)
+     {
+        case ID_HELP :
+            MessageBox(fenetrePrincipale,"Aide disponible bientôt","",MB_OK);
+        break;
+
+        default :
+            break;
+     }
+}

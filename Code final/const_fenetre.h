@@ -37,4 +37,7 @@
 #define TAILLE_BOUTON 80
 #define Y_OTHER 530
 
+// Contexte OpenGL
+const double ratio = (double)(WIDTH - WIDTH_COLONNE)/(double)HEIGHT;
+
 #endif // CONST_FENETRE_H_INCLUDED

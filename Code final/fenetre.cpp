@@ -115,30 +115,43 @@ void update_gl()
 
 void redimensionner(HWND fenetre, int width, int height)
 {
+    // Erreur ? Pas cense arriver si je mets un height min
+    if(height == 0)
+        height = 1;
+
+
     // On recupére l'handle gl
     HWND handle_gl = GetWindow(fenetre, GW_CHILD);
     HWND handle_menu = GetWindow(handle_gl, GW_HWNDLAST);
 
     // On regarde l'agrandissement
     int new_x = width - WIDTH_COLONNE;
+    int x,y;
+    int gl_width, gl_height;
+
+
+    double new_ratio = (double)new_x/(double)height;
+    if(new_ratio > ratio)   // width est trop grand
+    {
+        gl_height = height;
+        gl_width = (int)(ratio*height);
+        x = (new_x-gl_width)/2;  // on centre en x
+        y = 0;
+    }
+    else                    // height est trop grand
+    {
+        gl_width = new_x;
+        gl_height = (int)((double)gl_width/ratio);
+        x = 0;
+        y = (height-gl_height)/2;
+    }
 
     // On redimensionne la fenetre opengl
     MoveWindow(handle_gl, 0, 0, new_x, height, TRUE);
     // On repositionne la fenetre static
     MoveWindow(handle_menu, new_x, 0, WIDTH_COLONNE, height, TRUE);
-    redimensionner_gl(new_x, height);
 
-  //  update_gl();
-}
-
-void redimensionner_gl(GLsizei width, GLsizei height)
-{
-    if (height==0)										// Prevent A Divide By Zero By
-	{
-		height=1;										// Making Height Equal One
-	}
-
-	glViewport(0,0,width,height);						// Reset The Current Viewport
+    glViewport(x,y,gl_width,gl_height);
 }
 
 // On le garde

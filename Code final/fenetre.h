@@ -27,12 +27,11 @@ struct Rect
 extern LRESULT CALLBACK evenement(HWND, UINT, WPARAM, LPARAM);
 extern Fenetre* g_fenetre;
 
-
 // Fonctions refaites simplifiees
 /// TODO : GESTION DES ERREURS
 int create_fenetre(HINSTANCE instance);  // Contient une structure de controle pour qu'il n'y ait qu'un seul appel
-int register_classe_fenetre(HWND *hFenetre, HINSTANCE instance);
-int init_gl(Fenetre* fenetre, Rect position, HINSTANCE instance);   // Contient une structure de controle pour qu'il n'y ait qu'un seul appel
+    int register_classe_fenetre(HWND *hFenetre, HINSTANCE instance);
+    int init_gl(Fenetre* fenetre, Rect position, HINSTANCE instance);   // Contient une structure de controle pour qu'il n'y ait qu'un seul appel
 void delete_fenetre();
 
 
@@ -40,9 +39,6 @@ void delete_fenetre();
 void update_gl();
 
 void redimensionner(HWND fenetre, int width, int height);
-void redimensionner_gl(GLsizei width, GLsizei height);
-
-
 
 void sample_dessin_2d();
 void sample_dessin_3d();
