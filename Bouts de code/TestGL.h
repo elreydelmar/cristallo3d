@@ -14,7 +14,9 @@ struct Couleur
     unsigned char b;
 };
 
+void InitGL();
 
+void nouveau_dessin();
 void dessiner_repere(unsigned int echelle);
 void dessiner_cube(double arete, Couleur couleur, unsigned int echelle);
 void dessiner_cylindre(Cylindre cylindre, Couleur couleur);
