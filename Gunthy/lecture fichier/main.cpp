@@ -2,9 +2,9 @@
 
 int main ()
 {
-    FILE* fichier;
-    fichier=ouvrir_fichier("nimps.cif")  ;                  /*lecture de cell*/
+    Maille m;
+    charger_maille("1000001.cif",&m);
+    printf ("%lf",m.a);
 
-
-    fermeture_fichier(fichier);
+    return 0;
 }

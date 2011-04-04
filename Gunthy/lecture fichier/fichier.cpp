@@ -24,7 +24,7 @@ int charger_maille(char* nom_du_fichier, Maille* maille)
     if(fichier == NULL)
         return ERR_OUVERTURE_FICHIER;
 
-    automate(file, maille);
+    automate(fichier, maille);
 
     fermeture_fichier(fichier);
     return 0;
@@ -44,7 +44,7 @@ int detection_mot(FILE* fichier, char* a_detecter)
     while(retour == 1 && a_detecter[i] != '\0')
     {
         caractere = lire_lettre(fichier);
-        if(caractere == '\n')   // Fin de ligne
+        if(caractere == '_')   // nouvelle commande
         {
             retour = 2;
         }
@@ -109,4 +109,197 @@ int detection_reel(FILE* fichier, double* reel)
     }
 
     return retour;
+}
+
+int automate(FILE* fichier, Maille* maille)
+{
+    int etat = ATTENTE_NVELLE_COMMANDE;
+    int retour; // retour de detection mot
+    char c = 0;
+
+    while (etat != FIN_FICHIER)
+    {
+        switch(etat)
+        {
+            case NOUVELLE_COMMANDE:                         // l'underscore est passe, toute nouvelle commande
+                c = lire_lettre(fichier);
+
+                switch(c)
+                {
+
+
+                    case EOF :
+                        etat = FIN_FICHIER;
+                    break;
+
+
+                    case 'c' :
+                        retour = detection_mot(fichier, "ell");
+                        if(retour%4 == 0)
+                            etat = ATTENTE_NVELLE_COMMANDE;
+                        else if(retour%4 == 1)
+                        {
+                            aller_prochaine_commande(fichier);
+                            etat = CELL;
+                        }
+                        else if(retour%4 == 2)
+                            etat = NOUVELLE_COMMANDE;
+                        else
+                            etat = CELL;
+
+                        if(retour/4 == 1) // End of file
+                            etat = FIN_FICHIER;
+                    break;
+
+
+                    case 's' :
+                        retour = detection_mot(fichier, "ymmetry");
+                        if(retour%4 == 1)
+
+                             etat = ATTENTE_NVELLE_COMMANDE;
+                        else if(retour%4 == 1)
+                        {
+                            aller_prochaine_commande(fichier);
+                            etat = SYMMETRY;
+                        }
+                        else if(retour%4 == 2)
+                            etat = NOUVELLE_COMMANDE;
+                        else
+                            etat = SYMMETRY;
+
+                        if(retour/4 == 1) // End of file
+                            etat = FIN_FICHIER;
+                    break;
+
+
+                    case 'a' :
+                        retour = detection_mot(fichier, "tome");
+                        if(retour%4 == 1)
+
+                             etat = ATTENTE_NVELLE_COMMANDE;
+                        else if(retour%4 == 1)
+                        {
+                            aller_prochaine_commande(fichier);
+                            etat = ATOME;
+                        }
+                        else if(retour%4 == 2)
+                            etat = NOUVELLE_COMMANDE;
+                        else
+                            etat = ATOME;
+
+                        if(retour/4 == 1) // End of file
+                            etat = FIN_FICHIER;
+                    break;
+
+
+
+                    default :
+                        etat = ATTENTE_NVELLE_COMMANDE;
+                }
+            break;
+
+
+         case CELL:
+            c = lire_lettre(fichier);
+              if (c != '_')
+             {etat = NOUVELLE_COMMANDE;}
+
+
+              else
+              {
+
+               c = lire_lettre(fichier);
+                switch (c)
+
+
+                case 'a' :
+                    retour = detection_mot(fichier, "ngle");
+                    if(retour%4 == 1)
+
+                                 {etat = ATTENTE_NVELLE_COMMANDE;}
+                    else if(retour%4 == 1)
+                            {
+                                aller_prochaine_commande(fichier);
+                                etat = CELL_ANGLE;
+                            }
+                    else if(retour%4 == 2)
+                                etat = NOUVELLE_COMMANDE;
+                    else
+                                etat = CELL_ANGLE;
+
+                    if(retour/4 == 1) // End of file
+                                etat = FIN_FICHIER;
+                break;
+
+
+                case 'l' :
+                    retour = detection_mot(fichier, "ength");
+                    if(retour%4 == 1)
+
+                                 etat = ATTENTE_NVELLE_COMMANDE;
+                    else if(retour%4 == 1)
+                            {
+                                aller_prochaine_commande(fichier);
+                                etat = CELL_LENGTH;
+                            }
+                    else if(retour%4 == 2)
+                                etat = NOUVELLE_COMMANDE;
+                    else
+                                etat = CELL_LENGTH;
+
+                    if(retour/4 == 1)                            // End of file
+                                etat = FIN_FICHIER;
+                break;
+
+
+                default :
+                        etat = ATTENTE_NVELLE_COMMANDE;
+
+                break;
+            }
+            break;                                       //fermeture case CELL
+
+
+
+        case CELL_LENGTH:
+            c = lire_lettre(fichier);
+
+              if (c != '_')
+             {etat = NOUVELLE_COMMANDE;}
+
+
+              else
+              { c = lire_lettre(fichier);
+
+                switch (c)  {
+                    case 'a' :
+                        retour=detection_reel(fichier, &(maille->a));
+                        if(retour%4 == 1)
+
+                                     etat = ATTENTE_NVELLE_COMMANDE;
+                        else if(retour%4 == 1)
+                                {
+                                    aller_prochaine_commande(fichier);
+                                    etat = NOUVELLE_COMMANDE;
+                                }
+                        else if(retour%4 == 2)
+                                    etat = NOUVELLE_COMMANDE;
+
+                        if(retour/4 == 1)                            // End of file
+                                    etat = FIN_FICHIER;
+                    break;
+
+                }
+
+
+
+
+
+
+              }
+
+        }
+    }
+
+    return 0;
 }
