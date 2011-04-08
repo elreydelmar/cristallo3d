@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1300702567 source:c:\users\pc\documents\programmation\automate\fichier2.cpp
+	"fichier.h"
+
+1302127755 c:\users\pc\documents\programmation\automate\fichier.h
+	<stdlib.h>
+	<stdio.h>
+	"maille.h"
+	"etats.h"
+
+1301355632 c:\users\pc\documents\programmation\automate\maille.h
+	"geometrie.h"
+
+1300701177 c:\users\pc\documents\programmation\automate\geometrie.h
+	<math.h>
+	<stdio.h>
+
+1302127853 source:c:\users\pc\documents\programmation\automate\main.cpp
+	"automate.h"
+
+1302127835 source:c:\users\pc\documents\programmation\automate\fichier.cpp
+	"fichier.h"
+
+1301917534 c:\users\pc\documents\programmation\automate\etats.h
+
+1302127839 source:c:\users\pc\documents\programmation\automate\automate.cpp
+	"automate.h"
+
+1302127762 c:\users\pc\documents\programmation\automate\automate.h
+	"fichier.h"
+	"arbre.h"
+
+1302127882 c:\users\pc\documents\programmation\automate\arbre.h
+	<stdlib.h>
+
+1302127944 source:c:\users\pc\documents\programmation\automate\arbre.cpp
+	"arbre.h"
+

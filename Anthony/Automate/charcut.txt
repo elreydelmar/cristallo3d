@@ -1,0 +1,4 @@
+_cell_length_a                   48.480
+_cell_length_b                   21.720
+_cell_length_c                   10.740
+
