@@ -1,0 +1,15 @@
+Freefly|Trackball -> change le mode de déplacement de la caméra
+Anaglyphe -> si coché : anaglyphe activé, sinon, on le désactive
+Retro_Activé-> ...      retro
+slider : si mouvement, mouvement du numéro + regle la focale
+numéro : si mouvement, mouvement du slider + regle la focale (besoin d'un convertisseur)
+idem pour le distance, mais le reglage est de la distance
+
+ordin ... : mette par défaut la distance
+
+parcourir : ouvre le menu windows, change le C:\
+ok : génère la maille par rapport au fichier
+
+x,y,z : changement, change le nombre en x de mailles
+taille des atomes : indice d'affichage, si vers la droite, très gros atomes
+espace entre atomes : idem vers la droite , très éloigné
