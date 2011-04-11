@@ -68,6 +68,7 @@ double prod_scal (Point P, Point Q); // Produit scalaire
 Point prod_vect (Point P, Point Q); // Produit vectoriel
 double norme (Point P);
 void normer (Point* P);
+Point proj(Point v, Point u); //projète v sur u
 
 // Fonctions Matricielles
 void set_null(Matrice4* M);

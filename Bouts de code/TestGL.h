@@ -17,6 +17,7 @@ struct Couleur
 void InitGL();
 
 void nouveau_dessin();
+void changerepere(Point O, Point Z); //place le repère au point O, orienté suivant Z
 void dessiner_repere(unsigned int echelle);
 void dessiner_cube(double arete, Couleur couleur, unsigned int echelle);
 void dessiner_cylindre(Cylindre cylindre, Couleur couleur);

@@ -38,11 +38,10 @@ void dessiner_repere(unsigned int echelle = 1)
 }
 
 
-void dessiner_point(Point point, Couleur couleur, double x, double y, double z)
+void dessiner_point(Point point, Couleur couleur)
 {
     glPushMatrix();
     glBegin(GL_POINTS);
-    glTranslated(x,y,z); //à utiliser entre chaque atome/cylindre reliant les atomes
     glColor3ub(couleur.r,couleur.v,couleur.b);
     glVertex3d(point.x,point.y,point.z);
     glEnd();
@@ -50,10 +49,76 @@ void dessiner_point(Point point, Couleur couleur, double x, double y, double z)
 }
 
 
-void dessiner_ligne(Couleur couleur, Ligne ligne, int baton, int rayon) // dessine la ligne. Si baton vaut 1, on met a la place de la ligne un cylindre de rayon rayon
+void changerepere(Point O, Point Z) //place le repère au point O, orienté suivant Z
+{
+    glTranslated(O.x,O.y,O.z);
+
+    Point X;
+    Point Y;
+
+    if (Z.x==0&&Z.y==0)
+    {
+        return;
+    }
+
+    else if (Z.y==0&&Z.z==0)
+    {
+        X={0,1,0};
+        Y={0,0,1};
+        normer(&Z);
+    }
+
+    else if (Z.x==0&&Z.z==0)
+    {
+        X={0,0,1};
+        Y={1,0,0};
+        normer(&Z);
+    }
+
+    else
+    {
+        X={1,0,0};
+        X=sub_pts(X,proj(X,Z));
+        Y={0,1,0};
+        Y=sub_pts(sub_pts(Y,proj(Y,Z)),proj(Y,X));
+        normer(&X);
+        normer(&Y);
+        normer(&Z);
+    }
+
+    afficher_point(X);
+    afficher_point(Y);
+    afficher_point(Z);
+
+    Matrice Passage;
+    set_null(&Passage);
+    Passage.m[0][0]=X.x;
+    Passage.m[1][0]=X.y;
+    Passage.m[2][0]=X.z;
+    Passage.m[0][1]=Y.x;
+    Passage.m[1][1]=Y.y;
+    Passage.m[2][1]=Y.z;
+    Passage.m[0][2]=Z.x;
+    Passage.m[1][2]=Z.y;
+    Passage.m[2][2]=Z.z;
+    Passage.m[3][3]=1;
+    afficher_matrice(Passage);
+    GLdouble Pass[16];
+    int i;
+    for (i=0; i<16; i++) Pass[i]=Passage.m[i/4][i%4];
+
+    printf("Pass[");
+    int j;
+    for (j=0; j<16; j++) printf("%lf,",Pass[j]);
+    printf ("]\n\n");
+
+    glMultMatrixd( Pass );
+}
+
+void dessiner_ligne(Couleur couleur, Ligne ligne, int rayon) // dessine la ligne. Si rayon!=0, on met a la place de la ligne un cylindre de rayon rayon
 {
     glPushMatrix();
-    if (baton==0)
+    if (rayon==0)
     {
         glBegin(GL_LINES);
         glColor3ub(couleur.r,couleur.v,couleur.b);
@@ -62,7 +127,7 @@ void dessiner_ligne(Couleur couleur, Ligne ligne, int baton, int rayon) // dessi
     }
     else
     {
-        glTranslated(ligne.P.x,ligne.P.y,ligne.P.z);
+        Point Z=sub_pts (ligne.Q,ligne.P);
 
     }
 

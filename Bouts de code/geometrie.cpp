@@ -3,7 +3,7 @@
 // Fonctions de test
 void afficher_point(Point point)
 {
-    printf("Point (%lf, %lf, %lf)\n",point.x, point.y, point.z);
+    printf("Point (%lf, %lf, %lf)\n\n",point.x, point.y, point.z);
 }
 
 void afficher_ligne(Ligne l)
@@ -239,4 +239,9 @@ Point mult_mat_point (Matrice4 M, Point P)
     retour.z = M.m[2][0]*P.x + M.m[2][1]*P.y +  M.m[2][2]*P.z + M.m[2][3]*1;
 
     return retour;
+}
+
+Point proj(Point v, Point u) //projection de v sur u
+{
+    return mult_scal_pts(prod_scal(u,v)/norme(u),u);
 }
