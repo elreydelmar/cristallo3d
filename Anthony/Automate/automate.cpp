@@ -132,6 +132,10 @@ int automate(FILE* fichier, Maille* maille)
                 etat_cell_length(fichier, maille, &etat, &retour, &c);
             break;
 
+            case CELL_ANGLE:
+                etat_cell_angle(fichier, maille, &etat, &retour, &c);
+            break;
+
             default :
                 etat = ATTENTE_NVELLE_COMMANDE;
             break;
@@ -270,5 +274,137 @@ void etat_cell_length(FILE* fichier, Maille* maille, int* etat, int* retour, cha
 
         default :
             *etat = ATTENTE_NVELLE_COMMANDE;
+    }
+}
+
+void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char* c)
+{
+    *c = lire_lettre(fichier);
+    switch (*c)
+    {
+        case EOF :
+            *etat = FIN_FICHIER;
+        break;
+
+        case 'a' :
+            *retour = detection_mot(fichier, "lpha");
+            if(*retour/4 == 1) // End of file
+            {
+                *etat = FIN_FICHIER;
+                return;
+            }
+
+            if(*retour%4 == 0)       // Non trouve non fin de ligne : cas classique 1
+                *etat = ATTENTE_NVELLE_COMMANDE;
+            else if(*retour%4 == 1) // Trouve et non fin de ligne
+            {
+                *retour = detection_reel(fichier, &(maille->alpha));
+                        if(*retour%4 <= 1)         // On n'a pas atteint l underscore
+                            *etat = ATTENTE_NVELLE_COMMANDE;
+                        else                       // On a atteint l'underscore
+                            *etat = NOUVELLE_COMMANDE;
+                        if(*retour/4 == 1)
+                            *etat = FIN_FICHIER;
+            }
+            else                 //on a passe l underscore : bye bye
+                *etat = NOUVELLE_COMMANDE;
+
+        break;
+
+        case 'b' :
+            *retour = detection_mot(fichier, "eta");
+            if(*retour/4 == 1) // End of file
+            {
+                *etat = FIN_FICHIER;
+                return;
+            }
+
+            if(*retour%4 == 0)       // Non trouve non fin de ligne : cas classique 1
+                *etat = ATTENTE_NVELLE_COMMANDE;
+            else if(*retour%4 == 1) // Trouve et non fin de ligne
+            {
+                *retour = detection_reel(fichier, &(maille->beta));
+                        if(*retour%4 <= 1)         // On n'a pas atteint l underscore
+                            *etat = ATTENTE_NVELLE_COMMANDE;
+                        else                       // On a atteint l'underscore
+                            *etat = NOUVELLE_COMMANDE;
+                        if(*retour/4 == 1)
+                            *etat = FIN_FICHIER;
+            }
+            else                 //on a passe l underscore : bye bye
+                *etat = NOUVELLE_COMMANDE;
+
+        break;
+
+        case 'g' :
+            *retour = detection_mot(fichier, "amma");
+            if(*retour/4 == 1) // End of file
+            {
+                *etat = FIN_FICHIER;
+                return;
+            }
+
+            if(*retour%4 == 0)       // Non trouve non fin de ligne : cas classique 1
+                *etat = ATTENTE_NVELLE_COMMANDE;
+            else if(*retour%4 == 1) // Trouve et non fin de ligne
+            {
+                *retour = detection_reel(fichier, &(maille->gamma));
+                        if(*retour%4 <= 1)         // On n'a pas atteint l underscore
+                            *etat = ATTENTE_NVELLE_COMMANDE;
+                        else                       // On a atteint l'underscore
+                            *etat = NOUVELLE_COMMANDE;
+                        if(*retour/4 == 1)
+                            *etat = FIN_FICHIER;
+            }
+            else                 //on a passe l underscore : bye bye
+                *etat = NOUVELLE_COMMANDE;
+
+        break;
+
+        case '_' :
+            *etat = NOUVELLE_COMMANDE;
+        break;
+
+        default :
+            *etat = ATTENTE_NVELLE_COMMANDE;
+        break;
+    }
+}
+
+void automate_symmetry(FILE* fichier, Maille* maille, int* etat, int* retour, char* c)
+{
+    Arbre* x = NULL;
+    Arbre* y = NULL;
+    Arbre* z = NULL;
+
+    Arbre** arbre_courant = NULL;
+
+    while(1)
+    {
+        *c = lire_lettre(fichier);
+
+        if(*c == EOF)
+        {
+            *etat = FIN_FICHIER;
+            return;
+        }
+        if(*c == '_')
+        {
+            *etat = NOUVELLE_COMMANDE;
+            return;
+        }
+
+        switch(*etat)
+        {
+            case ATTENTE_LIGNE :
+                if(*c == '\'')
+                {
+                    if(arbre_courant == NULL)
+                    {
+                        arbre_courant = &x;
+
+                    }
+                }
+        }
     }
 }

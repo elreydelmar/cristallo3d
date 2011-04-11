@@ -25,6 +25,18 @@
 #define SOUS_PROC_ATOME 18
 #define FIN_FICHIER 19
 
+// Etats pour le symmetry
+#define ATTENTE_LIGNE 100
+#define DEBUT_X 101
+#define DEBUT_Y 102
+#define DEBUT_Z 103
 
+#define OP 104
+#define VAR 105
+#define CHIFFRE_GAUCHE 106
+#define VIRGULE 107
+#define CHIFFRE_DROITE 108
+
+#define PUITS 109
 
 #endif // ETATS_H_INCLUDED

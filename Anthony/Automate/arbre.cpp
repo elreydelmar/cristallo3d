@@ -83,7 +83,7 @@ double calcul_arbre(Arbre* arbre, double val_x, double val_y, double val_z, int*
         case OP :
             double gauche = calcul_arbre(arbre->fils_g, val_x, val_y, val_z, erreur);
             double droite = calcul_arbre(arbre->fils_d, val_x, val_y, val_z, erreur);
-            if(erreur)
+            if(*erreur)
                 return 0;
             switch(arbre->valeur.operateur)
             {

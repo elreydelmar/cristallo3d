@@ -36,3 +36,37 @@
 1302127944 source:c:\users\pc\documents\programmation\automate\arbre.cpp
 	"arbre.h"
 
+1302446210 source:c:\mes documents\anthony\automate\automate.cpp
+	"automate.h"
+
+1302480349 c:\mes documents\anthony\automate\automate.h
+	"fichier.h"
+	"arbre.h"
+
+1302349470 c:\mes documents\anthony\automate\fichier.h
+	<stdlib.h>
+	<stdio.h>
+	"maille.h"
+	"etats.h"
+
+1302349470 c:\mes documents\anthony\automate\maille.h
+	"geometrie.h"
+
+1302349470 c:\mes documents\anthony\automate\geometrie.h
+	<math.h>
+	<stdio.h>
+
+1302349470 c:\mes documents\anthony\automate\etats.h
+
+1302349470 c:\mes documents\anthony\automate\arbre.h
+	<stdlib.h>
+
+1302349470 source:c:\mes documents\anthony\automate\fichier.cpp
+	"fichier.h"
+
+1302481055 source:c:\mes documents\anthony\automate\main.cpp
+	"automate.h"
+
+1302349470 source:c:\mes documents\anthony\automate\arbre.cpp
+	"arbre.h"
+

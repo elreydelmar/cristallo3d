@@ -40,7 +40,7 @@ struct Arbre
 
 int poids(Arbre* element);
 Arbre* creer_element(Token type, Valeur val);
-Arbre* ajouter_element(Arbre* arbre, Arbre* element); // A tester
+Arbre* ajouter_element(Arbre* arbre, Arbre* element); // A tester plus profondement
 void vider_arbre(Arbre* arbre);
 
 double calcul_arbre(Arbre* arbre, double val_x, double val_y, double val_z, int* erreur);

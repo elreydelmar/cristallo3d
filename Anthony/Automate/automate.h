@@ -19,6 +19,9 @@ void traiter_sous_commande(FILE* fichier, Maille* maille, int* etat, int* retour
 void etat_nouvelle_commande(FILE* fichier, Maille* maille, int* etat, int* retour, char* c);
 void etat_cell(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // fini
 void etat_cell_length(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // fini
-void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // a faire
+void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // fini
+
+// Gestion des symmetry
+void automate_symmetry(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // a faire
 
 #endif // AUTOMATE_H_INCLUDED
