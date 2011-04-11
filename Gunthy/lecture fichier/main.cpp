@@ -1,4 +1,4 @@
-#include "fichier.h"
+#include "automate.h"
 
 int main ()
 {
@@ -7,6 +7,8 @@ int main ()
     if(retour == ERR_OUVERTURE_FICHIER)
         printf("Erreur a l ouverture du fichier\n");
     printf ("Parametre a : %lf\n",m.a);
+    printf ("Parametre b : %lf\n",m.b);
+    printf ("Parametre c : %lf\n",m.c);
 
     return 0;
 }
