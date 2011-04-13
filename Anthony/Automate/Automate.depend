@@ -70,3 +70,34 @@
 1302349470 source:c:\mes documents\anthony\automate\arbre.cpp
 	"arbre.h"
 
+1302349470 source:c:\mes documents\anthony\svn\anthony\automate\fichier.cpp
+	"fichier.h"
+
+1302349470 c:\mes documents\anthony\svn\anthony\automate\fichier.h
+	<stdlib.h>
+	<stdio.h>
+	"maille.h"
+	"etats.h"
+
+1302349470 c:\mes documents\anthony\svn\anthony\automate\maille.h
+	"geometrie.h"
+
+1302349470 c:\mes documents\anthony\svn\anthony\automate\geometrie.h
+	<math.h>
+	<stdio.h>
+
+1302527461 c:\mes documents\anthony\svn\anthony\automate\etats.h
+
+1302481193 source:c:\mes documents\anthony\svn\anthony\automate\arbre.cpp
+	"arbre.h"
+
+1302527424 c:\mes documents\anthony\svn\anthony\automate\arbre.h
+	<stdlib.h>
+
+1302527468 source:c:\mes documents\anthony\svn\anthony\automate\automate.cpp
+	"automate.h"
+
+1302481447 c:\mes documents\anthony\svn\anthony\automate\automate.h
+	"fichier.h"
+	"arbre.h"
+

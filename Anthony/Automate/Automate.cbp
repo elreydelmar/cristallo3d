@@ -40,6 +40,8 @@
 		<Unit filename="fichier.cpp" />
 		<Unit filename="fichier.h" />
 		<Unit filename="geometrie.h" />
+		<Unit filename="lignes.cpp" />
+		<Unit filename="lignes.h" />
 		<Unit filename="maille.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

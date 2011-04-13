@@ -371,40 +371,36 @@ void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char
     }
 }
 
-void automate_symmetry(FILE* fichier, Maille* maille, int* etat, int* retour, char* c)
+L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
 {
+    L_ligne* retour = NULL;
     Arbre* x = NULL;
     Arbre* y = NULL;
     Arbre* z = NULL;
+    Arbre** courant = NULL;
+    int coordonnee = NONE;
+    int apostrophe_ouvert = 0;
 
-    Arbre** arbre_courant = NULL;
-
-    while(1)
+    while(*etat != ATTENTE_NVELLE_COMMANDE && *etat != FIN_FICHIER)
     {
         *c = lire_lettre(fichier);
-
         if(*c == EOF)
-        {
             *etat = FIN_FICHIER;
-            return;
-        }
-        if(*c == '_')
+        else if(*c == 'l')
+            *etat = ATTENTE_NVELLE_COMMANDE;
+        else if(*c == '\'')
+            apostrophe_ouvert = !apostrophe_ouvert;
+        else
         {
-            *etat = NOUVELLE_COMMANDE;
-            return;
-        }
-
-        switch(*etat)
-        {
-            case ATTENTE_LIGNE :
-                if(*c == '\'')
-                {
-                    if(arbre_courant == NULL)
+            switch(*etat)
+            {
+                case s_OP :
+                    if((*c >= 88 && *c <= 90) || (*c >= 120 && *c <= 122))  // une variable
                     {
-                        arbre_courant = &x;
-
+                        // On l'ajoute a l arbre courant
                     }
-                }
+            }
         }
     }
+
 }

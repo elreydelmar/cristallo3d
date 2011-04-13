@@ -4,17 +4,17 @@
 	<File name="arbre.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="2180" topLine="77" />
 	</File>
-	<File name="arbre.h" open="1" top="0" tabpos="1">
-		<Cursor position="663" topLine="18" />
+	<File name="arbre.h" open="1" top="0" tabpos="3">
+		<Cursor position="92" topLine="19" />
 	</File>
-	<File name="automate.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="11764" topLine="366" />
+	<File name="automate.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="11268" topLine="373" />
 	</File>
-	<File name="automate.h" open="1" top="0" tabpos="4">
-		<Cursor position="1404" topLine="0" />
+	<File name="automate.h" open="1" top="0" tabpos="2">
+		<Cursor position="1131" topLine="0" />
 	</File>
 	<File name="etats.h" open="1" top="0" tabpos="5">
-		<Cursor position="829" topLine="10" />
+		<Cursor position="851" topLine="12" />
 	</File>
 	<File name="fichier.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="199" topLine="0" />
@@ -22,7 +22,10 @@
 	<File name="fichier.h" open="0" top="0" tabpos="2">
 		<Cursor position="142" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="2">
+	<File name="lignes.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="502" topLine="2" />
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="568" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

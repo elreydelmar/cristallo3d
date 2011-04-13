@@ -2,7 +2,7 @@
 #define AUTOMATE_H_INCLUDED
 
 #include "fichier.h"
-#include "arbre.h"
+#include "lignes.h"
 
 // Automate
 // Retour par defaut : 0 si non trouve et non fin de ligne, 1 si trouve et non fin de ligne, 2 si non trouve et fin de ligne, 3 si trouve et fin de ligne le 3eme bit est le fin de fichier
@@ -22,6 +22,6 @@ void etat_cell_length(FILE* fichier, Maille* maille, int* etat, int* retour, cha
 void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // fini
 
 // Gestion des symmetry
-void automate_symmetry(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // a faire
+L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c); // a faire
 
 #endif // AUTOMATE_H_INCLUDED

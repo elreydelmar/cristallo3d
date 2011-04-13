@@ -26,17 +26,17 @@
 #define FIN_FICHIER 19
 
 // Etats pour le symmetry
-#define ATTENTE_LIGNE 100
-#define DEBUT_X 101
-#define DEBUT_Y 102
-#define DEBUT_Z 103
+#define s_X 100 // state X
+#define s_Y 101 // state Y
+#define s_Z 102 // state Z
+#define NONE 103 // state none coord
 
-#define OP 104
-#define VAR 105
-#define CHIFFRE_GAUCHE 106
-#define VIRGULE 107
-#define CHIFFRE_DROITE 108
-
-#define PUITS 109
+#define s_OP 104
+#define s_CG 105
+#define s_VIRGULE 106
+#define s_CD 107
+#define s_VAR 108
+#define s_ATT_LIGNE 109
+#define s_FINAL 110
 
 #endif // ETATS_H_INCLUDED
