@@ -24,4 +24,13 @@ void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char
 // Gestion des symmetry
 L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c); // a faire
 
+// Tests
+char is_chiffre(char c);
+char is_operateur(char c);
+char is_variable(char c);
+
+// Converting
+Op char_to_op(char c);
+double char_to_chiffre(char c);
+
 #endif // AUTOMATE_H_INCLUDED

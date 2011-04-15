@@ -381,6 +381,7 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
     int coordonnee = NONE;
     int apostrophe_ouvert = 0;
     Valeur val;
+    double decimale = 0.1;
 
     while(*etat != ATTENTE_NVELLE_COMMANDE && *etat != FIN_FICHIER)
     {
@@ -416,7 +417,7 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                     coordonnee = NONE;
 
                 case s_OP :
-                    if((*c >= 88 && *c <= 90) || (*c >= 120 && *c <= 122))  // une variable
+                    if(is_variable(*c))  // une variable
                     {
                         if(coordonnee == NONE)
                         {
@@ -433,7 +434,7 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                             val.variable = Z;
                         *courant = ajouter_element(*courant, creer_element(VAR, val));
                     }
-                    else if(*c >= 48 && *c <= 57) // Un chiffre
+                    else if(is_chiffre(*c)) // Un chiffre
                     {
                         if(coordonnee == NONE)
                         {
@@ -441,15 +442,150 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                             courant = &x;
                         }
                         *etat = s_CG;
-                        val.reel = (double) (*c-48);
+                        val.reel = char_to_chiffre(*c);
                     }
                     else
                         *etat = s_ATT_LIGNE; // erreur, on prend la prochaine ligne
                 break;
 
+                case s_VAR :
+                    if(is_operateur(*c))
+                    {
+                        val.operateur = char_to_op(*c);
+                        *courant = ajouter_element(*courant, creer_element(OP, val));
+                        *etat = s_OP;
+                    }
+                    else if(*c == ',')
+                        *etat = s_VIRGULE;
+                    else if(*c == '\n')
+                        *etat = s_FINAL;
+                    else
+                        *etat = s_ATT_LIGNE;
+                break;
+
+                case s_CG :
+                    if(is_chiffre(*c))
+                    {
+                        val.reel *= 10;
+                        val.reel += char_to_chiffre(*c);
+                    }
+                    else if(*c == '.')
+                        *etat = s_POINT;
+                    else if(*c == ',')
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        *etat = s_VIRGULE;
+                    }
+                    else if(*c == '\n')
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        *etat = s_FINAL;
+                    }
+                    else if(is_operateur(*c))
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        val.operateur = char_to_op(*c);
+                        *courant = ajouter_element(*courant, creer_element(OP, val));
+                        *etat = s_OP;
+                    }
+                    else
+                        *etat = s_ATT_LIGNE;
+                break;
+
+                case s_POINT :
+                    if(is_chiffre(*c))
+                    {
+                        virgule = 0.1;
+                        val.reel += (0.1 * char_to_chiffre(*c));
+                    }
+                    else if(*c == ',')
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        *etat = s_VIRGULE;
+                    }
+                    else if(*c == '\n')
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        *etat = s_FINAL;
+                    }
+                    else if(is_operateur(*c))
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        val.operateur = char_to_op(*c);
+                        *courant = ajouter_element(*courant, creer_element(OP, val));
+                        *etat = s_OP;
+                    }
+                    else
+                        *etat = s_ATT_LIGNE;
+                break;
+
+                case s_CD :
+                    if(is_chiffre(*c))
+                    {
+                        virgule *= 0.1;
+                        val.reel += (virgule*char_to_chiffre(*c));
+                    }
+                    else if(*c == ',')
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        *etat = s_VIRGULE;
+                    }
+                    else if(*c == '\n')
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        *etat = s_FINAL;
+                    }
+                    else if(is_operateur(*c))
+                    {
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        val.operateur = char_to_op(*c);
+                        *courant = ajouter_element(*courant, creer_element(OP, val));
+                        *etat = s_OP;
+                    }
+                    else
+                        *etat = s_ATT_LIGNE;
+                break;
 
             }
         }
     }
 
+    return lignes;
+}
+
+char is_chiffre(char c)
+{
+    return ((char) (c >= 48 && c <= 57));
+}
+
+char is_operateur(char c)
+{
+    return ((char)(c == '+' || c == '-' || c == '*' || c == '/'));
+}
+
+char is_variable(char c)
+{
+    return ((char)(c >= 88 && c <= 90) || (c >= 120 && c <= 122));
+}
+
+Op char_to_op(char c)
+{
+    switch(c)
+    {
+        case '+' :
+            return PLUS;
+        case '-' :
+            return MOINS;
+        case '*' :
+            return FOIS;
+        case '/' :
+            return DIVISE;
+        default :   // Pas cense arriver
+            return PLUS;
+    }
+}
+
+double char_to_chiffre(char c)
+{
+    return ((double) (c-48));
 }

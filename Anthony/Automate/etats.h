@@ -33,10 +33,11 @@
 
 #define s_OP 104
 #define s_CG 105
-#define s_VIRGULE 106
+#define s_POINT 106
 #define s_CD 107
 #define s_VAR 108
-#define s_ATT_LIGNE 109
-#define s_FINAL 110
+#define s_VIRGULE 109 // a faire
+#define s_ATT_LIGNE 110
+#define s_FINAL 111 // a faire
 
 #endif // ETATS_H_INCLUDED
