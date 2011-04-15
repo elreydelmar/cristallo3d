@@ -2,8 +2,15 @@
 
 void afficher_arbre(Arbre* a);
 void test_arbre();
+void test_maille();
 
 int main ()
+{
+    test_arbre();
+    return 0;
+}
+
+void test_maille()
 {
     Maille m;
     int retour = charger_maille("1000001.cif",&m);
@@ -17,7 +24,6 @@ int main ()
     printf ("Parametre beta : %lf\n",m.beta);
     printf ("Parametre gamma : %lf\n",m.gamma);
 
-    return 0;
 }
 
 void test_arbre()

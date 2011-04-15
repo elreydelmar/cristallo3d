@@ -86,7 +86,7 @@
 	<math.h>
 	<stdio.h>
 
-1302527461 c:\mes documents\anthony\svn\anthony\automate\etats.h
+1302529032 c:\mes documents\anthony\svn\anthony\automate\etats.h
 
 1302481193 source:c:\mes documents\anthony\svn\anthony\automate\arbre.cpp
 	"arbre.h"
@@ -97,7 +97,16 @@
 1302527468 source:c:\mes documents\anthony\svn\anthony\automate\automate.cpp
 	"automate.h"
 
-1302481447 c:\mes documents\anthony\svn\anthony\automate\automate.h
+1302527583 c:\mes documents\anthony\svn\anthony\automate\automate.h
 	"fichier.h"
+	"lignes.h"
+
+1302527475 source:c:\mes documents\anthony\svn\anthony\automate\lignes.cpp
+	"lignes.h"
+
+1302527162 c:\mes documents\anthony\svn\anthony\automate\lignes.h
 	"arbre.h"
+
+1302821434 source:c:\mes documents\anthony\svn\anthony\automate\main.cpp
+	"automate.h"
 

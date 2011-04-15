@@ -373,32 +373,81 @@ void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char
 
 L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
 {
-    L_ligne* retour = NULL;
+    L_ligne* lignes = NULL;
     Arbre* x = NULL;
     Arbre* y = NULL;
     Arbre* z = NULL;
     Arbre** courant = NULL;
     int coordonnee = NONE;
     int apostrophe_ouvert = 0;
+    Valeur val;
 
     while(*etat != ATTENTE_NVELLE_COMMANDE && *etat != FIN_FICHIER)
     {
         *c = lire_lettre(fichier);
         if(*c == EOF)
             *etat = FIN_FICHIER;
-        else if(*c == 'l')
+        else if(*c == 'l') // de loop
             *etat = ATTENTE_NVELLE_COMMANDE;
         else if(*c == '\'')
             apostrophe_ouvert = !apostrophe_ouvert;
+        else if(*c == ' ')  // on ne fait rien
+        {}
         else
         {
             switch(*etat)
             {
+                case s_ATT_LIGNE : // on fait pareil que OP sauf que l on vide nos arbres
+                    if(x != NULL)
+                    {
+                        vider_arbre(x);
+                        x = NULL;
+                    }
+                    if(y != NULL)
+                    {
+                        vider_arbre(y);
+                        y = NULL;
+                    }
+                    if(z != NULL)
+                    {
+                        vider_arbre(z);
+                        z = NULL;
+                    }
+                    coordonnee = NONE;
+
                 case s_OP :
                     if((*c >= 88 && *c <= 90) || (*c >= 120 && *c <= 122))  // une variable
                     {
-                        // On l'ajoute a l arbre courant
+                        if(coordonnee == NONE)
+                        {
+                            coordonnee = s_X;
+                            courant = &x;
+                        }
+                        *etat = s_VAR;
+                        // On cherche l'element
+                        if(*c == 88 || *c ==120)
+                            val.variable = X;
+                        else if(*c == 89 || *c ==121)
+                            val.variable = Y;
+                        else if(*c == 90 || *c ==122)
+                            val.variable = Z;
+                        *courant = ajouter_element(*courant, creer_element(VAR, val));
                     }
+                    else if(*c >= 48 && *c <= 57) // Un chiffre
+                    {
+                        if(coordonnee == NONE)
+                        {
+                            coordonnee = s_X;
+                            courant = &x;
+                        }
+                        *etat = s_CG;
+                        val.reel = (double) (*c-48);
+                    }
+                    else
+                        *etat = s_ATT_LIGNE; // erreur, on prend la prochaine ligne
+                break;
+
+
             }
         }
     }
