@@ -1,12 +1,12 @@
 #include "automate.h"
 
-void afficher_arbre(Arbre* a);
 void test_arbre();
 void test_maille();
 
 int main ()
 {
-    test_arbre();
+    test_maille();
+
     return 0;
 }
 
@@ -53,39 +53,3 @@ void test_arbre()
     vider_arbre(a);
 }
 
-
-void afficher_arbre(Arbre* a)
-{
-    if(a == NULL)
-        return;
-
-    switch(a->type)
-    {
-        case VAR :
-            switch(a->valeur.variable)
-            {
-                case X : printf("x");  break;
-                case Y : printf("y");  break;
-                case Z : printf("z");  break;
-            }
-        break;
-
-        case OP:
-            printf("(");
-            afficher_arbre(a->fils_g);
-            switch(a->valeur.operateur)
-            {
-                case PLUS : printf("+");  break;
-                case MOINS : printf("-");  break;
-                case FOIS : printf("*");  break;
-                case DIVISE : printf("/");  break;
-            }
-            afficher_arbre(a->fils_d);
-            printf(")");
-        break;
-
-        case REEL :
-            printf("%lf", a->valeur.reel);
-        break;
-    }
-}

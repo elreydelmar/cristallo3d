@@ -17,7 +17,7 @@ int poids(Arbre* element)
 
 Arbre* creer_element(Token type, Valeur val)
 {
-    Arbre* retour = (Arbre*) malloc(sizeof(Arbre));
+    Arbre* retour = (Arbre*)malloc(sizeof(Arbre)); // LIGNE QUI BUG
         retour->type = type;
         retour->valeur = val;
         retour->fils_g = NULL;
@@ -103,4 +103,17 @@ double calcul_arbre(Arbre* arbre, double val_x, double val_y, double val_z, int*
                         return gauche / droite;
             }
     }
+    return 0; // securite
+}
+
+char arbre_valide(Arbre* arbre)
+{
+    if(arbre == NULL)
+        return 0;
+    switch(arbre->type)
+    {
+        case OP : return arbre_valide(arbre->fils_g) && arbre_valide(arbre->fils_d);
+        case VAR : case REEL : return 1;
+    }
+    return 0; // securite
 }

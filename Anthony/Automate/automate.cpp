@@ -108,6 +108,7 @@ int automate(FILE* fichier, Maille* maille)
     int etat = ATTENTE_NVELLE_COMMANDE;
     int retour; // retour de detection mot
     char c = 0;
+    L_ligne* l;
 
     while (etat != FIN_FICHIER)
     {
@@ -135,6 +136,28 @@ int automate(FILE* fichier, Maille* maille)
             case CELL_ANGLE:
                 etat_cell_angle(fichier, maille, &etat, &retour, &c);
             break;
+
+            case SYMMETRY :
+                traiter_sous_commande(fichier, maille, &etat, &retour, &c, "equiv", EQUIV);
+            break;
+
+            case EQUIV:
+                traiter_sous_commande(fichier, maille, &etat, &retour, &c, "pos", POS);
+            break;
+
+            case POS:
+                traiter_sous_commande(fichier, maille, &etat, &retour, &c, "as", AS);
+            break;
+
+            case AS:
+                etat_sym_equiv_pos_as(fichier, maille, &etat, &retour, &c);
+            break;
+
+            case XYZ:
+                l = automate_symmetry(fichier, &etat, &retour, &c);
+                afficher_l_ligne(l);
+                vider_l_ligne(l);
+           // break;
 
             default :
                 etat = ATTENTE_NVELLE_COMMANDE;
@@ -371,14 +394,33 @@ void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char
     }
 }
 
+void etat_sym_equiv_pos_as(FILE* fichier, Maille* maille, int* etat, int* retour, char* c)
+{
+    *retour = detection_mot(fichier, "xyz");
+    if(*retour/4 == 1) // End of file
+    {
+        *etat = FIN_FICHIER;
+        return;
+    }
+
+    if(*retour%4 == 0)       // Non trouve non fin de ligne
+        *etat = ATTENTE_NVELLE_COMMANDE;
+    else if(*retour%4 == 1) // Trouve et non fin de ligne : cas classique 1
+        *etat = XYZ;
+    else               // on a passe l underscore
+        *etat = NOUVELLE_COMMANDE;
+}
+
 L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
 {
+    *etat = s_ATT_LIGNE;
+
     L_ligne* lignes = NULL;
     Arbre* x = NULL;
     Arbre* y = NULL;
     Arbre* z = NULL;
     Arbre** courant = NULL;
-    int coordonnee = NONE;
+    int coordonnee = s_X;
     int apostrophe_ouvert = 0;
     Valeur val;
     double decimale = 0.1;
@@ -389,7 +431,14 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
         if(*c == EOF)
             *etat = FIN_FICHIER;
         else if(*c == 'l') // de loop
+        {
+            if(arbre_valide(x) && arbre_valide(y) && arbre_valide(z))
+            {
+                lignes = add_to_l_ligne(lignes,x,y,z);
+                afficher_l_ligne(lignes);
+            }
             *etat = ATTENTE_NVELLE_COMMANDE;
+        }
         else if(*c == '\'')
             apostrophe_ouvert = !apostrophe_ouvert;
         else if(*c == ' ')  // on ne fait rien
@@ -398,6 +447,20 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
         {
             switch(*etat)
             {
+
+                case s_FINAL :
+                    // On teste les arbres
+                    if(arbre_valide(x) && arbre_valide(y) && arbre_valide(z))
+                    {
+                        // on ajoute a la liste
+                        lignes = add_to_l_ligne(lignes,x,y,z);
+                        afficher_l_ligne(lignes);
+
+                        x = NULL;
+                        y = NULL;
+                        z = NULL;
+                    }
+                // on enchaine direct sur attente ligne
                 case s_ATT_LIGNE : // on fait pareil que OP sauf que l on vide nos arbres
                     if(x != NULL)
                     {
@@ -414,16 +477,12 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                         vider_arbre(z);
                         z = NULL;
                     }
-                    coordonnee = NONE;
+                    coordonnee = s_X;
+                    courant = &x;
 
                 case s_OP :
                     if(is_variable(*c))  // une variable
                     {
-                        if(coordonnee == NONE)
-                        {
-                            coordonnee = s_X;
-                            courant = &x;
-                        }
                         *etat = s_VAR;
                         // On cherche l'element
                         if(*c == 88 || *c ==120)
@@ -433,16 +492,21 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                         else if(*c == 90 || *c ==122)
                             val.variable = Z;
                         *courant = ajouter_element(*courant, creer_element(VAR, val));
+                        afficher_arbre(*courant); printf("\n");
                     }
                     else if(is_chiffre(*c)) // Un chiffre
                     {
-                        if(coordonnee == NONE)
-                        {
-                            coordonnee = s_X;
-                            courant = &x;
-                        }
                         *etat = s_CG;
                         val.reel = char_to_chiffre(*c);
+                    }
+                    else if(*c == '-')
+                    {
+                        val.reel = -1.;
+                        *courant = ajouter_element(*courant, creer_element(REEL, val)); // CETTE LIGNE BUG
+                        val.operateur = FOIS;
+                        *courant = ajouter_element(*courant, creer_element(OP, val));
+                        afficher_arbre(*courant); printf("\n");
+                        *etat = s_OP;
                     }
                     else
                         *etat = s_ATT_LIGNE; // erreur, on prend la prochaine ligne
@@ -453,6 +517,7 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                     {
                         val.operateur = char_to_op(*c);
                         *courant = ajouter_element(*courant, creer_element(OP, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_OP;
                     }
                     else if(*c == ',')
@@ -474,11 +539,13 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                     else if(*c == ',')
                     {
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_VIRGULE;
                     }
                     else if(*c == '\n')
                     {
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_FINAL;
                     }
                     else if(is_operateur(*c))
@@ -486,6 +553,7 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
                         val.operateur = char_to_op(*c);
                         *courant = ajouter_element(*courant, creer_element(OP, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_OP;
                     }
                     else
@@ -495,17 +563,19 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                 case s_POINT :
                     if(is_chiffre(*c))
                     {
-                        virgule = 0.1;
+                        decimale = 0.1;
                         val.reel += (0.1 * char_to_chiffre(*c));
                     }
                     else if(*c == ',')
                     {
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_VIRGULE;
                     }
                     else if(*c == '\n')
                     {
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_FINAL;
                     }
                     else if(is_operateur(*c))
@@ -513,6 +583,7 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
                         val.operateur = char_to_op(*c);
                         *courant = ajouter_element(*courant, creer_element(OP, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_OP;
                     }
                     else
@@ -522,17 +593,19 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                 case s_CD :
                     if(is_chiffre(*c))
                     {
-                        virgule *= 0.1;
-                        val.reel += (virgule*char_to_chiffre(*c));
+                        decimale *= 0.1;
+                        val.reel += (decimale*char_to_chiffre(*c));
                     }
                     else if(*c == ',')
                     {
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_VIRGULE;
                     }
                     else if(*c == '\n')
                     {
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_FINAL;
                     }
                     else if(is_operateur(*c))
@@ -540,12 +613,61 @@ L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c)
                         *courant = ajouter_element(*courant, creer_element(REEL, val));
                         val.operateur = char_to_op(*c);
                         *courant = ajouter_element(*courant, creer_element(OP, val));
+                        afficher_arbre(*courant); printf("\n");
                         *etat = s_OP;
                     }
                     else
                         *etat = s_ATT_LIGNE;
                 break;
 
+                case s_VIRGULE : // Une virgule a bon endroit a ete detectee
+                    // l'element est deja ajoute
+                    // on change l arbre courant
+                    if(coordonnee == s_X)
+                    {
+                        coordonnee = s_Y;
+                        courant = &y;
+                    }
+                    else if(coordonnee == s_Y)
+                    {
+                        coordonnee = s_Z;
+                        courant = &z;
+                    }
+                    else
+                        *etat = s_ATT_LIGNE;
+                    if(*etat != s_ATT_LIGNE)
+                    {
+                        if(is_variable(*c))  // une variable
+                        {
+                            *etat = s_VAR;
+                            // On cherche l'element
+                            if(*c == 88 || *c ==120)
+                                val.variable = X;
+                            else if(*c == 89 || *c ==121)
+                                val.variable = Y;
+                            else if(*c == 90 || *c ==122)
+                                val.variable = Z;
+                            *courant = ajouter_element(*courant, creer_element(VAR, val));
+                            afficher_arbre(*courant); printf("\n");
+                        }
+                        else if(*c == '-')
+                        {
+                            val.reel = -1.;
+                            *courant = ajouter_element(*courant, creer_element(REEL, val));
+                            val.operateur = FOIS;
+                            *courant = ajouter_element(*courant, creer_element(OP, val));
+                            *etat = s_OP;
+                            afficher_arbre(*courant); printf("\n");
+                        }
+                        else if(is_chiffre(*c)) // Un chiffre
+                        {
+                            *etat = s_CG;
+                            val.reel = char_to_chiffre(*c);
+                        }
+                        else
+                            *etat = s_ATT_LIGNE; // erreur, on prend la prochaine ligne
+                    }
+                break;
             }
         }
     }
@@ -588,4 +710,52 @@ Op char_to_op(char c)
 double char_to_chiffre(char c)
 {
     return ((double) (c-48));
+}
+
+void afficher_l_ligne(L_ligne* l)
+{
+    while(l != NULL)
+    {
+        afficher_arbre(l->x); printf(", ");
+        afficher_arbre(l->y); printf(", ");
+        afficher_arbre(l->z); printf("\n");
+
+        l = l->queue;
+    }
+}
+
+void afficher_arbre(Arbre* a)
+{
+    if(a == NULL)
+        return;
+
+    switch(a->type)
+    {
+        case VAR :
+            switch(a->valeur.variable)
+            {
+                case X : printf("x");  break;
+                case Y : printf("y");  break;
+                case Z : printf("z");  break;
+            }
+        break;
+
+        case OP:
+            printf("(");
+            afficher_arbre(a->fils_g);
+            switch(a->valeur.operateur)
+            {
+                case PLUS : printf("+");  break;
+                case MOINS : printf("-");  break;
+                case FOIS : printf("*");  break;
+                case DIVISE : printf("/");  break;
+            }
+            afficher_arbre(a->fils_d);
+            printf(")");
+        break;
+
+        case REEL :
+            printf("%lf", a->valeur.reel);
+        break;
+    }
 }

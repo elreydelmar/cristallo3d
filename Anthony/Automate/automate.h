@@ -20,9 +20,10 @@ void etat_nouvelle_commande(FILE* fichier, Maille* maille, int* etat, int* retou
 void etat_cell(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // fini
 void etat_cell_length(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // fini
 void etat_cell_angle(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // fini
+void etat_sym_equiv_pos_as(FILE* fichier, Maille* maille, int* etat, int* retour, char* c); // fini
 
 // Gestion des symmetry
-L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c); // a faire
+L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c); // ajouter la gestion des signes
 
 // Tests
 char is_chiffre(char c);
@@ -32,5 +33,9 @@ char is_variable(char c);
 // Converting
 Op char_to_op(char c);
 double char_to_chiffre(char c);
+
+
+void afficher_arbre(Arbre* a);
+void afficher_l_ligne(L_ligne* l);
 
 #endif // AUTOMATE_H_INCLUDED

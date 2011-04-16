@@ -21,11 +21,15 @@ L_ligne* add_to_l_ligne(L_ligne* liste, Arbre* x, Arbre* y, Arbre* z)
 
 void vider_l_ligne(L_ligne* liste)
 {
-    L_ligne* buff;
-    while(liste != NULL)
+    L_ligne* buff1 = liste;
+    L_ligne* buff2;
+    while(buff1 != NULL)
     {
-        buff = liste->queue;
-        free(liste);
-        liste = buff;
+        buff2 = buff1->queue;
+        vider_arbre(buff1->x);
+        vider_arbre(buff1->y);
+        vider_arbre(buff1->z);
+        free(buff1);
+        buff1 = buff2;
     }
 }

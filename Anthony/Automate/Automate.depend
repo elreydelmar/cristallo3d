@@ -70,7 +70,7 @@
 1302349470 source:c:\mes documents\anthony\automate\arbre.cpp
 	"arbre.h"
 
-1302349470 source:c:\mes documents\anthony\svn\anthony\automate\fichier.cpp
+1302957230 source:c:\mes documents\anthony\svn\anthony\automate\fichier.cpp
 	"fichier.h"
 
 1302349470 c:\mes documents\anthony\svn\anthony\automate\fichier.h
@@ -86,27 +86,28 @@
 	<math.h>
 	<stdio.h>
 
-1302529032 c:\mes documents\anthony\svn\anthony\automate\etats.h
+1302947837 c:\mes documents\anthony\svn\anthony\automate\etats.h
 
-1302481193 source:c:\mes documents\anthony\svn\anthony\automate\arbre.cpp
+1302957235 source:c:\mes documents\anthony\svn\anthony\automate\arbre.cpp
 	"arbre.h"
 
-1302527424 c:\mes documents\anthony\svn\anthony\automate\arbre.h
+1302956834 c:\mes documents\anthony\svn\anthony\automate\arbre.h
 	<stdlib.h>
+	<stdio.h>
 
-1302527468 source:c:\mes documents\anthony\svn\anthony\automate\automate.cpp
+1302957223 source:c:\mes documents\anthony\svn\anthony\automate\automate.cpp
 	"automate.h"
 
-1302904110 c:\mes documents\anthony\svn\anthony\automate\automate.h
+1302956229 c:\mes documents\anthony\svn\anthony\automate\automate.h
 	"fichier.h"
 	"lignes.h"
 
-1302527475 source:c:\mes documents\anthony\svn\anthony\automate\lignes.cpp
+1302954538 source:c:\mes documents\anthony\svn\anthony\automate\lignes.cpp
 	"lignes.h"
 
 1302527162 c:\mes documents\anthony\svn\anthony\automate\lignes.h
 	"arbre.h"
 
-1302821434 source:c:\mes documents\anthony\svn\anthony\automate\main.cpp
+1302957201 source:c:\mes documents\anthony\svn\anthony\automate\main.cpp
 	"automate.h"
 

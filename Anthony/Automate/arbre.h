@@ -2,6 +2,7 @@
 #define ARBRE_H_INCLUDED
 
 #include <stdlib.h>
+#include <stdio.h>
 
 enum Token
 {
@@ -42,6 +43,7 @@ int poids(Arbre* element);
 Arbre* creer_element(Token type, Valeur val);
 Arbre* ajouter_element(Arbre* arbre, Arbre* element); // A tester plus profondement
 void vider_arbre(Arbre* arbre);
+char arbre_valide(Arbre* arbre);
 
 double calcul_arbre(Arbre* arbre, double val_x, double val_y, double val_z, int* erreur);
 
