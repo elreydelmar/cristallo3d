@@ -88,26 +88,37 @@
 
 1302947837 c:\mes documents\anthony\svn\anthony\automate\etats.h
 
-1302957235 source:c:\mes documents\anthony\svn\anthony\automate\arbre.cpp
+1303032234 source:c:\mes documents\anthony\svn\anthony\automate\arbre.cpp
 	"arbre.h"
 
-1302956834 c:\mes documents\anthony\svn\anthony\automate\arbre.h
+1303032077 c:\mes documents\anthony\svn\anthony\automate\arbre.h
 	<stdlib.h>
 	<stdio.h>
+	"alloc_debug.h"
 
-1302957223 source:c:\mes documents\anthony\svn\anthony\automate\automate.cpp
+1303083591 source:c:\mes documents\anthony\svn\anthony\automate\automate.cpp
 	"automate.h"
 
 1302956229 c:\mes documents\anthony\svn\anthony\automate\automate.h
 	"fichier.h"
 	"lignes.h"
 
-1302954538 source:c:\mes documents\anthony\svn\anthony\automate\lignes.cpp
+1303084183 source:c:\mes documents\anthony\svn\anthony\automate\lignes.cpp
 	"lignes.h"
 
-1302527162 c:\mes documents\anthony\svn\anthony\automate\lignes.h
+1303032336 c:\mes documents\anthony\svn\anthony\automate\lignes.h
 	"arbre.h"
 
-1302957201 source:c:\mes documents\anthony\svn\anthony\automate\main.cpp
+1302957247 source:c:\mes documents\anthony\svn\anthony\automate\main.cpp
 	"automate.h"
+
+1303030197 source:c:\mes documents\anthony\svn\anthony\automate\alloc_debug.c
+	"alloc_debug.h"
+
+1303032241 c:\mes documents\anthony\svn\anthony\automate\alloc_debug.h
+	<stdio.h>
+	<stdlib.h>
+
+1303030197 source:c:\mes documents\anthony\svn\anthony\automate\alloc_debug.cpp
+	"alloc_debug.h"
 

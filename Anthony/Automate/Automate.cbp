@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="alloc_debug.cpp" />
+		<Unit filename="alloc_debug.h" />
 		<Unit filename="arbre.cpp" />
 		<Unit filename="arbre.h" />
 		<Unit filename="automate.cpp" />

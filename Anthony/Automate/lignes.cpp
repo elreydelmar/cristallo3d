@@ -10,7 +10,7 @@ L_ligne* add_to_l_ligne(L_ligne* liste, Arbre* x, Arbre* y, Arbre* z)
         return liste;
     }
 
-    L_ligne* nouveau = (L_ligne*) malloc(sizeof(L_ligne*));
+    L_ligne* nouveau = (L_ligne*) malloc(sizeof(L_ligne));
         nouveau->x = x;
         nouveau->y = y;
         nouveau->z = z;
