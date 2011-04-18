@@ -2,9 +2,6 @@
 #include "GLbasic.h"
 
 
-
-
-
 int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesDeCommande, int modeDAffichage)
 {
     // Creation de la fenetre

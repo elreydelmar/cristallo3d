@@ -40,6 +40,8 @@
 			<Add library="kernel32" />
 			<Add library="comctl32" />
 		</Linker>
+		<Unit filename="GLbasic.cpp" />
+		<Unit filename="GLbasic.h" />
 		<Unit filename="boutons.cpp" />
 		<Unit filename="boutons.h" />
 		<Unit filename="const_fenetre.h" />
@@ -47,6 +49,8 @@
 		<Unit filename="evenement.h" />
 		<Unit filename="fenetre.cpp" />
 		<Unit filename="fenetre.h" />
+		<Unit filename="geometrie.cpp" />
+		<Unit filename="geometrie.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="type_fenetre.h" />
 		<Extensions>
