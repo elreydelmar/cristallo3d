@@ -72,3 +72,60 @@
 
 1301217072 c:\users\pc\documents\programmation\projet de groupe\testgl.h
 
+1302349514 source:c:\mes documents\anthony\svn\anthony\boutons.cpp
+	"boutons.h"
+
+1302349514 c:\mes documents\anthony\svn\anthony\boutons.h
+	<windows.h>
+	<commctrl.h>
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1302349514 c:\mes documents\anthony\svn\anthony\const_fenetre.h
+
+1302349514 c:\mes documents\anthony\svn\anthony\type_fenetre.h
+
+1302349514 source:c:\mes documents\anthony\svn\anthony\debug.cpp
+	"debug.h"
+
+1302349514 c:\mes documents\anthony\svn\anthony\debug.h
+	<windows.h>
+
+1302349514 source:c:\mes documents\anthony\svn\anthony\evenement.cpp
+	"evenement.h"
+
+1302349514 c:\mes documents\anthony\svn\anthony\evenement.h
+	"fenetre.h"
+
+1302349514 c:\mes documents\anthony\svn\anthony\fenetre.h
+	<windows.h>
+	<gl\gl.h>
+	<gl\glu.h>
+	<gl\glaux.h>
+	"boutons.h"
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1302349514 source:c:\mes documents\anthony\svn\anthony\fenetre.cpp
+	"fenetre.h"
+
+1302349514 source:c:\mes documents\anthony\svn\anthony\geometrie.cpp
+	"geometrie.h"
+
+1302349514 c:\mes documents\anthony\svn\anthony\geometrie.h
+	<math.h>
+	<stdio.h>
+
+1302349514 source:c:\mes documents\anthony\svn\anthony\main.cpp
+	"evenement.h"
+	"TestGL.h"
+
+1302349514 c:\mes documents\anthony\svn\anthony\testgl.h
+
+1302349514 source:c:\mes documents\anthony\svn\anthony\testgl.cpp
+	<GL/gl.h>
+	<GL/glu.h>
+	<cstdlib>
+	"geometrie.h"
+	"TestGL.h"
+

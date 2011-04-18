@@ -13,7 +13,7 @@ int main ()
 void test_maille()
 {
     Maille m;
-    int retour = charger_maille("1000001.cif",&m);
+    int retour = charger_maille("1008006.cif",&m);
     if(retour == ERR_OUVERTURE_FICHIER)
         printf("Erreur a l ouverture du fichier\n");
     printf ("Parametre a : %lf\n",m.a);

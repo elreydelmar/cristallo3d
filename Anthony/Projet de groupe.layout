@@ -7,8 +7,8 @@
 	<File name="TestGL.h" open="0" top="0" tabpos="2">
 		<Cursor position="481" topLine="0" />
 	</File>
-	<File name="boutons.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="8137" topLine="0" />
+	<File name="boutons.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="8137" topLine="17" />
 	</File>
 	<File name="boutons.h" open="1" top="0" tabpos="3">
 		<Cursor position="633" topLine="0" />
@@ -28,7 +28,7 @@
 	<File name="fenetre.h" open="0" top="0" tabpos="3">
 		<Cursor position="470" topLine="3" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="5">
+	<File name="main.cpp" open="1" top="1" tabpos="5">
 		<Cursor position="273" topLine="0" />
 	</File>
 	<File name="type_fenetre.h" open="0" top="0" tabpos="3">
