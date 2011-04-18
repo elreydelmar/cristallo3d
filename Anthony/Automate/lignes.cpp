@@ -33,3 +33,31 @@ void vider_l_ligne(L_ligne* liste)
         buff1 = buff2;
     }
 }
+
+L_label* add_label(L_label* liste, Label l)
+{
+    if(liste == NULL)
+    {
+        L_label* nouv = (L_label*) malloc(sizeof(L_label));
+        nouv->label = l;
+        nouv->queue = NULL;
+        return nouv;
+    }
+    else
+    {
+        liste->queue = add_label(liste->queue, l);
+        return liste;
+    }
+}
+
+void vider_l_label(L_label* liste)
+{
+    L_label* buff1 = liste;
+    L_label* buff2;
+    while(buff1 != NULL)
+    {
+        buff2 = buff1->queue;
+        free(buff1);
+        buff1 = buff2;
+    }
+}
