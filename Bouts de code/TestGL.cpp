@@ -13,6 +13,19 @@ void InitGL()
             glEnable(GL_LIGHT0); 	// Allume la lumière n°1
         }
 
+void init_camera_de_merde()
+{
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+    gluPerspective(70,(double)(WIDTH-WIDTH_COLONNE)/HEIGHT,1,1000);
+}
+
+void update_camera_de_merde()
+{
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity( );
+    gluLookAt(1.5,2,1,0,0,0,0,0,1);
+}
 
 void nouveau_dessin()
 {
@@ -86,10 +99,6 @@ void changerepere(Point O, Point Z) //place le repère au point O, orienté suiv
         normer(&Z);
     }
 
-    afficher_point(X);
-    afficher_point(Y);
-    afficher_point(Z);
-
     Matrice Passage;
     set_null(&Passage);
     Passage.m[0][0]=X.x;
@@ -102,20 +111,15 @@ void changerepere(Point O, Point Z) //place le repère au point O, orienté suiv
     Passage.m[1][2]=Z.y;
     Passage.m[2][2]=Z.z;
     Passage.m[3][3]=1;
-    afficher_matrice(Passage);
+
     GLdouble Pass[16];
     int i;
-    for (i=0; i<16; i++) Pass[i]=Passage.m[i/4][i%4];
-
-    printf("Pass[");
-    int j;
-    for (j=0; j<16; j++) printf("%lf,",Pass[j]);
-    printf ("]\n\n");
+    for (i=0; i<16; i++) Pass[i]=Passage.m[i%4][i/4];
 
     glMultMatrixd( Pass );
 }
 
-void dessiner_ligne(Couleur couleur, Ligne ligne, int rayon) // dessine la ligne. Si rayon!=0, on met a la place de la ligne un cylindre de rayon rayon
+void dessiner_ligne(Couleur couleur, Ligne ligne, double rayon) // dessine la ligne. Si rayon!=0, on met a la place de la ligne un cylindre de rayon rayon
 {
     glPushMatrix();
     if (rayon==0)
@@ -124,19 +128,20 @@ void dessiner_ligne(Couleur couleur, Ligne ligne, int rayon) // dessine la ligne
         glColor3ub(couleur.r,couleur.v,couleur.b);
         glVertex3d(ligne.P.x,ligne.P.y,ligne.P.z);
         glVertex3d(ligne.Q.x,ligne.Q.y,ligne.Q.z);
+        glEnd();
     }
     else
     {
         Point Z=sub_pts (ligne.Q,ligne.P);
-
+        changerepere (ligne.P,Z);
+        //dessiner_repere(1);
+        dessiner_cylindre({rayon,rayon,norme(Z),8},couleur);
     }
-
-    glEnd();
     glPopMatrix();
 }
 
 
-void dessiner_cube(double arete, Couleur couleur, unsigned int echelle = 1)
+void dessiner_cube(double arete, Couleur couleur, unsigned int echelle = 1,double rayon) //rayon = rayon des cylindres qui forment les ligne
 {
     glPushMatrix();
 

@@ -15,6 +15,8 @@ struct Couleur
 };
 
 void InitGL();
+void init_camera_de_merde();
+void update_camera_de_merde();
 
 void nouveau_dessin();
 void changerepere(Point O, Point Z); //place le repère au point O, orienté suivant Z
@@ -27,6 +29,6 @@ void set_couleur(Couleur couleur);
 void set_point(Point p);
 
 void dessiner_point(Point point, Couleur couleur);
-void dessiner_ligne(Couleur couleur, Ligne ligne, int baton, int rayon);
+void dessiner_ligne(Couleur couleur, Ligne ligne, double rayon);
 
 #endif // TESTGL_H_INCLUDED
