@@ -51,6 +51,7 @@
 		<Unit filename="fenetre.h" />
 		<Unit filename="geometrie.cpp" />
 		<Unit filename="geometrie.h" />
+		<Unit filename="maille.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="type_fenetre.h" />
 		<Extensions>
