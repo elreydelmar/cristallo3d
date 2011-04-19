@@ -51,8 +51,11 @@
 		<Unit filename="fenetre.h" />
 		<Unit filename="geometrie.cpp" />
 		<Unit filename="geometrie.h" />
+		<Unit filename="maille.cpp" />
 		<Unit filename="maille.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="octree.cpp" />
+		<Unit filename="octree.h" />
 		<Unit filename="type_fenetre.h" />
 		<Extensions>
 			<code_completion />
