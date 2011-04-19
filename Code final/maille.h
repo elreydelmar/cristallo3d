@@ -4,6 +4,8 @@
 #include "geometrie.h"
 #include "GLbasic.h"
 
+#define EPSILON 0.00001
+
 /*
     * Les paramètres de la fonction afficher_maille :
     Maille maille, int nb_x, /* nombre de fois qu on représente la maile selon x), int nb_y, int nb_z, double espace // entre atomes
@@ -41,5 +43,6 @@ struct Maille
     double c;
 };
 
+int egalite(Point A, Point B);
 
 #endif // MAILLE_H_INCLUDED
