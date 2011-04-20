@@ -44,6 +44,7 @@
 		<Unit filename="geometrie.h" />
 		<Unit filename="lignes.cpp" />
 		<Unit filename="lignes.h" />
+		<Unit filename="maille.cpp" />
 		<Unit filename="maille.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

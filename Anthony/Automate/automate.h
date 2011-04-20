@@ -25,6 +25,8 @@ void etat_sym_equiv_pos_as(FILE* fichier, Maille* maille, int* etat, int* retour
 // Gestion des symmetry
 L_ligne* automate_symmetry(FILE* fichier, int* etat, int* retour, char* c); // ajouter la gestion des signes
 
+// Lecture des atomes
+
 // Tests
 char is_chiffre(char c);
 char is_operateur(char c);
