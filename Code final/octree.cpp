@@ -24,6 +24,10 @@ Octree* nouv_element(Point M)
     return retour;
 }
 
+L_affiche new_l_affiche()
+{
+    return NULL;
+}
 int ajouter_a_l_affichage(L_affiche* l, Atome a)
 {
     if(*l == NULL)
@@ -37,5 +41,16 @@ int ajouter_a_l_affichage(L_affiche* l, Atome a)
     {
         int fils = position_octree((*l)->M, a.position);
         return ajouter_a_l_affichage(&((*l)->fils[fils]), a);
+    }
+}
+
+void vider_l_affichage(L_affiche l)
+{
+    if(l != NULL)
+    {
+        int i;
+        for(i=0; i<8; i++)
+            vider_l_affichage(l->fils[i]);
+        free(l);
     }
 }

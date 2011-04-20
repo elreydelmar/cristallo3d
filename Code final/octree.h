@@ -25,7 +25,7 @@ typedef Octree* L_affiche;
 int position_octree(Point origine, Point M);
 
 // Nouvelle liste d affichage
-L_affiche new_l_affiche() {return NULL;}
+L_affiche new_l_affiche();
 
 // Ajout (retourne booleen pour ajoute ou non)
 int ajouter_a_l_affichage(L_affiche* l, Atome a);
@@ -36,6 +36,6 @@ int ajouter_a_l_affichage(L_affiche* l, Atome a);
 */
 
 // vider
-//void vider_l_affichage(L_affiche l);
+void vider_l_affichage(L_affiche l);
 
 #endif // OCTREE_H_INCLUDED
