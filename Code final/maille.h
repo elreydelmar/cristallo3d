@@ -41,6 +41,8 @@ struct Maille
     double a;
     double b;
     double c;
+
+    Couleur couleur_trait;
 };
 
 int egalite(Point A, Point B);
