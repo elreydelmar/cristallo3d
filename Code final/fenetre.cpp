@@ -24,8 +24,12 @@ int create_fenetre(HINSTANCE instance)
     init_gl(g_fenetre, position, instance);
 
     // Chargement du menu
-    g_fenetre->menu = CreateWindow("STATIC", NULL , WS_CHILD | WS_VISIBLE, position.w, 0, WIDTH_COLONNE, HEIGHT, g_fenetre->fenetre, NULL, instance, NULL);
+    g_fenetre->menu = CreateWindow("classeF", "menu", WS_CHILD | WS_VISIBLE, position.w, 0, WIDTH_COLONNE, HEIGHT, g_fenetre->fenetre, NULL, instance, NULL);
     afficher_boutons(g_fenetre);
+
+    // Pour le process
+    SetWindowLong(g_fenetre->fenetre, GWL_USERDATA, 1);
+    SetWindowLong(g_fenetre->menu, GWL_USERDATA, 2);
 
     // Affichages
     ShowWindow(g_fenetre->fenetre, SW_SHOW);
@@ -38,7 +42,7 @@ int register_classe_fenetre(HWND *hFenetre, HINSTANCE instance)
 {
     WNDCLASS classe;
 
-    classe.style = 0;
+    classe.style = CS_HREDRAW | CS_VREDRAW;
     classe.lpfnWndProc = evenement;
     classe.cbClsExtra = 0;
     classe.cbWndExtra = 0;
@@ -122,7 +126,7 @@ void redimensionner(HWND fenetre, int width, int height)
 
     // On recupére l'handle gl
     HWND handle_gl = GetWindow(fenetre, GW_CHILD);
-    HWND handle_menu = GetWindow(handle_gl, GW_HWNDLAST);
+    HWND handle_menu = g_fenetre->menu;
 
     // On regarde l'agrandissement
     int new_x = width - WIDTH_COLONNE;

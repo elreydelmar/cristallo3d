@@ -16,6 +16,8 @@ extern EventStatus* event_status;
 // Les fonctions
 
 LRESULT CALLBACK evenement(HWND, UINT, WPARAM, LPARAM);
+LRESULT evenement_principale(HWND, UINT, WPARAM, LPARAM);
+LRESULT evenement_menu(HWND, UINT, WPARAM, LPARAM);
 
 int recuperer_evenement();
 void traiter_evenement();

@@ -2,30 +2,63 @@
 
 EventStatus* event_status = NULL;
 
-LRESULT CALLBACK evenement(HWND fenetrePrincipale, UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK evenement(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    if(handle != NULL)
+    {
+        int idFenetre = GetWindowLong(handle, GWL_USERDATA);
+
+        if(idFenetre == 1)
+        {
+            return evenement_principale(handle, message, wParam, lParam);
+        }
+        else
+        {
+            return evenement_menu(handle, message, wParam, lParam);
+        }
+    }
+
     switch (message)
     {
         case WM_CREATE:
             return 0;
 
+        default:
+            return DefWindowProc(handle, message, wParam, lParam);
+    }
+}
+
+LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch (message)
+    {
         case WM_DESTROY:
             PostQuitMessage(0);
             return 0;
 
-        case WM_COMMAND:
-            evenement_bouton(fenetrePrincipale,message,wParam,lParam);
-            return 0;
-
         case WM_SIZE:
-		{
-		    redimensionner(fenetrePrincipale, LOWORD(lParam),HIWORD(lParam));
-		    update_gl();
-			return 0;
-		}
+        {
+            redimensionner(handle, LOWORD(lParam),HIWORD(lParam));
+            update_gl();
+            return 0;
+        }
 
         default:
-            return DefWindowProc(fenetrePrincipale, message, wParam, lParam);
+            return DefWindowProc(handle, message, wParam, lParam);
+    }
+}
+
+LRESULT evenement_menu(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch(message)
+    {
+
+        case WM_COMMAND:
+            evenement_bouton(handle,message,wParam,lParam);
+            return 0;
+
+        default:
+            return DefWindowProc(handle, message, wParam, lParam);
     }
 }
 
