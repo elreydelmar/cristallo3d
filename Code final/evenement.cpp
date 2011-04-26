@@ -92,18 +92,19 @@ void delete_event_status()
     }
 }
 
-void evenement_bouton(HWND fenetrePrincipale, UINT message, WPARAM wParam, LPARAM lParam)
+void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
 {
     // On fait un switch du bouton
-     UINT id=LOWORD(wParam);
+    UINT id=LOWORD(wParam);
 
-     switch(id)
-     {
-        case ID_HELP :
-            MessageBox(fenetrePrincipale,"Aide disponible bientôt","",MB_OK);
-        break;
+    switch(id)
+    {
+        case ID_FREEFLY : action_change_camera(0); break ;
+        case ID_TRACKBALL : action_change_camera(1); break;
+        case ID_ANAGLYPHE : action_change_anaglyphe(SendMessage(g_fenetre->anaglyphe, BM_GETCHECK, 0, 0) == BST_CHECKED); break;
+        case ID_HELP : action_aide(handle); break;
 
         default :
             break;
-     }
+    }
 }

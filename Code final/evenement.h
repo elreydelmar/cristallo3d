@@ -2,6 +2,7 @@
 #define EVENEMENT_H_INCLUDED
 
 #include "fenetre.h"
+#include "actions.h"
 
 // Le type de notification d'evenement
 typedef struct EventStatus EventStatus;

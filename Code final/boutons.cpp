@@ -15,12 +15,12 @@ void boutons_camera(Fenetre* fenetre)
     fenetre->cam = CreateWindow("BUTTON", "Camera", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_MENU,Y_CAMERA, WIDTH_MENU,HEIGHT_CAMERA, fenetre->menu, NULL, fenetre->instance, NULL);
 
     // Trackball ou Freefly
-    fenetre->freefly = CreateWindow("BUTTON", "Freefly", WS_CHILD|WS_VISIBLE|BS_AUTORADIOBUTTON|WS_GROUP, ALINEA_BLOC, 20, 140, Y_CHAR, fenetre->cam, (HMENU)ID_FREEFLY, fenetre->instance, NULL);
-    fenetre->trackball = CreateWindow("BUTTON", "Trackball", WS_CHILD|WS_VISIBLE|BS_AUTORADIOBUTTON, ALINEA_BLOC+140, 20, 80, Y_CHAR, fenetre->cam, (HMENU)ID_TRACKBALL, fenetre->instance, NULL);
+    fenetre->freefly = CreateWindow("BUTTON", "Freefly", WS_CHILD|WS_VISIBLE|BS_AUTORADIOBUTTON|WS_GROUP, ALINEA_MENU + ALINEA_BLOC, Y_CAMERA + 20, 140, Y_CHAR, fenetre->menu, (HMENU)ID_FREEFLY, fenetre->instance, NULL);
+    fenetre->trackball = CreateWindow("BUTTON", "Trackball", WS_CHILD|WS_VISIBLE|BS_AUTORADIOBUTTON, ALINEA_MENU + ALINEA_BLOC+140, Y_CAMERA + 20, 80, Y_CHAR, fenetre->menu, (HMENU)ID_TRACKBALL, fenetre->instance, NULL);
     SendMessage(fenetre->freefly, BM_SETCHECK, BST_CHECKED, 0);
 
     // Anaglyphe ou non
-    fenetre->anaglyphe = CreateWindow("BUTTON", "Anaglyphe", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_BLOC, 25+Y_CHAR, 100, Y_CHAR, fenetre->cam, (HMENU)ID_ANAGLYPHE, fenetre->instance, NULL);
+    fenetre->anaglyphe = CreateWindow("BUTTON", "Anaglyphe", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_MENU + ALINEA_BLOC, Y_CAMERA + 25+Y_CHAR, 100, Y_CHAR, fenetre->menu, (HMENU)ID_ANAGLYPHE, fenetre->instance, NULL);
 
     // Retroprojecteur
     fenetre->c_retro = CreateWindow("BUTTON", "Retroprojecteur", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_BLOC/2, 35+2*Y_CHAR, WIDTH_MENU-ALINEA_BLOC, HEIGHT_RETRO, fenetre->cam, NULL, fenetre->instance, NULL);

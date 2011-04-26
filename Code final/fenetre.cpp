@@ -64,7 +64,7 @@ int register_classe_fenetre(HWND *hFenetre, HINSTANCE instance)
 
 int init_gl(Fenetre* fenetre, Rect position, HINSTANCE instance)
 {
-    fenetre->gl = CreateWindow("STATIC", "contexte_gl", WS_CHILD | WS_VISIBLE, position.x, position.y, position.w, position.h, fenetre->fenetre, NULL, instance, NULL);
+    fenetre->gl = CreateWindow("STATIC", "Calcul de l'affichage en cours...", WS_CHILD | WS_VISIBLE, position.x, position.y, position.w, position.h, fenetre->fenetre, NULL, instance, NULL);
 
     PIXELFORMATDESCRIPTOR pfd;
     int iFormat;

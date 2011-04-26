@@ -42,6 +42,8 @@
 		</Linker>
 		<Unit filename="GLbasic.cpp" />
 		<Unit filename="GLbasic.h" />
+		<Unit filename="actions.cpp" />
+		<Unit filename="actions.h" />
 		<Unit filename="boutons.cpp" />
 		<Unit filename="boutons.h" />
 		<Unit filename="const_fenetre.h" />
