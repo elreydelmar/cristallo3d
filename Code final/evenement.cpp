@@ -52,7 +52,7 @@ LRESULT evenement_menu(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch(message)
     {
-
+        case WM_HSCROLL:
         case WM_COMMAND:
             evenement_bouton(handle,message,wParam,lParam);
             return 0;
@@ -102,9 +102,22 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         case ID_FREEFLY : action_change_camera(0); break ;
         case ID_TRACKBALL : action_change_camera(1); break;
         case ID_ANAGLYPHE : action_change_anaglyphe(SendMessage(g_fenetre->anaglyphe, BM_GETCHECK, 0, 0) == BST_CHECKED); break;
+
+        case ID_RETRO : action_activer_retro(SendMessage(g_fenetre->retro, BM_GETCHECK, 0, 0) == BST_CHECKED); break;
+        case ID_T_RETRO :
+            if(HIWORD(wParam) == EN_CHANGE)
+                MessageBox(NULL,"edit change","Camera",MB_OK);
+            if(HIWORD(wParam) == EN_UPDATE)
+                action_update_edit(g_fenetre->t_retro);
+             break;
+
+
         case ID_HELP : action_aide(handle); break;
 
         default :
             break;
     }
+
+    if((HWND)lParam == g_fenetre->s_retro)
+        MessageBox(NULL,"Slider","Camera",MB_OK);
 }

@@ -23,15 +23,15 @@ void boutons_camera(Fenetre* fenetre)
     fenetre->anaglyphe = CreateWindow("BUTTON", "Anaglyphe", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_MENU + ALINEA_BLOC, Y_CAMERA + 25+Y_CHAR, 100, Y_CHAR, fenetre->menu, (HMENU)ID_ANAGLYPHE, fenetre->instance, NULL);
 
     // Retroprojecteur
-    fenetre->c_retro = CreateWindow("BUTTON", "Retroprojecteur", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_BLOC/2, 35+2*Y_CHAR, WIDTH_MENU-ALINEA_BLOC, HEIGHT_RETRO, fenetre->cam, NULL, fenetre->instance, NULL);
-    fenetre->retro =  CreateWindow("BUTTON", "Activer", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_BLOC/2, 2*Y_CHAR, 150, Y_CHAR, fenetre->c_retro, (HMENU)ID_RETRO, fenetre->instance, NULL);
+    fenetre->c_retro = CreateWindow("BUTTON", "Retroprojecteur", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_MENU +ALINEA_BLOC/2, Y_CAMERA+35+2*Y_CHAR, WIDTH_MENU-ALINEA_BLOC, HEIGHT_RETRO, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->retro =  CreateWindow("BUTTON", "Activer", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_MENU +ALINEA_BLOC/2 +ALINEA_BLOC/2,Y_CAMERA+35+2*Y_CHAR + 2*Y_CHAR, 150, Y_CHAR, fenetre->menu, (HMENU)ID_RETRO, fenetre->instance, NULL);
     // Slider
-    fenetre->s_retro = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2, 3*Y_CHAR, 170, 3*Y_CHAR, fenetre->c_retro, (HMENU)ID_S_RETRO, fenetre->instance, NULL);
+    fenetre->s_retro = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +ALINEA_BLOC/2 + ALINEA_BLOC/2,Y_CAMERA+35+2*Y_CHAR + 3*Y_CHAR, 170, 3*Y_CHAR, fenetre->menu, (HMENU)ID_S_RETRO, fenetre->instance, NULL);
         SendMessage(fenetre->s_retro, TBM_SETRANGE,(WPARAM) TRUE,(LPARAM) MAKELONG(1, 100));  // min. & max. positions
         SendMessage(fenetre->s_retro, TBM_SETPAGESIZE, 0, (LPARAM) 4);
         SendMessage(fenetre->s_retro, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
     // Box
-    fenetre->t_retro = CreateWindow("EDIT", "5", WS_CHILD | WS_VISIBLE | ES_NUMBER, ALINEA_BLOC/2 + 175, 3*Y_CHAR + 2, 50, Y_CHAR, fenetre->c_retro, (HMENU)ID_T_RETRO, fenetre->instance, NULL);
+    fenetre->t_retro = CreateWindow("EDIT", "5", WS_CHILD | WS_VISIBLE, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2 + 175,Y_CAMERA+35+2*Y_CHAR + 3*Y_CHAR + 2, 50, Y_CHAR, fenetre->menu, (HMENU)ID_T_RETRO, fenetre->instance, NULL);
 
 
     // Distance ecran
