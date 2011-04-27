@@ -186,7 +186,7 @@ void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, doub
         chaine[0] = sizeof(chaine);
         SendMessage(hEdit, EM_GETLINE, 0, (LPARAM)chaine);
         double valeur = chaine_to_double(chaine);
-        int ivaleur = conversion_edit_slider(valeur, 0, 100, min, max);
+        int ivaleur = 75; //conversion_edit_slider(valeur, 0, 100, min, max);
         SendMessage(hSlider, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) ivaleur);
     }
 }
