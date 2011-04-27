@@ -29,10 +29,9 @@ void boutons_camera(Fenetre* fenetre)
     fenetre->s_retro = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +ALINEA_BLOC/2 + ALINEA_BLOC/2,Y_CAMERA+35+2*Y_CHAR + 3*Y_CHAR, 170, 3*Y_CHAR, fenetre->menu, (HMENU)ID_S_RETRO, fenetre->instance, NULL);
         SendMessage(fenetre->s_retro, TBM_SETRANGE,(WPARAM) TRUE,(LPARAM) MAKELONG(1, 100));  // min. & max. positions
         SendMessage(fenetre->s_retro, TBM_SETPAGESIZE, 0, (LPARAM) 4);
-        SendMessage(fenetre->s_retro, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
     // Box
-    fenetre->t_retro = CreateWindow("EDIT", "25", WS_CHILD | WS_VISIBLE, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2 + 175,Y_CAMERA+35+2*Y_CHAR + 3*Y_CHAR + 2, 50, Y_CHAR, fenetre->menu, (HMENU)ID_T_RETRO, fenetre->instance, NULL);
-
+    fenetre->t_retro = CreateWindow("EDIT", "12", WS_CHILD | WS_VISIBLE, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2 + 175,Y_CAMERA+35+2*Y_CHAR + 3*Y_CHAR + 2, 50, Y_CHAR, fenetre->menu, (HMENU)ID_T_RETRO, fenetre->instance, NULL);
+    SendMessage(fenetre->s_retro, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
 
     // Distance ecran
     fenetre->c_distance = CreateWindow("BUTTON", "Distance avec l'écran", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_BLOC/2, 35+ 2.5*Y_CHAR + HEIGHT_RETRO, WIDTH_MENU-ALINEA_BLOC, HEIGHT_DIST, fenetre->cam, NULL, fenetre->instance, NULL);
