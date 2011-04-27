@@ -206,6 +206,23 @@ void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, doub
     }
 }
 
+void action_default_distance(double valeur)
+{
+    char chaine[7];
+    double_to_chaine(valeur, chaine);
+    SendMessage(g_fenetre->t_distance, WM_SETTEXT, 1, (LPARAM)chaine);
+}
+
+void action_parcourir()
+{
+    MessageBox(NULL,"Parcourir","Maille",MB_OK);
+}
+
+void action_generer()
+{
+    MessageBox(NULL,"Génération de la maille","Maille",MB_OK);
+}
+
 void action_aide(HWND handle)
 {
     MessageBox(handle,"Aide disponible bientôt","Aide",MB_OK);

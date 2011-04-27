@@ -20,7 +20,12 @@ int est_chiffre(char c);
 double chaine_to_double(char* chaine);
 
 void action_update_edit(HWND handle);
-void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, double max); // 0 si le changement vient du slider TODO
+void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, double max); // 0 si le changement vient de la trackbar
+void action_default_distance(double valeur);
+
+// actions par la maille
+void action_parcourir();
+void action_generer();
 
 void action_aide(HWND handle);
 
