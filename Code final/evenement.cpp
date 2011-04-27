@@ -106,7 +106,7 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         case ID_RETRO : action_activer_retro(SendMessage(g_fenetre->retro, BM_GETCHECK, 0, 0) == BST_CHECKED); break;
         case ID_T_RETRO :
             if(HIWORD(wParam) == EN_CHANGE)
-                action_change_edit(g_fenetre->t_retro, g_fenetre->s_retro, 1, 0.1, 100.);
+                SendMessage(g_fenetre->s_retro, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 10);//action_change_edit(g_fenetre->t_retro, g_fenetre->s_retro, 1, 0.1, 100.);
             if(HIWORD(wParam) == EN_UPDATE)
                 action_update_edit(g_fenetre->t_retro);
              break;
