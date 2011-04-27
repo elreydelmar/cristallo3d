@@ -1,3 +1,16 @@
+#ifndef CAMERA_H
+#define CAMERA_H
+
+struct _Camera
+{
+	Point pos; // position de la camera
+	Point cible; // le point vise par la camera
+	Point centre; // Centre pour le Trackball, aligne avec pos et cible
+	double fovy; // angle de zoom
+	int changement_zoom; // booleen qui indique si il y a eu changement du fovy
+};
+typedef struct _Camera Camera;
+
 // Ces 2 fonctions ne font qu'avancer la camera, un "travelling"
 void avancer_camera(Camera* c, double pas); // (pas < 0 ou > 0)
 void reculer_camera(Camera* c, double pas); // utilise avancer_camera
@@ -16,12 +29,4 @@ void tourner_droite(Camera* c, double pas);
 void tourner_haut(Camera* c, double pas);
 void tourner_bas(Camera* c, double pas);
 
-struct _Camera
-{
-Point pos; // position de la camera
-Point cible; // le point vise par la camera
-Point centre; // Centre pour le Trackball, aligne avec pos et cible
-double fovy; // angle de zoom
-int changement_zoom; // booleen qui indique si il y a eu changement du fovy
-};
-typedef struct _Camera Camera;
+#endif
