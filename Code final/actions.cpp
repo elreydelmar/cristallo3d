@@ -135,8 +135,8 @@ double chaine_to_double(char* chaine)
 void action_update_edit(HWND handle)
 {
     char chaine [10];
-    chaine[0] = sizeof(chaine);
-    if(!SendMessage(handle, EM_GETLINE, 0, (LPARAM)chaine))
+    *((WORD*) chaine) = 10;
+    if(SendMessage(handle, EM_GETLINE, 1, (LPARAM)chaine) == 0)
         return;
     int i=0;
     int connerie = 0;
@@ -173,21 +173,28 @@ void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, doub
 
     if(priorite == 0) // trackbar change
     {
-        // On change l'edit
-        double nombre = conversion_slider_edit(SendMessage(hSlider, TBM_GETPOS, 0, 0), min, max);
-        char chaine[7];
-        double_to_chaine(nombre, chaine);
-        SendMessage(hEdit, WM_SETTEXT, 1, (LPARAM)chaine);
+        if(nb_fait != 2)
+        {
+            // On change l'edit
+            double nombre = conversion_slider_edit(SendMessage(hSlider, TBM_GETPOS, 0, 0), min, max);
+            char chaine[7];
+            double_to_chaine(nombre, chaine);
+            SendMessage(hEdit, WM_SETTEXT, 1, (LPARAM)chaine);
+        }
     }
     else // edit change
     {
-        // On change le trackbar
-        char chaine [10];
-        chaine[0] = sizeof(chaine);
-        SendMessage(hEdit, EM_GETLINE, 0, (LPARAM)chaine);
-        double valeur = chaine_to_double(chaine);
-        int ivaleur = 75; //conversion_edit_slider(valeur, 0, 100, min, max);
-        SendMessage(hSlider, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) ivaleur);
+        if(nb_fait != 2)
+        {
+            // On change le trackbar
+            char chaine [10];
+            *((WORD*) chaine) = 10;
+            int i = SendMessage(hEdit, EM_GETLINE, 0, (LPARAM)chaine);
+            double valeur = chaine_to_double(chaine);
+            int ivaleur = (int)valeur;//conversion_edit_slider(valeur, 0, 100, min, max);
+            SendMessage(hSlider, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) ivaleur);
+            action_change_edit(hEdit, hSlider, 0, min, max);
+        }
     }
 }
 
