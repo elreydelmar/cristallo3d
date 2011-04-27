@@ -1,6 +1,6 @@
 #include "Octree.h"
 
-int position_octree(Point origine, Point M)
+int position_octree(Point origine, Point M) // preferentiel dans l inferieur
 {
     int retour = 0;
     if(origine.x < M.x)
@@ -53,4 +53,29 @@ void vider_l_affichage(L_affiche l)
             vider_l_affichage(l->fils[i]);
         free(l);
     }
+}
+
+L_affiche supp_inf_x(L_affiche l, double x)
+{
+
+}
+
+L_affiche supp_sup_x(L_affiche l, double x)
+{
+
+}
+
+L_affiche supp_sup_y(L_affiche l, double y)
+{
+
+}
+
+L_affiche supp_inf_z(L_affiche l, double z)
+{
+
+}
+
+L_affiche supp_sup_z(L_affiche l, double z)
+{
+
 }

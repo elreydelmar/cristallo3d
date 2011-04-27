@@ -38,4 +38,16 @@ int ajouter_a_l_affichage(L_affiche* l, Atome a);
 // vider
 void vider_l_affichage(L_affiche l);
 
+// Suppression
+// TODO
+L_affiche supp_inf_x(L_affiche l, double x); // Inférieur strict
+L_affiche supp_sup_x(L_affiche l, double x); // Supérieur strict
+L_affiche supp_sup_y(L_affiche l, double y);
+L_affiche supp_inf_z(L_affiche l, double z);
+L_affiche supp_sup_z(L_affiche l, double z);
+
+// Camera
+// TODO 2
+//void affiche(L_affiche l, Camera c, int reponse[]); // reponse de taille 9, le 8 est l atome present
+
 #endif // OCTREE_H_INCLUDED
