@@ -16,7 +16,7 @@
 #define HEIGHT_CAMERA 292
 
 #define Y_MAILLE 2*Y_ESPACE+HEIGHT_CAMERA
-#define HEIGHT_MAILLE 205
+#define HEIGHT_MAILLE 250
 
 #define HEIGHT_RETRO 100
 #define HEIGHT_DIST 110
@@ -35,7 +35,7 @@
 // Bas du menu
 #define ECART_BOUTON 100
 #define TAILLE_BOUTON 80
-#define Y_OTHER 530
+#define Y_OTHER 570
 
 // Contexte OpenGL
 const double ratio = (double)(WIDTH - WIDTH_COLONNE)/(double)HEIGHT;

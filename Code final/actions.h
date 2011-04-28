@@ -27,6 +27,10 @@ void action_default_distance(double valeur);
 void action_parcourir();
 void action_generer();
 
+void action_change_nb_x();
+void action_change_nb_y();
+void action_change_nb_z();
+
 void action_aide(HWND handle);
 
 

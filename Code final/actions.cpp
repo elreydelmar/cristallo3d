@@ -35,7 +35,7 @@ double conversion_slider_edit(int slider, double min, double max)
 
 int conversion_edit_slider(double edit, int imin, int imax, double min, double max)
 {
-    if(imin == imax)
+    if(imax - imin < 2)
         return imin;
     else
     {
@@ -193,7 +193,7 @@ void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, doub
             else
             {
                 double valeur = chaine_to_double(chaine);
-                int ivaleur = (int)valeur;//conversion_edit_slider(valeur, 0, 100, min, max);
+                int ivaleur = conversion_edit_slider(valeur, 1, 100, min, max);
                 SendMessage(hSlider, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) ivaleur);
                 action_change_edit(hEdit, hSlider, 0, min, max);
             }
@@ -221,6 +221,21 @@ void action_parcourir()
 void action_generer()
 {
     MessageBox(NULL,"Génération de la maille","Maille",MB_OK);
+}
+
+void action_change_nb_x()
+{
+    MessageBox(NULL,"Changement du nombre en x","Maille",MB_OK);
+}
+
+void action_change_nb_y()
+{
+    MessageBox(NULL,"Changement du nombre en y","Maille",MB_OK);
+}
+
+void action_change_nb_z()
+{
+    MessageBox(NULL,"Changement du nombre en z","Maille",MB_OK);
 }
 
 void action_aide(HWND handle)

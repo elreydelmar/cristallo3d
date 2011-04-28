@@ -45,7 +45,11 @@ struct Fenetre
     HWND nb_x;
     HWND nb_y;
     HWND nb_z;
+
+    HWND choix_atome;
+    HWND couleur;
     HWND s_taille;
+
     HWND s_espace_atome;
 
     HWND defaut;

@@ -60,23 +60,28 @@ void boutons_maille(Fenetre* fenetre)
     fenetre->generer_maille = CreateWindow("BUTTON", "Ok", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,ALINEA_MENU + 3*ALINEA_BLOC/2 + 190,Y_MAILLE +  3*Y_CHAR/2 + 2, 30,2*Y_CHAR, fenetre->menu, (HMENU)ID_GENERER, fenetre->instance, NULL);
 
     // Nombre de mailles a afficher
-    CreateWindow("STATIC", "Nombre de mailles à afficher :", WS_CHILD | WS_VISIBLE, ALINEA_BLOC, 60, WIDTH_MENU-2*ALINEA_BLOC, Y_CHAR, fenetre->maille, NULL, fenetre->instance, NULL);
+    CreateWindow("STATIC", "Nombre de mailles à afficher :", WS_CHILD | WS_VISIBLE,ALINEA_MENU + ALINEA_BLOC,Y_MAILLE + 60, WIDTH_MENU-2*ALINEA_BLOC, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
 
-    CreateWindow("STATIC", "en x :", WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2,  2*Y_CHAR + 60, 45, Y_CHAR, fenetre->maille, NULL, fenetre->instance, NULL);
-    fenetre->nb_x = CreateWindow("EDIT", "1", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER, ALINEA_BLOC/2+45, 2*Y_CHAR + 60, 20, Y_CHAR, fenetre->maille, (HMENU)ID_NB_X, fenetre->instance, NULL);
-    CreateWindow("STATIC", "en y :", WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2+ 75,  2*Y_CHAR + 60, 45, Y_CHAR, fenetre->maille, NULL, fenetre->instance, NULL);
-    fenetre->nb_y = CreateWindow("EDIT", "1", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER, ALINEA_BLOC/2+45+75, 2*Y_CHAR + 60, 20, Y_CHAR, fenetre->maille, (HMENU)ID_NB_Y, fenetre->instance, NULL);
-    CreateWindow("STATIC", "en z :", WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2+ 150,  2*Y_CHAR + 60, 45, Y_CHAR, fenetre->maille, NULL, fenetre->instance, NULL);
-    fenetre->nb_z = CreateWindow("EDIT", "1", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER, ALINEA_BLOC/2+45+150, 2*Y_CHAR + 60, 20, Y_CHAR, fenetre->maille, (HMENU)ID_NB_Z, fenetre->instance, NULL);
+    CreateWindow("STATIC", "en x :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2,Y_MAILLE +  2*Y_CHAR + 50, 45, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->nb_x = CreateWindow("EDIT", "1", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,ALINEA_MENU +  ALINEA_BLOC/2+45,Y_MAILLE +  2*Y_CHAR + 50, 20, Y_CHAR, fenetre->menu, (HMENU)ID_NB_X, fenetre->instance, NULL);
+    CreateWindow("STATIC", "en y :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2+ 75,Y_MAILLE +   2*Y_CHAR + 50, 45, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->nb_y = CreateWindow("EDIT", "1", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,ALINEA_MENU +  ALINEA_BLOC/2+45+75,Y_MAILLE +  2*Y_CHAR + 50, 20, Y_CHAR, fenetre->menu, (HMENU)ID_NB_Y, fenetre->instance, NULL);
+    CreateWindow("STATIC", "en z :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2+ 150,Y_MAILLE +   2*Y_CHAR + 50, 45, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->nb_z = CreateWindow("EDIT", "1", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,ALINEA_MENU +  ALINEA_BLOC/2+45+150,Y_MAILLE +  2*Y_CHAR + 50, 20, Y_CHAR, fenetre->menu, (HMENU)ID_NB_Z, fenetre->instance, NULL);
 
-    CreateWindow("STATIC", "Taille des atomes :", WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2,  9*Y_CHAR/2 + 60, 130, Y_CHAR, fenetre->maille, NULL, fenetre->instance, NULL);
-    fenetre->s_taille = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2 + 130, 4*Y_CHAR + 60, 115, 2*Y_CHAR, fenetre->maille, (HMENU)ID_S_TAILLE, fenetre->instance, NULL);
+    CreateWindow("STATIC", "Atome :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2+30,Y_MAILLE +   11*Y_CHAR/2 + 25, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->choix_atome = CreateWindow("COMBOBOX", "Atomes...", WS_CHILD | WS_VISIBLE | CBS_SORT | CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 20, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    CreateWindow("STATIC", "Couleur :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 10,Y_MAILLE +   11*Y_CHAR/2 + 55, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->couleur = CreateWindow("COMBOBOX", "Couleur...", WS_CHILD | WS_VISIBLE | CBS_SORT | CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 50, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+
+    CreateWindow("STATIC", "Taille des atomes :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2,Y_MAILLE +  11*Y_CHAR/2 + 90, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->s_taille = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 130,Y_MAILLE +  5*Y_CHAR + 90, 115, 2*Y_CHAR, fenetre->menu, (HMENU)ID_S_TAILLE, fenetre->instance, NULL);
         SendMessage(fenetre->s_taille, TBM_SETRANGE,(WPARAM) TRUE,(LPARAM) MAKELONG(1, 100));  // min. & max. positions
         SendMessage(fenetre->s_taille, TBM_SETPAGESIZE, 0, (LPARAM) 4);
         SendMessage(fenetre->s_taille, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
 
-    CreateWindow("STATIC", "Espace entre atomes :", WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2,  15*Y_CHAR/2 + 60, 145, Y_CHAR, fenetre->maille, NULL, fenetre->instance, NULL);
-    fenetre->s_espace_atome = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2 + 145, 7*Y_CHAR + 60, 100, 2*Y_CHAR, fenetre->maille, (HMENU)ID_S_ESPACE, fenetre->instance, NULL);
+    CreateWindow("STATIC", "Espace entre atomes :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2,Y_MAILLE +   17*Y_CHAR/2 + 90, 145, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->s_espace_atome = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 145,Y_MAILLE +  8*Y_CHAR + 90, 100, 2*Y_CHAR, fenetre->menu, (HMENU)ID_S_ESPACE, fenetre->instance, NULL);
         SendMessage(fenetre->s_espace_atome, TBM_SETRANGE,(WPARAM) TRUE,(LPARAM) MAKELONG(1, 100));  // min. & max. positions
         SendMessage(fenetre->s_espace_atome, TBM_SETPAGESIZE, 0, (LPARAM) 4);
         SendMessage(fenetre->s_espace_atome, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
@@ -86,5 +91,4 @@ void autres_boutons(Fenetre* fenetre)
 {
     fenetre->defaut = CreateWindow("BUTTON", "Par défaut", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, (WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/2, Y_OTHER, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_DEFAULT, fenetre->instance, NULL);
     fenetre->aide = CreateWindow("BUTTON", "Aide", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, (WIDTH_MENU+ECART_BOUTON)/2, Y_OTHER, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_HELP, fenetre->instance, NULL);
-    CreateWindow("STATIC", "Signature", WS_CHILD | WS_VISIBLE, ALINEA_BLOC/2, Y_OTHER + 3*Y_CHAR, 145, 2+Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
 }
