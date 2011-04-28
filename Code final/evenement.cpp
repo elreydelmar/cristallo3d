@@ -139,6 +139,16 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         case ID_PARCOURIR : action_parcourir(); break;
         case ID_GENERER : action_generer(); break;
 
+        case ID_ATOME :
+            if(HIWORD(wParam) == CBN_SELCHANGE)
+                 action_change_atome();
+            break;
+        case ID_COULEUR :
+            if(HIWORD(wParam) == CBN_SELCHANGE)
+                action_change_couleur();
+            break;
+
+        case ID_DEFAULT : action_defaut(handle); break;
         case ID_HELP : action_aide(handle); break;
 
         default :
@@ -149,4 +159,8 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         action_change_edit(g_fenetre->t_retro, g_fenetre->s_retro, 0, 0.1, 50.);
     if((HWND)lParam == g_fenetre->s_distance)
         action_change_edit(g_fenetre->t_distance, g_fenetre->s_distance, 0, 0.1, 50.);
+    if((HWND)lParam == g_fenetre->s_taille)
+        action_change_taille();
+    if((HWND)lParam == g_fenetre->s_espace_atome)
+        action_change_espace();
 }

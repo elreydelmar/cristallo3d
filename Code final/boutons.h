@@ -29,6 +29,9 @@
 #define ID_NB_Y 125
 #define ID_NB_Z 126
 
+#define ID_ATOME  132
+#define ID_COULEUR 133
+
 #define ID_S_TAILLE 127
 #define ID_S_ESPACE 128
 

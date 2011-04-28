@@ -70,9 +70,13 @@ void boutons_maille(Fenetre* fenetre)
     fenetre->nb_z = CreateWindow("EDIT", "1", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,ALINEA_MENU +  ALINEA_BLOC/2+45+150,Y_MAILLE +  2*Y_CHAR + 50, 20, Y_CHAR, fenetre->menu, (HMENU)ID_NB_Z, fenetre->instance, NULL);
 
     CreateWindow("STATIC", "Atome :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2+30,Y_MAILLE +   11*Y_CHAR/2 + 25, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
-    fenetre->choix_atome = CreateWindow("COMBOBOX", "Atomes...", WS_CHILD | WS_VISIBLE | CBS_SORT | CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 20, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->choix_atome = CreateWindow("COMBOBOX", "Atomes...", WS_CHILD | WS_VISIBLE | CBS_SORT | CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 20, 130, 20*Y_CHAR, fenetre->menu, (HMENU)ID_ATOME, fenetre->instance, NULL);
     CreateWindow("STATIC", "Couleur :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 10,Y_MAILLE +   11*Y_CHAR/2 + 55, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
-    fenetre->couleur = CreateWindow("COMBOBOX", "Couleur...", WS_CHILD | WS_VISIBLE | CBS_SORT | CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 50, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->couleur = CreateWindow("COMBOBOX", "Couleur...", WS_CHILD | WS_VISIBLE | CBS_SORT |CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 50, 130, 20*Y_CHAR, fenetre->menu, (HMENU)ID_COULEUR, fenetre->instance, NULL);
+        SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Rouge");
+        SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Bleu");
+        SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Vert");
+        SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Jaune");
 
     CreateWindow("STATIC", "Taille des atomes :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2,Y_MAILLE +  11*Y_CHAR/2 + 90, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
     fenetre->s_taille = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 130,Y_MAILLE +  5*Y_CHAR + 90, 115, 2*Y_CHAR, fenetre->menu, (HMENU)ID_S_TAILLE, fenetre->instance, NULL);

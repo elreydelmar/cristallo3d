@@ -238,6 +238,31 @@ void action_change_nb_z()
     MessageBox(NULL,"Changement du nombre en z","Maille",MB_OK);
 }
 
+void action_change_atome()
+{
+    MessageBox(NULL,"Changement de l atome","Maille",MB_OK);
+}
+
+void action_change_couleur()
+{
+    MessageBox(NULL,"Changement de la couleur","Maille",MB_OK);
+}
+
+void action_change_taille()
+{
+    MessageBox(NULL,"Changement de la taille","Maille",MB_OK);
+}
+
+void action_change_espace()
+{
+    MessageBox(NULL,"Changement de l espace","Maille",MB_OK);
+}
+
+void action_defaut(HWND handle)
+{
+    MessageBox(handle,"Mise par defaut","Defaut",MB_OK);
+}
+
 void action_aide(HWND handle)
 {
     MessageBox(handle,"Aide disponible bientôt","Aide",MB_OK);

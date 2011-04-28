@@ -31,6 +31,13 @@ void action_change_nb_x();
 void action_change_nb_y();
 void action_change_nb_z();
 
+void action_change_atome();
+void action_change_couleur();
+
+void action_change_taille();
+void action_change_espace();
+
+void action_defaut(HWND handle);
 void action_aide(HWND handle);
 
 
