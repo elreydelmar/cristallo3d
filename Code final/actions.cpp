@@ -254,6 +254,8 @@ void action_parcourir()
 
 void action_generer()
 {
+    // Charge la maille
+    // Charge les donnees de la maille sur la fenetre
     MessageBox(NULL,"Génération de la maille","Maille",MB_OK); // TODO
 }
 
@@ -316,12 +318,21 @@ void action_change_atome()
     MessageBox(NULL,"Changement de l atome","Maille",MB_OK);
 }
 
+double slider_to_double(int i, double min, double max)
+{
+
+    return min + (max - min)*((double)i - 1.)/99.;
+}
+
 void action_change_couleur()
 {
     if(event_status->maille != NULL)
     {
         int atome = get_atome_courant();
-        event_status->maille->types[atome].index_couleur = SendMessage(g_fenetre->couleur, CB_GETCURSEL, 0, 0);
+        if(atome != CB_ERR)
+        {
+            event_status->maille->types[atome].index_couleur = SendMessage(g_fenetre->couleur, CB_GETCURSEL, 0, 0);
+        }
     }
 }
 
@@ -330,8 +341,11 @@ void action_change_taille()
     if(event_status->maille != NULL)
     {
         int atome = get_atome_courant();
-        double a = event_status->maille->a;
-        event_status->maille->types[atome].rayon_ionique = conversion_slider_edit(SendMessage(g_fenetre->s_taille, TBM_GETPOS, 0, 0), a/20., a);
+        if(atome != CB_ERR)
+        {
+            double a = event_status->maille->a;
+            event_status->maille->types[atome].rayon_ionique = slider_to_double(SendMessage(g_fenetre->s_taille, TBM_GETPOS, 0, 0), a/20., a);
+        }
     }
 }
 
@@ -339,7 +353,8 @@ void action_change_espace()
 {
     if(event_status->maille != NULL)
     {
-        event_status->espace_atome = conversion_slider_edit(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), a/20., a);
+        double a = event_status->maille->a;
+        event_status->espace_atome = slider_to_double(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), a/20., a);
     }
 }
 
