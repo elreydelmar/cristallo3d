@@ -1,11 +1,38 @@
 #ifndef ACTIONS_H_INCLUDED
 #define ACTIONS_H_INCLUDED
 
+#include "maille.h"
 #include "fenetre.h"
 
 /*
     Contient toutes les actions possibles activees par evenement
 */
+
+// Le type de notification d'evenement
+typedef struct EventStatus EventStatus;
+struct EventStatus
+{
+    int choix_camera; // 0 si freefly,1 si trackball
+    int anaglyphe; // booleen
+    int retro; // booleen
+    double dist_retro; // A VERIFIER
+    double distance;
+
+    Maille* maille;
+    int nb_x; // A VERIFIER
+    int nb_y;
+    int nb_z;
+    double espace_atome; // A JARTER
+};
+
+// Globales
+extern Fenetre* g_fenetre;
+extern EventStatus* event_status;
+
+// Debut et Fin
+void init_event();
+void end_event();
+
 
 // actions par la camera
 void action_change_camera(int type); // 1 si trackball, 0 si freefly
@@ -20,21 +47,22 @@ int est_chiffre(char c);
 double chaine_to_double(char* chaine);
 
 void action_update_edit(HWND handle);
-void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, double max); // 0 si le changement vient de la trackbar
+void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, double max, double* achanger); // 0 si le changement vient de la trackbar
 void action_default_distance(double valeur);
 
 // actions par la maille
 void action_parcourir();
-void action_generer();
+void action_generer(); // TODO
 
 void action_change_nb_x();
 void action_change_nb_y();
 void action_change_nb_z();
 
+int get_atome_courant();
 void action_change_atome();
 void action_change_couleur();
 
-void action_change_taille();
+void action_change_taille(); // REFAIRE EN LINEAIRE
 void action_change_espace();
 
 void action_defaut(HWND handle);

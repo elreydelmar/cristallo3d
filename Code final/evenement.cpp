@@ -1,7 +1,5 @@
 #include "evenement.h"
 
-EventStatus* event_status = NULL;
-
 LRESULT CALLBACK evenement(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
 {
     if(handle != NULL)
@@ -18,14 +16,7 @@ LRESULT CALLBACK evenement(HWND handle, UINT message, WPARAM wParam, LPARAM lPar
         }
     }
 
-    switch (message)
-    {
-        case WM_CREATE:
-            return 0;
-
-        default:
-            return DefWindowProc(handle, message, wParam, lParam);
-    }
+    return DefWindowProc(handle, message, wParam, lParam);
 }
 
 LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
@@ -33,6 +24,7 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
     switch (message)
     {
         case WM_DESTROY:
+            end_event();
             PostQuitMessage(0);
             return 0;
 
@@ -73,25 +65,6 @@ void traiter_evenement()
     DispatchMessage(&(g_fenetre->message));
 }
 
-// Controle de event status
-
-void init_event_status()
-{
-    if(event_status == NULL)
-    {
-        event_status = (EventStatus*) malloc(sizeof(EventStatus));
-    }
-}
-
-void delete_event_status()
-{
-    if(event_status != NULL)
-    {
-        free(event_status);
-        event_status = NULL;
-    }
-}
-
 void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
 {
     // On fait un switch du bouton
@@ -107,14 +80,14 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         case ID_RETRO : action_activer_retro(SendMessage(g_fenetre->retro, BM_GETCHECK, 0, 0) == BST_CHECKED); break;
         case ID_T_RETRO :
             if(HIWORD(wParam) == EN_CHANGE)
-                action_change_edit(g_fenetre->t_retro, g_fenetre->s_retro, 1, 0.1, 50.);
+                action_change_edit(g_fenetre->t_retro, g_fenetre->s_retro, 1, 0.1, 50., &(event_status->dist_retro));
             if(HIWORD(wParam) == EN_UPDATE)
                 action_update_edit(g_fenetre->t_retro);
              break;
 
         case ID_T_DISTANCE :
             if(HIWORD(wParam) == EN_CHANGE)
-                action_change_edit(g_fenetre->t_distance, g_fenetre->s_distance, 1, 0.1, 50.);
+                action_change_edit(g_fenetre->t_distance, g_fenetre->s_distance, 1, 0.1, 50., &(event_status->distance));
             if(HIWORD(wParam) == EN_UPDATE)
                 action_update_edit(g_fenetre->t_distance);
              break;
@@ -156,9 +129,9 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
     }
 
     if((HWND)lParam == g_fenetre->s_retro)
-        action_change_edit(g_fenetre->t_retro, g_fenetre->s_retro, 0, 0.1, 50.);
+        action_change_edit(g_fenetre->t_retro, g_fenetre->s_retro, 0, 0.1, 50., &(event_status->dist_retro));
     if((HWND)lParam == g_fenetre->s_distance)
-        action_change_edit(g_fenetre->t_distance, g_fenetre->s_distance, 0, 0.1, 50.);
+        action_change_edit(g_fenetre->t_distance, g_fenetre->s_distance, 0, 0.1, 50., &(event_status->distance));
     if((HWND)lParam == g_fenetre->s_taille)
         action_change_taille();
     if((HWND)lParam == g_fenetre->s_espace_atome)

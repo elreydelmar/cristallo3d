@@ -1,30 +1,48 @@
 #include "actions.h"
 
-// Globales
-extern Fenetre* g_fenetre;
+EventStatus* event_status = NULL;
+
+void init_event()
+{
+    if(event_status == NULL)
+    {
+        event_status = (EventStatus*) malloc(sizeof(EventStatus));
+        event_status->choix_camera = 0;
+        event_status->anaglyphe = 0;
+        event_status->retro = 0;
+        event_status->dist_retro = 12;
+        event_status->distance = 12;
+
+        event_status->maille = NULL;
+        event_status->nb_x = 1;
+        event_status->nb_y = 1;
+        event_status->nb_z = 1;
+        event_status->espace_atome = 0.5;
+    }
+}
+
+void end_event()
+{
+    if(event_status != NULL)
+    {
+        free(event_status);
+        event_status = NULL;
+    }
+}
 
 void action_change_camera(int type)
 {
-    if(type)
-        MessageBox(NULL,"Trackball","Camera",MB_OK);
-    else
-        MessageBox(NULL,"Freefly","Camera",MB_OK);
+    event_status->choix_camera  = type;
 }
 
 void action_change_anaglyphe(int checked)
 {
-    if(checked)
-        MessageBox(NULL,"Anaglyphe","Camera",MB_OK);
-    else
-        MessageBox(NULL,"Pas Anaglyphe","Camera",MB_OK);
+    event_status->anaglyphe = checked;
 }
 
 void action_activer_retro(int active)
 {
-    if(active)
-        MessageBox(NULL,"Retro actif","Camera",MB_OK);
-    else
-        MessageBox(NULL,"Retro inactif","Camera",MB_OK);
+    event_status->retro = active;
 }
 
 double conversion_slider_edit(int slider, double min, double max)
@@ -160,7 +178,7 @@ void action_update_edit(HWND handle)
     }
 }
 
-void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, double max)
+void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, double max, double* achanger)
 {
     static int nb_fait = 0;
 
@@ -171,9 +189,9 @@ void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, doub
         if(nb_fait != 2)
         {
             // On change l'edit
-            double nombre = conversion_slider_edit(SendMessage(hSlider, TBM_GETPOS, 0, 0), min, max);
+            *achanger = conversion_slider_edit(SendMessage(hSlider, TBM_GETPOS, 0, 0), min, max);
             char chaine[7];
-            double_to_chaine(nombre, chaine);
+            double_to_chaine(*achanger, chaine);
             SendMessage(hEdit, WM_SETTEXT, 1, (LPARAM)chaine);
         }
     }
@@ -188,14 +206,14 @@ void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, doub
             if(reussite == 0)
             {
                 SendMessage(hSlider, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 0);
-                action_change_edit(hEdit, hSlider, 0, min, max);
+                action_change_edit(hEdit, hSlider, 0, min, max, achanger);
             }
             else
             {
-                double valeur = chaine_to_double(chaine);
-                int ivaleur = conversion_edit_slider(valeur, 1, 100, min, max);
+                *achanger = chaine_to_double(chaine);
+                int ivaleur = conversion_edit_slider(*achanger, 1, 100, min, max);
                 SendMessage(hSlider, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) ivaleur);
-                action_change_edit(hEdit, hSlider, 0, min, max);
+                action_change_edit(hEdit, hSlider, 0, min, max, achanger);
             }
         }
     }
@@ -215,47 +233,114 @@ void action_default_distance(double valeur)
 
 void action_parcourir()
 {
-    MessageBox(NULL,"Parcourir","Maille",MB_OK);
+    OPENFILENAME ofn;
+    CHAR szFile[255]={0};
+
+    ZeroMemory(&ofn, sizeof(OPENFILENAME));
+    ofn.lStructSize = sizeof(OPENFILENAME);
+    ofn.hwndOwner = g_fenetre->fenetre;
+    ofn.lpstrFile = szFile;
+    ofn.nMaxFile = 255;
+    ofn.lpstrFilter =
+               "Fichier CIF\0*.cif\0";
+    ofn.nFilterIndex = 1;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+
+    if (GetOpenFileName(&ofn)==TRUE)
+    {
+        SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
+    }
 }
 
 void action_generer()
 {
-    MessageBox(NULL,"Génération de la maille","Maille",MB_OK);
+    MessageBox(NULL,"Génération de la maille","Maille",MB_OK); // TODO
 }
 
 void action_change_nb_x()
 {
-    MessageBox(NULL,"Changement du nombre en x","Maille",MB_OK);
+    if(event_status == NULL)
+        return;
+    char chaine [10];
+    *((WORD*) chaine) = 10;
+    int reussite = SendMessage(g_fenetre->nb_x, EM_GETLINE, 0, (LPARAM)chaine);
+    if(reussite == 0)
+        event_status->nb_x  = 1;
+    else
+    {
+        int nombre = (int)chaine_to_double(chaine);
+        event_status->nb_x = (nombre > 0) ? nombre : 1;
+    }
 }
 
 void action_change_nb_y()
 {
-    MessageBox(NULL,"Changement du nombre en y","Maille",MB_OK);
+    if(event_status == NULL)
+        return;
+    char chaine [10];
+    *((WORD*) chaine) = 10;
+    int reussite = SendMessage(g_fenetre->nb_y, EM_GETLINE, 0, (LPARAM)chaine);
+    if(reussite == 0)
+        event_status->nb_y  = 1;
+    else
+    {
+        int nombre = (int)chaine_to_double(chaine);
+        event_status->nb_y = (nombre > 0) ? nombre : 1;
+    }
 }
 
 void action_change_nb_z()
 {
-    MessageBox(NULL,"Changement du nombre en z","Maille",MB_OK);
+    if(event_status == NULL)
+        return;
+    char chaine [10];
+    *((WORD*) chaine) = 10;
+    int reussite = SendMessage(g_fenetre->nb_z, EM_GETLINE, 0, (LPARAM)chaine);
+    if(reussite == 0)
+        event_status->nb_z  = 1;
+    else
+    {
+        int nombre = (int)chaine_to_double(chaine);
+        event_status->nb_z = (nombre > 0) ? nombre : 1;
+    }
+}
+
+int get_atome_courant()
+{
+    return SendMessage(g_fenetre->choix_atome, CB_GETCURSEL, 0, 0);
 }
 
 void action_change_atome()
 {
+    // Charge les donnees de l atome
     MessageBox(NULL,"Changement de l atome","Maille",MB_OK);
 }
 
 void action_change_couleur()
 {
-    MessageBox(NULL,"Changement de la couleur","Maille",MB_OK);
+    if(event_status->maille != NULL)
+    {
+        int atome = get_atome_courant();
+        event_status->maille->types[atome].index_couleur = SendMessage(g_fenetre->couleur, CB_GETCURSEL, 0, 0);
+    }
 }
 
 void action_change_taille()
 {
-    MessageBox(NULL,"Changement de la taille","Maille",MB_OK);
+    if(event_status->maille != NULL)
+    {
+        int atome = get_atome_courant();
+        double a = event_status->maille->a;
+        event_status->maille->types[atome].rayon_ionique = conversion_slider_edit(SendMessage(g_fenetre->s_taille, TBM_GETPOS, 0, 0), a/20., a);
+    }
 }
 
 void action_change_espace()
 {
-    MessageBox(NULL,"Changement de l espace","Maille",MB_OK);
+    if(event_status->maille != NULL)
+    {
+        event_status->espace_atome = conversion_slider_edit(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), a/20., a);
+    }
 }
 
 void action_defaut(HWND handle)

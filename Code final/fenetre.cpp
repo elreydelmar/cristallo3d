@@ -27,6 +27,9 @@ int create_fenetre(HINSTANCE instance)
     g_fenetre->menu = CreateWindow("classeF", "menu", WS_CHILD | WS_VISIBLE, position.w, 0, WIDTH_COLONNE, HEIGHT, g_fenetre->fenetre, NULL, instance, NULL);
     afficher_boutons(g_fenetre);
 
+    // Chargement des events
+    init_event();
+
     // Pour le process
     SetWindowLong(g_fenetre->fenetre, GWL_USERDATA, 1);
     SetWindowLong(g_fenetre->menu, GWL_USERDATA, 2);

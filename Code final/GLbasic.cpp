@@ -6,13 +6,12 @@
 #include "const_fenetre.h"
 
 void InitGL()
-        {
-
-            glEnable(GL_COLOR_MATERIAL);
-            glEnable(GL_DEPTH_TEST); 	// Active le test de profondeur
-            glEnable(GL_LIGHTING); 	// Active l'éclairage
-            glEnable(GL_LIGHT0); 	// Allume la lumière n°1
-        }
+{
+    glEnable(GL_COLOR_MATERIAL);
+    glEnable(GL_DEPTH_TEST); 	// Active le test de profondeur
+    glEnable(GL_LIGHTING); 	// Active l'éclairage
+    glEnable(GL_LIGHT0); 	// Allume la lumière n°1
+}
 
 void init_camera_de_merde()
 {

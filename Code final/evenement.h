@@ -4,12 +4,6 @@
 #include "fenetre.h"
 #include "actions.h"
 
-// Le type de notification d'evenement
-typedef struct EventStatus EventStatus;
-struct EventStatus
-{
-
-};
 
 extern Fenetre* g_fenetre;
 extern EventStatus* event_status;
@@ -23,10 +17,6 @@ LRESULT evenement_menu(HWND, UINT, WPARAM, LPARAM);
 int recuperer_evenement();
 void traiter_evenement();
 
-
-// Controle de event_status
-void init_event_status();
-void delete_event_status();
 void evenement_bouton(HWND, UINT, WPARAM, LPARAM);
 
 

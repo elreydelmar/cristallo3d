@@ -25,6 +25,7 @@ struct Rect
 
 // Les extern
 extern LRESULT CALLBACK evenement(HWND, UINT, WPARAM, LPARAM);
+extern void init_event();
 extern Fenetre* g_fenetre;
 
 // Fonctions refaites simplifiees
