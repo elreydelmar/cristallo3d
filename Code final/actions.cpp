@@ -367,3 +367,23 @@ void action_aide(HWND handle)
 {
     MessageBox(handle,"Aide disponible bientôt","Aide",MB_OK);
 }
+
+void action_up()
+{
+    MessageBox(NULL,"Touche UP","Clavier",MB_OK);
+}
+
+void action_down()
+{
+
+}
+
+void action_left()
+{
+
+}
+
+void action_right()
+{
+
+}

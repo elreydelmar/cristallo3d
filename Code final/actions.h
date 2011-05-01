@@ -69,5 +69,9 @@ void action_change_espace();
 void action_defaut(HWND handle);
 void action_aide(HWND handle);
 
-
+// Actions du clavier
+void action_up();
+void action_down();
+void action_left();
+void action_right();
 #endif // ACTIONS_H_INCLUDED

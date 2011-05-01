@@ -35,6 +35,10 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
             return 0;
         }
 
+        case WM_KEYDOWN:
+            evenement_clavier(wParam, lParam);
+        return 0;
+
         default:
             return DefWindowProc(handle, message, wParam, lParam);
     }
@@ -61,6 +65,10 @@ int recuperer_evenement()
 
 void traiter_evenement()
 {
+    // On traite les touches du clavier pressees
+    evenement_clavier();
+
+    // On s'occupe des autres messages
     TranslateMessage(&(g_fenetre->message));
     DispatchMessage(&(g_fenetre->message));
 }
@@ -136,4 +144,31 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         action_change_taille();
     if((HWND)lParam == g_fenetre->s_espace_atome)
         action_change_espace();
+}
+
+void evenement_clavier()
+{
+    // Est-ce important de s'occuper du clavier ?
+    POINT pos_souris;
+    RECT rect_gl;
+    GetCursorPos(&pos_souris);
+    GetWindowRect(g_fenetre->gl, &rect_gl);
+    if(is_in(pos_souris, rect_gl))
+    {
+        // Test de key repeat : temps d attente ?
+        // Si oui :
+        // On regarde l'etat de differentes touches.
+        // 1 - la touche est de type maintient, on le met dans le event_status
+        // 2 - la touche est de type joystick, on envoie l event a la callback
+    }
+}
+
+void evenement_camera(WPARAM wParam, LPARAM lParam)
+{
+
+}
+
+int is_in(POINT p, RECT r)
+{
+    return (p.x >= r.left && p.x <= r.right && p.y >= r.top && p.y <= r.bottom);
 }
