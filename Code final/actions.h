@@ -3,6 +3,7 @@
 
 #include "maille.h"
 #include "fenetre.h"
+#include "camera.h"
 
 /*
     Contient toutes les actions possibles activees par evenement
@@ -25,6 +26,8 @@ struct EventStatus
     int nb_z;
     double espace_atome; // A JARTER
 
+    // OpenGL
+    int camera_active; // 1 si la camera est active
     // Clavier
     int controle; // 1 si controle active
 };
@@ -32,6 +35,7 @@ struct EventStatus
 // Globales
 extern Fenetre* g_fenetre;
 extern EventStatus* event_status;
+extern Camera* camera_courante;
 
 // Debut et Fin
 void init_event();
@@ -80,4 +84,10 @@ void action_left();
 void action_right();
 
 void action_controle(int valeur);
+
+// Actions de la souris
+void changer_activation_camera();
+void action_mouse_move(int x, int y);
+void action_zoom(int sens); // 1 pour le zoom, 0 pour le dezoom
+
 #endif // ACTIONS_H_INCLUDED

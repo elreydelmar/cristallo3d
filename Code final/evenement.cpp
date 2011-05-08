@@ -35,6 +35,28 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
             return 0;
         }
 
+        case WM_LBUTTONDOWN:
+            changer_activation_camera();
+        return 0;
+
+        case WM_MOUSEMOVE:
+        {
+            static POINT old = {0,0};
+            POINT current;
+            current.x = GET_X_LPARAM(lParam);
+            current.y = GET_Y_LPARAM(lParam);
+
+            action_mouse_move(current.x - old.x, old.y - current.y);
+
+            old = current;
+
+            return 0;
+        }
+
+        case WM_MOUSEWHEEL:
+            action_zoom(LOWORD(lParam)>0);
+        return 0;
+
         default:
             return DefWindowProc(handle, message, wParam, lParam);
     }
@@ -153,46 +175,51 @@ void evenement_clavier()
     GetWindowRect(g_fenetre->gl, &rect_gl);
     if(is_in(pos_souris, rect_gl))
     {
-
-        // On regarde l'etat de differentes touches.
-        // 1 - la touche est de type maintien, on le met dans le event_status
-        action_controle(GetKeyState(VK_CONTROL) < 0);
-
-
-        // 2 - la touche est de type joystick, on realise son action
-        // Test de key repeat : temps d attente ?
-        clock_t courant = clock();
-        // Si oui :
-        if(courant - precedent > NB_CLOCKS_ECART_TOUCHE)
+        if(event_status->camera_active)
         {
-            precedent = courant;
-            if(GetKeyState(VK_UP) < 0 || GetKeyState('z') < 0 || GetKeyState('Z') < 0)
+            // On regarde l'etat de differentes touches.
+            // 1 - la touche est de type maintien, on le met dans le event_status
+            action_controle(GetKeyState(VK_CONTROL) < 0);
+
+
+            // 2 - la touche est de type joystick, on realise son action
+            // Test de key repeat : temps d attente ?
+            clock_t courant = clock();
+            // Si oui :
+            if(courant - precedent > NB_CLOCKS_ECART_TOUCHE)
             {
-                action_up();
-                return;
-            }
-            if(GetKeyState(VK_DOWN) < 0 || GetKeyState('s') < 0 || GetKeyState('S') < 0)
-            {
-                action_down();
-                return;
-            }
-            if(GetKeyState(VK_LEFT) < 0 || GetKeyState('q') < 0 || GetKeyState('Q') < 0)
-            {
-                action_left();
-                return;
-            }
-            if(GetKeyState(VK_RIGHT) < 0 || GetKeyState('d') < 0 || GetKeyState('D') < 0)
-            {
-                action_right();
-                return;
+                precedent = courant;
+                if(GetKeyState(VK_UP) < 0 || GetKeyState('z') < 0 || GetKeyState('Z') < 0)
+                {
+                    action_up();
+                }
+                if(GetKeyState(VK_DOWN) < 0 || GetKeyState('s') < 0 || GetKeyState('S') < 0)
+                {
+                    action_down();
+                }
+                if(GetKeyState(VK_LEFT) < 0 || GetKeyState('q') < 0 || GetKeyState('Q') < 0)
+                {
+                    action_left();
+                }
+                if(GetKeyState(VK_RIGHT) < 0 || GetKeyState('d') < 0 || GetKeyState('D') < 0)
+                {
+                    action_right();
+                }
+                if(GetKeyState(VK_NEXT))
+                {
+                    action_zoom(1);
+                }
+                if(GetKeyState(VK_PRIOR))
+                {
+                    action_zoom(0);
+                }
             }
         }
     }
-}
-
-void evenement_camera(WPARAM wParam, LPARAM lParam)
-{
-
+    else    // on desactive la camera
+    {
+        event_status->camera_active = 0;
+    }
 }
 
 int is_in(POINT p, RECT r)

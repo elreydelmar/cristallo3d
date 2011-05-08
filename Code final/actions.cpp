@@ -18,6 +18,9 @@ void init_event()
         event_status->nb_y = 1;
         event_status->nb_z = 1;
         event_status->espace_atome = 0.5;
+
+        event_status->camera_active = 0;
+        event_status->controle = 0;
     }
 }
 
@@ -370,25 +373,90 @@ void action_aide(HWND handle)
 
 void action_up()
 {
-
+    if(!event_status->choix_camera)  // Freefly
+    {
+        avancer_camera(camera_courante, 0.1);
+    }
 }
 
 void action_down()
 {
-
+    if(!event_status->choix_camera)  // Freefly
+    {
+        reculer_camera(camera_courante, 0.1);
+    }
 }
 
 void action_left()
 {
-
+    rotate_anticlockwise(camera_courante, 0.1);
 }
 
 void action_right()
 {
-
+    rotate_clockwise(camera_courante, 0.1);
 }
 
 void action_controle(int valeur)
 {
     event_status->controle = valeur;
+}
+
+void changer_activation_camera()
+{
+    event_status->camera_active = !event_status->camera_active;
+}
+
+void action_mouse_move(int x, int y)
+{
+    if(event_status->camera_active)
+    {
+        if(!event_status->choix_camera) // Freefly
+        {
+            if(!event_status->controle)
+            {
+                if(x > 0)
+                    tete_droite(camera_courante, 0.1 *(double)x);
+                else if(x < 0)
+                    tete_gauche(camera_courante, 0.1 *(double)x);
+
+                if(y > 0)
+                    tete_haut(camera_courante, 0.1 *(double)y);
+                else if(y < 0)
+                    tete_bas(camera_courante, 0.1 *(double)y);
+            }
+            else
+            {
+                if(x > 0)
+                    glisser_droite(camera_courante, 0.1 *(double)x);
+                else if(x < 0)
+                    glisser_gauche(camera_courante, 0.1 *(double)x);
+
+                if(y > 0)
+                    glisser_haut(camera_courante, 0.1 *(double)y);
+                else if(y < 0)
+                    glisser_bas(camera_courante, 0.1 *(double)y);
+            }
+        }
+        else    // Trackball
+        {
+                if(x > 0)
+                    tourner_droite(camera_courante, 0.1 *(double)x);
+                else if(x < 0)
+                    tourner_gauche(camera_courante, 0.1 *(double)x);
+
+                if(y > 0)
+                    tourner_haut(camera_courante, 0.1 *(double)y);
+                else if(y < 0)
+                    tourner_bas(camera_courante, 0.1 *(double)y);
+        }
+    }
+}
+
+void action_zoom(int sens)
+{
+    if(sens) // zoom
+        zoom(camera_courante, 1.1);
+    else    // dezoom
+        zoom(camera_courante, 0.9);
 }

@@ -5,6 +5,7 @@
 #include "actions.h"
 
 #include <time.h>
+#include <windowsx.h>
 
 #define NB_TOUCHES_PAR_SECONDE 10
 #define NB_CLOCKS_ECART_TOUCHE CLOCKS_PER_SEC/NB_TOUCHES_PAR_SECONDE
@@ -23,7 +24,6 @@ void evenement_clavier();
 void traiter_evenement();
 
 void evenement_bouton(HWND, UINT, WPARAM, LPARAM);
-void evenement_camera(WPARAM, LPARAM);
 
 // Predicats
 int is_in(POINT p, RECT r);
