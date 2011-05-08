@@ -440,15 +440,15 @@ void action_mouse_move(int x, int y)
         }
         else    // Trackball
         {
-                if(x > 0)
-                    tourner_droite(camera_courante, 0.1 *(double)x);
-                else if(x < 0)
-                    tourner_gauche(camera_courante, 0.1 *(double)x);
+            if(x > 0)
+                tourner_droite(camera_courante, 0.1 *(double)x);
+            else if(x < 0)
+                tourner_gauche(camera_courante, 0.1 *(double)x);
 
-                if(y > 0)
-                    tourner_haut(camera_courante, 0.1 *(double)y);
-                else if(y < 0)
-                    tourner_bas(camera_courante, 0.1 *(double)y);
+            if(y > 0)
+                tourner_haut(camera_courante, 0.1 *(double)y);
+            else if(y < 0)
+                tourner_bas(camera_courante, 0.1 *(double)y);
         }
     }
 }
