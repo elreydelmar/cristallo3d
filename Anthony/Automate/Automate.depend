@@ -122,3 +122,65 @@
 1303030197 source:c:\mes documents\anthony\svn\anthony\automate\alloc_debug.cpp
 	"alloc_debug.h"
 
+1303084320 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\arbre.cpp
+	"arbre.h"
+
+1303032077 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\arbre.h
+	<stdlib.h>
+	<stdio.h>
+	"alloc_debug.h"
+
+1303032241 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\alloc_debug.h
+	<stdio.h>
+	<stdlib.h>
+
+1303084288 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\automate.cpp
+	"automate.h"
+
+1303304663 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\automate.h
+	"fichier.h"
+	"lignes.h"
+
+1302349470 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\fichier.h
+	<stdlib.h>
+	<stdio.h>
+	"maille.h"
+	"etats.h"
+
+1304039454 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\maille.h
+	"geometrie.h"
+	"GLbasic.h"
+
+1302349470 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\geometrie.h
+	<math.h>
+	<stdio.h>
+
+1302947837 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\etats.h
+
+1303167511 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\lignes.h
+	"arbre.h"
+
+1302957230 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\fichier.cpp
+	"fichier.h"
+
+1303130281 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\lignes.cpp
+	"lignes.h"
+
+1303113495 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\main.cpp
+	"automate.h"
+
+1303030197 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\alloc_debug.cpp
+	"alloc_debug.h"
+
+1304866302 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\glbasic.h
+	<GL/gl.h>
+	<GL/glu.h>
+	<cstdlib>
+	"geometrie.h"
+	"const_fenetre.h"
+
+1303219680 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\maille.cpp
+	"maille.h"
+
+1303953959 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\const_fenetre.h
+

@@ -38,13 +38,13 @@
 		<Unit filename="arbre.h" />
 		<Unit filename="automate.cpp" />
 		<Unit filename="automate.h" />
+		<Unit filename="const_fenetre.h" />
 		<Unit filename="etats.h" />
 		<Unit filename="fichier.cpp" />
 		<Unit filename="fichier.h" />
 		<Unit filename="geometrie.h" />
 		<Unit filename="lignes.cpp" />
 		<Unit filename="lignes.h" />
-		<Unit filename="maille.cpp" />
 		<Unit filename="maille.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
