@@ -35,10 +35,6 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
             return 0;
         }
 
-        case WM_KEYDOWN:
-            evenement_clavier(wParam, lParam);
-        return 0;
-
         default:
             return DefWindowProc(handle, message, wParam, lParam);
     }
@@ -148,6 +144,8 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
 
 void evenement_clavier()
 {
+    static clock_t precedent = clock();
+
     // Est-ce important de s'occuper du clavier ?
     POINT pos_souris;
     RECT rect_gl;
@@ -155,11 +153,40 @@ void evenement_clavier()
     GetWindowRect(g_fenetre->gl, &rect_gl);
     if(is_in(pos_souris, rect_gl))
     {
-        // Test de key repeat : temps d attente ?
-        // Si oui :
+
         // On regarde l'etat de differentes touches.
-        // 1 - la touche est de type maintient, on le met dans le event_status
-        // 2 - la touche est de type joystick, on envoie l event a la callback
+        // 1 - la touche est de type maintien, on le met dans le event_status
+        action_controle(GetKeyState(VK_CONTROL) < 0);
+
+
+        // 2 - la touche est de type joystick, on realise son action
+        // Test de key repeat : temps d attente ?
+        clock_t courant = clock();
+        // Si oui :
+        if(courant - precedent > NB_CLOCKS_ECART_TOUCHE)
+        {
+            precedent = courant;
+            if(GetKeyState(VK_UP) < 0 || GetKeyState('z') < 0 || GetKeyState('Z') < 0)
+            {
+                action_up();
+                return;
+            }
+            if(GetKeyState(VK_DOWN) < 0 || GetKeyState('s') < 0 || GetKeyState('S') < 0)
+            {
+                action_down();
+                return;
+            }
+            if(GetKeyState(VK_LEFT) < 0 || GetKeyState('q') < 0 || GetKeyState('Q') < 0)
+            {
+                action_left();
+                return;
+            }
+            if(GetKeyState(VK_RIGHT) < 0 || GetKeyState('d') < 0 || GetKeyState('D') < 0)
+            {
+                action_right();
+                return;
+            }
+        }
     }
 }
 

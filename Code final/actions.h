@@ -12,6 +12,7 @@
 typedef struct EventStatus EventStatus;
 struct EventStatus
 {
+    // Menu
     int choix_camera; // 0 si freefly,1 si trackball
     int anaglyphe; // booleen
     int retro; // booleen
@@ -23,6 +24,9 @@ struct EventStatus
     int nb_y;
     int nb_z;
     double espace_atome; // A JARTER
+
+    // Clavier
+    int controle; // 1 si controle active
 };
 
 // Globales
@@ -74,4 +78,6 @@ void action_up();
 void action_down();
 void action_left();
 void action_right();
+
+void action_controle(int valeur);
 #endif // ACTIONS_H_INCLUDED

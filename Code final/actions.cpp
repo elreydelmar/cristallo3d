@@ -370,7 +370,7 @@ void action_aide(HWND handle)
 
 void action_up()
 {
-    MessageBox(NULL,"Touche UP","Clavier",MB_OK);
+
 }
 
 void action_down()
@@ -386,4 +386,9 @@ void action_left()
 void action_right()
 {
 
+}
+
+void action_controle(int valeur)
+{
+    event_status->controle = valeur;
 }
