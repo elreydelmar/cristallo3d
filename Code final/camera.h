@@ -3,11 +3,15 @@
 
 struct _Camera
 {
-	Point pos; // position de la camera
-	Point cible; // le point vise par la camera
-	Point centre; // Centre pour le Trackball, aligne avec pos et cible
-	double fovy; // angle de zoom
-	int changement_zoom; // booleen qui indique si il y a eu changement du fovy
+    // Triedre camera
+    Point origine; // position de la camera
+    Point x;
+    Point y;
+    Point z; // designe aussi la direction
+
+    Point centre; // Centre pour le Trackball, aligne avec pos et cible
+    double fovy; // angle de zoom
+    int changement_zoom; // booleen qui indique si il y a eu changement du fovy
 };
 typedef struct _Camera Camera;
 
