@@ -1,0 +1,9 @@
+void avancer_camera(Camera* c, double pas)
+{
+(*c).origine=add_pts(*c.origine, mult_pts_scal(pas,(*c).z));
+}
+
+void reculer_camera(Camera* c, double pas)
+{
+    (*c).origine=sub_pts(*c.origine, mult_pts_scal(pas,(*c).z));
+}
