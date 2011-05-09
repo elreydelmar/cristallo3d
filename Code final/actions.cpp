@@ -36,6 +36,8 @@ void end_event()
 void action_change_camera(int type)
 {
     event_status->choix_camera  = type;
+    if(type) // Trackball
+        tourner_droite(camera_courante, 0);
 }
 
 void action_change_anaglyphe(int checked)
@@ -416,9 +418,9 @@ void action_mouse_move(int x, int y)
             if(!event_status->controle)
             {
                 if(x > 0)
-                    tete_droite(camera_courante, PAS_TETE *(double)x);
+                    tete_gauche(camera_courante, PAS_TETE *(double)x);
                 else if(x < 0)
-                    tete_gauche(camera_courante, -PAS_TETE *(double)x);
+                    tete_droite(camera_courante, -PAS_TETE *(double)x);
 
                 if(y > 0)
                     tete_haut(camera_courante, PAS_TETE *(double)y);
