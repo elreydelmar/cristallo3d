@@ -6,9 +6,9 @@ int position_octree(Point origine, Point M) // preferentiel dans l inferieur
     if(origine.x < M.x)
         retour += 4;
     if(origine.y < M.y)
-        retour += 1;
-    if(origine.z < M.z)
         retour += 2;
+    if(origine.z < M.z)
+        retour += 1;
 
     return retour;
 }
