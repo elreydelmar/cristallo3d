@@ -1,9 +1,12 @@
 #ifndef TESTGL_H_INCLUDED
 #define TESTGL_H_INCLUDED
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <cstdlib>
 #include "geometrie.h"
+#include "const_fenetre.h"
+#include "camera.h"
 
 
 typedef struct Couleur Couleur;
@@ -15,8 +18,13 @@ struct Couleur
 };
 
 void InitGL();
+void closeGL();
+
+//Camera
+extern Camera* camera_courante;
 void init_camera_de_merde();
 void update_camera_de_merde();
+void set_camera();
 
 void nouveau_dessin();
 void changerepere(Point O, Point Z); //place le repère au point O, orienté suivant Z

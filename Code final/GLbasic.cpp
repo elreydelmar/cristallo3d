@@ -1,9 +1,4 @@
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <cstdlib>
-#include "geometrie.h"
 #include "GLbasic.h"
-#include "const_fenetre.h"
 
 void InitGL()
 {
@@ -11,6 +6,30 @@ void InitGL()
     glEnable(GL_DEPTH_TEST); 	// Active le test de profondeur
     glEnable(GL_LIGHTING); 	// Active l'éclairage
     glEnable(GL_LIGHT0); 	// Allume la lumière n°1
+
+    init_camera();
+}
+
+void closeGL()
+{
+    close_camera();
+}
+
+void set_camera()
+{
+    if(camera_courante->changement_zoom == 1)
+    {
+        camera_courante->changement_zoom = 0;
+        glMatrixMode( GL_PROJECTION );
+        glLoadIdentity();
+        gluPerspective(camera_courante->fovy,(double)(WIDTH-WIDTH_COLONNE)/HEIGHT,1,1000); // ratio a changer
+    }
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity( );
+    Point cible = add_pts(camera_courante->origine, camera_courante->z);
+    gluLookAt(camera_courante->origine.x, camera_courante->origine.y, camera_courante->origine.z,
+              cible.x , cible.y, cible.z,
+              camera_courante->x.x,camera_courante->x.y,camera_courante->x.z);
 }
 
 void init_camera_de_merde()

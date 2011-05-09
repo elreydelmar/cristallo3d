@@ -6,14 +6,13 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
 {
     // Creation de la fenetre
     create_fenetre(cetteInstance);
-    init_camera_de_merde();
     InitGL();
 
     while (recuperer_evenement())
     {
         traiter_evenement();
         nouveau_dessin();
-        update_camera_de_merde();
+        set_camera();
 
         dessiner_repere(1);
 
