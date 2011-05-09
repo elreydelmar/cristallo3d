@@ -22,7 +22,7 @@ void set_camera()
         camera_courante->changement_zoom = 0;
         glMatrixMode( GL_PROJECTION );
         glLoadIdentity();
-        gluPerspective(camera_courante->fovy,(double)(WIDTH-WIDTH_COLONNE)/HEIGHT,1,1000); // ratio a changer
+        gluPerspective(camera_courante->fovy,(double)(WIDTH-WIDTH_COLONNE)/HEIGHT,0.1,1000); // ratio a changer
     }
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity( );
@@ -36,7 +36,7 @@ void init_camera_de_merde()
 {
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
-    gluPerspective(70,(double)(WIDTH-WIDTH_COLONNE)/HEIGHT,1,1000);
+    gluPerspective(70,(double)(WIDTH-WIDTH_COLONNE)/HEIGHT,0.1,1000);
 }
 
 void update_camera_de_merde()

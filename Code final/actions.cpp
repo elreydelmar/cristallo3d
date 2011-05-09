@@ -375,17 +375,19 @@ void action_aide(HWND handle)
 
 void action_up()
 {
-    if(!event_status->choix_camera)  // Freefly
+    avancer_camera(camera_courante, 0.1);
+    if(event_status->choix_camera)  // Trackball
     {
-        avancer_camera(camera_courante, 0.1);
+        tourner_gauche(camera_courante, 0);
     }
 }
 
 void action_down()
 {
-    if(!event_status->choix_camera)  // Freefly
+    reculer_camera(camera_courante, 0.1);
+    if(event_status->choix_camera)  // Trackball
     {
-        reculer_camera(camera_courante, 0.1);
+        tourner_gauche(camera_courante, 0);
     }
 }
 
