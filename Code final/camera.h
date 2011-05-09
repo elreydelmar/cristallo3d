@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include "geometrie.h"
 
+#define FOVY_MAX 120
+#define FOVY_MIN 30
+
 struct _Camera
 {
     // Triedre camera

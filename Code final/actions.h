@@ -5,6 +5,9 @@
 #include "fenetre.h"
 #include "camera.h"
 
+#define PAS_GLISSER 0.005
+#define PAS_TETE 0.005
+
 /*
     Contient toutes les actions possibles activees par evenement
 */

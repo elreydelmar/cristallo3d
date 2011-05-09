@@ -416,26 +416,26 @@ void action_mouse_move(int x, int y)
             if(!event_status->controle)
             {
                 if(x > 0)
-                    tete_droite(camera_courante, 0.1 *(double)x);
+                    tete_droite(camera_courante, PAS_TETE *(double)x);
                 else if(x < 0)
-                    tete_gauche(camera_courante, 0.1 *(double)x);
+                    tete_gauche(camera_courante, -PAS_TETE *(double)x);
 
                 if(y > 0)
-                    tete_haut(camera_courante, 0.1 *(double)y);
+                    tete_haut(camera_courante, PAS_TETE *(double)y);
                 else if(y < 0)
-                    tete_bas(camera_courante, 0.1 *(double)y);
+                    tete_bas(camera_courante, -PAS_TETE *(double)y);
             }
             else
             {
                 if(x > 0)
-                    glisser_droite(camera_courante, 0.1 *(double)x);
+                    glisser_droite(camera_courante, PAS_GLISSER *(double)x);
                 else if(x < 0)
-                    glisser_gauche(camera_courante, 0.1 *(double)x);
+                    glisser_gauche(camera_courante, -PAS_GLISSER *(double)x);
 
                 if(y > 0)
-                    glisser_haut(camera_courante, 0.1 *(double)y);
+                    glisser_haut(camera_courante, PAS_GLISSER *(double)y);
                 else if(y < 0)
-                    glisser_bas(camera_courante, 0.1 *(double)y);
+                    glisser_bas(camera_courante, -PAS_GLISSER *(double)y);
             }
         }
         else    // Trackball
@@ -443,12 +443,12 @@ void action_mouse_move(int x, int y)
             if(x > 0)
                 tourner_droite(camera_courante, 0.1 *(double)x);
             else if(x < 0)
-                tourner_gauche(camera_courante, 0.1 *(double)x);
+                tourner_gauche(camera_courante, -0.1 *(double)x);
 
             if(y > 0)
                 tourner_haut(camera_courante, 0.1 *(double)y);
             else if(y < 0)
-                tourner_bas(camera_courante, 0.1 *(double)y);
+                tourner_bas(camera_courante, -0.1 *(double)y);
         }
     }
 }
