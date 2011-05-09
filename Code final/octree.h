@@ -17,7 +17,7 @@
 typedef struct Octree Octree;
 struct Octree
 {
-    Point M;
+    Atome M;
     Octree* fils[8];
 };
 typedef Octree* L_affiche;
@@ -28,6 +28,7 @@ int position_octree(Point origine, Point M);
 L_affiche new_l_affiche();
 
 // Ajout (retourne booleen pour ajoute ou non)
+Octree* nouv_element(Atome M);
 int ajouter_a_l_affichage(L_affiche* l, Atome a);
 /*
     Si NULL, on le cree, on renvoie 1

@@ -1,4 +1,4 @@
-#include "Octree.h"
+#include "octree.h"
 
 int position_octree(Point origine, Point M) // preferentiel dans l inferieur
 {
@@ -13,7 +13,7 @@ int position_octree(Point origine, Point M) // preferentiel dans l inferieur
     return retour;
 }
 
-Octree* nouv_element(Point M)
+Octree* nouv_element(Atome M)
 {
     Octree* retour = (Octree*) malloc(sizeof(Octree));
         retour->M = M;
@@ -32,14 +32,14 @@ int ajouter_a_l_affichage(L_affiche* l, Atome a)
 {
     if(*l == NULL)
     {
-        *l = nouv_element(a.position);
+        *l = nouv_element(a);
         return 1;
     }
-    else if(egalite(a.position, (*l)->M))
+    else if(egalite(a.position, (*l)->M.position))
         return 0;
     else
     {
-        int fils = position_octree((*l)->M, a.position);
+        int fils = position_octree((*l)->M.position, a.position);
         return ajouter_a_l_affichage(&((*l)->fils[fils]), a);
     }
 }
