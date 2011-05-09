@@ -110,6 +110,17 @@ void rotate_anticlockwise(Camera* c, double pas)
 
 void tourner_gauche(Camera* c, double pas)
 {
+    Point dy;
+    Point v;
+    double n = norme (sub_pts(c->centre, c->origine));
+    dy = mult_scal_pts (-pas, c->y);
+    c->origine = sub_pts (c->origine, dy);
+    v = sub_pts (c->centre, c->origine);
+    v = mult_scal_pts ((n/norme(v)), v);
+    c->origine = sub_pts (c->centre, v);
+    c->z = v;
+    normer (&(c->z));
+    c->y = prod_vect(c->z, c->x);
 
 
 }
