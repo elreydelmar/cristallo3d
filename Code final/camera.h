@@ -25,7 +25,7 @@ extern Camera* camera_courante;
 void init_camera();
 
 // Fonction liberation espace camera//
-void free_camera();
+void close_camera();
 
 // Ces 2 fonctions ne font qu'avancer la camera, un "travelling"
 void avancer_camera(Camera* c, double pas); // (pas < 0 ou > 0)
