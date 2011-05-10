@@ -134,10 +134,10 @@
 	<stdio.h>
 	<stdlib.h>
 
-1303084288 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\automate.cpp
+1304983206 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\automate.cpp
 	"automate.h"
 
-1303304663 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\automate.h
+1304984429 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\automate.h
 	"fichier.h"
 	"lignes.h"
 
@@ -147,23 +147,23 @@
 	"maille.h"
 	"etats.h"
 
-1304039454 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\maille.h
+1304983241 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\maille.h
 	"geometrie.h"
-	"GLbasic.h"
 
 1302349470 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\geometrie.h
 	<math.h>
 	<stdio.h>
 
-1302947837 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\etats.h
+1304983568 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\etats.h
 
-1303167511 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\lignes.h
+1304984450 c:\mes documents\anthony\projet de groupe\svn\anthony\automate\lignes.h
 	"arbre.h"
+	"maille.h"
 
 1302957230 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\fichier.cpp
 	"fichier.h"
 
-1303130281 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\lignes.cpp
+1304984532 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\lignes.cpp
 	"lignes.h"
 
 1303113495 source:c:\mes documents\anthony\projet de groupe\svn\anthony\automate\main.cpp

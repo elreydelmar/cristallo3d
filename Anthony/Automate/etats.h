@@ -39,4 +39,7 @@
 #define s_ATT_LIGNE 110
 #define s_FINAL 111
 
+// Etats pour les positions d atome
+#define LOOP 115
+
 #endif // ETATS_H_INCLUDED

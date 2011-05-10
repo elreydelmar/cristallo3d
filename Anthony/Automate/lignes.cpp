@@ -61,3 +61,59 @@ void vider_l_label(L_label* liste)
         buff1 = buff2;
     }
 }
+
+L_Atome* add_atome(L_Atome* liste, Atome a)
+{
+    if(liste == NULL)
+    {
+        L_Atome* nouv = (L_Atome*) malloc(sizeof(L_Atome));
+        nouv->atome = a;
+        nouv->queue = NULL;
+        return nouv;
+    }
+    else
+    {
+        liste->queue = add_atome(liste->queue, a);
+        return liste;
+    }
+}
+
+void vider_l_atome(L_Atome* liste)
+{
+    L_Atome* buff1 = liste;
+    L_Atome* buff2;
+    while(buff1 != NULL)
+    {
+        buff2 = buff1->queue;
+        free(buff1);
+        buff1 = buff2;
+    }
+}
+
+L_Atome_Type* add_atome_type(L_Atome_Type* liste, Atome_Type t)
+{
+    if(liste == NULL)
+    {
+        L_Atome_Type* nouv = (L_Atome_Type*) malloc(sizeof(L_Atome_Type));
+        nouv->atome_type = t;
+        nouv->queue = NULL;
+        return nouv;
+    }
+    else
+    {
+        liste->queue = add_atome_type(liste->queue, t);
+        return liste;
+    }
+}
+
+void vider_l_atome_type(L_Atome_Type* liste)
+{
+    L_Atome_Type* buff1 = liste;
+    L_Atome_Type* buff2;
+    while(buff1 != NULL)
+    {
+        buff2 = buff1->queue;
+        free(buff1);
+        buff1 = buff2;
+    }
+}

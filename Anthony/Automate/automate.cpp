@@ -156,8 +156,7 @@ int automate(FILE* fichier, Maille* maille)
             case XYZ:
                 l = automate_symmetry(fichier, &etat, &retour, &c);
                 afficher_l_ligne(l);
-                vider_l_ligne(l);
-           // break;
+            break;
 
             default :
                 etat = ATTENTE_NVELLE_COMMANDE;
@@ -165,6 +164,9 @@ int automate(FILE* fichier, Maille* maille)
         }
 
     }
+
+
+    vider_l_ligne(l);
 
     return 0;   // A CHANGER
 }

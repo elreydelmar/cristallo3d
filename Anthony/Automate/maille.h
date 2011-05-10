@@ -2,7 +2,7 @@
 #define MAILLE_H_INCLUDED
 
 #include "geometrie.h"
-#include "GLbasic.h"
+//#include "GLbasic.h"
 
 #define EPSILON 0.00001
 
@@ -11,7 +11,7 @@
     Maille maille, int nb_x (nombre de fois qu on représente la maile selon x), int nb_y, int nb_z, double espace // entre atomes
 
 */
-
+/*
 const Couleur couleurs[13] =
 {
     {150,190,250}, // Bleu clair
@@ -28,7 +28,7 @@ const Couleur couleurs[13] =
     {120,120,120}, // Gris
     {20,20,20} // Noir
 };
-
+*/
 typedef struct Atome_Type Atome_Type;
 struct Atome_Type
 {
@@ -60,7 +60,7 @@ struct Maille
     double b;
     double c;
 
-    Couleur couleur_trait;
+//    Couleur couleur_trait;
 };
 
 int egalite(Point A, Point B);
