@@ -24,11 +24,22 @@ Octree* nouv_element(Atome M)
     return retour;
 }
 
-L_affiche new_l_affiche()
+Octree* new_octree()
 {
     return NULL;
 }
-int ajouter_a_l_affichage(L_affiche* l, Atome a)
+
+int egalite(Point A, Point B)
+{
+    Point diff = sub_pts(A,B);
+    if(norme(diff) < EPSILON)
+        return 1;
+    else
+        return 0;
+}
+
+
+int ajouter_a_l_affichage(Octree** l, Atome a)
 {
     if(*l == NULL)
     {
@@ -44,7 +55,7 @@ int ajouter_a_l_affichage(L_affiche* l, Atome a)
     }
 }
 
-void vider_l_affichage(L_affiche l)
+void vider_l_affichage(Octree* l)
 {
     if(l != NULL)
     {
@@ -55,27 +66,27 @@ void vider_l_affichage(L_affiche l)
     }
 }
 
-L_affiche supp_inf_x(L_affiche l, double x)
+Octree* supp_inf_x(Octree* l, double x)
 {
 
 }
 
-L_affiche supp_sup_x(L_affiche l, double x)
+Octree* supp_sup_x(Octree* l, double x)
 {
 
 }
 
-L_affiche supp_sup_y(L_affiche l, double y)
+Octree* supp_sup_y(Octree* l, double y)
 {
 
 }
 
-L_affiche supp_inf_z(L_affiche l, double z)
+Octree* supp_inf_z(Octree* l, double z)
 {
 
 }
 
-L_affiche supp_sup_z(L_affiche l, double z)
+Octree* supp_sup_z(Octree* l, double z)
 {
 
 }

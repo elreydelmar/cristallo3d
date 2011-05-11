@@ -3,8 +3,7 @@
 
 #include "geometrie.h"
 #include "GLbasic.h"
-
-#define EPSILON 0.00001
+#include "octree.h"
 
 /*
     Les paramètres de la fonction afficher_maille :
@@ -38,12 +37,6 @@ struct Atome_Type
     int index_couleur; // donne la couleur grace au tableau de passage
 };
 
-typedef struct Atome Atome;
-struct Atome
-{
-    Point position;
-    int type;
-};
 
 typedef struct Maille Maille;
 struct Maille
@@ -51,7 +44,7 @@ struct Maille
     int nb_atomes;
     int nb_type_atomes;
     Atome_Type* types;
-    Atome* atomes;
+    Octree* octree;
 
     double alpha;
     double beta;
@@ -63,6 +56,6 @@ struct Maille
     Couleur couleur_trait;
 };
 
-int egalite(Point A, Point B);
+
 
 #endif // MAILLE_H_INCLUDED
