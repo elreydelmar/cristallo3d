@@ -178,12 +178,12 @@ void init_camera()
     camera_courante->origine.y=2;
     camera_courante->origine.z=1;
 
-    camera_courante->x.x= 1.5;
-    camera_courante->x.y= 2;
-    camera_courante->x.z= -6.25;
+    camera_courante->x.x= -1.5;
+    camera_courante->x.y= -2;
+    camera_courante->x.z= 6.25;
 
-    camera_courante->y.x= (-2);
-    camera_courante->y.y= 1.5;
+    camera_courante->y.x= (2);
+    camera_courante->y.y= -1.5;
     camera_courante->y.z=0;
 
     camera_courante->z.x= (-1.5);
