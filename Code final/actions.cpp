@@ -265,7 +265,12 @@ void action_generer()
     // Charge la maille
     // Charge les donnees de la maille dans premaille
     Premaille premaille;
-    charger_maille(event_status->adresse_fichier, &premaille);
+    if(charger_maille(event_status->adresse_fichier, &premaille))
+    {
+       MessageBox(NULL,"Erreur fichier invalide","Maille",MB_OK);
+       supp_premaille(premaille);
+       return;
+    }
     premaille_to_maille(premaille, &(event_status->maille));
 
     // On genere l octree
@@ -273,6 +278,21 @@ void action_generer()
     MessageBox(NULL,"Maille générée","Maille",MB_OK); // TODO
 
     supp_premaille(premaille);
+
+    // On ajoute les atomes dans le menu defilant
+    // D'abord on jarte tout
+    int retour = 1;
+    while(retour != CB_ERR && retour != 0)
+    {
+        retour = SendMessage(g_fenetre->choix_atome,CB_DELETESTRING,0,0);
+    }
+    // On ajoute ensuite tout
+    int i;
+    for(i=0; i<event_status->maille->nb_type_atomes; i++)
+    {
+        SendMessage(g_fenetre->choix_atome,CB_ADDSTRING,0, (LPARAM)event_status->maille->types[i].symbole);
+    }
+
 }
 
 void action_change_nb_x()
@@ -288,6 +308,8 @@ void action_change_nb_x()
     {
         int nombre = (int)chaine_to_double(chaine);
         event_status->nb_x = (nombre > 0) ? nombre : 1;
+        // On genere l octree
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
     }
 }
 
@@ -304,6 +326,8 @@ void action_change_nb_y()
     {
         int nombre = (int)chaine_to_double(chaine);
         event_status->nb_y = (nombre > 0) ? nombre : 1;
+        // On genere l octree
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
     }
 }
 
@@ -320,6 +344,8 @@ void action_change_nb_z()
     {
         int nombre = (int)chaine_to_double(chaine);
         event_status->nb_z = (nombre > 0) ? nombre : 1;
+        // On genere l octree
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
     }
 }
 
@@ -331,7 +357,10 @@ int get_atome_courant()
 void action_change_atome()
 {
     // Charge les donnees de l atome
-    MessageBox(NULL,"Changement de l atome","Maille",MB_OK);
+    int atome_selectionne = get_atome_courant();
+    if(atome_selectionne == CB_ERR)
+        return;
+    SendMessage(g_fenetre->couleur, CB_SETCURSEL, event_status->maille->types[atome_selectionne].index_couleur,0);
 }
 
 double slider_to_double(int i, double min, double max)
