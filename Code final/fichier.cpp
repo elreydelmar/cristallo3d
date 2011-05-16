@@ -48,7 +48,7 @@ int charger_maille(char* nom_du_fichier)
     afficher_l_ligne(premaille.lignes);
 
     vider_l_int(&types);
-    supp_premaille(premaille);
+    supp_premaille(premaille); // A JARTER
     fclose(fichier);
     return 0;
 }

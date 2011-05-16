@@ -45,17 +45,20 @@
 		<Unit filename="GLbasic.h" />
 		<Unit filename="actions.cpp" />
 		<Unit filename="actions.h" />
-		<Unit filename="affichage_maille.cpp" />
-		<Unit filename="affichage_maille.h" />
+		<Unit filename="arbre.cpp" />
+		<Unit filename="arbre.h" />
 		<Unit filename="boutons.cpp" />
 		<Unit filename="boutons.h" />
 		<Unit filename="camera.cpp" />
 		<Unit filename="camera.h" />
 		<Unit filename="const_fenetre.h" />
+		<Unit filename="err_fichier.h" />
 		<Unit filename="evenement.cpp" />
 		<Unit filename="evenement.h" />
 		<Unit filename="fenetre.cpp" />
 		<Unit filename="fenetre.h" />
+		<Unit filename="fichier.cpp" />
+		<Unit filename="fichier.h" />
 		<Unit filename="geometrie.cpp" />
 		<Unit filename="geometrie.h" />
 		<Unit filename="maille.cpp" />
@@ -63,7 +66,10 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="octree.cpp" />
 		<Unit filename="octree.h" />
+		<Unit filename="premaille.cpp" />
+		<Unit filename="premaille.h" />
 		<Unit filename="type_fenetre.h" />
+		<Unit filename="type_ligne.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

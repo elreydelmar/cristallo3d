@@ -62,4 +62,5 @@ void vider_l_pre_atome(L_Pre_Atome* liste);
 
 int type_loop(L_int* l); // 0 pour inutile, 1 pour symmetry, 2 pour le reste
 
+
 #endif // PREMAILLE_H_INCLUDED
