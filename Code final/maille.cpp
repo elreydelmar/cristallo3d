@@ -63,6 +63,7 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
     {
         strcpy((*maille)->types[i].symbole, buff2->symbole);
         // RECUPERER ICI LES INFOS SUR L ATOME
+        (*maille)->types[i].rayon_ionique = 0.1;
         (*maille)->types[i].index_couleur = index_couleur;
         i++;
         index_couleur += 7;
