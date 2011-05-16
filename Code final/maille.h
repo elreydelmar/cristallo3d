@@ -2,8 +2,10 @@
 #define MAILLE_H_INCLUDED
 
 #include "geometrie.h"
-#include "GLbasic.h"
 #include "octree.h"
+#include "GLbasic.h"
+#include "premaille.h"
+
 
 /*
     Les paramètres de la fonction afficher_maille :
@@ -28,23 +30,23 @@ const Couleur couleurs[13] =
     {20,20,20} // Noir
 };
 
-typedef struct Atome_Type Atome_Type;
-struct Atome_Type
+struct _L_Symbole
 {
     char symbole[6];
-    int numero_atomique;
-    double rayon_ionique;
-    int index_couleur; // donne la couleur grace au tableau de passage
+    struct _L_Symbole* suivant;
 };
-
+typedef struct _L_Symbole L_Symbole;
 
 typedef struct Maille Maille;
 struct Maille
 {
-    int nb_atomes;
     int nb_type_atomes;
     Atome_Type* types;
-    Octree* octree;
+    Octree* atomes;
+
+// Pour reconstruire les mailles
+    L_ligne* lignes;
+    L_Pre_Atome* p_atomes;
 
     double alpha;
     double beta;
@@ -56,6 +58,13 @@ struct Maille
     Couleur couleur_trait;
 };
 
+Maille* alloc_maille();
+void free_maille(Maille* maille);
 
+int premaille_to_maille(Premaille premaille, Maille** maille);
+void charger_octree(Maille* maille, int nx, int ny, int nz);
+void label_to_symbole(const char label[10], char symbole[6]);
+int ajouter_symbole(L_Symbole** l, const char symbole[6]); // 1 si ajout, 0 sinon
+void vider_symbole(L_Symbole* l);
 
 #endif // MAILLE_H_INCLUDED
