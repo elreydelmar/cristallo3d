@@ -84,8 +84,9 @@ int type_de_ligne(char* ligne)
 
     if(ligne[0] == '_')
         return NON_DEFINI;
-    else
+    if(ligne[0] != ' ' && ligne[0] != EOF && ligne[0] != '\n')
         return DONNEES;
+    return NON_DEFINI;
 }
 
 int type_de_ligne_cell(char* ligne)
@@ -549,3 +550,12 @@ void afficher_arbre(Arbre* a)
     }
 }
 
+
+void afficher_pre_atomes(L_Pre_Atome* l)
+{
+    if(l != NULL)
+    {
+        printf("%s : %lf, %lf, %lf\n", l->label, l->x, l->y, l->z);
+        afficher_pre_atomes(l->queue);
+    }
+}

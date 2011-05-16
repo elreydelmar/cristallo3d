@@ -65,7 +65,6 @@ void add_to_l_pre_atome(L_Pre_Atome** liste, char label[], double x, double y, d
         nouveau->z = z;
         strcpy(nouveau->label, label);
         nouveau->queue = *liste;
-
     *liste = nouveau;
 }
 

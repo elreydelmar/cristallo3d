@@ -43,5 +43,6 @@ double char_to_chiffre(char c);
 // Test
 void afficher_arbre(Arbre* a);
 void afficher_l_ligne(L_ligne* l);
+void afficher_pre_atomes(L_Pre_Atome* l);
 
 #endif // FICHIER_H_INCLUDED

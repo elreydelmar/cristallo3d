@@ -20,15 +20,18 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
         set_camera();
 
     // drawscene
-    if(event_status->maille == NULL)
+    if(event_status != NULL)
     {
+        if(event_status->maille == NULL)
+        {
 
-        dessiner_repere(1);
-        sample3d();
-    }
-    else
-    {
-        afficher_maille(event_status->maille, camera_courante);
+            dessiner_repere(1);
+            sample3d();
+        }
+        else
+        {
+            afficher_maille(event_status->maille, camera_courante);
+        }
     }
         afficher_dessin();
 

@@ -119,7 +119,7 @@ void label_to_symbole(const char label[10], char symbole[6])
 void charger_octree(Maille* maille, int nx, int ny, int nz)
 {
 
-    L_ligne* lignes = maille->lignes;
+    L_ligne* lignes = NULL;
     L_Pre_Atome* p_atomes = maille->p_atomes;
 
     // On calcule le triedre
@@ -133,6 +133,7 @@ void charger_octree(Maille* maille, int nx, int ny, int nz)
     while(p_atomes != NULL)
     {
         atome.type = find_type(maille->types, p_atomes->label, maille->nb_type_atomes);
+        lignes = maille->lignes;
         while(lignes != NULL)
         {
             // On remplit la maille
