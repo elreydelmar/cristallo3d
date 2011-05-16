@@ -84,7 +84,7 @@ int type_de_ligne(char* ligne)
 
     if(ligne[0] == '_')
         return NON_DEFINI;
-    if(ligne[0] != ' ' && ligne[0] != EOF && ligne[0] != '\n')
+    if(ligne[0] != '\n')
         return DONNEES;
     return NON_DEFINI;
 }
