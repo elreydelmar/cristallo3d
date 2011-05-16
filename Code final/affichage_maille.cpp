@@ -60,9 +60,9 @@ void afficher_atome(Atome A, Atome_Type T)
     dessiner_sphere(sphere, couleurs[T.index_couleur], centre);
 }
 
-void afficher_maille (Maille* M, Camera* C){_afficher_maille(M, C, M->octree);}
+void afficher_maille (Maille* M, Camera* C){_afficher_maille(M, C, M->atomes);}
 
-void _afficher_maille(Maille* M, Camera* C, Octree* O) // O est le premier sommet
+void _afficher_maille(Maille* M, Camera* C, Octree* O)
 {
     if (O==NULL) return;
     else
@@ -74,12 +74,20 @@ void _afficher_maille(Maille* M, Camera* C, Octree* O) // O est le premier somme
             Atome A=O->M;
             Atome_Type T=M->types[A.type];
             afficher_atome(A, T);
-            int j;
-            for (j=0; j<8; j++)
-            {
-                if (affiche[j]==1) _afficher_maille(M, C, O->fils[j]);
-            }
+        }
+        int j;
+        for (j=0; j<8; j++)
+        {
+            if (affiche[j]==1) _afficher_maille(M, C, O->fils[j]);
         }
     }
 
 }
+
+
+/*changeme_base(double a,double b,double c,double alpha,double beta,double gamma)
+{
+    Point X={a,0,0};
+    Point Y={b*cos(beta), b*sin(beta),0};
+    Point Z={}
+}*/

@@ -2,6 +2,7 @@
 #define AFF_MAILLE_H
 
 #include "maille.h"
+#include "octree.h"
 
 void test_affichage(int affiche[9], Camera* C, Octree* O);
 
