@@ -1,5 +1,8 @@
 #include "evenement.h"
 #include "GLbasic.h"
+#include "affichage_maille.h"
+
+extern EventStatus* event_status;
 
 
 int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesDeCommande, int modeDAffichage)
@@ -17,8 +20,16 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
         set_camera();
 
     // drawscene
+    if(event_status->maille == NULL)
+    {
+
         dessiner_repere(1);
         sample3d();
+    }
+    else
+    {
+        afficher_maille(event_status->maille, camera_courante);
+    }
         afficher_dessin();
 
         update_gl(); // glut
