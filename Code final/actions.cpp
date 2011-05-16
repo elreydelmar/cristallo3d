@@ -361,6 +361,9 @@ void action_change_atome()
     if(atome_selectionne == CB_ERR)
         return;
     SendMessage(g_fenetre->couleur, CB_SETCURSEL, event_status->maille->types[atome_selectionne].index_couleur,0);
+
+    int pos_slider = conversion_edit_slider(event_status->maille->types[atome_selectionne].rayon_ionique, 0, 100, 0.01, 1.0);
+    SendMessage(g_fenetre->s_taille, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) pos_slider);
 }
 
 double slider_to_double(int i, double min, double max)
@@ -389,7 +392,7 @@ void action_change_taille()
         if(atome != CB_ERR)
         {
             double a = event_status->maille->a;
-            event_status->maille->types[atome].rayon_ionique = slider_to_double(SendMessage(g_fenetre->s_taille, TBM_GETPOS, 0, 0), a/20., a);
+            event_status->maille->types[atome].rayon_ionique = conversion_slider_edit(SendMessage(g_fenetre->s_taille, TBM_GETPOS, 0, 0), 0.01, 1.00);
         }
     }
 }
