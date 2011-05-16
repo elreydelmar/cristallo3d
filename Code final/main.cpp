@@ -11,15 +11,17 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
     while (recuperer_evenement())
     {
         traiter_evenement();
+
+    // matrix + glClear
         nouveau_dessin();
         set_camera();
 
+    // drawscene
         dessiner_repere(1);
-
         sample3d();
-
         afficher_dessin();
-        update_gl();
+
+        update_gl(); // glut
     }
 
     // Destruction de la fenetre
