@@ -1,14 +1,13 @@
 #include "fichier.h"
 
-int charger_maille(char* nom_du_fichier)
+int charger_maille(char* nom_du_fichier, Premaille* premaille)
 {
     FILE* fichier = fopen(nom_du_fichier, "r");
     if(fichier == NULL)
         return ERR_FILE_NOT_FOUND;
 
 
-    Premaille premaille;
-    init_premaille(&premaille);
+    init_premaille(premaille);
     char ligne[LONGUEUR_LIGNE_MAX];
     int type_ligne = NON_DEFINI;
     int in_loop = 0;
@@ -27,7 +26,7 @@ int charger_maille(char* nom_du_fichier)
         }
         else if(type_ligne == DONNEES) // donnees
         {
-            act_donnees(ligne, types, &premaille);
+            act_donnees(ligne, types, premaille);
             in_loop = 0;
         }
         else // commande
@@ -35,20 +34,19 @@ int charger_maille(char* nom_du_fichier)
             if(in_loop)
                 add_l_int(&types, type_ligne);
             else
-                act_uniligne(ligne, type_ligne, &premaille);
+                act_uniligne(ligne, type_ligne, premaille);
         }
     }
-    printf("a : %lf\n", premaille.a);
-    printf("b : %lf\n", premaille.b);
-    printf("c : %lf\n", premaille.c);
-    printf("alpha : %lf\n", premaille.alpha);
-    printf("beta : %lf\n", premaille.beta);
-    printf("gamma : %lf\n", premaille.gamma);
+    printf("a : %lf\n", premaille->a);
+    printf("b : %lf\n", premaille->b);
+    printf("c : %lf\n", premaille->c);
+    printf("alpha : %lf\n", premaille->alpha);
+    printf("beta : %lf\n", premaille->beta);
+    printf("gamma : %lf\n", premaille->gamma);
 
-    afficher_l_ligne(premaille.lignes);
+    afficher_l_ligne(premaille->lignes);
 
     vider_l_int(&types);
-    supp_premaille(premaille); // A JARTER
     fclose(fichier);
     return 0;
 }
@@ -61,8 +59,8 @@ void init_premaille(Premaille* premaille)
 
 void supp_premaille(Premaille premaille)
 {
-    vider_l_pre_atome(premaille.atomes);
-    vider_l_ligne(premaille.lignes);
+//    vider_l_pre_atome(premaille.atomes);
+//    vider_l_ligne(premaille.lignes);
 }
 
 int type_de_ligne(char* ligne)

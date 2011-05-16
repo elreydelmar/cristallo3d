@@ -5,6 +5,7 @@
 #include "octree.h"
 #include "GLbasic.h"
 #include "premaille.h"
+#include "arbre.h"
 
 
 /*
@@ -63,8 +64,11 @@ void free_maille(Maille* maille);
 
 int premaille_to_maille(Premaille premaille, Maille** maille);
 void charger_octree(Maille* maille, int nx, int ny, int nz);
+
 void label_to_symbole(const char label[10], char symbole[6]);
 int ajouter_symbole(L_Symbole** l, const char symbole[6]); // 1 si ajout, 0 sinon
 void vider_symbole(L_Symbole* l);
+
+int find_type(Atome_Type types[], char label[10], int nb_types);
 
 #endif // MAILLE_H_INCLUDED

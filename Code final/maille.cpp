@@ -12,15 +12,18 @@ Maille* alloc_maille()
 
 void free_maille(Maille* maille)
 {
-    // Tableaux
-    free(maille->types);
+    if(maille != NULL)
+    {
+        // Tableaux
+        free(maille->types);
 
-    // Octree
-    vider_octree(maille->atomes);
+        // Octree
+        vider_octree(maille->atomes);
 
-    // Listes
-    vider_l_ligne(maille->lignes);
-    vider_l_pre_atome(maille->p_atomes);
+        // Listes
+        vider_l_ligne(maille->lignes);
+        vider_l_pre_atome(maille->p_atomes);
+    }
 }
 
 int premaille_to_maille(Premaille premaille, Maille** maille)
@@ -107,22 +110,57 @@ void label_to_symbole(const char label[10], char symbole[6])
     while(label[i] != 0 && (label[i]<= 48 || label[i]>= 57) && i<5)
     {
         symbole[i] = label[i];
+        i++;
     }
     symbole[i] = 0;
 }
 
 void charger_octree(Maille* maille, int nx, int ny, int nz)
 {
-    // On remplit la maille
-    int x,y,z;
-    for(x=-nx/2; x<-nx/2+nx; x++)
-    {
-        for(y=-ny/2; y<-ny/2+ny; y++)
-        {
-            for(z=-nz/2; z<-nz/2+nz; z++)
-            {
 
+    L_ligne* lignes = maille->lignes;
+    L_Pre_Atome* p_atomes = maille->p_atomes;
+
+    // On calcule le triedre
+    Point t_x = {1,0,0};
+    Point t_y = {0,1,0};
+    Point t_z = {0,0,1};
+
+    Atome atome;
+    int erreur = 0;
+
+    while(p_atomes != NULL)
+    {
+        atome.type = find_type(maille->types, p_atomes->label, maille->nb_type_atomes);
+        while(lignes != NULL)
+        {
+            // On remplit la maille
+            int x,y,z;
+            for(x=-nx/2; x<-nx/2+nx; x++)
+            {
+                for(y=-ny/2; y<-ny/2+ny; y++)
+                {
+                    for(z=-nz/2; z<-nz/2+nz; z++)
+                    {
+                        atome.position = add_pts(mult_scal_pts(calcul_arbre(lignes->x, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_x),
+                                         add_pts(mult_scal_pts(calcul_arbre(lignes->y, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_y),
+                                                 mult_scal_pts(calcul_arbre(lignes->z, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_z)));
+                    }
+                }
             }
+            lignes = lignes->queue;
         }
+        p_atomes = p_atomes->queue;
     }
+}
+
+int find_type(Atome_Type types[], char label[10], int nb_types)
+{
+    int i;
+    for(i=0; i<nb_types; i++)
+    {
+        if(strstr(label, types[i].symbole) != NULL)
+            return i;
+    }
+    return -1;
 }

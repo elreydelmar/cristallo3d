@@ -12,6 +12,7 @@ void init_event()
         event_status->retro = 0;
         event_status->dist_retro = 12;
         event_status->distance = 12;
+        event_status->adresse_fichier[0] = 0;
 
         event_status->maille = NULL;
         event_status->nb_x = 1;
@@ -28,6 +29,7 @@ void end_event()
 {
     if(event_status != NULL)
     {
+        free_maille(event_status->maille);
         free(event_status);
         event_status = NULL;
     }
@@ -253,6 +255,7 @@ void action_parcourir()
 
     if (GetOpenFileName(&ofn)==TRUE)
     {
+        strcpy(event_status->adresse_fichier, szFile);
         SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
     }
 }
@@ -260,8 +263,16 @@ void action_parcourir()
 void action_generer()
 {
     // Charge la maille
-    // Charge les donnees de la maille sur la fenetre
-    MessageBox(NULL,"Génération de la maille","Maille",MB_OK); // TODO
+    // Charge les donnees de la maille dans premaille
+    Premaille premaille;
+    charger_maille(event_status->adresse_fichier, &premaille);
+    premaille_to_maille(premaille, &(event_status->maille));
+
+    // On genere l octree
+    charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+    MessageBox(NULL,"Maille générée","Maille",MB_OK); // TODO
+
+    supp_premaille(premaille);
 }
 
 void action_change_nb_x()

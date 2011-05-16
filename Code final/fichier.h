@@ -12,7 +12,7 @@
 
 #define LONGUEUR_LIGNE_MAX 250
 
-int charger_maille(char* nom_du_fichier); // l'entier renvoye est l erreur ou non de la fonction
+int charger_maille(char* nom_du_fichier, Premaille* premaille); // l'entier renvoye est l erreur ou non de la fonction
 
 void init_premaille(Premaille* premaille);
 void supp_premaille(Premaille premaille);

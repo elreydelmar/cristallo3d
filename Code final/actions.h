@@ -4,6 +4,8 @@
 #include "maille.h"
 #include "fenetre.h"
 #include "camera.h"
+#include "fichier.h"
+#include <string.h>
 
 #define PAS_GLISSER 0.005
 #define PAS_TETE 0.005
@@ -22,6 +24,7 @@ struct EventStatus
     int retro; // booleen
     double dist_retro; // A VERIFIER
     double distance;
+    char adresse_fichier[255];
 
     Maille* maille;
     int nb_x; // A VERIFIER
