@@ -1,0 +1,175 @@
+# depslib dependency file v1.0
+1305116985 source:c:\users\biboutcho\svn\code final\glbasic.cpp
+	"GLbasic.h"
+
+1304925677 c:\users\biboutcho\svn\code final\geometrie.h
+	<math.h>
+	<stdio.h>
+
+1304955856 c:\users\biboutcho\svn\code final\glbasic.h
+	<GL/gl.h>
+	<GL/glu.h>
+	<cstdlib>
+	"geometrie.h"
+	"const_fenetre.h"
+	"camera.h"
+
+1304925677 c:\users\biboutcho\svn\code final\const_fenetre.h
+
+1304982818 source:c:\users\biboutcho\svn\code final\actions.cpp
+	"actions.h"
+
+1304955856 c:\users\biboutcho\svn\code final\actions.h
+	"maille.h"
+	"fenetre.h"
+	"camera.h"
+
+1304925677 c:\users\biboutcho\svn\code final\maille.h
+	"geometrie.h"
+	"GLbasic.h"
+
+1304925677 c:\users\biboutcho\svn\code final\fenetre.h
+	<windows.h>
+	<gl\gl.h>
+	<gl\glu.h>
+	<gl\glaux.h>
+	"boutons.h"
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1304925677 c:\users\biboutcho\svn\code final\boutons.h
+	<windows.h>
+	<commctrl.h>
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1304925677 c:\users\biboutcho\svn\code final\type_fenetre.h
+
+1304955856 c:\users\biboutcho\svn\code final\camera.h
+	<stdio.h>
+	<stdlib.h>
+	"geometrie.h"
+
+1304925677 source:c:\users\biboutcho\svn\code final\boutons.cpp
+	"boutons.h"
+
+1304925677 source:c:\users\biboutcho\svn\code final\evenement.cpp
+	"evenement.h"
+
+1304925677 c:\users\biboutcho\svn\code final\evenement.h
+	"fenetre.h"
+	"actions.h"
+	<time.h>
+	<windowsx.h>
+
+1304925677 source:c:\users\biboutcho\svn\code final\fenetre.cpp
+	"fenetre.h"
+
+1304925677 source:c:\users\biboutcho\svn\code final\geometrie.cpp
+	"geometrie.h"
+
+1304925677 source:c:\users\biboutcho\svn\code final\maille.cpp
+	"maille.h"
+
+1305116985 source:c:\users\biboutcho\svn\code final\main.cpp
+	"evenement.h"
+	"GLbasic.h"
+
+1304955856 source:c:\users\biboutcho\svn\code final\octree.cpp
+	"octree.h"
+
+1304955856 c:\users\biboutcho\svn\code final\octree.h
+	"geometrie.h"
+	"maille.h"
+	<stdlib.h>
+
+1305102379 source:c:\users\biboutcho\svn\code final\camera.cpp
+	"camera.h"
+
+1305106076 source:c:\users\biboutcho\documents\pdg\code final\glbasic.cpp
+	"GLbasic.h"
+
+1304955856 c:\users\biboutcho\documents\pdg\code final\glbasic.h
+	<GL/gl.h>
+	<GL/glu.h>
+	<cstdlib>
+	"geometrie.h"
+	"const_fenetre.h"
+	"camera.h"
+
+1304925677 c:\users\biboutcho\documents\pdg\code final\geometrie.h
+	<math.h>
+	<stdio.h>
+
+1304925677 c:\users\biboutcho\documents\pdg\code final\const_fenetre.h
+
+1304955856 c:\users\biboutcho\documents\pdg\code final\camera.h
+	<stdio.h>
+	<stdlib.h>
+	"geometrie.h"
+
+1304982818 source:c:\users\biboutcho\documents\pdg\code final\actions.cpp
+	"actions.h"
+
+1304955856 c:\users\biboutcho\documents\pdg\code final\actions.h
+	"maille.h"
+	"fenetre.h"
+	"camera.h"
+
+1304925677 c:\users\biboutcho\documents\pdg\code final\maille.h
+	"geometrie.h"
+	"GLbasic.h"
+
+1304925677 c:\users\biboutcho\documents\pdg\code final\fenetre.h
+	<windows.h>
+	<gl\gl.h>
+	<gl\glu.h>
+	<gl\glaux.h>
+	"boutons.h"
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1304925677 c:\users\biboutcho\documents\pdg\code final\boutons.h
+	<windows.h>
+	<commctrl.h>
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1304925677 c:\users\biboutcho\documents\pdg\code final\type_fenetre.h
+
+1304925677 source:c:\users\biboutcho\documents\pdg\code final\boutons.cpp
+	"boutons.h"
+
+1305102379 source:c:\users\biboutcho\documents\pdg\code final\camera.cpp
+	"camera.h"
+
+1304925677 source:c:\users\biboutcho\documents\pdg\code final\evenement.cpp
+	"evenement.h"
+
+1304925677 c:\users\biboutcho\documents\pdg\code final\evenement.h
+	"fenetre.h"
+	"actions.h"
+	<time.h>
+	<windowsx.h>
+
+1304925677 source:c:\users\biboutcho\documents\pdg\code final\fenetre.cpp
+	"fenetre.h"
+
+1304925677 source:c:\users\biboutcho\documents\pdg\code final\geometrie.cpp
+	"geometrie.h"
+
+1304925677 source:c:\users\biboutcho\documents\pdg\code final\maille.cpp
+	"maille.h"
+
+1305106995 source:c:\users\biboutcho\documents\pdg\code final\main.cpp
+	"evenement.h"
+	"GLbasic.h"
+
+1304955856 source:c:\users\biboutcho\documents\pdg\code final\octree.cpp
+	"octree.h"
+
+1304955856 c:\users\biboutcho\documents\pdg\code final\octree.h
+	"geometrie.h"
+	"maille.h"
+	<stdlib.h>
+
