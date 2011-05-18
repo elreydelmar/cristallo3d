@@ -394,7 +394,7 @@ void action_change_taille()
         int atome = get_atome_courant();
         if(atome != CB_ERR)
         {
-            double a = event_status->maille->a;
+           // double a = event_status->maille->a;
             event_status->maille->types[atome].rayon_ionique = conversion_slider_edit(SendMessage(g_fenetre->s_taille, TBM_GETPOS, 0, 0), 0.01, 1.00);
         }
     }
@@ -404,8 +404,7 @@ void action_change_espace()
 {
     if(event_status->maille != NULL)
     {
-        double a = event_status->maille->a;
-        event_status->espace_atome = slider_to_double(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), a/20., a);
+        event_status->maille->agrandissement = slider_to_double(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), 0.1, 10);
     }
 }
 

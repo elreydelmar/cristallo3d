@@ -161,6 +161,11 @@ void remplir_maille(Maille m, int nx, int ny, int nz)
 
 }
 
+int ajout_octree(L_ligne* ligne, Octree** resultat)
+{
+
+}
+
 int est_dans_cube(Atome a, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z)
 {
     return (a.position.x >= min_x && a.position.x <= max_x
