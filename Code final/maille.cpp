@@ -161,9 +161,29 @@ void remplir_maille(Maille m, int nx, int ny, int nz)
 
 }
 
-int ajout_octree(L_ligne* ligne, Octree** resultat)
+void ajout_octree(L_ligne* lignes, Octree* sommet, Octree** resultat)
 {
-    // On forme l'octree
+    if(sommet == NULL)
+        return;
+
+    Atome atome;
+    atome.type = sommet->M.type;
+    // On calcule le triedre
+    Point t_x = {1,0,0};
+    Point t_y = {0,1,0};
+    Point t_z = {0,0,1};
+
+    int erreur = 0;
+    while(lignes != NULL)
+    {
+        // On remplit la maille
+        atome.position = add_pts(mult_scal_pts(calcul_arbre(lignes->x, sommet->M.position.x, sommet->M.position.y, sommet->M.position.z, &erreur), t_x),
+                         add_pts(mult_scal_pts(calcul_arbre(lignes->y, sommet->M.position.x, sommet->M.position.y, sommet->M.position.z, &erreur), t_y),
+                                 mult_scal_pts(calcul_arbre(lignes->z, sommet->M.position.x, sommet->M.position.y, sommet->M.position.z, &erreur), t_z)));
+       // if(est_dans_cube(atome,min_x,min_y,min_z,max_x,max_y,max_z))
+            ajouter_a_l_affichage(resultat,atome);
+        lignes = lignes->queue;
+    }
 }
 
 int est_dans_cube(Atome a, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z)

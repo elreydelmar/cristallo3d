@@ -509,3 +509,25 @@ void action_zoom(int sens)
     else    // dezoom
         zoom(camera_courante, 0.9);
 }
+
+void drawscene()
+{
+    if(event_status != NULL)
+    {
+        if(event_status->maille == NULL)
+        {
+
+            dessiner_repere(1);
+            sample3d();
+        }
+        else
+        {
+            afficher_maille(event_status->maille);
+        }
+    }
+}
+
+void display()
+{
+
+}

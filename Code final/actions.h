@@ -5,6 +5,8 @@
 #include "fenetre.h"
 #include "camera.h"
 #include "fichier.h"
+#include "GLbasic.h"
+#include "affichage_maille.h"
 #include <string.h>
 
 #define PAS_GLISSER 0.005
@@ -95,5 +97,10 @@ void action_controle(int valeur);
 void changer_activation_camera();
 void action_mouse_move(int x, int y);
 void action_zoom(int sens); // 1 pour le zoom, 0 pour le dezoom
+
+
+// Actions de dessin
+void drawscene();
+void display();
 
 #endif // ACTIONS_H_INCLUDED

@@ -19,20 +19,7 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
         nouveau_dessin();
         set_camera();
 
-    // drawscene
-    if(event_status != NULL)
-    {
-        if(event_status->maille == NULL)
-        {
-
-            dessiner_repere(1);
-            sample3d();
-        }
-        else
-        {
-            afficher_maille(event_status->maille);
-        }
-    }
+        drawscene();
         afficher_dessin();
 
         update_gl(); // glut
