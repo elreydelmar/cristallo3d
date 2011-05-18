@@ -33,9 +33,9 @@ void afficher_atome(Atome A, Atome_Type T, Matrice P)
     dessiner_sphere(sphere, couleurs[T.index_couleur], centre);
 }
 
-void afficher_maille (Maille* M, Camera* C){_afficher_maille(M, C, M->atomes);}
+void afficher_maille (Maille* M){_afficher_maille(M, M->atomes);}
 
-void _afficher_maille(Maille* M, Camera* C, Octree* O)
+void _afficher_maille(Maille* M, Octree* O)
 {
     Matrice P=passage (M->agrandissement*M->a, M->agrandissement*M->b, M->agrandissement*M->c, M->alpha, M->beta, M->gamma);
     if (O==NULL) return;
@@ -46,6 +46,6 @@ void _afficher_maille(Maille* M, Camera* C, Octree* O)
         afficher_atome(A, T, P);
 
         int j;
-        for (j=0; j<8; j++) _afficher_maille(M, C, O->fils[j]);
+        for (j=0; j<8; j++) _afficher_maille(M, O->fils[j]);
     }
 }
