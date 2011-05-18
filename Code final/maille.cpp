@@ -33,6 +33,7 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
     free_maille(*maille);
     *maille = alloc_maille();
 
+    (*maille)->agrandissement = 1.;
     (*maille)->a = premaille.a;
     (*maille)->b = premaille.b;
     (*maille)->c = premaille.c;
@@ -153,6 +154,11 @@ void charger_octree(Maille* maille, int nx, int ny, int nz)
         }
         p_atomes = p_atomes->queue;
     }
+}
+
+void remplir_maille(Maille m, int nx, int ny, int nz)
+{
+
 }
 
 int est_dans_cube(Atome a, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z)
