@@ -168,9 +168,9 @@ void act_uniligne(char* ligne, int type, Premaille* premaille)
 
     switch(type)
     {
-        case CLA : premaille->a = reel; break;
-        case CLB : premaille->b = reel; break;
-        case CLC : premaille->c = reel; break;
+        case CLA : premaille->a = reel/FACTOR_TAILLE_INTER; break;
+        case CLB : premaille->b = reel/FACTOR_TAILLE_INTER; break;
+        case CLC : premaille->c = reel/FACTOR_TAILLE_INTER; break;
         case CAA : premaille->alpha = deg_to_rad(reel); break;
         case CAB : premaille->beta = deg_to_rad(reel); break;
         case CAG : premaille->gamma = deg_to_rad(reel); break;

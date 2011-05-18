@@ -12,6 +12,7 @@
 #include "premaille.h"
 
 #define LONGUEUR_LIGNE_MAX 250
+#define FACTOR_TAILLE_INTER 10
 
 int charger_maille(char* nom_du_fichier, Premaille* premaille); // l'entier renvoye est l erreur ou non de la fonction
 
