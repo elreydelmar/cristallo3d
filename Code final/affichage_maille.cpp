@@ -1,50 +1,22 @@
+#include "geometrie.h"
 #include "affichage_maille.h"
 
 
-void test_affichage(int affiche[9], Camera* C, Octree* O)
+
+Matrice passage(double a,double b,double c,double alpha,double beta,double gamma)
 {
-    int i;
-    for (i=0; i<9; i++) affiche[i]=1;
-
-    if (prod_scal(C->z, {1,0,0})<0 & C->origine.x<O->M.position.x)
-    {
-        for (i=4; i<9; i++) affiche[i]=0; //annule les x positifs
-    }
-    if (prod_scal(C->z, {1,0,0})>0 & C->origine.x>O->M.position.x)
-    {
-        affiche[8]=0;
-        for (i=0; i<4; i++) affiche[i]=0; //annule les x négatifs
-    } //test sur x
-
-    if (prod_scal(C->z, {0,1,0})<0 & C->origine.y<O->M.position.y)
-    {
-        affiche[8]=0;
-        for (i=0; i<4; i++) affiche[2*i+1]=0; //annule les y positifs
-    }
-    if (prod_scal(C->z, {0,1,0})>0 & C->origine.y>O->M.position.y)
-    {
-        for (i=0; i<5; i++) affiche[2*i]=0; //annule les y négatifs
-    } //test sur y
-
-    if (prod_scal(C->z, {0,0,1})<0 & C->origine.z<O->M.position.z)
-    {
-        affiche[2]=0;
-        affiche[3]=0;
-        affiche[6]=0;
-        affiche[7]=0;
-        affiche[8]=0;//annule les z positifs
-    }
-    if (prod_scal(C->z, {0,0,1})>0 & C->origine.z>O->M.position.z)
-    {
-        affiche[0]=0;
-        affiche[1]=0;
-        affiche[4]=0;
-        affiche[5]=0;
-        affiche[8]=0;//annule les z négatifs
-    } //test sur z
+    Matrice P;
+    set_id(&P);
+    P.m[0][0]=a;
+    P.m[0][1]=b*cos(gamma);
+    P.m[1][1]=b*sin(gamma);
+    P.m[0][2]=c*cos(beta);
+    P.m[1][2]=c*(cos(alpha)/sin(gamma)-cos(beta)/tan(gamma));
+    P.m[2][2]=c*sqrt(1-cos(beta)*cos(beta)-(cos(alpha)/sin(gamma)-cos(beta)/tan(gamma))*(cos(alpha)/sin(gamma)-cos(beta)/tan(gamma)));
+    return P;
 }
 
-void afficher_atome(Atome A, Atome_Type T)
+void afficher_atome(Atome A, Atome_Type T, Matrice P)
 {
 
     Sphere sphere;
@@ -56,6 +28,7 @@ void afficher_atome(Atome A, Atome_Type T)
     centre.x=A.position.x;
     centre.y=A.position.y;
     centre.z=A.position.z;
+    centre=mult_mat_point(P, centre);
 
     dessiner_sphere(sphere, couleurs[T.index_couleur], centre);
 }
@@ -64,30 +37,23 @@ void afficher_maille (Maille* M, Camera* C){_afficher_maille(M, C, M->atomes);}
 
 void _afficher_maille(Maille* M, Camera* C, Octree* O)
 {
+    Matrice P=passage (M->a, M->b, M->c, M->alpha, M->beta, M->gamma);
+    printf("a=%lf\n",M->a);
+    printf("b=%lf\n",M->b);
+    printf("c=%lf\n",M->c);
+    printf("alpha=%lf\n",M->alpha);
+    printf("beta=%lf\n",M->beta);
+    printf("gamma=%lf\n",M->gamma);
+    afficher_matrice(P);
     if (O==NULL) return;
     else
     {
-        int affiche[9];
-        test_affichage(affiche, C, O);
-        if (affiche[8]==1)
-        {
-            Atome A=O->M;
-            Atome_Type T=M->types[A.type];
-            afficher_atome(A, T);
-        }
+
+        Atome A=O->M;
+        Atome_Type T=M->types[A.type];
+        afficher_atome(A, T, P);
+
         int j;
-        for (j=0; j<8; j++)
-        {
-            if (affiche[j]==1) _afficher_maille(M, C, O->fils[j]);
-        }
+        for (j=0; j<8; j++) _afficher_maille(M, C, O->fils[j]);
     }
-
 }
-
-
-/*changeme_base(double a,double b,double c,double alpha,double beta,double gamma)
-{
-    Point X={a,0,0};
-    Point Y={b*cos(beta), b*sin(beta),0};
-    Point Z={}
-}*/

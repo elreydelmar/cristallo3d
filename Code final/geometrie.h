@@ -53,6 +53,7 @@ struct Ligne
     Point Q;
 };
 
+
 /// Les fonctions
 
 // Fonctions de test
