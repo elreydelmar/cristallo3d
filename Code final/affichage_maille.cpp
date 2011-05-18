@@ -38,17 +38,9 @@ void afficher_maille (Maille* M, Camera* C){_afficher_maille(M, C, M->atomes);}
 void _afficher_maille(Maille* M, Camera* C, Octree* O)
 {
     Matrice P=passage (M->a, M->b, M->c, M->alpha, M->beta, M->gamma);
-    printf("a=%lf\n",M->a);
-    printf("b=%lf\n",M->b);
-    printf("c=%lf\n",M->c);
-    printf("alpha=%lf\n",M->alpha);
-    printf("beta=%lf\n",M->beta);
-    printf("gamma=%lf\n",M->gamma);
-    afficher_matrice(P);
     if (O==NULL) return;
     else
     {
-
         Atome A=O->M;
         Atome_Type T=M->types[A.type];
         afficher_atome(A, T, P);
