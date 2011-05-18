@@ -68,6 +68,9 @@ void charger_octree(Maille* maille, int nx, int ny, int nz);
 void label_to_symbole(const char label[10], char symbole[6]);
 int ajouter_symbole(L_Symbole** l, const char symbole[6]); // 1 si ajout, 0 sinon
 void vider_symbole(L_Symbole* l);
+int est_dans_cube(Atome a, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z);
+void min_max_from_n(int n, double* min, double* max);
+void remplir_maille(Maille m, int nx, int ny, int nz);
 
 int find_type(Atome_Type types[], char label[10], int nb_types);
 

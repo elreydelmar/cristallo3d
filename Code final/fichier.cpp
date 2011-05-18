@@ -171,9 +171,9 @@ void act_uniligne(char* ligne, int type, Premaille* premaille)
         case CLA : premaille->a = reel; break;
         case CLB : premaille->b = reel; break;
         case CLC : premaille->c = reel; break;
-        case CAA : premaille->alpha = reel; break;
-        case CAB : premaille->beta = reel; break;
-        case CAG : premaille->gamma = reel; break;
+        case CAA : premaille->alpha = deg_to_rad(reel); break;
+        case CAB : premaille->beta = deg_to_rad(reel); break;
+        case CAG : premaille->gamma = deg_to_rad(reel); break;
         default : break;
     }
 }
@@ -500,6 +500,11 @@ Op char_to_op(char c)
 double char_to_chiffre(char c)
 {
     return ((double) (c-48));
+}
+
+double deg_to_rad(double deg)
+{
+    return (deg*M_PI/180);
 }
 
 void afficher_l_ligne(L_ligne* l)

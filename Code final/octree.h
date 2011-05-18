@@ -57,9 +57,4 @@ int fusionner_arbre(Octree* a_ajouter, Octree** resultat);
 // vider
 void vider_octree(Octree* l);
 
-
-// Camera
-// TODO 2
-//void affiche(L_affiche l, Camera c, int reponse[]); // reponse de taille 9, le 8 est l atome present
-
 #endif // OCTREE_H_INCLUDED

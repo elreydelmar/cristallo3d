@@ -127,10 +127,15 @@ void charger_octree(Maille* maille, int nx, int ny, int nz)
     Point t_y = {0,1,0};
     Point t_z = {0,0,1};
 
+    // Pour la position dans la maille
+    double min_x, min_y, min_z;
+    double max_x, max_y, max_z;
+    min_max_from_n(nx, &min_x, &max_x);
+    min_max_from_n(ny, &min_y, &max_y);
+    min_max_from_n(nz, &min_z, &max_z);
+
     Atome atome;
     int erreur = 0;
-    int ajout_na = 0;
-    int aff = 0;
 
     while(p_atomes != NULL)
     {
@@ -139,24 +144,38 @@ void charger_octree(Maille* maille, int nx, int ny, int nz)
         while(lignes != NULL)
         {
             // On remplit la maille
-            int x,y,z;
-            for(x=-nx/2; x<-nx/2+nx; x++)
-            {
-                for(y=-ny/2; y<-ny/2+ny; y++)
-                {
-                    for(z=-nz/2; z<-nz/2+nz; z++)
-                    {
-                        atome.position = add_pts(mult_scal_pts(calcul_arbre(lignes->x, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_x),
-                                         add_pts(mult_scal_pts(calcul_arbre(lignes->y, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_y),
-                                                 mult_scal_pts(calcul_arbre(lignes->z, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_z)));
-                        ajouter_a_l_affichage((&maille->atomes) ,atome); // PB, certains atomes ne sont pas ajoutes
-                    }
-                }
-            }
+            atome.position = add_pts(mult_scal_pts(calcul_arbre(lignes->x, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_x),
+                             add_pts(mult_scal_pts(calcul_arbre(lignes->y, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_y),
+                                     mult_scal_pts(calcul_arbre(lignes->z, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_z)));
+            if(est_dans_cube(atome,min_x,min_y,min_z,max_x,max_y,max_z))
+                ajouter_a_l_affichage((&maille->atomes) ,atome);
             lignes = lignes->queue;
         }
         p_atomes = p_atomes->queue;
     }
+}
+
+int est_dans_cube(Atome a, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z)
+{
+    return (a.position.x >= min_x && a.position.x <= max_x
+            && a.position.y >= min_y && a.position.y <= max_y
+            && a.position.z >= min_z && a.position.z <= max_z);
+}
+
+void min_max_from_n(int n, double* min, double* max)
+{
+    *min = -1.;
+    *max = 1.;
+    int i;
+    for(i=1; i<n; i++)
+    {
+        if(i%2 == 0) // On change le max
+            *max += 1;
+        else         // On change le min
+            *min -= 1;
+    }
+    *min -= EPSILON;
+    *max += EPSILON;
 }
 
 int find_type(Atome_Type types[], char label[10], int nb_types)

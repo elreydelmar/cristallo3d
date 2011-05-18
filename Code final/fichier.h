@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include <string.h>
+#include <math.h>
 
 #include "type_ligne.h"
 #include "err_fichier.h"
@@ -39,6 +40,7 @@ char is_variable(char c);
 // Converting
 Op char_to_op(char c);
 double char_to_chiffre(char c);
+double deg_to_rad(double deg);
 
 // Test
 void afficher_arbre(Arbre* a);
