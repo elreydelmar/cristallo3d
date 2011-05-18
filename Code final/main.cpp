@@ -16,7 +16,7 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
         traiter_evenement();
 
         display();
-        drawscene();
+        //drawscene();
         afficher_dessin();
 
         update_gl(); // glut
