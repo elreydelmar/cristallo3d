@@ -37,7 +37,7 @@ void afficher_maille (Maille* M, Camera* C){_afficher_maille(M, C, M->atomes);}
 
 void _afficher_maille(Maille* M, Camera* C, Octree* O)
 {
-    Matrice P=passage (M->a, M->b, M->c, M->alpha, M->beta, M->gamma);
+    Matrice P=passage (M->agrandissement*M->a, M->agrandissement*M->b, M->agrandissement*M->c, M->alpha, M->beta, M->gamma);
     if (O==NULL) return;
     else
     {
