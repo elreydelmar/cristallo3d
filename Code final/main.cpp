@@ -4,9 +4,9 @@
 
 extern EventStatus* event_status;
 
-
 int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesDeCommande, int modeDAffichage)
 {
+
     // Creation de la fenetre
     create_fenetre(cetteInstance);
     InitGL();
@@ -42,4 +42,5 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
     delete_fenetre();
 
     return g_fenetre->message.wParam;
+
 }

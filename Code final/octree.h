@@ -53,7 +53,7 @@ int ajouter_a_l_affichage(L_affiche* l, Atome a);
     si == , on renvoie 0,
     sinon, on prend les parametres de la zone
 */
-
+int fusionner_arbre(Octree* a_ajouter, Octree** resultat);
 // vider
 void vider_octree(Octree* l);
 

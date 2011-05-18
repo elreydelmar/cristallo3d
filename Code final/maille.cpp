@@ -129,6 +129,8 @@ void charger_octree(Maille* maille, int nx, int ny, int nz)
 
     Atome atome;
     int erreur = 0;
+    int ajout_na = 0;
+    int aff = 0;
 
     while(p_atomes != NULL)
     {
@@ -147,7 +149,7 @@ void charger_octree(Maille* maille, int nx, int ny, int nz)
                         atome.position = add_pts(mult_scal_pts(calcul_arbre(lignes->x, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_x),
                                          add_pts(mult_scal_pts(calcul_arbre(lignes->y, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_y),
                                                  mult_scal_pts(calcul_arbre(lignes->z, p_atomes->x, p_atomes->y, p_atomes->z, &erreur), t_z)));
-                        ajouter_a_l_affichage((&maille->atomes) ,atome);
+                        ajouter_a_l_affichage((&maille->atomes) ,atome); // PB, certains atomes ne sont pas ajoutes
                     }
                 }
             }

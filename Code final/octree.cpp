@@ -40,6 +40,11 @@ int egalite(Point A, Point B)
 
 int ajouter_a_l_affichage(L_affiche* l, Atome a)
 {
+    int i;
+    if(a.type == 1)
+    {
+        i=0;
+    }
     if(*l == NULL)
     {
         *l = nouv_element(a);
@@ -52,6 +57,19 @@ int ajouter_a_l_affichage(L_affiche* l, Atome a)
         int fils = position_octree((*l)->M.position, a.position);
         return ajouter_a_l_affichage(&((*l)->fils[fils]), a);
     }
+}
+
+int fusionner_arbre(Octree* a_ajouter, Octree** resultat)
+{
+    if(a_ajouter == NULL)
+        return 0;
+    int r = ajouter_a_l_affichage(resultat, a_ajouter->M);
+    int i;
+    for(i=0; i<8; i++)
+        a |= fusionner_arbre(a_ajouter->fils[i], resultat);
+    free(a_a_jouter);
+
+    return a;
 }
 
 void vider_octree(Octree* l)
