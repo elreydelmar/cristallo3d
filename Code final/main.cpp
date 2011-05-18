@@ -30,7 +30,7 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
         }
         else
         {
-            afficher_maille(event_status->maille, camera_courante);
+            afficher_maille(event_status->maille);
         }
     }
         afficher_dessin();
