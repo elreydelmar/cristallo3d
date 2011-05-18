@@ -15,10 +15,7 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
     {
         traiter_evenement();
 
-    // matrix + glClear
-        nouveau_dessin();
-        set_camera();
-
+        display();
         drawscene();
         afficher_dessin();
 

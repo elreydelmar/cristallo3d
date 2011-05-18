@@ -530,4 +530,17 @@ void drawscene()
 void display()
 {
 
+    // matrix + glClear
+    if(event_status != NULL)
+    {
+        if(event_status->anaglyphe)
+        {
+            display_anaglyphe(camera_courante);
+        }
+        else
+        {
+            nouveau_dessin();
+            set_camera();
+        }
+    }
 }

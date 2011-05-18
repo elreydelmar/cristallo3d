@@ -7,6 +7,7 @@
 #include "fichier.h"
 #include "GLbasic.h"
 #include "affichage_maille.h"
+#include "anaglyphe.h"
 #include <string.h>
 
 #define PAS_GLISSER 0.005
