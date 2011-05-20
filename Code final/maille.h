@@ -71,8 +71,9 @@ int ajouter_symbole(L_Symbole** l, const char symbole[6]); // 1 si ajout, 0 sino
 void vider_symbole(L_Symbole* l);
 int est_dans_cube(Atome a, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z);
 void min_max_from_n(int n, double* min, double* max);
-void remplir_maille(Maille m, int nx, int ny, int nz);
-void ajout_octree(L_ligne* lignes, Octree* sommet, Octree** resultat);
+void remplir_maille(Maille* m, int nx, int ny, int nz);
+void ajout_octree(L_ligne* lignes, Octree* sommet, Octree** resultat, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z);
+void former_octree(L_ligne* lignes, Octree* sommet, Octree** resultat, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z);
 
 int find_type(Atome_Type types[], char label[10], int nb_types);
 

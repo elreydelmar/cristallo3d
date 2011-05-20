@@ -154,14 +154,40 @@ void charger_octree(Maille* maille, int nx, int ny, int nz)
         }
         p_atomes = p_atomes->queue;
     }
+
+    remplir_maille(maille, nx, ny, nz);
 }
 
-void remplir_maille(Maille m, int nx, int ny, int nz)
+void remplir_maille(Maille* m, int nx, int ny, int nz)
 {
+    Octree* a_ajouter;
+    // Pour la position dans la maille
+    double min_x, min_y, min_z;
+    double max_x, max_y, max_z;
+    min_max_from_n(nx, &min_x, &max_x);
+    min_max_from_n(ny, &min_y, &max_y);
+    min_max_from_n(nz, &min_z, &max_z);
 
+    do
+    {
+        a_ajouter = NULL;
+        former_octree(m->lignes, m->atomes, &a_ajouter, min_x, min_y, min_z, max_x, max_y, max_z);
+    }
+    while(fusionner_arbre(a_ajouter, &(m->atomes)));
 }
 
-void ajout_octree(L_ligne* lignes, Octree* sommet, Octree** resultat)
+void former_octree(L_ligne* lignes, Octree* arbre, Octree** resultat, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z)
+{
+    if(arbre != NULL)
+    {
+        ajout_octree(lignes, arbre, resultat, min_x, min_y, min_z, max_x, max_y, max_z);
+        int i;
+        for(i=0; i<8; i++)
+            former_octree(lignes, arbre->fils[i], resultat, min_x, min_y, min_z, max_x, max_y, max_z);
+    }
+}
+
+void ajout_octree(L_ligne* lignes, Octree* sommet, Octree** resultat, double min_x, double min_y, double min_z, double max_x, double max_y, double max_z)
 {
     if(sommet == NULL)
         return;
@@ -180,7 +206,7 @@ void ajout_octree(L_ligne* lignes, Octree* sommet, Octree** resultat)
         atome.position = add_pts(mult_scal_pts(calcul_arbre(lignes->x, sommet->M.position.x, sommet->M.position.y, sommet->M.position.z, &erreur), t_x),
                          add_pts(mult_scal_pts(calcul_arbre(lignes->y, sommet->M.position.x, sommet->M.position.y, sommet->M.position.z, &erreur), t_y),
                                  mult_scal_pts(calcul_arbre(lignes->z, sommet->M.position.x, sommet->M.position.y, sommet->M.position.z, &erreur), t_z)));
-       // if(est_dans_cube(atome,min_x,min_y,min_z,max_x,max_y,max_z))
+        if(est_dans_cube(atome,min_x,min_y,min_z,max_x,max_y,max_z))
             ajouter_a_l_affichage(resultat,atome);
         lignes = lignes->queue;
     }
