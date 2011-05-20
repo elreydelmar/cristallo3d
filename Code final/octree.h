@@ -45,7 +45,7 @@ int egalite(Point A, Point B);
 // Nouvelle liste d affichage
 L_affiche new_l_affiche();
 
-// Ajout (retourne booleen pour ajoute ou non)
+// Ajout (retourne booeen pour ajoute ou non)
 Octree* nouv_element(Atome M);
 int ajouter_a_l_affichage(L_affiche* l, Atome a);
 /*
