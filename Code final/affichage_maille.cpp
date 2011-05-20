@@ -21,8 +21,8 @@ void afficher_atome(Atome A, Atome_Type T, Matrice P)
 
     Sphere sphere;
     sphere.radius=T.rayon_ionique;
-    sphere.slices=100;
-    sphere.stacks=100;
+    sphere.slices=10;
+    sphere.stacks=10;
 
     Point centre;
     centre.x=A.position.x;
