@@ -54,7 +54,7 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
         }
 
         case WM_MOUSEWHEEL:
-            action_zoom(LOWORD(lParam)>0);
+            //action_zoom(LOWORD(lParam)>0);
         return 0;
 
         default:
@@ -181,14 +181,18 @@ void evenement_clavier()
             // 1 - la touche est de type maintien, on le met dans le event_status
             action_controle(GetKeyState(VK_CONTROL) < 0);
 
-
             // 2 - la touche est de type joystick, on realise son action
             // Test de key repeat : temps d attente ?
             clock_t courant = clock();
             // Si oui :
             if(courant - precedent > NB_CLOCKS_ECART_TOUCHE)
             {
+
                 precedent = courant;
+                if(GetKeyState('r')<0 || GetKeyState('R')<0)
+                {
+                    action_camera_automatique();
+                }
                 if(GetKeyState(VK_UP) < 0 || GetKeyState('z') < 0 || GetKeyState('Z') < 0)
                 {
                     action_up();

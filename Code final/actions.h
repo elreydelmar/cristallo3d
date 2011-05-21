@@ -9,6 +9,8 @@
 #include "affichage_maille.h"
 #include "anaglyphe.h"
 #include <string.h>
+#include <time.h>
+#include <windowsx.h>
 
 #define PAS_GLISSER 0.005
 #define PAS_TETE 0.005
@@ -94,6 +96,7 @@ void action_left();
 void action_right();
 
 void action_controle(int valeur);
+void action_camera_automatique();
 
 // Actions de la souris
 void changer_activation_camera();

@@ -6,7 +6,6 @@ extern EventStatus* event_status;
 
 int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesDeCommande, int modeDAffichage)
 {
-
     // Creation de la fenetre
     create_fenetre(cetteInstance);
     InitGL();
@@ -19,7 +18,7 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
         drawscene();
         afficher_dessin();
 
-        update_gl(); // glut
+        update_gl();
     }
 
     // Destruction de la fenetre

@@ -464,6 +464,29 @@ void action_controle(int valeur)
     event_status->controle = valeur;
 }
 
+void action_camera_automatique()
+{
+    SendMessage(g_fenetre->trackball, BM_CLICK, 0, 0);
+
+    clock_t debut_automatique = clock();
+    clock_t present = debut_automatique;
+    int continuer = 1;
+    while(continuer)
+    {
+
+        present = clock();
+        if(present - debut_automatique > 1000)
+        {
+            continuer = 0;
+        }
+    }
+}
+
+void action_animer_camera_automatique()
+{
+    tourner_droite(camera_courante, 0.1);
+}
+
 void changer_activation_camera()
 {
     event_status->camera_active = !event_status->camera_active;
