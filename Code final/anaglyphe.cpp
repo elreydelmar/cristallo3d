@@ -14,14 +14,14 @@ double IOD = 0.05;                                          //intraocular distan
 
 void display_anaglyphe(Camera* camera)
 {
-    glDrawBuffer(GL_BACK);                               //draw into both back buffers
-  nouveau_dessin();      //clear color and depth buffers
-    //glClear(GL_ACCUM_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  glDrawBuffer(GL_BACK_LEFT);                              //draw into back left buffer
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();                                        //reset modelview matrix
-  gluLookAt(-IOD/2,                                        //set camera position  x=-IOD/2
+    glColorMask(GL_TRUE, GL_FALSE, GL_FALSE, GL_TRUE);
+
+    // set camera for blue eye, red will be filtered.
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();                                        //reset modelview matrix
+    gluLookAt(-IOD/2,                                        //set camera position  x=-IOD/2
             0,                                           //                     y=0.0
             screenZ,                                           //                     z=0.0
             0.0,                                           //set camera "look at" x=0.0
@@ -31,29 +31,31 @@ void display_anaglyphe(Camera* camera)
             1,                                           //                     y=1.0
             0);                                          //                     z=0.0
 
-  glPushMatrix();
-  {
+    glPushMatrix();
+    {
     glTranslatef(0.0, 0.0, depthZ);                        //translate to screenplane
     drawscene();
-  }
-  glPopMatrix();
-
-
-  glDrawBuffer(GL_BACK_RIGHT);                             //draw into back right buffer
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();                                        //reset modelview matrix
-  gluLookAt(+IOD/2, 0, screenZ, 0.0, 0.0, 0,            //as for left buffer with camera position at:
-            0.0, 1, 0);                                //                     (IOD/2, 0.0, 0.0)
-
-
-  glPushMatrix();
-
-  {
-    glTranslatef(0.0, 0.0, depthZ);                        //translate to screenplane
-    drawscene();
-  }
+    }
     glPopMatrix();
 
+
+    glClear(GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE);
+
+    glColorMask(GL_FALSE, GL_FALSE, GL_TRUE, GL_TRUE);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();                                        //reset modelview matrix
+    gluLookAt(+IOD/2, 0, screenZ, 0.0, 0.0, 0,            //as for left buffer with camera position at:
+            0.0, 1, 0);                                //                     (IOD/2, 0.0, 0.0)
+
+    glPushMatrix();
+    {
+    glTranslatef(0.0, 0.0, depthZ);                        //translate to screenplane
+    drawscene();
+    }
+    glPopMatrix();
 }
 
 

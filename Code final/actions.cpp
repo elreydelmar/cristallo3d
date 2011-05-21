@@ -45,6 +45,12 @@ void action_change_camera(int type)
 void action_change_anaglyphe(int checked)
 {
     event_status->anaglyphe = checked;
+
+    if(!checked) // On remet tout au propre
+    {
+        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+        glDisable(GL_BLEND);
+    }
 }
 
 void action_activer_retro(int active)
