@@ -2,12 +2,7 @@
 
 //toed-in stereo
 
-float depthZ = -1.0;                                      //depth of the object drawing
-
-double fovy = 45;                                          //field of view in y-axis
-double aspect = 640/480;  //screen aspect ratio
-double nearZ = 3.0;                                        //near clipping plane
-double farZ = 30.0;                                        //far clipping plane
+float depthZ = 0.0;                                      //depth of the object drawing
 double screenZ = 1;                                     //screen projection plane
 double IOD = 0.05;                                          //intraocular distance
 
@@ -30,10 +25,11 @@ void display_anaglyphe(Camera* camera)
             0.0,                                           //set camera up vector x=0.0
             1,                                           //                     y=1.0
             0);                                          //                     z=0.0
+    set_camera();
 
     glPushMatrix();
     {
-    glTranslatef(0.0, 0.0, depthZ);                        //translate to screenplane
+    //glTranslatef(0.0, 0.0, depthZ);                        //translate to screenplane
     drawscene();
     }
     glPopMatrix();
@@ -43,19 +39,22 @@ void display_anaglyphe(Camera* camera)
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE);
 
-    glColorMask(GL_FALSE, GL_FALSE, GL_TRUE, GL_TRUE);
+    glColorMask(GL_FALSE, GL_TRUE, GL_TRUE, GL_TRUE);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();                                        //reset modelview matrix
     gluLookAt(+IOD/2, 0, screenZ, 0.0, 0.0, 0,            //as for left buffer with camera position at:
             0.0, 1, 0);                                //                     (IOD/2, 0.0, 0.0)
+    set_camera();
 
     glPushMatrix();
     {
-    glTranslatef(0.0, 0.0, depthZ);                        //translate to screenplane
+    //glTranslatef(0.0, 0.0, depthZ);                        //translate to screenplane
     drawscene();
     }
     glPopMatrix();
+
+    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE); // Pour le glClear color buffer bit
 }
 
 
