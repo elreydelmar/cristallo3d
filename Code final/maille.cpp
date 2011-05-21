@@ -168,6 +168,8 @@ void remplir_maille(Maille* m, int nx, int ny, int nz)
     min_max_from_n(ny, &min_y, &max_y);
     min_max_from_n(nz, &min_z, &max_z);
 
+    m->atomes = supp_octree(m->atomes, min_x, min_y, min_z, max_x, max_y, max_z);
+
     do
     {
         a_ajouter = NULL;

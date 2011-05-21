@@ -410,12 +410,12 @@ void action_change_espace()
 
 void action_defaut(HWND handle)
 {
-    MessageBox(handle,"Mise par defaut","Defaut",MB_OK);
+    MessageBox(handle,"Mise par defaut - non associé","Defaut",MB_OK);
 }
 
 void action_aide(HWND handle)
 {
-    MessageBox(handle,"Aide disponible bientôt","Aide",MB_OK);
+    ShellExecute(NULL,"open","aide.html",NULL, "extern",SW_SHOW);
 }
 
 void action_up()
@@ -504,10 +504,12 @@ void action_mouse_move(int x, int y)
 
 void action_zoom(int sens)
 {
+    /*
     if(sens) // zoom
         zoom(camera_courante, 1.1);
     else    // dezoom
         zoom(camera_courante, 0.9);
+        */
 }
 
 void drawscene()
