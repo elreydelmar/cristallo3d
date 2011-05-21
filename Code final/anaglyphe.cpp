@@ -45,12 +45,14 @@ void display_anaglyphe(Camera* camera)
   gluLookAt(+IOD/2, 0, screenZ, 0.0, 0.0, 0,            //as for left buffer with camera position at:
             0.0, 1, 0);                                //                     (IOD/2, 0.0, 0.0)
 
+
   glPushMatrix();
+
   {
     glTranslatef(0.0, 0.0, depthZ);                        //translate to screenplane
     drawscene();
   }
-  glPopMatrix();
+    glPopMatrix();
 
 }
 
