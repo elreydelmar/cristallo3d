@@ -15,7 +15,7 @@ void closeGL()
     close_camera();
 }
 
-void set_camera()
+void set_camera(double offset)
 {
     if(camera_courante->changement_zoom == 1)
     {
@@ -27,7 +27,8 @@ void set_camera()
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity( );
     Point cible = add_pts(camera_courante->origine, camera_courante->z);
-    gluLookAt(camera_courante->origine.x, camera_courante->origine.y, camera_courante->origine.z,
+    Point offset_pt = mult_scal_pts(offset,  camera_courante->y);
+    gluLookAt(camera_courante->origine.x + offset_pt.x, camera_courante->origine.y + offset_pt.y, camera_courante->origine.z+ offset_pt.z,
               cible.x , cible.y, cible.z,
               camera_courante->x.x,camera_courante->x.y,camera_courante->x.z);
 }
@@ -209,15 +210,15 @@ void dessiner_sphere(Sphere sphere, Couleur couleur, Point centre)
 void sample3d()
 {
     dessiner_cube(0.5, {0,0,250}, 1, 0.01);
-    dessiner_sphere({0.1,100,100},{250,0,0}, {0,0,0});
-    dessiner_sphere({0.1,100,100},{250,0,0}, {0.25,0.25,0.25});
-    dessiner_sphere({0.1,100,100},{250,0,0}, {-0.25,0.25,0.25});
-    dessiner_sphere({0.1,100,100},{250,0,0}, {0.25,-0.25,0.25});
-    dessiner_sphere({0.1,100,100},{250,0,0}, {0.25,0.25,-0.25});
-    dessiner_sphere({0.1,100,100},{250,0,0}, {-0.25,-0.25,0.25});
-    dessiner_sphere({0.1,100,100},{250,0,0}, {0.25,-0.25,-0.25});
-    dessiner_sphere({0.1,100,100},{250,0,0}, {-0.25,0.25,-0.25});
-    dessiner_sphere({0.1,100,100},{250,0,0}, {-0.25,-0.25,-0.25});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {0,0,0});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {0.25,0.25,0.25});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {-0.25,0.25,0.25});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {0.25,-0.25,0.25});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {0.25,0.25,-0.25});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {-0.25,-0.25,0.25});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {0.25,-0.25,-0.25});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {-0.25,0.25,-0.25});
+    dessiner_sphere({0.1,100,100},{255,255,0}, {-0.25,-0.25,-0.25});
     dessiner_ligne({0,0,250},{{0,0,0},{0.25,0.25,0.25}},0.01);
     dessiner_ligne({0,0,250},{{0,0,0},{-0.25,0.25,0.25}},0.01);
     dessiner_ligne({0,0,250},{{0,0,0},{0.25,-0.25,0.25}},0.01);

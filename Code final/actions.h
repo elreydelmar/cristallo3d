@@ -80,6 +80,7 @@ void action_change_atome();
 void action_change_couleur();
 
 double slider_to_double(int i, double min, double max);
+int double_to_slider(double x, double min, double max);
 void action_change_taille(); // REFAIRE EN LINEAIRE
 void action_change_espace();
 

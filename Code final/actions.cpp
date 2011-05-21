@@ -299,6 +299,8 @@ void action_generer()
         SendMessage(g_fenetre->choix_atome,CB_ADDSTRING,0, (LPARAM)event_status->maille->types[i].symbole);
     }
 
+    int pos_slider = conversion_edit_slider(event_status->maille->agrandissement, 0, 100, 0.01, 10.0);
+    SendMessage(g_fenetre->s_espace_atome, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) pos_slider);
 }
 
 void action_change_nb_x()
@@ -378,7 +380,12 @@ void action_change_atome()
 double slider_to_double(int i, double min, double max)
 {
 
-    return min + (max - min)*((double)i - 1.)/99.;
+    return min + (max - min)*((double)i)/100.;
+}
+
+int double_to_slider(double x, double min, double max)
+{
+    return ((int)((x-min)*100./(max - min)));
 }
 
 void action_change_couleur()
@@ -400,7 +407,6 @@ void action_change_taille()
         int atome = get_atome_courant();
         if(atome != CB_ERR)
         {
-           // double a = event_status->maille->a;
             event_status->maille->types[atome].rayon_ionique = conversion_slider_edit(SendMessage(g_fenetre->s_taille, TBM_GETPOS, 0, 0), 0.01, 1.00);
         }
     }
@@ -410,7 +416,8 @@ void action_change_espace()
 {
     if(event_status->maille != NULL)
     {
-        event_status->maille->agrandissement = slider_to_double(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), 0.1, 10);
+        event_status->maille->agrandissement = conversion_slider_edit(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), 0.01, 10);
+        //slider_to_double(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), 0.1, 10);
     }
 }
 
@@ -543,12 +550,12 @@ void display()
     {
         if(event_status->anaglyphe)
         {
-            display_anaglyphe(camera_courante);
+            display_anaglyphe(camera_courante, 0.05);
         }
         else
         {
             nouveau_dessin();
-            set_camera();
+            set_camera(0);
         }
     }
 }

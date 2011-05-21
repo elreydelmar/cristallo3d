@@ -24,7 +24,7 @@ void closeGL();
 extern Camera* camera_courante;
 void init_camera_de_merde();
 void update_camera_de_merde();
-void set_camera();
+void set_camera(double offset);
 
 void nouveau_dessin();
 void changerepere(Point O, Point Z); //place le repère au point O, orienté suivant Z
