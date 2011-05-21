@@ -33,11 +33,39 @@ void afficher_atome(Atome A, Atome_Type T, Matrice P)
     dessiner_sphere(sphere, couleurs[T.index_couleur], centre);
 }
 
-void afficher_maille (Maille* M){_afficher_maille(M, M->atomes);}
-
-void _afficher_maille(Maille* M, Octree* O)
+void afficher_contour(Maille* M, Matrice P)
 {
-    Matrice P=passage (M->agrandissement*M->a, M->agrandissement*M->b, M->agrandissement*M->c, M->alpha, M->beta, M->gamma);
+    Point C={0,0,0};
+    Point X={P.m[0][0], P.m[1][0], P.m[2][0]};
+    Point Y={P.m[0][1], P.m[1][1], P.m[2][1]};
+    Point Z={P.m[0][2], P.m[1][2], P.m[2][2]};
+    Point S1=add_pts(add_pts(X,Y),Z); //X+Y+Z
+    Point S2=add_pts(sub_pts(Y,X),Z); //-X+Y+Z
+    Point S3=add_pts(sub_pts(X,Y),Z); //X-Y+Z
+    Point S4=sub_pts(add_pts(X,Y),Z); //X+Y-Z
+    Point S5=sub_pts(sub_pts(Z,X),Y); //-X-Y+Z
+    Point S6=sub_pts(sub_pts(X,Z),Y); //X-Y-Z
+    Point S7=sub_pts(sub_pts(Y,X),Z); //-X+Y-Z
+    Point S8=sub_pts(sub_pts(sub_pts(C,X),Y),Z); //-X-Y-Z
+
+    dessiner_ligne({120,120,120},{S1,S2},0.01);
+    dessiner_ligne({120,120,120},{S2,S5},0.01);
+    dessiner_ligne({120,120,120},{S5,S3},0.01);
+    dessiner_ligne({120,120,120},{S3,S1},0.01);
+    dessiner_ligne({120,120,120},{S4,S1},0.01);
+    dessiner_ligne({120,120,120},{S7,S2},0.01);
+    dessiner_ligne({120,120,120},{S8,S5},0.01);
+    dessiner_ligne({120,120,120},{S6,S3},0.01);
+    dessiner_ligne({120,120,120},{S4,S7},0.01);
+    dessiner_ligne({120,120,120},{S7,S8},0.01);
+    dessiner_ligne({120,120,120},{S8,S6},0.01);
+    dessiner_ligne({120,120,120},{S6,S4},0.01);
+}
+
+void afficher_les_atomes (Maille* M, Matrice P){_afficher_les_atomes(M, M->atomes, P);}
+
+void _afficher_les_atomes(Maille* M, Octree* O, Matrice P)
+{
     if (O==NULL) return;
     else
     {
@@ -46,6 +74,14 @@ void _afficher_maille(Maille* M, Octree* O)
         afficher_atome(A, T, P);
 
         int j;
-        for (j=0; j<8; j++) _afficher_maille(M, O->fils[j]);
+        for (j=0; j<8; j++) _afficher_les_atomes(M, O->fils[j], P);
     }
 }
+
+void afficher_maille(Maille* M)
+{
+    Matrice P=passage (M->agrandissement*M->a, M->agrandissement*M->b, M->agrandissement*M->c, M->alpha, M->beta, M->gamma);
+    afficher_contour(M, P);
+    afficher_les_atomes(M, P);
+}
+
