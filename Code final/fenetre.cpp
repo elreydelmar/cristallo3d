@@ -15,16 +15,11 @@ int create_fenetre(HINSTANCE instance)
     register_classe_fenetre(&(g_fenetre->fenetre), instance);
     g_fenetre->instance = instance;
 
-    // Chargement de OpenGL
-    Rect position;
-        position.x = 0;
-        position.y = 0;
-        position.w = WIDTH - WIDTH_COLONNE;
-        position.h = HEIGHT;
-    init_gl(g_fenetre, position, instance);
+    // PréChargement de OpenGL
+    g_fenetre->gl = CreateWindow("STATIC", NULL, WS_CHILD | WS_VISIBLE, 0, 0, WIDTH - WIDTH_COLONNE, HEIGHT, g_fenetre->fenetre, NULL, instance, NULL);
+    g_fenetre->rc = NULL;
 
-    // Chargement du menu
-    g_fenetre->menu = CreateWindow("classeF", "menu", WS_CHILD | WS_VISIBLE, position.w, 0, WIDTH_COLONNE, HEIGHT, g_fenetre->fenetre, NULL, instance, NULL);
+    g_fenetre->menu = CreateWindow("classeF", "menu", WS_CHILD | WS_VISIBLE, 0, 0, WIDTH_COLONNE, HEIGHT, g_fenetre->fenetre, NULL, instance, NULL);
     afficher_boutons(g_fenetre);
 
     // Chargement des events
@@ -38,6 +33,7 @@ int create_fenetre(HINSTANCE instance)
     ShowWindow(g_fenetre->fenetre, SW_SHOW);
     UpdateWindow(g_fenetre->fenetre);
 
+
     return 0;
 }
 
@@ -50,7 +46,7 @@ int register_classe_fenetre(HWND *hFenetre, HINSTANCE instance)
     classe.cbClsExtra = 0;
     classe.cbWndExtra = 0;
     classe.hInstance = NULL;
-    classe.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+    classe.hIcon = LoadIcon(instance, "icone2");
     classe.hCursor = LoadCursor(NULL, IDC_ARROW);
     classe.hbrBackground = (HBRUSH)(1 + COLOR_BTNFACE);
     classe.lpszMenuName =  NULL;
@@ -65,15 +61,13 @@ int register_classe_fenetre(HWND *hFenetre, HINSTANCE instance)
     return 0;
 }
 
-int init_gl(Fenetre* fenetre, Rect position, HINSTANCE instance)
+int init_gl(Fenetre* fenetre)
 {
-    fenetre->gl = CreateWindow("STATIC", "Calcul de l'affichage en cours...", WS_CHILD | WS_VISIBLE, position.x, position.y, position.w, position.h, fenetre->fenetre, NULL, instance, NULL);
-
     PIXELFORMATDESCRIPTOR pfd;
     int iFormat;
 
-    // get the device context (DC)
-    fenetre->dc = GetDC(fenetre->gl);
+    ReleaseDC(g_fenetre->gl, g_fenetre->dc);
+    g_fenetre->dc = GetDC(g_fenetre->gl);
 
     // set the pixel format for the DC
     ZeroMemory( &pfd, sizeof( pfd ) );
@@ -162,29 +156,17 @@ void redimensionner(HWND fenetre, int width, int height)
 }
 
 // On le garde
-
-void sample_dessin_2d()
+void afficher_image()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glBegin(GL_TRIANGLES);
-        glColor3ub(255,0,0);    glVertex2d(-0.75,-0.75);
-        glColor3ub(0,255,0);    glVertex2d(0,0.75);
-        glColor3ub(0,0,255);    glVertex2d(0.75,-0.75);
-    glEnd();
-
-    glFlush();
-}
-
-void sample_dessin_3d()
-{
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glBegin(GL_TRIANGLES);
-        glColor3ub(255,0,0);    glVertex3d(-0.75,-0.75,-10.);
-        glColor3ub(0,255,0);    glVertex3d(0,0.75,-10.);
-        glColor3ub(0,0,255);    glVertex3d(0.75,-0.75,-10.);
-    glEnd();
-
-    glFlush();
+    // On charge l image
+    HBITMAP hBmp;
+    hBmp=(HBITMAP)LoadImage(NULL,"extern/grenoble-inp.bmp",IMAGE_BITMAP,0,0,LR_LOADFROMFILE);
+    BITMAP bmp;
+    RECT pos;
+    GetWindowRect(g_fenetre->gl,&pos);
+    GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp);
+    g_fenetre->dc = GetDC(g_fenetre->gl);
+    DrawState(g_fenetre->dc,NULL,NULL,(LPARAM)hBmp,NULL,(pos.right - pos.left - bmp.bmWidth)/2,(pos.bottom - pos.top - bmp.bmHeight)/2,0,0,DST_BITMAP);
+    DeleteObject(hBmp);
+    ReleaseDC(g_fenetre->gl, g_fenetre->dc);
 }

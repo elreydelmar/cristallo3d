@@ -32,7 +32,7 @@ extern Fenetre* g_fenetre;
 /// TODO : GESTION DES ERREURS
 int create_fenetre(HINSTANCE instance);  // Contient une structure de controle pour qu'il n'y ait qu'un seul appel
     int register_classe_fenetre(HWND *hFenetre, HINSTANCE instance);
-    int init_gl(Fenetre* fenetre, Rect position, HINSTANCE instance);   // Contient une structure de controle pour qu'il n'y ait qu'un seul appel
+    int init_gl(Fenetre* fenetre);   // Contient une structure de controle pour qu'il n'y ait qu'un seul appel
 void delete_fenetre();
 
 
@@ -41,8 +41,8 @@ void update_gl();
 
 void redimensionner(HWND fenetre, int width, int height);
 
-void sample_dessin_2d();
-void sample_dessin_3d();
+void afficher_image();
+
 
 
 #endif // FENETRE_H_INCLUDED

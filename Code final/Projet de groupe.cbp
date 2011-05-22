@@ -72,6 +72,9 @@
 		<Unit filename="octree.h" />
 		<Unit filename="premaille.cpp" />
 		<Unit filename="premaille.h" />
+		<Unit filename="ressources.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="type_fenetre.h" />
 		<Unit filename="type_ligne.h" />
 		<Extensions>

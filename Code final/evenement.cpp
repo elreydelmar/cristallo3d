@@ -36,7 +36,8 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
         }
 
         case WM_LBUTTONDOWN:
-            changer_activation_camera();
+            if(event_status->maille != NULL)
+                changer_activation_camera();
         return 0;
 
         case WM_MOUSEMOVE:

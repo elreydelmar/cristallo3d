@@ -198,13 +198,17 @@ void dessiner_sphere(Sphere sphere, Couleur couleur, Point centre)
 
     GLUquadric* params = gluNewQuadric();
     gluQuadricTexture(params,GL_FALSE);
-    /*glBindTexture(GL_TEXTURE_2D,texture);*/
     glTranslated(centre.x,centre.y,centre.z);
     glColor3ub(couleur.r,couleur.v,couleur.b);
     gluSphere(params,sphere.radius,sphere.slices,sphere.stacks);
 
     gluDeleteQuadric(params);
     glPopMatrix();
+}
+
+void sample2d()
+{
+
 }
 
 void sample3d()

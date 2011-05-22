@@ -3,6 +3,7 @@
 
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <GL/glaux.h>
 #include <cstdlib>
 #include "geometrie.h"
 #include "const_fenetre.h"
@@ -39,6 +40,7 @@ void set_point(Point p);
 void dessiner_point(Point point, Couleur couleur);
 void dessiner_ligne(Couleur couleur, Ligne ligne, double rayon);
 
+void sample2d();
 void sample3d();
 void afficher_dessin();
 

@@ -8,7 +8,6 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
 {
     // Creation de la fenetre
     create_fenetre(cetteInstance);
-    InitGL();
 
     while (recuperer_evenement())
     {
@@ -16,7 +15,8 @@ int WinMain (HINSTANCE cetteInstance, HINSTANCE precedenteInstance,LPSTR lignesD
 
         display();
         drawscene();
-        afficher_dessin();
+        if(event_status!= NULL && event_status->maille != NULL)
+            afficher_dessin();
 
         update_gl();
     }

@@ -1,6 +1,8 @@
 #ifndef TYPE_FENETRE_H_INCLUDED
 #define TYPE_FENETRE_H_INCLUDED
 
+#include <windows.h>
+
 // Structure qui contient toutes les infos de la fenetre
 typedef struct Fenetre Fenetre;
 struct Fenetre

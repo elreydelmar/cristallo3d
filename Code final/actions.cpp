@@ -264,6 +264,7 @@ void action_parcourir()
         strcpy(event_status->adresse_fichier, szFile);
         SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
     }
+    afficher_image();
 }
 
 void action_generer()
@@ -301,6 +302,14 @@ void action_generer()
 
     int pos_slider = conversion_edit_slider(event_status->maille->agrandissement, 0, 100, 0.01, 10.0);
     SendMessage(g_fenetre->s_espace_atome, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) pos_slider);
+
+    static int gl_charge = 1;
+    if(gl_charge)
+    {
+        init_gl(g_fenetre);
+        InitGL();
+        gl_charge = 0;
+    }
 }
 
 void action_change_nb_x()
@@ -552,15 +561,13 @@ void drawscene()
 {
     if(event_status != NULL)
     {
-        if(event_status->maille == NULL)
+        if(event_status->maille != NULL)
         {
-
-            dessiner_repere(1);
-            sample3d();
+            afficher_maille(event_status->maille);
         }
         else
         {
-            afficher_maille(event_status->maille);
+            afficher_image();
         }
     }
 }
@@ -578,7 +585,8 @@ void display()
         else
         {
             nouveau_dessin();
-            set_camera(0);
+             if(event_status->maille != NULL)
+                set_camera(0);
         }
     }
 }
