@@ -15,6 +15,12 @@
 #define PAS_GLISSER 0.005
 #define PAS_TETE 0.005
 
+#define CAMERA_AUTO WM_USER+10
+
+
+#define NB_TOUCHES_PAR_SECONDE 10
+#define NB_CLOCKS_ECART_TOUCHE CLOCKS_PER_SEC/NB_TOUCHES_PAR_SECONDE
+
 /*
     Contient toutes les actions possibles activees par evenement
 */
@@ -41,6 +47,7 @@ struct EventStatus
     int camera_active; // 1 si la camera est active
     // Clavier
     int controle; // 1 si controle active
+    int camera_auto;
 };
 
 // Globales
@@ -96,6 +103,7 @@ void action_left();
 void action_right();
 
 void action_controle(int valeur);
+void action_demarrer_camera_auto();
 void action_camera_automatique();
 
 // Actions de la souris

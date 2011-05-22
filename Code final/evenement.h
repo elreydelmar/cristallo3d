@@ -7,8 +7,6 @@
 #include <time.h>
 #include <windowsx.h>
 
-#define NB_TOUCHES_PAR_SECONDE 10
-#define NB_CLOCKS_ECART_TOUCHE CLOCKS_PER_SEC/NB_TOUCHES_PAR_SECONDE
 
 extern Fenetre* g_fenetre;
 extern EventStatus* event_status;

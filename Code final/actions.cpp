@@ -22,6 +22,7 @@ void init_event()
 
         event_status->camera_active = 0;
         event_status->controle = 0;
+        event_status->camera_auto = 0;
     }
 }
 
@@ -473,27 +474,40 @@ void action_controle(int valeur)
     event_status->controle = valeur;
 }
 
-void action_camera_automatique()
+void action_demarrer_camera_auto()
 {
-    SendMessage(g_fenetre->trackball, BM_CLICK, 0, 0);
-
-    clock_t debut_automatique = clock();
-    clock_t present = debut_automatique;
-    int continuer = 1;
-    while(continuer)
+    if(event_status->camera_auto)
     {
-
-        present = clock();
-        if(present - debut_automatique > 1000)
-        {
-            continuer = 0;
-        }
+        event_status->camera_auto = 0;
     }
+    else
+    {
+        event_status->camera_auto = 1;
+        SendMessage(g_fenetre->trackball, BM_CLICK, 0, 0);
+        SendMessage(g_fenetre->fenetre, CAMERA_AUTO, 0, 0);
+    }
+
+
 }
 
-void action_animer_camera_automatique()
+void action_camera_automatique()
 {
-    tourner_droite(camera_courante, 0.1);
+    static clock_t derniere_frame = clock() - 2*NB_CLOCKS_ECART_TOUCHE;
+    clock_t present = clock();
+    if(present - derniere_frame > NB_CLOCKS_ECART_TOUCHE)
+    {
+        derniere_frame = present;
+        tourner_droite(camera_courante, 0.1);
+
+        display();
+        drawscene();
+        afficher_dessin();
+        update_gl();
+    }
+    if(event_status->camera_auto)
+    {
+        SendMessage(g_fenetre->fenetre, CAMERA_AUTO, 0, 0);
+    }
 }
 
 void changer_activation_camera()

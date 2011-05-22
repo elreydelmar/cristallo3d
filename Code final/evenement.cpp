@@ -36,7 +36,7 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
         }
 
         case WM_LBUTTONDOWN:
-            if(event_status->maille != NULL)
+            if(event_status->maille != NULL && !(event_status->camera_auto))
                 changer_activation_camera();
         return 0;
 
@@ -47,7 +47,8 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
             current.x = GET_X_LPARAM(lParam);
             current.y = GET_Y_LPARAM(lParam);
 
-            action_mouse_move(current.x - old.x, old.y - current.y);
+            if(!(event_status->camera_auto))
+                action_mouse_move(current.x - old.x, old.y - current.y);
 
             old = current;
 
@@ -56,6 +57,11 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
 
         case WM_MOUSEWHEEL:
             //action_zoom(LOWORD(lParam)>0);
+        return 0;
+
+        case CAMERA_AUTO :
+            action_camera_automatique();
+            evenement_clavier();
         return 0;
 
         default:
@@ -192,31 +198,35 @@ void evenement_clavier()
                 precedent = courant;
                 if(GetKeyState('r')<0 || GetKeyState('R')<0)
                 {
-                    action_camera_automatique();
+                    action_demarrer_camera_auto();
                 }
-                if(GetKeyState(VK_UP) < 0 || GetKeyState('z') < 0 || GetKeyState('Z') < 0)
+                if(!(event_status->camera_auto))
                 {
-                    action_up();
-                }
-                if(GetKeyState(VK_DOWN) < 0 || GetKeyState('s') < 0 || GetKeyState('S') < 0)
-                {
-                    action_down();
-                }
-                if(GetKeyState(VK_LEFT) < 0 || GetKeyState('q') < 0 || GetKeyState('Q') < 0)
-                {
-                    action_left();
-                }
-                if(GetKeyState(VK_RIGHT) < 0 || GetKeyState('d') < 0 || GetKeyState('D') < 0)
-                {
-                    action_right();
-                }
-                if(GetKeyState(VK_NEXT))
-                {
-                    action_zoom(1);
-                }
-                if(GetKeyState(VK_PRIOR))
-                {
-                    action_zoom(0);
+
+                    if(GetKeyState(VK_UP) < 0 || GetKeyState('z') < 0 || GetKeyState('Z') < 0)
+                    {
+                        action_up();
+                    }
+                    if(GetKeyState(VK_DOWN) < 0 || GetKeyState('s') < 0 || GetKeyState('S') < 0)
+                    {
+                        action_down();
+                    }
+                    if(GetKeyState(VK_LEFT) < 0 || GetKeyState('q') < 0 || GetKeyState('Q') < 0)
+                    {
+                        action_left();
+                    }
+                    if(GetKeyState(VK_RIGHT) < 0 || GetKeyState('d') < 0 || GetKeyState('D') < 0)
+                    {
+                        action_right();
+                    }
+                    if(GetKeyState(VK_NEXT))
+                    {
+                        action_zoom(1);
+                    }
+                    if(GetKeyState(VK_PRIOR))
+                    {
+                        action_zoom(0);
+                    }
                 }
             }
         }
