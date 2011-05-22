@@ -58,7 +58,7 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
     }
     L_Symbole* buff2 = l;
     int i = 0;
-    int index_couleur = 0;
+    int index_couleur = 4;
     (*maille)->types = (Atome_Type*) malloc(sizeof(Atome_Type)*(*maille)->nb_type_atomes);
     while(buff2 != NULL && i<(*maille)->nb_type_atomes)
     {
@@ -67,7 +67,7 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
         (*maille)->types[i].rayon_ionique = 0.1;
         (*maille)->types[i].index_couleur = index_couleur;
         i++;
-        index_couleur += 7;
+        index_couleur += 4;
         index_couleur %= 13;
         buff2 = buff2->suivant;
     }
