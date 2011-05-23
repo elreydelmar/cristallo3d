@@ -229,7 +229,7 @@ void min_max_from_n(int n, double* min, double* max)
     *min = -1.;
     *max = 1.;
     int i;
-    for(i=1; i<n; i++)
+    for(i=0; i<n; i++)
     {
         if(i%2 == 0) // On change le max
             *max += 1;
