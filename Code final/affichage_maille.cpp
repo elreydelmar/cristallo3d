@@ -36,9 +36,9 @@ void afficher_atome(Atome A, Atome_Type T, Matrice P)
 void afficher_contour(Maille* M, Matrice P)
 {
     Point C={0,0,0};
-    Point X={P.m[0][0]/2, P.m[1][0]/2, P.m[2][0]/2};
-    Point Y={P.m[0][1]/2, P.m[1][1]/2, P.m[2][1]/2};
-    Point Z={P.m[0][2]/2, P.m[1][2]/2, P.m[2][2]/2};
+    Point X={P.m[0][0], P.m[1][0], P.m[2][0]};
+    Point Y={P.m[0][1], P.m[1][1], P.m[2][1]};
+    Point Z={P.m[0][2], P.m[1][2], P.m[2][2]};
     Point S1=add_pts(add_pts(X,Y),Z); //X+Y+Z
     Point S2=add_pts(sub_pts(Y,X),Z); //-X+Y+Z
     Point S3=add_pts(sub_pts(X,Y),Z); //X-Y+Z
@@ -48,11 +48,11 @@ void afficher_contour(Maille* M, Matrice P)
     Point S7=sub_pts(sub_pts(Y,X),Z); //-X+Y-Z
     Point S8=sub_pts(sub_pts(sub_pts(C,X),Y),Z); //-X-Y-Z
 
-    /*Point _X=sub_pts(C,X);
+    Point _X=sub_pts(C,X);
     Point _Y=sub_pts(C,Y);
     Point _Z=sub_pts(C,Z);
 
-    Point M1=add_pts(Y,Z);
+    /*Point M1=add_pts(Y,Z);
     Point M2=add_pts(_X,Z);
     Point M3=add_pts(_Y,Z);
     Point M4=add_pts(X,Z);
