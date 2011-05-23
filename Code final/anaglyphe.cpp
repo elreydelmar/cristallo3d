@@ -9,7 +9,7 @@ void display_anaglyphe(Camera* camera, int retro, double distance_retro, double 
         if(distance_ecran > distance_retro)
             ecartement_yeux = 0.05*sqrt(distance_ecran-distance_retro);
         else
-            ecartement_yeux =0;
+            ecartement_yeux = 0.05*sqrt(distance_retro-distance_ecran);
     }
     else
         ecartement_yeux = 0.05*sqrt(distance_ecran);
