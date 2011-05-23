@@ -437,7 +437,7 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    ShellExecute(NULL,"open","aide.html",NULL, "extern",SW_SHOW);
+    ShellExecute(NULL,"open","aide.pdf",NULL, "extern",SW_SHOW);
 }
 
 void action_up()

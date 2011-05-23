@@ -226,15 +226,15 @@ int est_dans_cube(Atome a, double min_x, double min_y, double min_z, double max_
 
 void min_max_from_n(int n, double* min, double* max)
 {
-    *min = -1.;
-    *max = 1.;
+    *min = -0.5;
+    *max = 0.5;
     int i;
-    for(i=0; i<n; i++)
+    for(i=2; i<=n; i++)
     {
         if(i%2 == 0) // On change le max
-            *max += 1;
+            *max += 0.5;
         else         // On change le min
-            *min -= 1;
+            *min -= 0.5;
     }
     *min -= EPSILON;
     *max += EPSILON;
