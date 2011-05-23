@@ -258,6 +258,7 @@ void action_parcourir()
     ofn.lpstrFilter =
                "Fichier CIF\0*.cif\0";
     ofn.nFilterIndex = 1;
+    ofn.lpstrInitialDir = "\mailles";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
     if (GetOpenFileName(&ofn)==TRUE)
