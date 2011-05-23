@@ -33,15 +33,15 @@ struct EventStatus
     int choix_camera; // 0 si freefly,1 si trackball
     int anaglyphe; // booleen
     int retro; // booleen
-    double dist_retro; // A VERIFIER
+    double dist_retro;
     double distance;
     char adresse_fichier[255];
 
     Maille* maille;
-    int nb_x; // A VERIFIER
+    int nb_x;
     int nb_y;
     int nb_z;
-    double espace_atome; // A JARTER
+    double espace_atome;
 
     // OpenGL
     int camera_active; // 1 si la camera est active
