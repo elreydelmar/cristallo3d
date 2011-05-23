@@ -57,4 +57,6 @@ void tourner_droite(Camera* c, double pas);
 void tourner_haut(Camera* c, double pas);
 void tourner_bas(Camera* c, double pas);
 
+double distance_projection(double distance_retro, double distance_ecran);
+
 #endif

@@ -211,3 +211,8 @@ void close_camera()
 {
     free(camera_courante);
 }
+
+double distance_projection(double distance_retro, double distance_ecran)
+{
+    return (5*distance_ecran - distance_retro);
+}
