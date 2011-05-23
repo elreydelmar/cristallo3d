@@ -45,6 +45,9 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
     (*maille)->lignes = premaille.lignes;
     (*maille)->p_atomes = premaille.atomes;
 
+    // On ajoute 3 lignes de symetries "translation"
+    concat(&((*maille)->lignes), symetries_translation());
+
     // Chargement des types
     char symbole[6];
     L_Symbole* l = NULL;

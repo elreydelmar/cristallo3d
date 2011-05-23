@@ -13,6 +13,18 @@ void add_l_int(L_int** l, int entier)
         add_l_int(&((*l)->suivant), entier);
 }
 
+void concat(L_ligne** liste, L_ligne* a_ajouter)
+{
+    if(*liste == NULL)
+    {
+        *liste = a_ajouter;
+    }
+    else
+    {
+        concat(&((*liste)->queue), a_ajouter);
+    }
+}
+
 void vider_l_int(L_int** liste)
 {
     L_int* buff = NULL;
@@ -105,3 +117,74 @@ int type_loop(L_int* l)
     return 0;
 }
 
+L_ligne* symetries_translation()
+{
+    L_ligne* retour = NULL;
+    Token t;
+    Valeur v;
+    Arbre* x;
+    Arbre* y;
+    Arbre* z;
+        x = NULL;
+            t = VAR;
+            v.variable = X;
+            x = ajouter_element(x, creer_element(t,v));
+            t = OP;
+            v.operateur = PLUS;
+            x = ajouter_element(x, creer_element(t,v));
+            t = REEL;
+            v.reel = 1.;
+            x = ajouter_element(x, creer_element(t,v));
+        y = NULL;
+            t = VAR;
+            v.variable = Y;
+            y = ajouter_element(y, creer_element(t,v));
+        z = NULL;
+            t = VAR;
+            v.variable = Z;
+            z = ajouter_element(z, creer_element(t,v));
+    add_to_l_ligne(&retour, x, y, z);
+
+        x = NULL;
+            t = VAR;
+            v.variable = X;
+            x = ajouter_element(x, creer_element(t,v));
+        y = NULL;
+            t = VAR;
+            v.variable = Y;
+            y = ajouter_element(y, creer_element(t,v));
+            t = OP;
+            v.operateur = PLUS;
+            y = ajouter_element(y, creer_element(t,v));
+            t = REEL;
+            v.reel = 1.;
+            y = ajouter_element(y, creer_element(t,v));
+        z = NULL;
+            t = VAR;
+            v.variable = Z;
+            z = ajouter_element(z, creer_element(t,v));
+    add_to_l_ligne(&retour, x, y, z);
+
+        x = NULL;
+            t = VAR;
+            v.variable = X;
+            x = ajouter_element(x, creer_element(t,v));
+        y = NULL;
+            t = VAR;
+            v.variable = Y;
+            y = ajouter_element(y, creer_element(t,v));
+        z = NULL;
+            t = VAR;
+            v.variable = Z;
+            z = ajouter_element(z, creer_element(t,v));
+            t = OP;
+            v.operateur = PLUS;
+            z = ajouter_element(z, creer_element(t,v));
+            t = REEL;
+            v.reel = 1.;
+            z = ajouter_element(z, creer_element(t,v));
+    add_to_l_ligne(&retour, x, y, z);
+
+
+    return retour;
+}

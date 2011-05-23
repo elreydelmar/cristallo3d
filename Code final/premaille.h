@@ -55,6 +55,7 @@ void add_l_int(L_int** l, int entier); // ajoute en fin
 void vider_l_int(L_int** liste);
 
 void add_to_l_ligne(L_ligne** liste, Arbre* x, Arbre* y, Arbre* z);
+void concat(L_ligne** liste, L_ligne* a_ajouter);
 void vider_l_ligne(L_ligne* liste);
 
 void add_to_l_pre_atome(L_Pre_Atome** liste, char label[], double x, double y, double z);
@@ -62,5 +63,6 @@ void vider_l_pre_atome(L_Pre_Atome* liste);
 
 int type_loop(L_int* l); // 0 pour inutile, 1 pour symmetry, 2 pour le reste
 
+L_ligne* symetries_translation();
 
 #endif // PREMAILLE_H_INCLUDED
