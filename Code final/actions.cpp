@@ -599,7 +599,7 @@ void display()
         {
             if(event_status->anaglyphe)
             {
-                display_anaglyphe(camera_courante, 0, 0.05);
+                display_anaglyphe(camera_courante, distance_projection((event_status->retro)? event_status->dist_retro : 0, event_status->distance), 0.05);
             }
             else
             {
