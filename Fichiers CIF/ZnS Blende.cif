@@ -1,76 +1,150 @@
 #------------------------------------------------------------------------------
-#$Date: 2010-06-10 16:37:11 +0000 (Thu, 10 Jun 2010) $
-#$Revision: 1212 $
-#$URL: svn://cod.ibt.lt/cod/cif/1/1011195.cif $
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9000107.cif $
 #------------------------------------------------------------------------------
 #
 # This file is available in the Crystallography Open Database (COD),
-# http://www.crystallography.net/
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
 #
-# All data on this site have been placed in the public domain by the
-# contributors.
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
 #
-data_1011195
+data_9000107
 loop_
 _publ_author_name
-'Aminoff, G.'
+'Skinner, B. J.'
 _publ_section_title
 ;
- Untersuchungen ueber die kristallstrukturen von wurtzit und rotnickelkies
+ Unit-cell edges of natural and synthetic sphalerites
+ Locality: synthetic
 ;
-_journal_name_full               'Zeitschrift fur Kristallographie'
-_journal_page_first              203
-_journal_page_last               219
-_journal_volume                  58
-_journal_year                    1923
-_chemical_compound_source        'from Pribram, Bohemia'
-_chemical_formula_structural     'Zn S'
+_journal_name_full               'American Mineralogist'
+_journal_page_first              1399
+_journal_page_last               1411
+_journal_volume                  46
+_journal_year                    1961
 _chemical_formula_sum            'S Zn'
-_chemical_name_mineral           'Wurtzite 2H'
-_chemical_name_systematic        'Zinc sulfide'
-_symmetry_cell_setting           hexagonal
-_symmetry_Int_Tables_number      186
-_symmetry_space_group_name_H-M   'P 63 m c'
+_chemical_name_mineral           Sphalerite
+_space_group_IT_number           216
+_symmetry_space_group_name_Hall  'F -4 2 3'
+_symmetry_space_group_name_H-M   'F -4 3 m'
 _cell_angle_alpha                90
 _cell_angle_beta                 90
-_cell_angle_gamma                120
-_cell_formula_units_Z            2
-_cell_length_a                   3.8
-_cell_length_b                   3.8
-_cell_length_c                   6.23
-_cell_volume                     77.9
-_exptl_crystal_density_meas      4.05
-_cod_database_code               1011195
+_cell_angle_gamma                90
+_cell_length_a                   5.4093
+_cell_length_b                   5.4093
+_cell_length_c                   5.4093
+_cell_volume                     158.279
+_exptl_crystal_density_diffrn    4.090
+_[local]_cod_chemical_formula_sum_orig 'Zn S'
+_cod_database_code               9000107
+_amcsd_database_code             AMCSD#0000109
 loop_
 _symmetry_equiv_pos_as_xyz
 x,y,z
--y,x-y,z
-y-x,-x,z
+x,1/2+y,1/2+z
+1/2+x,y,1/2+z
+1/2+x,1/2+y,z
+-z,x,-y
+-z,1/2+x,1/2-y
+1/2-z,x,1/2-y
+1/2-z,1/2+x,-y
+-y,z,-x
+-y,1/2+z,1/2-x
+1/2-y,z,1/2-x
+1/2-y,1/2+z,-x
+-x,y,-z
+-x,1/2+y,1/2-z
+1/2-x,y,1/2-z
+1/2-x,1/2+y,-z
+x,-z,-y
+x,1/2-z,1/2-y
+1/2+x,-z,1/2-y
+1/2+x,1/2-z,-y
+z,-y,-x
+z,1/2-y,1/2-x
+1/2+z,-y,1/2-x
+1/2+z,1/2-y,-x
+y,-x,-z
+y,1/2-x,1/2-z
+1/2+y,-x,1/2-z
+1/2+y,1/2-x,-z
+x,z,y
+x,1/2+z,1/2+y
+1/2+x,z,1/2+y
+1/2+x,1/2+z,y
+z,y,x
+z,1/2+y,1/2+x
+1/2+z,y,1/2+x
+1/2+z,1/2+y,x
+y,x,z
+y,1/2+x,1/2+z
+1/2+y,x,1/2+z
+1/2+y,1/2+x,z
+-z,-x,y
+-z,1/2-x,1/2+y
+1/2-z,-x,1/2+y
+1/2-z,1/2-x,y
+-y,-z,x
+-y,1/2-z,1/2+x
+1/2-y,-z,1/2+x
+1/2-y,1/2-z,x
+-x,-y,z
+-x,1/2-y,1/2+z
+1/2-x,-y,1/2+z
+1/2-x,1/2-y,z
+z,-x,-y
+z,1/2-x,1/2-y
+1/2+z,-x,1/2-y
+1/2+z,1/2-x,-y
+y,-z,-x
+y,1/2-z,1/2-x
+1/2+y,-z,1/2-x
+1/2+y,1/2-z,-x
+x,-y,-z
+x,1/2-y,1/2-z
+1/2+x,-y,1/2-z
+1/2+x,1/2-y,-z
+-x,z,-y
+-x,1/2+z,1/2-y
+1/2-x,z,1/2-y
+1/2-x,1/2+z,-y
+-z,y,-x
+-z,1/2+y,1/2-x
+1/2-z,y,1/2-x
+1/2-z,1/2+y,-x
+-y,x,-z
+-y,1/2+x,1/2-z
+1/2-y,x,1/2-z
+1/2-y,1/2+x,-z
+-x,-z,y
+-x,1/2-z,1/2+y
+1/2-x,-z,1/2+y
+1/2-x,1/2-z,y
+-z,-y,x
+-z,1/2-y,1/2+x
+1/2-z,-y,1/2+x
+1/2-z,1/2-y,x
 -y,-x,z
-y-x,y,z
-x,x-y,z
--x,-y,1/2+z
-y,y-x,1/2+z
-x-y,x,1/2+z
-y,x,1/2+z
-x-y,-y,1/2+z
--x,y-x,1/2+z
+-y,1/2-x,1/2+z
+1/2-y,-x,1/2+z
+1/2-y,1/2-x,z
+z,x,y
+z,1/2+x,1/2+y
+1/2+z,x,1/2+y
+1/2+z,1/2+x,y
+y,z,x
+y,1/2+z,1/2+x
+1/2+y,z,1/2+x
+1/2+y,1/2+z,x
 loop_
 _atom_site_label
-_atom_site_type_symbol
-_atom_site_symmetry_multiplicity
-_atom_site_Wyckoff_symbol
 _atom_site_fract_x
 _atom_site_fract_y
 _atom_site_fract_z
-_atom_site_occupancy
-_atom_site_attached_hydrogens
-_atom_site_calc_flag
-Zn1 Zn2+ 2 b 0.3333 0.6667 0. 1. 0 d
-S1 S2- 2 b 0.3333 0.6667 0.375 1. 0 d
-loop_
-_atom_type_symbol
-_atom_type_oxidation_number
-Zn2+ 2.000
-S2- -2.000
-_amcsd_database_code             AMCSD#0010171
+Zn 0.00000 0.00000 0.00000
+S 0.25000 0.25000 0.25000
