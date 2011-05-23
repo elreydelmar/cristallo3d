@@ -1,0 +1,73 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9000258.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9000258
+loop_
+_publ_author_name
+'Fleet, M. E.'
+_publ_section_title
+;
+ The crystal structure of pararammelsbergite (NiAs2)
+;
+_journal_name_full               'American Mineralogist'
+_journal_page_first              1
+_journal_page_last               9
+_journal_volume                  57
+_journal_year                    1972
+_chemical_formula_sum            'As2 Ni'
+_chemical_name_mineral           Pararammelsbergite
+_space_group_IT_number           61
+_symmetry_space_group_name_Hall  '-P 2ac 2ab'
+_symmetry_space_group_name_H-M   'P b c a'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   5.753
+_cell_length_b                   5.799
+_cell_length_c                   11.407
+_cell_volume                     380.556
+_exptl_crystal_density_diffrn    7.279
+_[local]_cod_chemical_formula_sum_orig 'Ni As2'
+_cod_database_code               9000258
+_amcsd_database_code             AMCSD#0000266
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,1/2-y,1/2+z
+-x,1/2+y,1/2-z
+1/2-x,1/2+y,z
+1/2+x,1/2-y,-z
+1/2+x,y,1/2-z
+1/2-x,-y,1/2+z
+-x,-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Ni 0.00494 0.00101 0.00152 0.00000 0.00000 0.00000
+As1 0.00583 0.00076 0.00228 0.00000 0.00000 0.00000
+As2 0.00709 0.00127 0.00266 0.00000 0.00000 0.00000
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Ni 0.99700 0.17550 0.37170
+As1 0.11960 0.05470 0.18090
+As2 0.36640 0.30840 0.43080
