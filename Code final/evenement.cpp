@@ -196,10 +196,12 @@ void evenement_clavier()
             {
 
                 precedent = courant;
+                /*
                 if(GetKeyState('r')<0 || GetKeyState('R')<0)
                 {
                     action_demarrer_camera_auto();
                 }
+                */
                 if(!(event_status->camera_auto))
                 {
 

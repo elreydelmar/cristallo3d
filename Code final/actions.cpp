@@ -591,17 +591,17 @@ void display()
     // matrix + glClear
     if(event_status != NULL)
     {
-        if(event_status->anaglyphe)
+        nouveau_dessin();
+        if(event_status->maille != NULL)
         {
-            display_anaglyphe(camera_courante, 0.05);
-        }
-        else
-        {
-            nouveau_dessin();
-             if(event_status->maille != NULL)
-             {
+            if(event_status->anaglyphe)
+            {
+                display_anaglyphe(camera_courante, 0.05);
+            }
+            else
+            {
                 set_camera(g_fenetre->gl_width, g_fenetre->gl_height,0);
-             }
+            }
         }
     }
 }
