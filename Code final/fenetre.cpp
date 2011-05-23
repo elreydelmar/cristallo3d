@@ -170,7 +170,8 @@ void afficher_image()
     GetWindowRect(g_fenetre->gl,&pos);
     GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp);
     g_fenetre->dc = GetDC(g_fenetre->gl);
-    DrawState(g_fenetre->dc,NULL,NULL,(LPARAM)hBmp,NULL,(pos.right - pos.left - bmp.bmWidth)/2,(pos.bottom - pos.top - bmp.bmHeight)/2,0,0,DST_BITMAP);
+    if( pos.right - pos.left - bmp.bmWidth >= 0 && pos.bottom - pos.top - bmp.bmHeight>=0)
+        DrawState(g_fenetre->dc,NULL,NULL,(LPARAM)hBmp,NULL,(pos.right - pos.left - bmp.bmWidth)/2,(pos.bottom - pos.top - bmp.bmHeight)/2,0,0,DST_BITMAP);
     DeleteObject(hBmp);
     ReleaseDC(g_fenetre->gl, g_fenetre->dc);
 }

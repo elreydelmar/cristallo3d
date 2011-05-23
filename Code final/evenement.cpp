@@ -233,7 +233,8 @@ void evenement_clavier()
     }
     else    // on desactive la camera
     {
-        event_status->camera_active = 0;
+        if(event_status != NULL)
+            event_status->camera_active = 0;
     }
 }
 
