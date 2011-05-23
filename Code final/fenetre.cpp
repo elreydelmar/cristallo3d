@@ -152,7 +152,11 @@ void redimensionner(HWND fenetre, int width, int height)
     // On repositionne la fenetre static
     MoveWindow(handle_menu, new_x, 0, WIDTH_COLONNE, height, TRUE);
 
+    g_fenetre->gl_width = gl_width;
+    g_fenetre->gl_height = gl_height;
     glViewport(x,y,gl_width,gl_height);
+    if(camera_courante != NULL)
+        camera_courante->changement_zoom = 1;
 }
 
 // On le garde

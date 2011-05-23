@@ -12,6 +12,8 @@ struct Fenetre
 
     HWND fenetre;
         HWND gl;
+        int gl_width;
+        int gl_height;
         HWND menu;
 
     // OpenGL

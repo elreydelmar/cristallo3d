@@ -5,6 +5,7 @@
 #include <gl\gl.h>
 #include <gl\glu.h>
 #include <gl\glaux.h>
+#include "camera.h"
 
 #include "boutons.h"
 
@@ -27,6 +28,7 @@ struct Rect
 extern LRESULT CALLBACK evenement(HWND, UINT, WPARAM, LPARAM);
 extern void init_event();
 extern Fenetre* g_fenetre;
+extern Camera* camera_courante;
 
 // Fonctions refaites simplifiees
 /// TODO : GESTION DES ERREURS
