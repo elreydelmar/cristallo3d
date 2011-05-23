@@ -18,7 +18,7 @@ void display_anaglyphe(Camera* camera, double ecartement_yeux)
     // Oeil cyan
     glClear(GL_DEPTH_BUFFER_BIT);
     glEnable(GL_BLEND);
-    glBlendFunc(GL_ONE, GL_ONE);
+    glBlendFunc(GL_ONE, GL_ZERO);
 
     glColorMask(GL_FALSE, GL_TRUE, GL_TRUE, GL_TRUE);
 
@@ -28,7 +28,7 @@ void display_anaglyphe(Camera* camera, double ecartement_yeux)
 
     drawscene();
 
-    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE); // Pour le glClear color buffer bit
+    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_FALSE); // Pour le glClear color buffer bit
 }
 
 
