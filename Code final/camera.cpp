@@ -214,5 +214,5 @@ void close_camera()
 
 double distance_projection(double distance_retro, double distance_ecran)
 {
-    return (5*distance_ecran - distance_retro);
+    return (distance_ecran/10 - distance_retro);
 }
