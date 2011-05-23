@@ -265,7 +265,6 @@ void action_parcourir()
         strcpy(event_status->adresse_fichier, szFile);
         SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
     }
-    afficher_image();
 }
 
 void action_generer()
