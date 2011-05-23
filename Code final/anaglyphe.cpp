@@ -11,7 +11,7 @@ void display_anaglyphe(Camera* camera, double ecartement_yeux)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();                                        //reset modelview matrix
-    set_camera(-ecartement_yeux/2);
+    set_camera(g_fenetre->gl_width, g_fenetre->gl_height,-ecartement_yeux/2);
 
     drawscene();
 
@@ -24,7 +24,7 @@ void display_anaglyphe(Camera* camera, double ecartement_yeux)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();                                        //reset modelview matrix
-    set_camera(+ecartement_yeux/2);
+    set_camera(g_fenetre->gl_width, g_fenetre->gl_height,+ecartement_yeux/2);
 
     drawscene();
 

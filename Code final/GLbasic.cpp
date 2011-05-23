@@ -15,14 +15,14 @@ void closeGL()
     close_camera();
 }
 
-void set_camera(double offset)
+void set_camera(double width, double height, double offset)
 {
     if(camera_courante->changement_zoom == 1)
     {
         camera_courante->changement_zoom = 0;
         glMatrixMode( GL_PROJECTION );
         glLoadIdentity();
-        gluPerspective(camera_courante->fovy,(double)(WIDTH-WIDTH_COLONNE)/HEIGHT,0.1,1000); // ratio a changer
+        gluPerspective(camera_courante->fovy,width/height,0.1,1000); // ratio a changer
     }
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity( );

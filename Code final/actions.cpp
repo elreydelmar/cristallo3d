@@ -600,7 +600,9 @@ void display()
         {
             nouveau_dessin();
              if(event_status->maille != NULL)
-                set_camera(0);
+             {
+                set_camera(g_fenetre->gl_width, g_fenetre->gl_height,0);
+             }
         }
     }
 }
