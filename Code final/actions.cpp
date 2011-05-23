@@ -596,11 +596,11 @@ void display()
         {
             if(event_status->anaglyphe)
             {
-                display_anaglyphe(camera_courante, 0.05);
+                display_anaglyphe(camera_courante, 0, 0.05);
             }
             else
             {
-                set_camera(g_fenetre->gl_width, g_fenetre->gl_height,0);
+                set_camera(g_fenetre->gl_width, g_fenetre->gl_height,0,0);
             }
         }
     }

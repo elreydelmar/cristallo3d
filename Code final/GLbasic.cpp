@@ -15,7 +15,7 @@ void closeGL()
     close_camera();
 }
 
-void set_camera(double width, double height, double offset)
+void set_camera(double width, double height, double depth, double offset)
 {
     if(camera_courante->changement_zoom == 1)
     {
@@ -28,6 +28,7 @@ void set_camera(double width, double height, double offset)
     glLoadIdentity( );
     Point cible = add_pts(camera_courante->origine, camera_courante->z);
     Point offset_pt = mult_scal_pts(offset,  camera_courante->y);
+    offset_pt = add_pts(offset_pt, mult_scal_pts(depth, camera_courante->z));
     gluLookAt(camera_courante->origine.x + offset_pt.x, camera_courante->origine.y + offset_pt.y, camera_courante->origine.z+ offset_pt.z,
               cible.x , cible.y, cible.z,
               camera_courante->x.x,camera_courante->x.y,camera_courante->x.z);
