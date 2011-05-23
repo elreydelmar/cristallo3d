@@ -6,6 +6,6 @@
 #include "fenetre.h"
 
 extern void drawscene();
-void display_anaglyphe(Camera* camera, double distance, double ecartement_yeux);
+void display_anaglyphe(Camera* camera, int retro, double distance_retro, double distance_ecran);
 
 #endif // ANAGLYPHE_H_INCLUDED

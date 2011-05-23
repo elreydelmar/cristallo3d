@@ -1,8 +1,19 @@
 #include "anaglyphe.h"
 
 
-void display_anaglyphe(Camera* camera, double distance, double ecartement_yeux)
+void display_anaglyphe(Camera* camera, int retro, double distance_retro, double distance_ecran)
 {
+    double ecartement_yeux;
+    if(retro)
+    {
+        if(distance_ecran > distance_retro)
+            ecartement_yeux = 0.05*sqrt(distance_ecran-distance_retro);
+        else
+            ecartement_yeux =0;
+    }
+    else
+        ecartement_yeux = 0.05*sqrt(distance_ecran);
+
     // Oeil rouge
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glDisable(GL_BLEND);
@@ -11,7 +22,7 @@ void display_anaglyphe(Camera* camera, double distance, double ecartement_yeux)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();                                        //reset modelview matrix
-    set_camera(g_fenetre->gl_width, g_fenetre->gl_height,distance,-ecartement_yeux/2);
+    set_camera(g_fenetre->gl_width, g_fenetre->gl_height, -ecartement_yeux/2);
 
     drawscene();
 
@@ -24,7 +35,7 @@ void display_anaglyphe(Camera* camera, double distance, double ecartement_yeux)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();                                        //reset modelview matrix
-    set_camera(g_fenetre->gl_width, g_fenetre->gl_height,distance,+ecartement_yeux/2);
+    set_camera(g_fenetre->gl_width, g_fenetre->gl_height,+ecartement_yeux/2);
 
     drawscene();
 
