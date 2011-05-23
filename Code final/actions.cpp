@@ -39,7 +39,7 @@ void end_event()
 void action_change_camera(int type)
 {
     event_status->choix_camera  = type;
-    if(type) // Trackball
+    if(type && event_status->maille != NULL) // Trackball
         tourner_droite(camera_courante, 0);
 }
 
@@ -432,7 +432,10 @@ void action_change_espace()
 
 void action_defaut(HWND handle)
 {
-    MessageBox(handle,"Mise par defaut - non associé","Defaut",MB_OK);
+    if(event_status->maille != NULL)
+        camera_par_defaut();
+    SendMessage(g_fenetre->trackball, BM_CLICK, 0, 0);
+
 }
 
 void action_aide(HWND handle)

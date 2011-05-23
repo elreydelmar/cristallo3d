@@ -26,6 +26,7 @@ extern Camera* camera_courante;
 
 // Fonction d'initialisation de la camera//
 void init_camera();
+void camera_par_defaut();
 
 // Fonction liberation espace camera//
 void close_camera();

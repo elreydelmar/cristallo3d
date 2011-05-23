@@ -173,7 +173,11 @@ void tourner_bas(Camera* c, double pas)
 void init_camera()
 {
     camera_courante = (Camera*) malloc(sizeof(Camera));
+    camera_par_defaut();
+}
 
+void camera_par_defaut()
+{
     camera_courante->origine.x=1.5;
     camera_courante->origine.y=2;
     camera_courante->origine.z=1;
