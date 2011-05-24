@@ -515,7 +515,10 @@ void action_camera_automatique()
 
 void changer_activation_camera()
 {
-    event_status->camera_active = !event_status->camera_active;
+    if(event_status->maille == NULL)
+        event_status->camera_active = 0; // pas besoin de camera, on n'a pas de maille
+    else
+        event_status->camera_active = !event_status->camera_active;
 }
 
 void action_mouse_move(int x, int y)
@@ -572,6 +575,27 @@ void action_zoom(int sens)
     else    // dezoom
         zoom(camera_courante, 0.9);
         */
+}
+
+void action_molette(int sens)
+{
+    sens %= 360;
+    sens = (sens < 180);
+    int valeur = SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0);
+    if(sens)
+    {
+        valeur += 2;
+        if(valeur>100)
+            valeur = 100;
+    }
+    else
+    {
+        valeur -= 2;
+        if(valeur<=0)
+            valeur = 0;
+    }
+    SendMessage(g_fenetre->s_espace_atome, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) valeur);
+    event_status->maille->agrandissement = conversion_slider_edit(SendMessage(g_fenetre->s_espace_atome, TBM_GETPOS, 0, 0), 0.01, 10);
 }
 
 void drawscene()

@@ -27,8 +27,8 @@ const Couleur couleurs[13] =
     {180, 50, 220}, // Violet
     {150, 100, 50}, // Marron
     {220,220,220}, // Blanc
-    {120,120,120}, // Gris
-    {20,20,20} // Noir
+    {20,20,20}, // Noir
+    {120,120,120} // Gris
 };
 
 struct _L_Symbole

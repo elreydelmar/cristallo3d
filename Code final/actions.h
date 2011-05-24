@@ -110,6 +110,7 @@ void action_camera_automatique();
 void changer_activation_camera();
 void action_mouse_move(int x, int y);
 void action_zoom(int sens); // 1 pour le zoom, 0 pour le dezoom
+void action_molette(int sens); // 1 pour vers le haut, 0 sinon
 
 
 // Actions de dessin

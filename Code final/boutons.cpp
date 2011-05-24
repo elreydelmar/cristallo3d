@@ -84,8 +84,8 @@ void boutons_maille(Fenetre* fenetre)
         SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Violet");
         SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Marron");
         SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Blanc");
-        SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Gris");
         SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Noir");
+        SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Gris");
 
     CreateWindow("STATIC", "Taille des atomes :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2,Y_MAILLE +  11*Y_CHAR/2 + 90, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
     fenetre->s_taille = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 130,Y_MAILLE +  5*Y_CHAR + 90, 115, 2*Y_CHAR, fenetre->menu, (HMENU)ID_S_TAILLE, fenetre->instance, NULL);

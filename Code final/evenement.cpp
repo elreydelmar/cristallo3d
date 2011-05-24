@@ -36,8 +36,13 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
         }
 
         case WM_LBUTTONDOWN:
-            if(event_status->maille != NULL && !(event_status->camera_auto))
+            if(!(event_status->camera_auto))
                 changer_activation_camera();
+        return 0;
+
+        case WM_MOUSEWHEEL:
+            if(event_status->camera_active)
+                action_molette(HIWORD(wParam));
         return 0;
 
         case WM_MOUSEMOVE:
@@ -54,10 +59,6 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
 
             return 0;
         }
-
-        case WM_MOUSEWHEEL:
-            //action_zoom(LOWORD(lParam)>0);
-        return 0;
 
         case CAMERA_AUTO :
             action_camera_automatique();
