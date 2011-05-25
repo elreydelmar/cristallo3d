@@ -19,7 +19,7 @@ const Couleur couleurs[13] =
     {150,190,250}, // Bleu clair
     {50,50,200},   // Bleu foncé
     {100,250,140}, // Vert clair
-    {20,150,50},   // Vert foncé
+    {120,120,120}, // Gris
     {200,200,20},  // Jaune
     {250,150,20},  // Orange
     {250,150,150}, // Rose
@@ -27,8 +27,8 @@ const Couleur couleurs[13] =
     {180, 50, 220}, // Violet
     {150, 100, 50}, // Marron
     {220,220,220}, // Blanc
-    {20,20,20}, // Noir
-    {120,120,120} // Gris
+    {20,150,50},   // Vert foncé
+    {20,20,20} // Transparent
 };
 
 struct _L_Symbole

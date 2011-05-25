@@ -283,6 +283,9 @@ void action_generer()
 
     // On genere l octree
     charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+    // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
+    charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
+    charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
     MessageBox(NULL,"Maille générée","Maille",MB_OK); // TODO
 
     supp_premaille(premaille);
@@ -328,7 +331,12 @@ void action_change_nb_x()
         event_status->nb_x = (nombre > 0) ? nombre : 1;
         // On genere l octree
         if(event_status->maille != NULL)
+        {
             charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+            // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
+            charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
+            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+        }
     }
 }
 
@@ -347,7 +355,12 @@ void action_change_nb_y()
         event_status->nb_y = (nombre > 0) ? nombre : 1;
         // On genere l octree
         if(event_status->maille != NULL)
+        {
             charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+            // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
+            charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
+            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+        }
     }
 }
 
@@ -366,7 +379,12 @@ void action_change_nb_z()
         event_status->nb_z = (nombre > 0) ? nombre : 1;
         // On genere l octree
         if(event_status->maille != NULL)
+        {
             charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+            // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
+            charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
+            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+        }
     }
 }
 

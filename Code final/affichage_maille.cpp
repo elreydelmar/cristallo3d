@@ -18,19 +18,21 @@ Matrice passage(double a,double b,double c,double alpha,double beta,double gamma
 
 void afficher_atome(Atome A, Atome_Type T, Matrice P)
 {
+    if(T.index_couleur != 12)
+    {
+        Sphere sphere;
+        sphere.radius=T.rayon_ionique;
+        sphere.slices=10;
+        sphere.stacks=10;
 
-    Sphere sphere;
-    sphere.radius=T.rayon_ionique;
-    sphere.slices=10;
-    sphere.stacks=10;
+        Point centre;
+        centre.x=A.position.x;
+        centre.y=A.position.y;
+        centre.z=A.position.z;
+        centre=mult_mat_point(P, centre);
 
-    Point centre;
-    centre.x=A.position.x;
-    centre.y=A.position.y;
-    centre.z=A.position.z;
-    centre=mult_mat_point(P, centre);
-
-    dessiner_sphere(sphere, couleurs[T.index_couleur], centre);
+        dessiner_sphere(sphere, couleurs[T.index_couleur], centre);
+    }
 }
 
 void afficher_contour(Maille* M, Matrice P)

@@ -70,8 +70,12 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
         (*maille)->types[i].rayon_ionique = 0.1;
         (*maille)->types[i].index_couleur = index_couleur;
         i++;
-        index_couleur += 4;
-        index_couleur %= 13;
+        do
+        {
+            index_couleur += 4;
+            index_couleur %= 13;
+        }
+        while(index_couleur == 12); // Pas de transparents
         buff2 = buff2->suivant;
     }
 
