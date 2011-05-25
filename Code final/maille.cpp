@@ -116,7 +116,7 @@ void vider_symbole(L_Symbole* l)
 void label_to_symbole(const char label[10], char symbole[6])
 {
     int i = 0;
-    while(label[i] != 0 && (label[i]<= 48 || label[i]>= 57) && i<5)
+    while(label[i] != 0 && (label[i]<= 48 || label[i]> 57) && i<5)
     {
         symbole[i] = label[i];
         i++;
