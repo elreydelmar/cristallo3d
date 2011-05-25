@@ -5,15 +5,14 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{DEF7D8C5-ED78-4502-B41A-D7BF0E8AC8FF}
+AppId={{FF34C576-2612-4D09-97B0-FE7DB0519337}
 AppName=Cristallo 3D
-AppVersion=1.0
-;AppVerName=Cristallo 3D 1.0
-AppPublisher=PHELMA Grenoble INP - Projet de Groupe 1
+AppVersion=1.1
+;AppVerName=Cristallo 3D 1.1
+AppPublisher=PHELMA Grenoble INP - Projet de groupe 1
 DefaultDirName={pf}\Cristallo 3D
 DefaultGroupName=Cristallo 3D
-AllowNoIcons=yes
-OutputBaseFilename=cristallo3D-setup
+OutputBaseFilename=setup
 Compression=lzma
 SolidCompression=yes
 
@@ -27,12 +26,13 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [Files]
 Source: "D:\Documents and Settings\boissonnat\Bureau\PDG\Cristallo 3D.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Documents and Settings\boissonnat\Bureau\PDG\extern\*"; DestDir: "{app}\extern\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "D:\Documents and Settings\boissonnat\Bureau\PDG\mailles\*"; DestDir: "{app}\mailles\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Documents and Settings\boissonnat\Bureau\PDG\extern\*"; DestDir: "{app}\extern\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 Name: "{group}\Cristallo 3D"; Filename: "{app}\Cristallo 3D.exe"
+Name: "{group}\{cm:UninstallProgram,Cristallo 3D}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\Cristallo 3D"; Filename: "{app}\Cristallo 3D.exe"; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Cristallo 3D"; Filename: "{app}\Cristallo 3D.exe"; Tasks: quicklaunchicon
 
