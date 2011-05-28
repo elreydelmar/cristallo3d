@@ -307,6 +307,7 @@ void action_generer()
     int pos_slider = conversion_edit_slider(event_status->maille->agrandissement, 0, 100, 0.01, 10.0);
     SendMessage(g_fenetre->s_espace_atome, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) pos_slider);
 
+    // Verifie que l'on a pas charge deux fois OpenGL
     static int gl_charge = 1;
     if(gl_charge)
     {
@@ -459,7 +460,7 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    ShellExecute(NULL,"open","aide.pdf",NULL, "extern",SW_SHOW);
+    ShellExecute(NULL,"open","extern/aide.pdf",NULL, NULL,SW_SHOW);
 }
 
 void action_up()
