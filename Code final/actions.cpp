@@ -460,7 +460,7 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    ShellExecute(NULL,"open","extern/aide.pdf",NULL, NULL,SW_SHOW);
+    ShellExecute(NULL,"open","extern/aide.pdf",NULL, NULL,SW_SHOWDEFAULT);
 }
 
 void action_up()
