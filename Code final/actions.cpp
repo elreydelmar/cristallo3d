@@ -258,7 +258,7 @@ void action_parcourir()
     ofn.lpstrFilter =
                "Fichier CIF\0*.cif\0";
     ofn.nFilterIndex = 1;
-    ofn.lpstrInitialDir = "\mailles";
+    ofn.lpstrInitialDir = "mailles";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
     if (GetOpenFileName(&ofn)==TRUE)
@@ -460,7 +460,7 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    ShellExecute(NULL,"open","extern/aide.pdf",NULL, NULL,SW_SHOWDEFAULT);
+    ShellExecute(NULL,"open", "aide.pdf",NULL, "extern",SW_SHOWNORMAL);
 }
 
 void action_up()
