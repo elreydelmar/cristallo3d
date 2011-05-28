@@ -460,7 +460,11 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    ShellExecute(NULL,"open", "aide.pdf",NULL, "extern",SW_SHOWNORMAL);
+    if(!ShellExecute(NULL,"open", "aide.pdf",NULL, "extern",SW_SHOWNORMAL))
+    {
+        MessageBox(NULL,"Trouvez le fichier d'aide dans le dossier extern dans le dossier d'installation","Aide",MB_OK);
+        int pourquoi = GetLastError();
+    }
 }
 
 void action_up()
