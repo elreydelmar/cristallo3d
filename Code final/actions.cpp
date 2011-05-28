@@ -460,11 +460,9 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    if(!ShellExecute(NULL,"open", "aide.pdf",NULL, "extern",SW_SHOWNORMAL))
-    {
-        MessageBox(NULL,"Trouvez le fichier d'aide dans le dossier extern dans le dossier d'installation","Aide",MB_OK);
-        int pourquoi = GetLastError();
-    }
+    HINSTANCE err = ShellExecute(NULL,"open", "aide.pdf",NULL, "extern",SW_SHOWNORMAL);
+    if((int)err ==  SE_ERR_NOASSOC)
+        MessageBox(NULL, "Erreur : Adobe Reader n'est pas associé avec les fichiers pdf", "Aide",MB_OK);
 }
 
 void action_up()
