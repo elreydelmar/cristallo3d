@@ -156,7 +156,8 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
             break;
 
         case ID_DEFAULT : action_defaut(handle); break;
-        case ID_HELP : action_aide(handle); break;
+        case ID_HELP :
+        action_aide(handle); break;
 
         default :
             break;
