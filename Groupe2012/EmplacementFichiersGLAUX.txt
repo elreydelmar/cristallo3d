@@ -1,0 +1,32 @@
+Vous trouverez les fichiers GLAUX dans le même dossier
+
+
+Emplacement glaux.h
+
+C:\Program Files (x86)\CodeBlocks\MinGW\include\GL\glaux.h
+
+
+
+
+Emplacement libglaux.a
+
+C:\Program Files (x86)\CodeBlocks\MinGW\lib\libglaux.a
+
+(Normalement le fichier existe déjà : pas besoin de le remplacer)
+
+
+
+
+
+
+Emplacement GLAUX.DLL
+
+C:\Program Files (x86)\CodeBlocks\MinGW\lib\gcc\mingw32\bin\GLAUX.DLL
+
+
+
+
+
+
+.....
+Normalement c'est bon
