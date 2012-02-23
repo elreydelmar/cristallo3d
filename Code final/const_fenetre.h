@@ -33,7 +33,7 @@
 #define Y_CHAR 15
 
 // Bas du menu
-#define ECART_BOUTON 100
+#define ECART_BOUTON 10
 #define TAILLE_BOUTON 80
 #define Y_OTHER 570
 

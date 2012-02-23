@@ -47,6 +47,7 @@ void boutons_camera(Fenetre* fenetre)
     fenetre->ordi = CreateWindow("BUTTON", "Ordinateur", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2, Y_CAMERA+35+2.5*Y_CHAR+HEIGHT_RETRO + 70, 80,2*Y_CHAR, fenetre->menu, (HMENU)ID_ORDI, fenetre->instance, NULL);
     fenetre->salle = CreateWindow("BUTTON", "Salle", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC + 80, Y_CAMERA+35+2.5*Y_CHAR+HEIGHT_RETRO + 70, 60,2*Y_CHAR, fenetre->menu, (HMENU)ID_SALLE, fenetre->instance, NULL);
     fenetre->amphi = CreateWindow("BUTTON", "Amphi", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, ALINEA_MENU+ALINEA_BLOC/2 + 3*ALINEA_BLOC/2 + 140, Y_CAMERA+35+2.5*Y_CHAR+HEIGHT_RETRO + 70, 60,2*Y_CHAR, fenetre->menu, (HMENU)ID_AMPHI, fenetre->instance, NULL);
+
 }
 
 void boutons_maille(Fenetre* fenetre)
@@ -102,6 +103,9 @@ void boutons_maille(Fenetre* fenetre)
 
 void autres_boutons(Fenetre* fenetre)
 {
-    fenetre->defaut = CreateWindow("BUTTON", "Par défaut", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, (WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/2, Y_OTHER, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_DEFAULT, fenetre->instance, NULL);
-    fenetre->aide = CreateWindow("BUTTON", "Aide", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, (WIDTH_MENU+ECART_BOUTON)/2, Y_OTHER, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_HELP, fenetre->instance, NULL);
+    fenetre->defaut = CreateWindow("BUTTON", "Par défaut", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, (WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/10, Y_OTHER, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_DEFAULT, fenetre->instance, NULL);
+    fenetre->aide = CreateWindow("BUTTON", "Aide", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, (WIDTH_MENU+34*ECART_BOUTON)/3, Y_OTHER, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_HELP, fenetre->instance, NULL);
+    // Enregistrer
+    fenetre->enregistrer = CreateWindow("BUTTON", "Save", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,(WIDTH_MENU+6.5*ECART_BOUTON)/3, Y_OTHER, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_ENREGISTRER, fenetre->instance, NULL);
+
 }

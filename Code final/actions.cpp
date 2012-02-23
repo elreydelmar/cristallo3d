@@ -654,3 +654,8 @@ void display()
         }
     }
 }
+
+void action_enregistrer()
+{
+
+}

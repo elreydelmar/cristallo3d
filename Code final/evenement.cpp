@@ -107,7 +107,7 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
     switch(id)
     {
         // La camera
-        case ID_FREEFLY : action_change_camera(0); break ;
+        //case ID_FREEFLY : action_change_camera(0); break ;
         case ID_TRACKBALL : action_change_camera(1); break;
         case ID_ANAGLYPHE : action_change_anaglyphe(SendMessage(g_fenetre->anaglyphe, BM_GETCHECK, 0, 0) == BST_CHECKED); break;
 
@@ -145,6 +145,9 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         // La maille
         case ID_PARCOURIR : action_parcourir(); break;
         case ID_GENERER : action_generer(); break;
+
+         //Enregistrer
+        case ID_ENREGISTRER : action_enregistrer(); break;
 
         case ID_ATOME :
             if(HIWORD(wParam) == CBN_SELCHANGE)

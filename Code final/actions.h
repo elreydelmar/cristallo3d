@@ -96,6 +96,9 @@ void action_change_espace();
 void action_defaut(HWND handle);
 void action_aide(HWND handle);
 
+//Enregistrer
+void action_enregistrer();
+
 // Actions du clavier
 void action_up();
 void action_down();

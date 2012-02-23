@@ -46,6 +46,10 @@ struct Fenetre
     HWND parcourir;
     HWND generer_maille;
 
+    // Enregistrer
+    HWND enregistrer;
+
+
     HWND nb_x;
     HWND nb_y;
     HWND nb_z;
