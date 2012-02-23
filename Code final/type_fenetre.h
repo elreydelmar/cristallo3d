@@ -45,6 +45,7 @@ struct Fenetre
     HWND adresse;
     HWND parcourir;
     HWND generer_maille;
+    HWND generer_maille_personnelle;
 
     // Enregistrer
     HWND enregistrer;

@@ -1,10 +1,10 @@
 #ifndef CONST_FENETRE_H_INCLUDED
 #define CONST_FENETRE_H_INCLUDED
 
-#define WIDTH 1000
-#define HEIGHT 640
+#define WIDTH 1020
+#define HEIGHT 700
 
-#define WIDTH_COLONNE 300
+#define WIDTH_COLONNE 320
 
 #define HEIGHT_MIN 500 //prévision
 #define WIDTH_MIN WIDTH_COLONNE+100 //prévision
@@ -31,7 +31,6 @@
 #define WIDTH_BLOC WIDTH_MENU-2*ALINEA_BLOC
 
 #define Y_CHAR 15
-
 // Bas du menu
 #define ECART_BOUTON 10
 #define TAILLE_BOUTON 80

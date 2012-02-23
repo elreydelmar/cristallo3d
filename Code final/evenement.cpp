@@ -145,6 +145,7 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         // La maille
         case ID_PARCOURIR : action_parcourir(); break;
         case ID_GENERER : action_generer(); break;
+        case ID_PERSONNELLE : action_generer_personnelle (); break;
 
          //Enregistrer
         case ID_ENREGISTRER : action_enregistrer(); break;

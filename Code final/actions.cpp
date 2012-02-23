@@ -659,3 +659,8 @@ void action_enregistrer()
 {
 
 }
+
+void action_generer_personnelle()
+{
+
+}

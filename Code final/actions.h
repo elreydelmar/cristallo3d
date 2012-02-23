@@ -79,6 +79,7 @@ void action_default_distance(double valeur);
 // actions par la maille
 void action_parcourir();
 void action_generer(); // TODO
+void action_generer_personnelle();
 
 void action_change_nb_x();
 void action_change_nb_y();

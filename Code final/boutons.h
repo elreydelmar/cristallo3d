@@ -24,6 +24,7 @@
 #define ID_ADRESSE 121
 #define ID_PARCOURIR 122
 #define ID_GENERER 123
+#define ID_PERSONNELLE 129
 
 #define ID_NB_X 124
 #define ID_NB_Y 125
