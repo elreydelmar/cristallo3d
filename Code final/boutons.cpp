@@ -17,7 +17,7 @@ void boutons_camera(Fenetre* fenetre)
     // Trackball ou Freefly
     fenetre->freefly = CreateWindow("BUTTON", "Freefly", WS_CHILD|WS_VISIBLE|BS_AUTORADIOBUTTON|WS_GROUP, ALINEA_MENU + ALINEA_BLOC, Y_CAMERA + 20, 140, Y_CHAR, fenetre->menu, (HMENU)ID_FREEFLY, fenetre->instance, NULL);
     fenetre->trackball = CreateWindow("BUTTON", "Trackball", WS_CHILD|WS_VISIBLE|BS_AUTORADIOBUTTON, ALINEA_MENU + ALINEA_BLOC+140, Y_CAMERA + 20, 80, Y_CHAR, fenetre->menu, (HMENU)ID_TRACKBALL, fenetre->instance, NULL);
-    SendMessage(fenetre->freefly, BM_SETCHECK, BST_CHECKED, 0);
+    SendMessage(fenetre->trackball, BM_SETCHECK, BST_CHECKED, 1);
 
     // Anaglyphe ou non
     fenetre->anaglyphe = CreateWindow("BUTTON", "Anaglyphe", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_MENU + ALINEA_BLOC, Y_CAMERA + 25+Y_CHAR, 100, Y_CHAR, fenetre->menu, (HMENU)ID_ANAGLYPHE, fenetre->instance, NULL);

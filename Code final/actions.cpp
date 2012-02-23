@@ -7,7 +7,7 @@ void init_event()
     if(event_status == NULL)
     {
         event_status = (EventStatus*) malloc(sizeof(EventStatus));
-        event_status->choix_camera = 0;
+        event_status->choix_camera = 1;
         event_status->anaglyphe = 0;
         event_status->retro = 0;
         event_status->dist_retro = 12;
