@@ -662,5 +662,5 @@ MessageBox(NULL,"Non mais t'es serieux ? J'ai pas encore fait cette fonction ! B
 
 void action_generer_personnelle()
 {
- MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MB_OK))))));
+ MessageBox(NULL,"t'es un mongol ?","cougar",MessageBox(NULL,"t'es nul","cougar",MessageBox(NULL,"Djurado ?","cougar",MessageBox(NULL,"LOL","cougar",MessageBox(NULL,"xD","cougar",MessageBox(NULL,"PTDR","cougar",MB_OK))))));
 }
