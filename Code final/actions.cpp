@@ -662,5 +662,5 @@ void action_enregistrer()
 
 void action_generer_personnelle()
 {
-
+ MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MessageBox(NULL,"fils de pute","cougar",MB_OK))))));
 }
