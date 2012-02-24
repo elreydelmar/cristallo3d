@@ -657,7 +657,7 @@ void display()
 
 void action_enregistrer()
 {
-
+MessageBox(NULL,"Non mais t'es serieux ? J'ai pas encore fait cette fonction ! Bolos va !","LoL",MB_OK);
 }
 
 void action_generer_personnelle()
