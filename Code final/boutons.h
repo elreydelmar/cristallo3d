@@ -21,6 +21,7 @@
 #define ID_SALLE 119
 #define ID_AMPHI 120
 
+#define ID_NOM 135
 #define ID_ADRESSE 121
 #define ID_PARCOURIR 122
 #define ID_GENERER 123
@@ -45,5 +46,6 @@ void afficher_boutons(Fenetre* fenetre);
     void boutons_camera(Fenetre* fenetre);
     void boutons_maille(Fenetre* fenetre);
     void autres_boutons(Fenetre* fenetre);
+    void boutons_nom (Fenetre* fenetre);
 
 #endif // BOUTONS_H_INCLUDED

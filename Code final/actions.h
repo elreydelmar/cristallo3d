@@ -36,6 +36,7 @@ struct EventStatus
     double dist_retro;
     double distance;
     char adresse_fichier[255];
+    char nom_fichier[255];
 
     Maille* maille;
     int nb_x;
@@ -77,6 +78,7 @@ void action_change_edit(HWND hEdit, HWND hSlider, int priorite, double min, doub
 void action_default_distance(double valeur);
 
 // actions par la maille
+void action_nom();
 void action_parcourir();
 void action_generer(); // TODO
 void action_generer_personnelle();

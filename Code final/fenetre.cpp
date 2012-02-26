@@ -55,7 +55,7 @@ int register_classe_fenetre(HWND *hFenetre, HINSTANCE instance)
     // On prévoit quand même le cas où ça échoue
     RegisterClass(&(classe));
 
-    *hFenetre = CreateWindow("classeF", "Cristallographie en 3d pour Djurado que j'aime !", WS_OVERLAPPEDWINDOW,
+    *hFenetre = CreateWindow("classeF", "Cristallographie en 3d - Grenoble INP Phelma", WS_OVERLAPPEDWINDOW,
                                    CW_USEDEFAULT, CW_USEDEFAULT, WIDTH, HEIGHT,
                                                    NULL, NULL, instance, NULL);
     return 0;

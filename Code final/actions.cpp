@@ -1,4 +1,5 @@
 #include "actions.h"
+#include "boutons.h"
 
 EventStatus* event_status = NULL;
 
@@ -13,6 +14,7 @@ void init_event()
         event_status->dist_retro = 12;
         event_status->distance = 12;
         event_status->adresse_fichier[0] = 0;
+        event_status->nom_fichier[0] = 0;
 
         event_status->maille = NULL;
         event_status->nb_x = 1;
@@ -249,14 +251,19 @@ void action_parcourir()
 {
     OPENFILENAME ofn;
     CHAR szFile[255]={0};
+    CHAR szFileTitle[255]={0};
 
     ZeroMemory(&ofn, sizeof(OPENFILENAME));
     ofn.lStructSize = sizeof(OPENFILENAME);
     ofn.hwndOwner = g_fenetre->fenetre;
     ofn.lpstrFile = szFile;
     ofn.nMaxFile = 255;
+
+    ofn.lpstrFileTitle = szFileTitle;
+    ofn.nMaxFileTitle= 255;
     ofn.lpstrFilter =
                "Fichier CIF\0*.cif\0";
+
     ofn.nFilterIndex = 1;
     ofn.lpstrInitialDir = "mailles";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
@@ -265,6 +272,10 @@ void action_parcourir()
     {
         strcpy(event_status->adresse_fichier, szFile);
         SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
+
+        strcpy(event_status->nom_fichier, szFileTitle);
+        SendMessage(g_fenetre->nom, WM_SETTEXT, 0, (LPARAM)szFileTitle);
+
     }
 }
 
@@ -287,6 +298,7 @@ void action_generer()
     charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
     charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
     MessageBox(NULL,"Maille générée","Maille",MB_OK); // TODO
+
 
     supp_premaille(premaille);
 
@@ -657,10 +669,15 @@ void display()
 
 void action_enregistrer()
 {
-MessageBox(NULL,"Non mais t'es serieux ? J'ai pas encore fait cette fonction ! Bolos va !","LoL",MB_OK);
+MessageBox(NULL,"Session enregistrée","Enregistrement",MB_OK);
 }
 
 void action_generer_personnelle()
 {
- MessageBox(NULL,"t'es un mongol ?","cougar",MessageBox(NULL,"t'es nul","cougar",MessageBox(NULL,"Djurado ?","cougar",MessageBox(NULL,"LOL","cougar",MessageBox(NULL,"xD","cougar",MessageBox(NULL,"PTDR","cougar",MB_OK))))));
+ MessageBox(NULL,"Fichier créé","Maille personnelle",MB_OK);
+}
+
+void action_nom()
+{
+
 }

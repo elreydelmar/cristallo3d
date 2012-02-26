@@ -42,6 +42,7 @@ struct Fenetre
         HWND amphi;
 
     // Maille
+    HWND nom;
     HWND adresse;
     HWND parcourir;
     HWND generer_maille;
