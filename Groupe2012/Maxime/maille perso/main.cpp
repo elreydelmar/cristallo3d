@@ -13,6 +13,8 @@
 #define ID_NOMAUTEUR 9
 #define ATOME 163
 #define ID_NOMATOME 9
+#define ID_SYM 10
+#define SYM 255
 
 HINSTANCE instance;
 
@@ -42,7 +44,7 @@ LPSTR lignesDeCommande, int modeDAffichage)
     if(!RegisterClass(&classeFenetre)) return FALSE;
 
     fenetrePrincipale = CreateWindow("classeF", "Création personnelle de fichier .cif", WS_OVERLAPPEDWINDOW,
-                                   CW_USEDEFAULT, CW_USEDEFAULT, 500, 500,
+                                   CW_USEDEFAULT, CW_USEDEFAULT, 500, 650,
                                                    NULL, NULL, cetteInstance, NULL);
     if (!fenetrePrincipale) return FALSE;
 
@@ -73,9 +75,9 @@ LRESULT CALLBACK procedureFenetrePrincipale(HWND fenetrePrincipale, UINT message
                CreateWindow("STATIC", "béta :", WS_CHILD | WS_VISIBLE, 155,PM+45, 80, Y_CHAR, fenetrePrincipale, NULL, instance, NULL);
                CreateWindow("STATIC", "gamma :", WS_CHILD | WS_VISIBLE, 305,PM+45, 80, Y_CHAR+5, fenetrePrincipale, NULL, instance, NULL);
                 boutons[0] = CreateWindow("BUTTON", "Parametres de Maille", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,PM+5, 475,Y_CHAR*4.5, fenetrePrincipale, NULL, instance, NULL);
-                boutons[1] = CreateWindow("EDIT", "5.4533", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,35,PM+25, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_A, instance, NULL);
-                boutons[2] = CreateWindow("EDIT", "5.4533", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,185,PM+25, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_B, instance, NULL);
-                boutons[3] = CreateWindow("EDIT", "5.4533", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,335,PM+25, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_C, instance, NULL);
+                boutons[1] = CreateWindow("EDIT", "5.4533", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_AUTOHSCROLL,35,PM+25, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_A, instance, NULL);
+                boutons[2] = CreateWindow("EDIT", "5.4533", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_AUTOHSCROLL,185,PM+25, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_B, instance, NULL);
+                boutons[3] = CreateWindow("EDIT", "5.4533", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_AUTOHSCROLL,335,PM+25, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_C, instance, NULL);
                 boutons[4] = CreateWindow("EDIT", "90", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,65,PM+45, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_ALPHA, instance, NULL);
                 boutons[5] = CreateWindow("EDIT", "90", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,215,PM+45, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_BETA, instance, NULL);
                 boutons[6] = CreateWindow("EDIT", "90", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,375,PM+45, 50, Y_CHAR, fenetrePrincipale, (HMENU)ID_NB_GAMMA, instance, NULL);
@@ -89,9 +91,10 @@ LRESULT CALLBACK procedureFenetrePrincipale(HWND fenetrePrincipale, UINT message
                 boutons[9] = CreateWindow("EDIT", "M. Dupont", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+25, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMAUTEUR, instance, NULL);
                 boutons[10] = CreateWindow("EDIT", "Bi Te", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+65, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMAUTEUR, instance, NULL);
 
-                boutons[11] = CreateWindow("BUTTON", "Atomes", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,ATOME+5, 475,Y_CHAR*11.4, fenetrePrincipale, NULL, instance, NULL);
-                boutons[12] = CreateWindow("EDIT", "Bi 0.00000 0.00000 0.00000\r\nTe 0.50000 0.50000 0.50000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE,10,ATOME+25, 462, Y_CHAR*9.8, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
-
+                boutons[11] = CreateWindow("BUTTON", "Atomes", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,ATOME+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
+                boutons[12] = CreateWindow("EDIT", "Bi 0.00000 0.00000 0.00000\r\nTe 0.50000 0.50000 0.50000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,ATOME+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
+                boutons[11] = CreateWindow("BUTTON", "Symétries", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,SYM+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
+                boutons[12] = CreateWindow("EDIT", "x,y,z\r\n-x,-y,-z", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,SYM+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_SYM, instance, NULL);
 return 0;
 
         case WM_COMMAND:
