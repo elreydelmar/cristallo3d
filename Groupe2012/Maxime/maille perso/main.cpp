@@ -15,6 +15,12 @@
 #define ID_NOMATOME 9
 #define ID_SYM 10
 #define SYM 255
+#define ID_PC 11
+#define PC 347
+#define ID_ENREG 12
+#define OTHER 429
+#define ID_AIDE 13
+#define ID_NOMMAILE 14
 
 HINSTANCE instance;
 
@@ -44,7 +50,7 @@ LPSTR lignesDeCommande, int modeDAffichage)
     if(!RegisterClass(&classeFenetre)) return FALSE;
 
     fenetrePrincipale = CreateWindow("classeF", "Création personnelle de fichier .cif", WS_OVERLAPPEDWINDOW,
-                                   CW_USEDEFAULT, CW_USEDEFAULT, 500, 650,
+                                   CW_USEDEFAULT, CW_USEDEFAULT, 500, 538,
                                                    NULL, NULL, cetteInstance, NULL);
     if (!fenetrePrincipale) return FALSE;
 
@@ -89,12 +95,18 @@ LRESULT CALLBACK procedureFenetrePrincipale(HWND fenetrePrincipale, UINT message
                CreateWindow("STATIC", "Formule Chimique  :", WS_CHILD | WS_VISIBLE, 15,ENTETE+65, 130, Y_CHAR, fenetrePrincipale, NULL, instance, NULL);
                 boutons[8] = CreateWindow("EDIT", "BiTe.cif", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+45, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMFICHIER, instance, NULL);
                 boutons[9] = CreateWindow("EDIT", "M. Dupont", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+25, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMAUTEUR, instance, NULL);
-                boutons[10] = CreateWindow("EDIT", "Bi Te", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+65, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMAUTEUR, instance, NULL);
+                boutons[10] = CreateWindow("EDIT", "Bi Te", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+65, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMMAILE, instance, NULL);
 
                 boutons[11] = CreateWindow("BUTTON", "Atomes", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,ATOME+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
                 boutons[12] = CreateWindow("EDIT", "Bi 0.00000 0.00000 0.00000\r\nTe 0.50000 0.50000 0.50000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,ATOME+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
-                boutons[11] = CreateWindow("BUTTON", "Symétries", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,SYM+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
-                boutons[12] = CreateWindow("EDIT", "x,y,z\r\n-x,-y,-z", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,SYM+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_SYM, instance, NULL);
+
+                boutons[13] = CreateWindow("BUTTON", "Symétries (Optionnel)", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,SYM+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
+                boutons[14] = CreateWindow("EDIT", "x,y,z\r\n-x,-y,-z", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,SYM+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_SYM, instance, NULL);
+
+                boutons[15] = CreateWindow("BUTTON", "Parametres connaisseur (Optionnel)", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,PC+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
+                boutons[16] = CreateWindow("EDIT", "loop_", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,PC+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_PC, instance, NULL);
+                boutons[17] = CreateWindow("BUTTON", "Enregistrer", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,5,OTHER+25, 233, Y_CHAR*2, fenetrePrincipale, (HMENU)ID_ENREG, instance, NULL);
+                boutons[18] = CreateWindow("BUTTON", "Aide", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,5+240,OTHER+25, 233, Y_CHAR*2, fenetrePrincipale, (HMENU)ID_AIDE, instance, NULL);
 return 0;
 
         case WM_COMMAND:
@@ -125,6 +137,24 @@ return 0;
                     break;
                 case ID_NOMFICHIER:
 
+                    break;
+                case ID_NOMMAILE:
+
+                    break;
+                case ID_SYM:
+
+                    break;
+                case ID_PC:
+
+                    break;
+                case ID_ENREG:
+                MessageBox(NULL,"fichier .cif créé","Enregistrement",MB_OK);
+
+                    break;
+                case ID_AIDE:
+                    HINSTANCE err = ShellExecute(NULL,"open", "aide1.pdf",NULL, "extern2",SW_SHOWNORMAL);
+                    if((int)err ==  SE_ERR_NOASSOC)
+                    MessageBox(NULL, "Erreur : Adobe Reader n'est pas associé avec les fichiers pdf", "Aide",MB_OK);
                     break;
 
 
