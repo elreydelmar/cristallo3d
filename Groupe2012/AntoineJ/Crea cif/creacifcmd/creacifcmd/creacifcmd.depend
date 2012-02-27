@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1330126729 source:c:\users\antoine\desktop\creacifcmd\creacifcmd\main.cpp
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	<string.h>
+

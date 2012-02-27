@@ -112,7 +112,7 @@ return 0;
         case WM_COMMAND:
             switch(LOWORD(wParam))
             {
-                case ID_NB_A:
+                case ID_NB_A: // ON PEUT METTRE TOUT LES CODES
 
                     break;
 
@@ -148,6 +148,7 @@ return 0;
 
                     break;
                 case ID_ENREG:
+                // LA QUIL FAUT METTRE
                 MessageBox(NULL,"fichier .cif créé","Enregistrement",MB_OK);
 
                     break;
