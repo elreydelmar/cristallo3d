@@ -12,7 +12,7 @@ void afficher_boutons(Fenetre* fenetre)
 
    void boutons_nom(Fenetre* fenetre)
         {
-        fenetre->nom = CreateWindow("EDIT", "Nom fichier", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL, (WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/10 +100, Y_OTHER*1.09, 90,Y_CHAR, fenetre->menu, (HMENU)ID_NOM, fenetre->instance, NULL);
+        fenetre->nom = CreateWindow("EDIT", "Nom fichier", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_READONLY, (WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/10 +100, Y_OTHER*1.09, 90,Y_CHAR, fenetre->menu, (HMENU)ID_NOM, fenetre->instance, NULL);
         }
 
 void boutons_camera(Fenetre* fenetre)
