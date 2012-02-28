@@ -23,10 +23,17 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
 {
     switch (message)
     {
-        case WM_DESTROY:
+        case WM_CLOSE:
+
+            {
+
+            int REF = MessageBox(NULL, "Etes-vous sûr de vouloir de quitter ?", "Quitter",MB_ICONWARNING | MB_YESNO);
+            if (REF==IDYES){
             end_event();
             PostQuitMessage(0);
-            return 0;
+
+            }return 0;
+            }
 
         case WM_SIZE:
         {

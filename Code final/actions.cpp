@@ -674,7 +674,7 @@ MessageBox(NULL,"Session enregistrée","Enregistrement",MB_OK);
 
 void action_generer_personnelle()
 {
- MessageBox(NULL,"Fichier créé","Maille personnelle",MB_OK);
+
 }
 
 void action_nom()
