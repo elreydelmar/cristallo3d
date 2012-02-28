@@ -2,6 +2,11 @@
 1330376208 source:c:\users\max\desktop\maille perso\main.cpp
 	<windows.h>
 
-1330376208 source:c:\users\max\desktop\cristalo3d\groupe2012\maxime\maille perso\main.cpp
+1330459017 source:c:\users\max\desktop\cristalo3d\groupe2012\maxime\maille perso\main.cpp
 	<windows.h>
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	<string.h>
 

@@ -1,5 +1,14 @@
 #include <windows.h>
 
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#define N 200
+
+using namespace std;
+
 #define Y_CHAR 15
 #define ID_NB_A 2
 #define ID_NB_B 3
@@ -12,8 +21,8 @@
 #define ID_NOMFICHIER 8
 #define ID_NOMAUTEUR 9
 #define ATOME 163
-#define ID_NOMATOME 9
-#define ID_SYM 10
+#define ID_NOMATOME 10
+#define ID_SYM 15
 #define SYM 255
 #define ID_PC 11
 #define PC 347
@@ -93,33 +102,44 @@ LRESULT CALLBACK procedureFenetrePrincipale(HWND fenetrePrincipale, UINT message
                CreateWindow("STATIC", "Nom du fichier        :", WS_CHILD | WS_VISIBLE, 15,ENTETE+45, 130, Y_CHAR, fenetrePrincipale, NULL, instance, NULL);
                CreateWindow("STATIC", "Nom de l'auteur      :", WS_CHILD | WS_VISIBLE, 15,ENTETE+25, 135, Y_CHAR, fenetrePrincipale, NULL, instance, NULL);
                CreateWindow("STATIC", "Formule Chimique  :", WS_CHILD | WS_VISIBLE, 15,ENTETE+65, 130, Y_CHAR, fenetrePrincipale, NULL, instance, NULL);
-                boutons[8] = CreateWindow("EDIT", "BiTe.cif", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+45, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMFICHIER, instance, NULL);
+                boutons[8] = CreateWindow("EDIT", "NaCl.cif", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+45, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMFICHIER, instance, NULL);
                 boutons[9] = CreateWindow("EDIT", "M. Dupont", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+25, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMAUTEUR, instance, NULL);
-                boutons[10] = CreateWindow("EDIT", "Bi Te", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+65, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMMAILE, instance, NULL);
+                boutons[10] = CreateWindow("EDIT", "Na Cl", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+65, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMMAILE, instance, NULL);
 
                 boutons[11] = CreateWindow("BUTTON", "Atomes", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,ATOME+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
-                boutons[12] = CreateWindow("EDIT", "Bi 0.00000 0.00000 0.00000\r\nTe 0.50000 0.50000 0.50000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,ATOME+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
+                boutons[12] = CreateWindow("EDIT", "Na 0.00000 0.00000 0.00000\r\nCl 0.50000 0.50000 0.50000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,ATOME+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
 
                 boutons[13] = CreateWindow("BUTTON", "Symétries (Optionnel)", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,SYM+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
-                boutons[14] = CreateWindow("EDIT", "x,y,z\r\n-x,-y,-z", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,SYM+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_SYM, instance, NULL);
+                boutons[14] = CreateWindow("EDIT", "x,y,z\r\nz,-x,y\r\n-y,z,-x\r\nx,-y,z\r\n-z,x,-y\r\ny,-z,x\r\n-x,y,-z\r\nx,-z,-y\r\n-z,y,x\r\ny,-x,-z\r\n-x,z,y\r\nz,-y,-x\r\n-y,x,z\r\nx,z,y\r\n-z,-y,-x\r\ny,x,z\r\n-x,-z,-y\r\nz,y,x\r\n-y,-x,-z\r\nz,x,-y\r\n-y,-z,x\r\nx,y,-z\r\n-z,-x,y\r\ny,z,-x\r\n-x,-y,z\r\n-z,x,y\r\ny,-z,-x\r\n-x,y,z\r\nz,-x,-y\r\n-y,z,x\r\nx,-y,-z\r\n-x,z,-y\r\nz,-y,x\r\n-y,x,-z\r\nx,-z,y\r\n-z,y,-x\r\ny,-x,z\r\n-x,-z,y\r\nz,y,-x\r\n-y,-x,z\r\nx,z,-y\r\n-z,-y,x\r\ny,x,-z\r\n-z,-x,-y\r\ny,z,x\r\n-x,-y,-z\r\nz,x,y\r\n-y,-z,-x", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,SYM+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_SYM, instance, NULL);
 
                 boutons[15] = CreateWindow("BUTTON", "Parametres connaisseur (Optionnel)", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,PC+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
-                boutons[16] = CreateWindow("EDIT", "loop_", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| ES_AUTOVSCROLL,10,PC+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_PC, instance, NULL);
+                boutons[16] = CreateWindow("EDIT", " ", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL|ES_AUTOVSCROLL,10,PC+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_PC, instance, NULL);
                 boutons[17] = CreateWindow("BUTTON", "Enregistrer", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,5,OTHER+25, 233, Y_CHAR*2, fenetrePrincipale, (HMENU)ID_ENREG, instance, NULL);
                 boutons[18] = CreateWindow("BUTTON", "Aide", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,5+240,OTHER+25, 233, Y_CHAR*2, fenetrePrincipale, (HMENU)ID_AIDE, instance, NULL);
 return 0;
 
         case WM_COMMAND:
+
+
+
+
             switch(LOWORD(wParam))
             {
-                case ID_NB_A: // ON PEUT METTRE TOUT LES CODES
+                case ID_NOMFICHIER:
+                break;
+                case ID_NOMAUTEUR:
+
 
                     break;
+                case ID_NOMMAILE:
 
+                    break;
+                case ID_NB_A:
+
+                    break;
                 case ID_NB_B:
 
                     break;
-
                 case ID_NB_C:
 
                     break;
@@ -132,13 +152,7 @@ return 0;
                 case ID_NB_GAMMA:
 
                     break;
-                case ID_NOMAUTEUR:
-
-                    break;
-                case ID_NOMFICHIER:
-
-                    break;
-                case ID_NOMMAILE:
+                case ID_NOMATOME:
 
                     break;
                 case ID_SYM:
@@ -149,7 +163,70 @@ return 0;
                     break;
                 case ID_ENREG:
                 // LA QUIL FAUT METTRE
-                MessageBox(NULL,"fichier .cif créé","Enregistrement",MB_OK);
+{
+
+                UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
+                UINT freefps;
+                FILE * fichier = fopen("test.cif","w"); //on ouvre/crée le fichier en ecriture
+                TCHAR buf[1000]; // on crée un buffer qui recoit le texte de l'edit box
+
+                //AUTEUR
+
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NOMAUTEUR, buf, 256); // on affecte au buffer le texte de l'edit box du bouton
+                fprintf(fichier, "# Fichier maille personnelle cree a partir du logiciel cristallo 3D\n# GRENOBLE INP PHELMA\n#####################################################################\n\r\n");
+                fprintf(fichier, "loop_\n");
+                fprintf(fichier, "_publ_author_name\t\t\n'%s'\r\n",buf);
+
+
+                //FORMULE CHIM
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NOMMAILE, buf, 256);
+                fprintf(fichier, "_chemical_formula_sum\t\t'%s'\r\n",buf);
+                //A
+                double fps_a;
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NB_A, buf, 7);
+                fps_a=strtod(buf, NULL);
+                fprintf(fichier, "_cell_length_a\t\t\t%.4f\r\n",fps_a);
+                //B
+                double fps_b;
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NB_B, buf, 7);
+                fps_b=strtod(buf, NULL);
+                fprintf(fichier, "_cell_length_b\t\t\t%.4f\r\n",fps_b);
+                //C
+                double fps_c;
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NB_C, buf, 7);
+                fps_c=strtod(buf, NULL);
+                fprintf(fichier, "_cell_length_c\t\t\t%.4f\r\n",fps_c);
+                //Alpha
+                double fps_alpha;
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NB_ALPHA, buf, 7);
+                fps_alpha=strtod(buf, NULL);
+                fprintf(fichier, "_cell_angle_alpha\t\t%.4f\r\n",fps_alpha);
+                //Beta
+                double fps_beta;
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NB_BETA, buf, 7);
+                fps_beta=strtod(buf, NULL);
+                fprintf(fichier, "_cell_angle_beta\t\t\t%.4f\r\n",fps_beta);
+                //Gamma
+                double fps_gamma;
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NB_GAMMA, buf, 7);
+                fps_gamma=strtod(buf, NULL);
+                fprintf(fichier, "_cell_angle_gamma\t\t%.4f\r\n",fps_gamma);
+                fprintf(fichier, "loop_\n");
+                fprintf(fichier, "_symmetry_equiv_pos_as_xyz\n");
+                //Symetries
+                freefps=GetDlgItemText(fenetrePrincipale, ID_SYM, buf, 1001);
+                fprintf(fichier, "%s\r\n",buf);
+                fprintf(fichier, "loop_\n");
+                //Parametres connaisseur
+                freefps=GetDlgItemText(fenetrePrincipale, ID_PC, buf, 1001);
+                fprintf(fichier, "%s\r\n",buf);
+                //ATOME
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NOMATOME, buf, 256);
+                fprintf(fichier, "%s\r\n",buf);
+
+
+MessageBox(NULL,"fichier .cif créé","Enregistrement",MB_OK);
+}
 
                     break;
                 case ID_AIDE:
@@ -170,3 +247,5 @@ return 0;
             return DefWindowProc(fenetrePrincipale, message, wParam, lParam);
     }
 }
+
+
