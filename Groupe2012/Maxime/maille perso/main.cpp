@@ -165,10 +165,20 @@ return 0;
                 // LA QUIL FAUT METTRE
 {
 
+                TCHAR buf[1000];
                 UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
                 UINT freefps;
-                FILE * fichier = fopen("test.cif","w"); //on ouvre/crée le fichier en ecriture
-                TCHAR buf[1000]; // on crée un buffer qui recoit le texte de l'edit box
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NOMFICHIER, buf, 250);
+                //strcat(buf, ".cif");
+                FILE * fichier = fopen(buf,"w");
+                if(fichier == NULL) // Test ouverture canal
+                {
+                    MessageBox(NULL,"Erreur Fichier","Enregistrement",MB_OK);
+                }
+
+
+                //FILE * fichier = fopen("test.cif","w"); //on ouvre/crée le fichier en ecriture
+                // on crée un buffer qui recoit le texte de l'edit box
 
                 //AUTEUR
 
@@ -216,7 +226,7 @@ return 0;
                 //Symetries
                 freefps=GetDlgItemText(fenetrePrincipale, ID_SYM, buf, 1001);
                 fprintf(fichier, "%s\r\n",buf);
-                fprintf(fichier, "loop_\n");
+                fprintf(fichier, "loop_\n_atom_site_label\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n");
                 //Parametres connaisseur
                 freefps=GetDlgItemText(fenetrePrincipale, ID_PC, buf, 1001);
                 fprintf(fichier, "%s\r\n",buf);
