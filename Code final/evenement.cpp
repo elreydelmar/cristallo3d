@@ -150,7 +150,7 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
         case ID_AMPHI : action_default_distance(20.); break;
 
         // La maille
-        case ID_NOM : action_nom();break;
+        //case ID_NOM : action_nom();break;
         case ID_PARCOURIR : action_parcourir(); break;
         case ID_GENERER : action_generer(); break;
         case ID_PERSONNELLE : action_generer_personnelle (); break;

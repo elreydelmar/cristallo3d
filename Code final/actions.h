@@ -37,12 +37,15 @@ struct EventStatus
     double distance;
     char adresse_fichier[255];
     char nom_fichier[255];
+    char couleur [255];
+
 
     Maille* maille;
     int nb_x;
     int nb_y;
     int nb_z;
     double espace_atome;
+    double taille;
 
     // OpenGL
     int camera_active; // 1 si la camera est active

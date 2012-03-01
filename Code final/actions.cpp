@@ -16,11 +16,13 @@ void init_event()
         event_status->adresse_fichier[0] = 0;
         event_status->nom_fichier[0] = 0;
 
+
         event_status->maille = NULL;
         event_status->nb_x = 1;
         event_status->nb_y = 1;
         event_status->nb_z = 1;
         event_status->espace_atome = 0.5;
+
 
         event_status->camera_active = 0;
         event_status->controle = 0;
@@ -669,7 +671,42 @@ void display()
 
 void action_enregistrer()
 {
-MessageBox(NULL,"Session enregistrée","Enregistrement",MB_OK);
+    int i;
+                TCHAR buf[255];
+                UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
+                UINT freefps;
+                freefps=GetDlgItemText(g_fenetre->menu, ID_NOM, buf, 256);
+
+
+                strcat(buf, ".txt");
+                FILE * fichier = fopen(buf,"w");
+                if(fichier == NULL) // Test ouverture canal
+                {
+                    MessageBox(NULL,"Erreur Fichier","Enregistrement",MB_OK);
+                }
+
+                freefps=GetDlgItemText(g_fenetre->menu, ID_NB_X, buf, 256);
+                fprintf(fichier, "_nb_x\t\t %s\n",buf);
+                freefps=GetDlgItemText(g_fenetre->menu, ID_NB_Y, buf, 256);
+                fprintf(fichier, "_nb_y\t\t %s\n",buf);
+                freefps=GetDlgItemText(g_fenetre->menu, ID_NB_Z, buf, 256);
+                fprintf(fichier, "_nb_z\t\t %s\n",buf);
+
+
+
+                for(i=0; i<event_status->maille->nb_type_atomes; i++)
+    {
+
+                fprintf(fichier, "\n_atome\t\t %s\n",event_status->maille->types[i].symbole);
+                fprintf(fichier, "_couleur\t\t %d\n",event_status->maille->types[i].index_couleur);
+                fprintf(fichier, "_s_taille\t\t %f\n",event_status->maille->types[i].rayon_ionique);
+
+
+                }
+
+                fprintf(fichier, "\n\n_s_espace\t\t %f\n",event_status->maille->agrandissement);
+
+                MessageBox(NULL,"Session enregistrée","Enregistrement",MB_OK);
 }
 
 void action_generer_personnelle()
@@ -677,7 +714,7 @@ void action_generer_personnelle()
 
 }
 
-void action_nom()
+/*void action_nom()
 {
 
-}
+}*/
