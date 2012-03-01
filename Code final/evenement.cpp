@@ -157,6 +157,7 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
 
          //Enregistrer
         case ID_ENREGISTRER : action_enregistrer(); break;
+        case ID_CHARGER : action_charger(); break;
 
         case ID_ATOME :
             if(HIWORD(wParam) == CBN_SELCHANGE)

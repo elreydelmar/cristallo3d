@@ -1,5 +1,8 @@
 #include "actions.h"
 #include "boutons.h"
+#include <iostream>
+
+using namespace std;
 
 EventStatus* event_status = NULL;
 
@@ -671,14 +674,15 @@ void display()
 
 void action_enregistrer()
 {
-    int i;
+                int i;
                 TCHAR buf[255];
                 UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
                 UINT freefps;
                 freefps=GetDlgItemText(g_fenetre->menu, ID_NOM, buf, 256);
 
 
-                strcat(buf, ".txt");
+
+                strcat(buf, ".dat");
                 FILE * fichier = fopen(buf,"w");
                 if(fichier == NULL) // Test ouverture canal
                 {
@@ -695,18 +699,17 @@ void action_enregistrer()
 
 
                 for(i=0; i<event_status->maille->nb_type_atomes; i++)
-    {
-
+                {
                 fprintf(fichier, "\n_atome\t\t %s\n",event_status->maille->types[i].symbole);
                 fprintf(fichier, "_couleur\t\t %d\n",event_status->maille->types[i].index_couleur);
                 fprintf(fichier, "_s_taille\t\t %f\n",event_status->maille->types[i].rayon_ionique);
-
-
                 }
 
                 fprintf(fichier, "\n\n_s_espace\t\t %f\n",event_status->maille->agrandissement);
 
                 MessageBox(NULL,"Session enregistrée","Enregistrement",MB_OK);
+
+
 }
 
 void action_generer_personnelle()
@@ -714,7 +717,34 @@ void action_generer_personnelle()
 
 }
 
-/*void action_nom()
+void action_charger()
 {
+OPENFILENAME ofn;
+    CHAR szFile[255]={0};
+    CHAR szFileTitle[255]={0};
 
-}*/
+    ZeroMemory(&ofn, sizeof(OPENFILENAME));
+    ofn.lStructSize = sizeof(OPENFILENAME);
+    ofn.hwndOwner = g_fenetre->fenetre;
+    ofn.lpstrFile = szFile;
+    ofn.nMaxFile = 255;
+
+    ofn.lpstrFileTitle = szFileTitle;
+    ofn.nMaxFileTitle= 255;
+    ofn.lpstrFilter =
+               "Fichier DAT\0*.dat\0";
+
+    ofn.nFilterIndex = 1;
+    ofn.lpstrInitialDir = "mailles";
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+
+    if (GetOpenFileName(&ofn)==TRUE)
+    {
+        strcpy(event_status->adresse_fichier, szFile);
+        SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
+
+        strcpy(event_status->nom_fichier, szFileTitle);
+        SendMessage(g_fenetre->nom, WM_SETTEXT, 0, (LPARAM)szFileTitle);
+
+    }
+}

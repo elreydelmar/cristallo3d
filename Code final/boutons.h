@@ -40,6 +40,7 @@
 #define ID_DEFAULT 130
 #define ID_HELP 131
 #define ID_ENREGISTRER 134
+#define ID_CHARGER 136
 
 
 void afficher_boutons(Fenetre* fenetre);

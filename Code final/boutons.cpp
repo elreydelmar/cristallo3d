@@ -26,33 +26,33 @@ void boutons_camera(Fenetre* fenetre)
     SendMessage(fenetre->trackball, BM_SETCHECK, BST_CHECKED, 1);
 
     // Anaglyphe ou non
-    fenetre->anaglyphe = CreateWindow("BUTTON", "Anaglyphe", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_MENU + ALINEA_BLOC, Y_CAMERA + 25+Y_CHAR, 100, Y_CHAR, fenetre->menu, (HMENU)ID_ANAGLYPHE, fenetre->instance, NULL);
+    fenetre->anaglyphe = CreateWindow("BUTTON", "Anaglyphe", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_MENU + ALINEA_BLOC, Y_CAMERA + 25+15, 100, Y_CHAR, fenetre->menu, (HMENU)ID_ANAGLYPHE, fenetre->instance, NULL);
 
     // Retroprojecteur
-    fenetre->c_retro = CreateWindow("BUTTON", "Projecteur", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_MENU +ALINEA_BLOC/2, Y_CAMERA+35+2*Y_CHAR, WIDTH_MENU-ALINEA_BLOC, HEIGHT_RETRO, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->c_retro = CreateWindow("BUTTON", "Projecteur", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_MENU +ALINEA_BLOC/2, Y_CAMERA+35+2*15, WIDTH_MENU-ALINEA_BLOC, 100, fenetre->menu, NULL, fenetre->instance, NULL);
     fenetre->retro =  CreateWindow("BUTTON", "Activer", WS_CHILD|WS_VISIBLE|BS_AUTOCHECKBOX, ALINEA_MENU +ALINEA_BLOC/2 +ALINEA_BLOC/2,Y_CAMERA+35+2*Y_CHAR + 2*Y_CHAR, 150, Y_CHAR, fenetre->menu, (HMENU)ID_RETRO, fenetre->instance, NULL);
     // Slider
-    fenetre->s_retro = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +ALINEA_BLOC/2 + ALINEA_BLOC/2,Y_CAMERA+35+2*Y_CHAR + 3*Y_CHAR, 170, 3*Y_CHAR, fenetre->menu, (HMENU)ID_S_RETRO, fenetre->instance, NULL);
+    fenetre->s_retro = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +ALINEA_BLOC/2 + ALINEA_BLOC/2,Y_CAMERA+35+2*15 + 3*Y_CHAR, 170, 3*Y_CHAR, fenetre->menu, (HMENU)ID_S_RETRO, fenetre->instance, NULL);
         SendMessage(fenetre->s_retro, TBM_SETRANGE,(WPARAM) TRUE,(LPARAM) MAKELONG(1, 100));  // min. & max. positions
         SendMessage(fenetre->s_retro, TBM_SETPAGESIZE, 0, (LPARAM) 4);
     // Box
-    fenetre->t_retro = CreateWindow("EDIT", "12", WS_CHILD | WS_VISIBLE, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2 + 175,Y_CAMERA+35+2*Y_CHAR + 3*Y_CHAR + 2, 50, Y_CHAR, fenetre->menu, (HMENU)ID_T_RETRO, fenetre->instance, NULL);
+    fenetre->t_retro = CreateWindow("EDIT", "12", WS_CHILD | WS_VISIBLE, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2 + 175,Y_CAMERA+35+2*15 + 3*15 + 2, 50, Y_CHAR, fenetre->menu, (HMENU)ID_T_RETRO, fenetre->instance, NULL);
     SendMessage(fenetre->s_retro, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
 
     // Distance ecran
-    fenetre->c_distance = CreateWindow("BUTTON", "Distance avec l'écran", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_MENU +ALINEA_BLOC/2, Y_CAMERA + 35+2.5*Y_CHAR+HEIGHT_RETRO, WIDTH_MENU-ALINEA_BLOC, HEIGHT_DIST, fenetre->menu, NULL, fenetre->instance, NULL);
+    fenetre->c_distance = CreateWindow("BUTTON", "Distance avec l'écran", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, ALINEA_MENU +ALINEA_BLOC/2, Y_CAMERA + 35+2.5*15+100, WIDTH_MENU-ALINEA_BLOC, HEIGHT_DIST, fenetre->menu, NULL, fenetre->instance, NULL);
     // Slider
-    fenetre->s_distance = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2, Y_CAMERA+35+2.5*Y_CHAR+HEIGHT_RETRO + 2*Y_CHAR, 170, 2*Y_CHAR, fenetre->menu, (HMENU)ID_S_DISTANCE, fenetre->instance, NULL);
+    fenetre->s_distance = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2, Y_CAMERA+35+2.5*15+100 + 2*Y_CHAR, 170, 2*Y_CHAR, fenetre->menu, (HMENU)ID_S_DISTANCE, fenetre->instance, NULL);
         SendMessage(fenetre->s_distance, TBM_SETRANGE,(WPARAM) TRUE,(LPARAM) MAKELONG(1, 100));  // min. & max. positions
         SendMessage(fenetre->s_distance, TBM_SETPAGESIZE, 0, (LPARAM) 4);
     // Box
-    fenetre->t_distance = CreateWindow("EDIT", "12", WS_CHILD | WS_VISIBLE | ES_NUMBER,ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2+175, Y_CAMERA+35+2.5*Y_CHAR+HEIGHT_RETRO + 2*Y_CHAR + 2, 50, Y_CHAR, fenetre->menu, (HMENU)ID_T_DISTANCE, fenetre->instance, NULL);
+    fenetre->t_distance = CreateWindow("EDIT", "12", WS_CHILD | WS_VISIBLE | ES_NUMBER,ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2+175, Y_CAMERA+35+2.5*15+100 + 2*Y_CHAR + 2, 50, Y_CHAR, fenetre->menu, (HMENU)ID_T_DISTANCE, fenetre->instance, NULL);
         SendMessage(fenetre->s_distance, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
 
     // Les trois boutons
-    fenetre->ordi = CreateWindow("BUTTON", "Ordinateur", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2, Y_CAMERA+35+2.5*Y_CHAR+HEIGHT_RETRO + 70, 80,2*Y_CHAR, fenetre->menu, (HMENU)ID_ORDI, fenetre->instance, NULL);
-    fenetre->salle = CreateWindow("BUTTON", "Salle", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC + 80, Y_CAMERA+35+2.5*Y_CHAR+HEIGHT_RETRO + 70, 60,2*Y_CHAR, fenetre->menu, (HMENU)ID_SALLE, fenetre->instance, NULL);
-    fenetre->amphi = CreateWindow("BUTTON", "Amphi", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, ALINEA_MENU+ALINEA_BLOC/2 + 3*ALINEA_BLOC/2 + 140, Y_CAMERA+35+2.5*Y_CHAR+HEIGHT_RETRO + 70, 60,2*Y_CHAR, fenetre->menu, (HMENU)ID_AMPHI, fenetre->instance, NULL);
+    fenetre->ordi = CreateWindow("BUTTON", "Ordinateur", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC/2, Y_CAMERA+35+2.5*15+100 + 70, 80,2*Y_CHAR, fenetre->menu, (HMENU)ID_ORDI, fenetre->instance, NULL);
+    fenetre->salle = CreateWindow("BUTTON", "Salle", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, ALINEA_MENU+ALINEA_BLOC/2 + ALINEA_BLOC + 80, Y_CAMERA+35+2.5*15+100 + 70, 60,2*Y_CHAR, fenetre->menu, (HMENU)ID_SALLE, fenetre->instance, NULL);
+    fenetre->amphi = CreateWindow("BUTTON", "Amphi", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, ALINEA_MENU+ALINEA_BLOC/2 + 3*ALINEA_BLOC/2 + 140, Y_CAMERA+35+2.5*15+100 + 70, 60,2*Y_CHAR, fenetre->menu, (HMENU)ID_AMPHI, fenetre->instance, NULL);
 
 }
 
@@ -103,7 +103,7 @@ void boutons_maille(Fenetre* fenetre)
         SendMessage(fenetre->s_taille, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
 
     CreateWindow("STATIC", "Espace entre atomes :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2,Y_MAILLE +   17*Y_CHAR/2 + 110, 145, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
-    fenetre->s_espace_atome = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 145,Y_MAILLE +  8*Y_CHAR + 120, 115, 2*Y_CHAR, fenetre->menu, (HMENU)ID_S_ESPACE, fenetre->instance, NULL);
+    fenetre->s_espace_atome = CreateWindow(TRACKBAR_CLASS, NULL, WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 145,Y_MAILLE +  8*Y_CHAR + 110, 115, 2*Y_CHAR, fenetre->menu, (HMENU)ID_S_ESPACE, fenetre->instance, NULL);
         SendMessage(fenetre->s_espace_atome, TBM_SETRANGE,(WPARAM) TRUE,(LPARAM) MAKELONG(1, 100));  // min. & max. positions
         SendMessage(fenetre->s_espace_atome, TBM_SETPAGESIZE, 0, (LPARAM) 4);
         SendMessage(fenetre->s_espace_atome, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) 50);   // La position initiale du slider
@@ -114,6 +114,6 @@ void autres_boutons(Fenetre* fenetre)
     fenetre->defaut = CreateWindow("BUTTON", "Par défaut", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, (WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/10 +5, Y_OTHER*1.08, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_DEFAULT, fenetre->instance, NULL);
     fenetre->aide = CreateWindow("BUTTON", "Aide", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, (WIDTH_MENU+38*ECART_BOUTON)/3-2, Y_OTHER*1.08, TAILLE_BOUTON,2*Y_CHAR, fenetre->menu, (HMENU)ID_HELP, fenetre->instance, NULL);
     // Enregistrer
-    fenetre->enregistrer = CreateWindow("BUTTON", "Enregistrer session", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,(WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/10 +5, Y_OTHER*1.015, TAILLE_BOUTON*1.8,2*Y_CHAR, fenetre->menu, (HMENU)ID_ENREGISTRER, fenetre->instance, NULL);
-
+    fenetre->enregistrer = CreateWindow("BUTTON", "Enregistrer session", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,(WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/10 +5, Y_MAILLE +   17*Y_CHAR/2 + 135, TAILLE_BOUTON*1.74,2*Y_CHAR, fenetre->menu, (HMENU)ID_ENREGISTRER, fenetre->instance, NULL);
+    fenetre->enregistrer = CreateWindow("BUTTON", "Charger session", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,(WIDTH_MENU-TAILLE_BOUTON-ECART_BOUTON)/10 +152, Y_MAILLE +   17*Y_CHAR/2 + 135, TAILLE_BOUTON*1.5,2*Y_CHAR, fenetre->menu, (HMENU)ID_CHARGER, fenetre->instance, NULL);
 }

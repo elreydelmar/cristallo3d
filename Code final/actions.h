@@ -104,6 +104,7 @@ void action_aide(HWND handle);
 
 //Enregistrer
 void action_enregistrer();
+void action_charger();
 
 // Actions du clavier
 void action_up();
