@@ -722,7 +722,7 @@ fprintf(fichier, "%d\n",event_status->maille->nb_type_atomes);
 
 void action_generer_personnelle()
 {
-
+system("mailleperso.exe");
 }
 
 void action_charger()
