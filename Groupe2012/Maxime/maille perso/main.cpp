@@ -238,6 +238,7 @@ return 0;
                 fprintf(fichier, "%s\r\n",buf);
 
 fclose(fichier);
+
 int REF2 = MessageBox(NULL,"fichier .cif créé\r\nVoulez-vous fermer l'éditeur ?","Enregistrement",MB_ICONINFORMATION | MB_YESNO);
 if (REF2==IDYES){
 PostQuitMessage(0);}
