@@ -1,6 +1,8 @@
 #include "actions.h"
 #include "boutons.h"
 #include <iostream>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -411,6 +413,7 @@ int get_atome_courant()
     return SendMessage(g_fenetre->choix_atome, CB_GETCURSEL, 0, 0);
 }
 
+
 void action_change_atome()
 {
     // Charge les donnees de l atome
@@ -682,7 +685,7 @@ void action_enregistrer()
 
 
 
-                strcat(buf, ".dat");
+                strcat(buf, ".txt");
                 FILE * fichier = fopen(buf,"w");
                 if(fichier == NULL) // Test ouverture canal
                 {
@@ -690,23 +693,25 @@ void action_enregistrer()
                 }
 
                 freefps=GetDlgItemText(g_fenetre->menu, ID_NB_X, buf, 256);
-                fprintf(fichier, "_nb_x\t\t %s\n",buf);
+                fprintf(fichier, "%s\n",buf);
                 freefps=GetDlgItemText(g_fenetre->menu, ID_NB_Y, buf, 256);
-                fprintf(fichier, "_nb_y\t\t %s\n",buf);
+                fprintf(fichier, "%s\n",buf);
                 freefps=GetDlgItemText(g_fenetre->menu, ID_NB_Z, buf, 256);
-                fprintf(fichier, "_nb_z\t\t %s\n",buf);
+                fprintf(fichier, "%s\n",buf);
+                fprintf(fichier, "%f\n",event_status->maille->agrandissement);
 
-
+fprintf(fichier, "%d\n",event_status->maille->nb_type_atomes);
 
                 for(i=0; i<event_status->maille->nb_type_atomes; i++)
                 {
-                fprintf(fichier, "\n_atome\t\t %s\n",event_status->maille->types[i].symbole);
-                fprintf(fichier, "_couleur\t\t %d\n",event_status->maille->types[i].index_couleur);
-                fprintf(fichier, "_s_taille\t\t %f\n",event_status->maille->types[i].rayon_ionique);
+                fprintf(fichier, "%s\n",event_status->maille->types[i].symbole);
+                fprintf(fichier, "%d\n",event_status->maille->types[i].index_couleur);
+                fprintf(fichier, "%f\n",event_status->maille->types[i].rayon_ionique);
                 }
 
-                fprintf(fichier, "\n\n_s_espace\t\t %f\n",event_status->maille->agrandissement);
 
+
+                fclose(fichier);
                 MessageBox(NULL,"Session enregistrée","Enregistrement",MB_OK);
 
 
@@ -732,7 +737,7 @@ OPENFILENAME ofn;
     ofn.lpstrFileTitle = szFileTitle;
     ofn.nMaxFileTitle= 255;
     ofn.lpstrFilter =
-               "Fichier DAT\0*.dat\0";
+               "Fichier TXT\0*.txt\0";
 
     ofn.nFilterIndex = 1;
     ofn.lpstrInitialDir = "mailles";
@@ -746,5 +751,54 @@ OPENFILENAME ofn;
         strcpy(event_status->nom_fichier, szFileTitle);
         SendMessage(g_fenetre->nom, WM_SETTEXT, 0, (LPARAM)szFileTitle);
 
-    }
+        FILE * fichier = fopen (szFile, "r");
+
+        TCHAR contenu [255];
+        //1ere ligne
+        fgets (contenu, 255, fichier);
+        //printf("x : %s\n", contenu);
+        SendMessage(g_fenetre->nb_x, WM_SETTEXT, 0,(LPARAM)contenu);
+        action_change_nb_x();
+        //seconde
+        fgets (contenu, 255, fichier);
+        //printf("y : %s\n", contenu);
+        SendMessage(g_fenetre->nb_y, WM_SETTEXT, 0,(LPARAM)contenu);
+        action_change_nb_y();
+
+        //troisieme...
+        fgets (contenu, 255, fichier);
+        //printf("z : %s\n", contenu);
+        SendMessage(g_fenetre->nb_z, WM_SETTEXT, 0, (LPARAM)contenu);
+        action_change_nb_z();
+
+        fgets (contenu, 255, fichier);
+        float nbs_espace_atome = atof (contenu);
+        //printf("nbs_espace_atome : %f\n", nbs_espace_atome);
+        event_status->maille->agrandissement = nbs_espace_atome;
+
+        fgets (contenu, 255, fichier);
+        int nbatome = atoi (contenu);
+        //printf("nb atome : %s\n", contenu);
+        int i;
+
+        for(i=0; i<nbatome; i++)
+                {
+        fgets (contenu, 255, fichier);
+        //printf("atome : %s\n", contenu);
+
+        fgets (contenu, 255, fichier);
+        float nbcouleur = atof (contenu);
+        //printf ( "nbcouleur = %s\n", contenu);
+        event_status->maille->types[i].index_couleur =  nbcouleur;
+
+
+        fgets (contenu, 255, fichier);
+        float nbs_taille = atof(contenu);
+        //printf("nbs_taille : %f\n", nbs_taille);
+        event_status->maille->types[i].rayon_ionique = nbs_taille;
+
+                }
+fclose(fichier);
+
+    } return;
 }
