@@ -280,6 +280,9 @@ void action_parcourir()
         strcpy(event_status->adresse_fichier, szFile);
         SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
 
+        int dernier_element= strlen(szFileTitle)-4;
+        szFileTitle[dernier_element]='\0';
+
         strcpy(event_status->nom_fichier, szFileTitle);
         SendMessage(g_fenetre->nom, WM_SETTEXT, 0, (LPARAM)szFileTitle);
 
@@ -685,7 +688,7 @@ void action_enregistrer()
 
 
 
-                strcat(buf, ".txt");
+                strcat(buf, ".dat");
                 FILE * fichier = fopen(buf,"w");
                 if(fichier == NULL) // Test ouverture canal
                 {
@@ -737,7 +740,7 @@ OPENFILENAME ofn;
     ofn.lpstrFileTitle = szFileTitle;
     ofn.nMaxFileTitle= 255;
     ofn.lpstrFilter =
-               "Fichier TXT\0*.txt\0";
+               "Fichier DAT\0*.dat\0";
 
     ofn.nFilterIndex = 1;
     ofn.lpstrInitialDir = "mailles";
@@ -745,8 +748,13 @@ OPENFILENAME ofn;
 
     if (GetOpenFileName(&ofn)==TRUE)
     {
+
+
         strcpy(event_status->adresse_fichier, szFile);
         SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
+
+        int dernier_element= strlen(szFileTitle)-4;
+        szFileTitle[dernier_element]='\0';
 
         strcpy(event_status->nom_fichier, szFileTitle);
         SendMessage(g_fenetre->nom, WM_SETTEXT, 0, (LPARAM)szFileTitle);
@@ -756,48 +764,44 @@ OPENFILENAME ofn;
         TCHAR contenu [255];
         //1ere ligne
         fgets (contenu, 255, fichier);
-        //printf("x : %s\n", contenu);
+        dernier_element= strlen(contenu)-1;
+        contenu[dernier_element]='\0';
         SendMessage(g_fenetre->nb_x, WM_SETTEXT, 0,(LPARAM)contenu);
         action_change_nb_x();
         //seconde
         fgets (contenu, 255, fichier);
-        //printf("y : %s\n", contenu);
+        dernier_element= strlen(contenu)-1;
+        contenu[dernier_element]='\0';
         SendMessage(g_fenetre->nb_y, WM_SETTEXT, 0,(LPARAM)contenu);
         action_change_nb_y();
-
         //troisieme...
         fgets (contenu, 255, fichier);
-        //printf("z : %s\n", contenu);
+        dernier_element= strlen(contenu)-1;
+        contenu[dernier_element]='\0';
         SendMessage(g_fenetre->nb_z, WM_SETTEXT, 0, (LPARAM)contenu);
         action_change_nb_z();
 
         fgets (contenu, 255, fichier);
         float nbs_espace_atome = atof (contenu);
-        //printf("nbs_espace_atome : %f\n", nbs_espace_atome);
         event_status->maille->agrandissement = nbs_espace_atome;
 
         fgets (contenu, 255, fichier);
         int nbatome = atoi (contenu);
-        //printf("nb atome : %s\n", contenu);
-        int i;
 
+        int i;
         for(i=0; i<nbatome; i++)
                 {
         fgets (contenu, 255, fichier);
-        //printf("atome : %s\n", contenu);
-
         fgets (contenu, 255, fichier);
         float nbcouleur = atof (contenu);
-        //printf ( "nbcouleur = %s\n", contenu);
         event_status->maille->types[i].index_couleur =  nbcouleur;
 
 
         fgets (contenu, 255, fichier);
         float nbs_taille = atof(contenu);
-        //printf("nbs_taille : %f\n", nbs_taille);
         event_status->maille->types[i].rayon_ionique = nbs_taille;
-
                 }
+
 fclose(fichier);
 
     } return;
