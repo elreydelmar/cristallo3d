@@ -324,7 +324,15 @@ void action_generer()
     for(i=0; i<event_status->maille->nb_type_atomes; i++)
     {
         SendMessage(g_fenetre->choix_atome,CB_ADDSTRING,0, (LPARAM)event_status->maille->types[i].symbole);
-    }
+
+        if (strcmp(event_status->maille->types[i].symbole, "Na")==0){
+        event_status->maille->types[i].rayon_ionique = 0.30000;}
+
+        if (strcmp(event_status->maille->types[i].symbole, "Cl")==0){
+        event_status->maille->types[i].rayon_ionique = 0.050000;}
+
+        }
+
 
     int pos_slider = conversion_edit_slider(event_status->maille->agrandissement, 0, 100, 0.01, 10.0);
     SendMessage(g_fenetre->s_espace_atome, TBM_SETPOS, (WPARAM) TRUE,(LPARAM) pos_slider);

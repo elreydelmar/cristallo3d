@@ -1,4 +1,5 @@
 #include "maille.h"
+#include <cstring>
 
 Maille* alloc_maille()
 {
@@ -66,8 +67,9 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
     while(buff2 != NULL && i<(*maille)->nb_type_atomes)
     {
         strcpy((*maille)->types[i].symbole, buff2->symbole);
-        // RECUPERER ICI LES INFOS SUR L ATOME
+
         (*maille)->types[i].rayon_ionique = 0.1;
+
         (*maille)->types[i].index_couleur = index_couleur;
         i++;
         do
