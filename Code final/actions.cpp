@@ -331,6 +331,7 @@ void action_generer()
         if (strcmp(event_status->maille->types[i].symbole, "Cl")==0){
         event_status->maille->types[i].rayon_ionique = 0.050000;}
 
+
         }
 
 
