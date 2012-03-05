@@ -108,13 +108,13 @@ LRESULT CALLBACK procedureFenetrePrincipale(HWND fenetrePrincipale, UINT message
                 boutons[19] = CreateWindow("EDIT", "F m -3 m", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+85, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMSG, instance, NULL);
 
                 boutons[11] = CreateWindow("BUTTON", "Atomes", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,ATOME+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
-                boutons[12] = CreateWindow("EDIT", "Na 0.00000 0.00000 0.00000\r\nCl 0.50000 0.50000 0.50000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,ATOME+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
+                boutons[12] = CreateWindow("EDIT", "Na 0.00000 0.00000 0.00000 0.01849\r\nCl 0.50000 0.50000 0.50000 0.00000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,ATOME+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
 
                 boutons[13] = CreateWindow("BUTTON", "Symétries", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,SYM+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
-                boutons[14] = CreateWindow("EDIT", "x,y,z\r\nz,-x,y\r\n-y,z,-x\r\nx,-y,z\r\n-z,x,-y\r\ny,-z,x\r\n-x,y,-z\r\nx,-z,-y\r\n-z,y,x\r\ny,-x,-z\r\n-x,z,y\r\nz,-y,-x\r\n-y,x,z\r\nx,z,y\r\n-z,-y,-x\r\ny,x,z\r\n-x,-z,-y\r\nz,y,x\r\n-y,-x,-z\r\nz,x,-y\r\n-y,-z,x\r\nx,y,-z\r\n-z,-x,y\r\ny,z,-x\r\n-x,-y,z\r\n-z,x,y\r\ny,-z,-x\r\n-x,y,z\r\nz,-x,-y\r\n-y,z,x\r\nx,-y,-z\r\n-x,z,-y\r\nz,-y,x\r\n-y,x,-z\r\nx,-z,y\r\n-z,y,-x\r\ny,-x,z\r\n-x,-z,y\r\nz,y,-x\r\n-y,-x,z\r\nx,z,-y\r\n-z,-y,x\r\ny,x,-z\r\n-z,-x,-y\r\ny,z,x\r\n-x,-y,-z\r\nz,x,y\r\n-y,-z,-x", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,SYM+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_SYM, instance, NULL);
+                boutons[14] = CreateWindow("EDIT", "x,y,z", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,SYM+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_SYM, instance, NULL);
 
-                boutons[15] = CreateWindow("BUTTON", "Paramètres supplémentaires (Optionnel)", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,PC+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
-                boutons[16] = CreateWindow("EDIT", " ", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL|ES_AUTOVSCROLL,10,PC+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_PC, instance, NULL);
+                //boutons[15] = CreateWindow("BUTTON", "Paramètres supplémentaires (Optionnel)", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,PC+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
+                //boutons[16] = CreateWindow("EDIT", "", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL|ES_AUTOVSCROLL,10,PC+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_PC, instance, NULL);
                 boutons[17] = CreateWindow("BUTTON", "Enregistrer", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,5,OTHER+25, 233, Y_CHAR*2, fenetrePrincipale, (HMENU)ID_ENREG, instance, NULL);
                 boutons[18] = CreateWindow("BUTTON", "Aide", WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,5+240,OTHER+25, 233, Y_CHAR*2, fenetrePrincipale, (HMENU)ID_AIDE, instance, NULL);
 return 0;
@@ -229,13 +229,13 @@ return 0;
                 //Symetries
                 freefps=GetDlgItemText(fenetrePrincipale, ID_SYM, buf, 1001);
                 fprintf(fichier, "%s\r\n",buf);
-                fprintf(fichier, "loop_\n_atom_site_label\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n");
-                //Parametres connaisseur
-                freefps=GetDlgItemText(fenetrePrincipale, ID_PC, buf, 1001);
-                fprintf(fichier, "%s\r\n",buf);
+                fprintf(fichier, "loop_\n_atom_site_label\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n_atom_site_U_iso_or_equiv\n");
                 //ATOME
                 freefps=GetDlgItemText(fenetrePrincipale, ID_NOMATOME, buf, 256);
                 fprintf(fichier, "%s\r\n",buf);
+
+
+
 
 fclose(fichier);
 
