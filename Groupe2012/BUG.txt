@@ -1,0 +1,8 @@
+Au fait, je ne sais pas si ca le fait sur vos machines aussi, mais moi 1 fois sur 2 lorsque je décide de fermer
+le logiciel, j'ai un bug : projet de groupe.exe ne répond pas...
+
+peut être es ce du à l'ajout de la demande de confirmation avant de quitter?
+il faudrait le lancer en debug pour voir ce qu'il se passe, en tout cas c'est un bug qui traine sur l'API je pense
+
+
+voila kiss love
