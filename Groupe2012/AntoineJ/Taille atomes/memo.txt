@@ -1,0 +1,16 @@
+ca fonctionne
+il faudra simplement probablement réduire un peu l'échelle genre mettre un max vers 0,25
+
+
+
+Rappel de la règle:
+tab	relatif
+0.25	0.05
+2.6	0.3
+
+y = (yb - ya)/(xb-xa) * x + b
+pour b, prendre 
+
+b = y (0.25) - a * x (0.05)
+
+voilà
