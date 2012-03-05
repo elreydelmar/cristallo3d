@@ -62,7 +62,7 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
     }
     L_Symbole* buff2 = l;
     int i = 0;
-    int index_couleur = 4;
+    int index_couleur = 5;
     (*maille)->types = (Atome_Type*) malloc(sizeof(Atome_Type)*(*maille)->nb_type_atomes);
     while(buff2 != NULL && i<(*maille)->nb_type_atomes)
     {
@@ -74,7 +74,7 @@ int premaille_to_maille(Premaille premaille, Maille** maille)
         i++;
         do
         {
-            index_couleur += 4;
+            index_couleur += 3;
             index_couleur %= 13;
         }
         while(index_couleur == 12); // Pas de transparents

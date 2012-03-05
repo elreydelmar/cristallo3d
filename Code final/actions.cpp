@@ -332,6 +332,8 @@ void action_generer()
         event_status->maille->types[i].rayon_ionique = 0.050000;}
 
 
+        // lister 118 atomes en fonction de leur numéro atomique
+
         }
 
 
