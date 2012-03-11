@@ -1,0 +1,6 @@
+Il y a un probleme dans l'attribution du nom des atomes ! 
+
+Quand on a plus de trois atomes, on a bien des atomes aux bonnes positions mais quand on regarde la couleur et le nom
+de l'atome, ca ne correspond pas a la cif ! autrement dit, les noms sont parfois inversé !!!
+
+Ce bug est aussi présent dans la version 1.0 donc ce n'est pas du a nos modifaction du code ! 
