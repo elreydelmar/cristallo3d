@@ -266,6 +266,14 @@ void act_symmetry(char* ligne, Premaille* premaille)
                     *courant = ajouter_element(*courant, creer_element(OP, val));
                     etat = s_OP;
                 }
+                else if(ligne[caractere] == '+')
+                    {
+                        val.reel = 1.;
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        val.operateur = FOIS;
+                        *courant = ajouter_element(*courant, creer_element(OP, val));
+                        etat = s_OP;
+                    }
                 else
                     etat = s_ERREUR; // erreur
             break;
@@ -282,6 +290,8 @@ void act_symmetry(char* ligne, Premaille* premaille)
                 else if(ligne[caractere] == '\'')
                     apostrophe_ouvert = !apostrophe_ouvert;
                 else if(ligne[caractere] == ' ')  // on ne fait rien
+                {}
+                else if(ligne[caractere] == '+')  // on ne fait rien
                 {}
                 else if(ligne[caractere] == ',')
                     etat = s_VIRGULE;
@@ -318,6 +328,8 @@ void act_symmetry(char* ligne, Premaille* premaille)
                     apostrophe_ouvert = !apostrophe_ouvert;
                 else if(ligne[caractere] == ' ')  // on ne fait rien
                 {}
+                 else if(ligne[caractere] == '+')  // on ne fait rien
+                {}
                 else
                     etat = s_ERREUR;
             break;
@@ -341,6 +353,8 @@ void act_symmetry(char* ligne, Premaille* premaille)
                 else if(ligne[caractere] == '\'')
                     apostrophe_ouvert = !apostrophe_ouvert;
                 else if(ligne[caractere] == ' ')  // on ne fait rien
+                {}
+                 else if(ligne[caractere] == '+')  // on ne fait rien
                 {}
                 else if(is_operateur(ligne[caractere]))
                 {
@@ -379,6 +393,8 @@ void act_symmetry(char* ligne, Premaille* premaille)
                 else if(ligne[caractere] == '\'')
                     apostrophe_ouvert = !apostrophe_ouvert;
                 else if(ligne[caractere] == ' ')  // on ne fait rien
+                {}
+                 else if(ligne[caractere] == '+')  // on ne fait rien
                 {}
                 else
                     etat = s_ERREUR;
@@ -432,6 +448,15 @@ void act_symmetry(char* ligne, Premaille* premaille)
                         apostrophe_ouvert = !apostrophe_ouvert;
                     else if(ligne[caractere] == ' ')  // on ne fait rien
                     {}
+                     else if(ligne[caractere] == '+')
+                    {
+                        val.reel = 1.;
+                        *courant = ajouter_element(*courant, creer_element(REEL, val));
+                        val.operateur = FOIS;
+                        *courant = ajouter_element(*courant, creer_element(OP, val));
+                        etat = s_OP;
+                    }
+
                     else
                         etat = s_ERREUR; // erreur, on prend la prochaine ligne
                 }
