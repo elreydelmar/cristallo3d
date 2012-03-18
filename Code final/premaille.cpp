@@ -72,9 +72,9 @@ void vider_l_ligne(L_ligne* liste)
 void add_to_l_pre_atome(L_Pre_Atome** liste, char label[], double x, double y, double z)
 {
     L_Pre_Atome* nouveau = (L_Pre_Atome*) malloc(sizeof(L_Pre_Atome));
-        nouveau->x = x;
-        nouveau->y = y;
-        nouveau->z = z;
+        nouveau->x = x-0.5;
+        nouveau->y = y-0.5;
+        nouveau->z = z-0.5;
         strcpy(nouveau->label, label);
         nouveau->queue = *liste;
     *liste = nouveau;
