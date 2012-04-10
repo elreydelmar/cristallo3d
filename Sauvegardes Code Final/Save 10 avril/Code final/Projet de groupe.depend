@@ -1,0 +1,147 @@
+# depslib dependency file v1.0
+1329747608 source:c:\users\antoine\desktop\cristallo3d\code final\glbasic.cpp
+	"GLbasic.h"
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\glbasic.h
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glaux.h>
+	<cstdlib>
+	"geometrie.h"
+	"const_fenetre.h"
+	"camera.h"
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\geometrie.h
+	<math.h>
+	<stdio.h>
+
+1330910434 c:\users\antoine\desktop\cristallo3d\code final\const_fenetre.h
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\camera.h
+	<stdio.h>
+	<stdlib.h>
+	"geometrie.h"
+
+1330984608 source:c:\users\antoine\desktop\cristallo3d\code final\actions.cpp
+	"actions.h"
+	"boutons.h"
+	<iostream>
+	<string>
+	<fstream>
+
+1330910434 c:\users\antoine\desktop\cristallo3d\code final\actions.h
+	"maille.h"
+	"fenetre.h"
+	"camera.h"
+	"fichier.h"
+	"GLbasic.h"
+	"affichage_maille.h"
+	"anaglyphe.h"
+	<string.h>
+	<time.h>
+	<windowsx.h>
+
+1329747608 c:\users\antoine\desktop\cristallo3d\code final\maille.h
+	"geometrie.h"
+	"octree.h"
+	"GLbasic.h"
+	"premaille.h"
+	"arbre.h"
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\octree.h
+	"geometrie.h"
+	<stdlib.h>
+
+1329747608 c:\users\antoine\desktop\cristallo3d\code final\premaille.h
+	<stdlib.h>
+	<string.h>
+	"type_ligne.h"
+	"arbre.h"
+
+1329747608 c:\users\antoine\desktop\cristallo3d\code final\type_ligne.h
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\arbre.h
+	<stdlib.h>
+	<stdio.h>
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\fenetre.h
+	<windows.h>
+	<gl\gl.h>
+	<gl\glu.h>
+	<gl\glaux.h>
+	"camera.h"
+	"boutons.h"
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1330910434 c:\users\antoine\desktop\cristallo3d\code final\boutons.h
+	<windows.h>
+	<commctrl.h>
+	"const_fenetre.h"
+	"type_fenetre.h"
+
+1330287444 c:\users\antoine\desktop\cristallo3d\code final\type_fenetre.h
+	<windows.h>
+
+1330021752 c:\users\antoine\desktop\cristallo3d\code final\fichier.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<math.h>
+	"type_ligne.h"
+	"err_fichier.h"
+	"premaille.h"
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\err_fichier.h
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\affichage_maille.h
+	"maille.h"
+	"octree.h"
+
+1329747608 c:\users\antoine\desktop\cristallo3d\code final\anaglyphe.h
+	"GLbasic.h"
+	"camera.h"
+	"fenetre.h"
+
+1329747608 source:c:\users\antoine\desktop\cristallo3d\code final\affichage_maille.cpp
+	"geometrie.h"
+	"affichage_maille.h"
+
+1329747609 source:c:\users\antoine\desktop\cristallo3d\code final\anaglyphe.cpp
+	"anaglyphe.h"
+
+1329747609 source:c:\users\antoine\desktop\cristallo3d\code final\arbre.cpp
+	"arbre.h"
+
+1329747609 source:c:\users\antoine\desktop\cristallo3d\code final\camera.cpp
+	"camera.h"
+
+1330910434 source:c:\users\antoine\desktop\cristallo3d\code final\evenement.cpp
+	"evenement.h"
+
+1329747609 c:\users\antoine\desktop\cristallo3d\code final\evenement.h
+	"fenetre.h"
+	"actions.h"
+	<time.h>
+	<windowsx.h>
+
+1330287444 source:c:\users\antoine\desktop\cristallo3d\code final\fenetre.cpp
+	"fenetre.h"
+
+1329747608 source:c:\users\antoine\desktop\cristallo3d\code final\geometrie.cpp
+	"geometrie.h"
+
+1330965086 source:c:\users\antoine\desktop\cristallo3d\code final\maille.cpp
+	"maille.h"
+	<cstring>
+
+1329747609 source:c:\users\antoine\desktop\cristallo3d\code final\main.cpp
+	"evenement.h"
+	"GLbasic.h"
+	"affichage_maille.h"
+
+1329747609 source:c:\users\antoine\desktop\cristallo3d\code final\octree.cpp
+	"octree.h"
+
+1329747609 source:c:\users\antoine\desktop\cristallo3d\code final\ressources.rc
+
