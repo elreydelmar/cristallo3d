@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1334927158 source:/.automount/nfs5176/exports/users1/phelma2011/tdinfo/lejosnea/Sudoku/fonctions.cpp
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	<time.h>
+	"main.h"
+	"fonctions.h"
+
+1334927594 /.automount/nfs5176/exports/users1/phelma2011/tdinfo/lejosnea/Sudoku/main.h
+
+1334928393 source:/.automount/nfs5176/exports/users1/phelma2011/tdinfo/lejosnea/Sudoku/main.cpp
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	<time.h>
+	"fonctions.h"
+	"main.h"
+
+1334928500 /.automount/nfs5176/exports/users1/phelma2011/tdinfo/lejosnea/Sudoku/fonctions.h
+

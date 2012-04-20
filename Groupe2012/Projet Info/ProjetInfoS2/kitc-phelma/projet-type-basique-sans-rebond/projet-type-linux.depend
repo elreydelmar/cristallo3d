@@ -1,0 +1,208 @@
+# depslib dependency file v1.0
+1264520916 source:/.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/main.cpp
+	<iostream>
+	<FL/Fl.H>
+	"main.h"
+	"u1-interface.h"
+	"u3-callbacks.h"
+	"u4-fonctions.h"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl.H
+	"Enumerations.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Enumerations.H
+	"Fl_Export.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Export.H
+
+1264520916 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/main.h
+	<FL/Fl_Widget.H>
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Widget.H
+	"Enumerations.H"
+
+1333114777 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/u1-interface.h
+	"main.h"
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Check_Button.H>
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Double_Window.H
+	"Fl_Window.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Window.H
+	"Fl_Group.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Group.H
+	"Fl_Widget.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Button.H
+	"Fl_Widget.H"
+
+1333114427 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/u3-callbacks.h
+	<FL/Fl_Widget.H>
+
+1333120640 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/u4-fonctions.h
+
+1333120872 source:/.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/u2-dessin.cpp
+	<iostream>
+	<FL/Fl.H>
+	<FL/fl_draw.H>
+	"u1-interface.h"
+	"u2-dessin.h"
+	"u4-fonctions.h"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/fl_draw.H
+	"Enumerations.H"
+
+1264520918 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/u2-dessin.h
+
+1333122087 source:/.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/u3-callbacks.cpp
+	<iostream>
+	<FL/Fl.H>
+	<FL/fl_ask.H>
+	<FL/Fl_File_Chooser.H>
+	"u1-interface.h"
+	"u3-callbacks.h"
+	"u4-fonctions.h"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/fl_ask.H
+	"Enumerations.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_File_Chooser.H
+	<FL/Fl.H>
+	<FL/Fl_Double_Window.H>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<FL/Fl_Group.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Preferences.H>
+	<FL/Fl_Tile.H>
+	<FL/Fl_File_Browser.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_File_Input.H>
+	<FL/Fl_Return_Button.H>
+	<FL/fl_ask.H>
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Choice.H
+	"Fl_Menu_.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Menu_.H
+	"Fl_Widget.H"
+	"Fl_Menu_Item.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Menu_Item.H
+	"Fl_Widget.H"
+	"Fl_Image.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Image.H
+	"Enumerations.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Menu_Button.H
+	"Fl_Menu_.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Preferences.H
+	<windows.h>
+	<stdio.h>
+	"Fl_Export.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Tile.H
+	"Fl_Group.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_File_Browser.H
+	"Fl_Browser.H"
+	"Fl_File_Icon.H"
+	"filename.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Browser.H
+	"Fl_Browser_.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Browser_.H
+	"Fl_Group.H"
+	"Fl_Scrollbar.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Scrollbar.H
+	"Fl_Slider.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Slider.H
+	"Fl_Valuator.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Valuator.H
+	"Fl_Widget.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_File_Icon.H
+	"Fl.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/filename.H
+	"Fl_Export.H"
+	<sys/types.h>
+	"/usr/include/dirent.h"
+	<sys/types.h>
+	<direct.h>
+	<sys/types.h>
+	<dirent.h>
+
+1303850851 /usr/include/dirent.h
+	<features.h>
+	<bits/types.h>
+	<bits/dirent.h>
+	<bits/types.h>
+	<bits/posix1_lim.h>
+	<stddef.h>
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Box.H
+	"Fl_Widget.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Check_Button.H
+	"Fl_Light_Button.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Light_Button.H
+	"Fl_Button.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_File_Input.H
+	<FL/Fl_Input.H>
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Input.H
+	"Fl_Input_.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Input_.H
+	"Fl_Widget.H"
+
+1330559674 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fltklinux64/FL/Fl_Return_Button.H
+	"Fl_Button.H"
+
+1333122161 source:/.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/u4-fonctions.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<api/inc/fmod.h>
+	<api/inc/fmod_errors.h>
+	"u1-interface.h"
+	"u4-fonctions.h"
+
+1330504384 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fmodlinux64/api/inc/fmod.h
+	"fmod_codec.h"
+	"fmod_dsp.h"
+	"fmod_memoryinfo.h"
+
+1330504384 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fmodlinux64/api/inc/fmod_codec.h
+
+1330504384 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fmodlinux64/api/inc/fmod_dsp.h
+
+1330504384 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fmodlinux64/api/inc/fmod_memoryinfo.h
+
+1330504384 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/fmodlinux64/api/inc/fmod_errors.h
+	"fmod.h"
+
+1333121955 source:/.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/kitc-phelma/projet-type-basique-sans-rebond/u1-interface.cpp
+	<iostream>
+	"u1-interface.h"
+	"u2-dessin.h"
+	"u3-callbacks.h"
+	"u4-fonctions.h"
+
