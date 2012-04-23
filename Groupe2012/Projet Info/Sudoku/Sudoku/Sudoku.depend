@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1334930274 source:/.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/Sudoku/Sudoku/main.cpp
+1334930274 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\sudoku\sudoku\main.cpp
 	<iostream>
 	<stdlib.h>
 	<stdio.h>
@@ -8,20 +8,7 @@
 	"main.h"
 	"fonction.h"
 
-1334928110 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/Sudoku/Sudoku/main.h
+1335215648 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\sudoku\sudoku\main.h
 
-1334935436 /.automount/nfs5176/exports/users1/phelma2011/joana/ProjetInfoS2/Sudoku/Sudoku/fonction.h
-
-1335122887 source:c:\users\antoine\documents\phelma\projet de groupe\projet de groupe\groupe2012\projet info\sudoku\sudoku\main.cpp
-	<iostream>
-	<stdlib.h>
-	<stdio.h>
-	<math.h>
-	<time.h>
-	"main.h"
-	"fonction.h"
-
-1335122887 c:\users\antoine\documents\phelma\projet de groupe\projet de groupe\groupe2012\projet info\sudoku\sudoku\main.h
-
-1335122887 c:\users\antoine\documents\phelma\projet de groupe\projet de groupe\groupe2012\projet info\sudoku\sudoku\fonction.h
+1335218406 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\sudoku\sudoku\fonction.h
 

@@ -10,3 +10,10 @@ typedef
     } grille;
 
 
+typedef
+    struct
+    {
+        int Prems;
+        int Cases[8];
+    }
+Carre;
