@@ -13,6 +13,6 @@ typedef
     struct
     {
         int Prems;
-        int Reste[8];
+        int Cases[8];
     }
-Case;
+Carre;
