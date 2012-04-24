@@ -252,9 +252,9 @@ void CreationGrille(grille *grillin)
     for (i=0; i<9 ; i++)
     {
 
-        alea1 = rand ()%8;
+        alea1 = rand ()%9;
         alea1 ++ ;
-        alea2 = rand ()%80;
+        alea2 = rand ()%81;
 
 
         printf("alea1 : %d\n", alea1);
@@ -265,7 +265,7 @@ void CreationGrille(grille *grillin)
 
         for (k=1; k<10 ; k++)
         {
-            alea1 = rand ()%8;
+            alea1 = rand ()%9;
             //alea1 = alea1 +1;
             printf("%d",alea1);
 
