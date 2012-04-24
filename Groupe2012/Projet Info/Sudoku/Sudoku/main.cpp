@@ -17,15 +17,16 @@ int main()
     int ok=0;
     int infi=0;
 
+    printf("\t  Calculs en cours . . .");
 
     //exit(EXIT_FAILURE);
     do
     {
         ok = CreationGrille(&grillin);
         infi++;
-        if (infi >= 10000000)
+        if (infi >= 1000000)
         {
-            printf("**** ERREUR NOMBRE DE GRILLES GENEREES MAXIMUMUM ET PAS DE RESULTAT ****");
+            printf("\n\n\n**** ERREUR NOMBRE DE GRILLES GENEREES MAXIMUMUM ET PAS DE RESULTAT ****\n\n");
             exit(EXIT_FAILURE);
         }
     }while(ok!=1);
@@ -34,10 +35,10 @@ int main()
 
 
     cout << "\n\n\n\n\tL'ordinateur l a fait! ouah TROP BIEN\n" << endl;
-    printf("\n\nNombre de tentatives necessaires : %d",infi);
+    printf("\n\nNombre de tentatives necessaires : %d\n",infi);
 
 
 
-    cout << "Hello world!" << endl;
+    cout << "Hello world!\n\n\n" << endl;
     return 0;
 }

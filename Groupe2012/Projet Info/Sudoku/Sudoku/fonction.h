@@ -359,7 +359,7 @@ int CreationGrille(grille *grillin)
     }
 
 
-    printf("\n\n\n");
+    printf("\n\n\n\n");
     for (j=0; j<81 ; j++)
     {
         printf("%d", grillin->table [j]);
