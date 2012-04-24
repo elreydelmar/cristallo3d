@@ -235,6 +235,8 @@ void CreationGrille(grille *grillin)
     int compteur=1;
     int Col=-1;
     int Car=-1;
+    int sortir=0;
+    int infi=0;
 
     for (j=0; j<81 ; j++)
     {
@@ -253,8 +255,6 @@ void CreationGrille(grille *grillin)
         alea1 = rand ()%8;
         alea1 ++ ;
         alea2 = rand ()%80;
-
-        int sortir=0;
 
 
         printf("alea1 : %d\n", alea1);
@@ -308,23 +308,48 @@ void CreationGrille(grille *grillin)
                     {
                         printf("**************CAR**************\n");
                     }
+                    // test
 
+                    // BUG A PREVOIR SUR CETTE IF
+                    if (Col==1 && Car==1)
+                    {
+                        grillin->table [alea1 + 9*i] = k;
+                        sortir=1;
+                        printf("\n\n");
+                    }
+                    else
+                    {
+                        infi ++;
+                        alea1 = alea1 + 1;
+                        if (alea1 ==9)
+                        {
+                            alea1 = 0;
+                        }
+                    }
 
-                    grillin->table [alea1 + 9*i] = k;
-                    sortir=1;
-                    printf("\n\n");
                 }
                 else
                 {
-                   alea1 = alea1 + 1;
-                   if (alea1 ==9)
-                   {
+                    infi ++;
+                    alea1 = alea1 + 1;
+                    if (alea1 ==9)
+                    {
                         alea1 = 0;
                     }
                 }
 
+
+                if (infi >= 24)
+                {
+                    printf("********************* ERREUR DE BOUCLE INFINI **********************");
+                    exit(EXIT_FAILURE);
+                }
+
+
+
             } while (sortir ==0);
 
+            infi =0;
 
             // Test affichage
             for (j=0; j<81 ; j++)

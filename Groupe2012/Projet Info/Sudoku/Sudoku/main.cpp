@@ -15,7 +15,7 @@ int main()
 {
     grille grillin;
 
-
+    //exit(EXIT_FAILURE);
     CreationGrille(&grillin);
 
 
