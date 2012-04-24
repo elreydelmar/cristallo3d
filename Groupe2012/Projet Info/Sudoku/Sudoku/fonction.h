@@ -1,14 +1,5 @@
 
 
-// Prototype
-// void CreationGrille(grille);
-
-
-
-
-
-
-
 
 
 
@@ -21,15 +12,17 @@ int TrouveCarre(int NumCase)
         int j = 0;
 
      // Calcul de la ligne et colonne de la case
+        NumCase++;
 
         k = NumCase % 9;        // k : Colonne où est située la case
         j = NumCase/9;
-            if ( j%9 != 0)
+            if ( NumCase%9 != 0)
                 {
                     l = j+1;
                 }
             else {l = j;}       // l : ligne où est située la case
 
+            printf(" l = %d",l);
 
       //  Calcul du carré en fonction de ça...
             if (k==1 || k==4 || k==7)
@@ -133,6 +126,19 @@ int TestCase(grille *grillin, int NumCase)
 
 
 
+int TestCase(grille * grillin, int NumCase, int Nbre, int Increment )
+{
+    int Preums=0;
+    printf("TEEEEEEEEEEEEEEEEEEEEEEEEEST %d", NumCase + 9*Increment);
+    Preums = TrouveCarre(NumCase + 9*Increment);
+    printf("Trouver case : %d", Preums);
+
+
+    return 1;
+}
+
+
+
 
 /*
 
@@ -215,13 +221,14 @@ int TestColonne(grille *grillin, int alea1, int Nbre, int Increment)
 void CreationGrille(grille *grillin)
 {
     srand(time(NULL));
-    int alea1=0, alea2=0;
+    int alea1=0;
+    int alea2=0;
     int i=0;
     int j=0;
     int k=0;
     int compteur=1;
     int Col=-1;
-    //int Car=-1;
+    int Car=-1;
 
     for (j=0; j<81 ; j++)
     {
@@ -236,13 +243,19 @@ void CreationGrille(grille *grillin)
 
     for (i=0; i<9 ; i++)
     {
+
         alea1 = rand ()%8;
         alea1 ++ ;
         alea2 = rand ()%80;
+
         int sortir=0;
+
 
         printf("alea1 : %d\n", alea1);
         printf("alea2 : %d\n", alea2);
+
+
+        printf("On passe a la %d ligne -----------",i);
 
         for (k=1; k<10 ; k++)
         {
@@ -281,6 +294,11 @@ void CreationGrille(grille *grillin)
                         printf("****************************\n");
                     }
                     //test
+
+                    //test trouver carre
+                    Car = TestCase (grillin, alea1, k, i);
+
+
 
                     grillin->table [alea1 + 9*i] = k;
                     sortir=1;
