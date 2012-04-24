@@ -131,10 +131,16 @@ int TestCase(grille * grillin, int NumCase, int Nbre, int Increment )
     int Preums=0;
     printf("TEEEEEEEEEEEEEEEEEEEEEEEEEST %d", NumCase + 9*Increment);
     Preums = TrouveCarre(NumCase + 9*Increment);
+    Preums --;
     printf("Trouver case : %d", Preums);
-
-
-    return 1;
+    if (Nbre-grillin->table[Preums] == 0 || Nbre-grillin->table[Preums+1]==0 || Nbre-grillin->table[Preums+2]==0 || Nbre-grillin->table[Preums+9]==0 || Nbre-grillin->table[Preums+10]==0 || Nbre-grillin->table[Preums+11]==0 || Nbre-grillin->table[Preums+18]==0 || Nbre-grillin->table[Preums+19]==0 || Nbre-grillin->table[Preums+20]==0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 
@@ -255,7 +261,7 @@ void CreationGrille(grille *grillin)
         printf("alea2 : %d\n", alea2);
 
 
-        printf("On passe a la %d ligne -----------",i);
+        printf("On passe a la %d ligne ------------------------------------------------",i);
 
         for (k=1; k<10 ; k++)
         {
@@ -291,13 +297,17 @@ void CreationGrille(grille *grillin)
                     printf("Col = %d",Col);
                     if (Col == 0)
                     {
-                        printf("****************************\n");
+                        printf("**************COL**************\n");
                     }
                     //test
 
                     //test trouver carre
                     Car = TestCase (grillin, alea1, k, i);
-
+                    printf("\n`Car = %d",Car);
+                    if (Car == 0)
+                    {
+                        printf("**************CAR**************\n");
+                    }
 
 
                     grillin->table [alea1 + 9*i] = k;
