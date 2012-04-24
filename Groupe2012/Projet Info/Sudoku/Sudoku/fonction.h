@@ -22,7 +22,7 @@ int TrouveCarre(int NumCase)
                 }
             else {l = j;}       // l : ligne où est située la case
 
-            printf(" l = %d",l);
+            //printf(" l = %d",l);
 
       //  Calcul du carré en fonction de ça...
             if (k==1 || k==4 || k==7)
@@ -129,10 +129,10 @@ int TestCase(grille *grillin, int NumCase)
 int TestCase(grille * grillin, int NumCase, int Nbre, int Increment )
 {
     int Preums=0;
-    printf("TEEEEEEEEEEEEEEEEEEEEEEEEEST %d", NumCase + 9*Increment);
+    //printf("TEEEEEEEEEEEEEEEEEEEEEEEEEST %d", NumCase + 9*Increment);
     Preums = TrouveCarre(NumCase + 9*Increment);
     Preums --;
-    printf("Trouver case : %d", Preums);
+    //printf("Trouver case : %d", Preums);
     if (Nbre-grillin->table[Preums] == 0 || Nbre-grillin->table[Preums+1]==0 || Nbre-grillin->table[Preums+2]==0 || Nbre-grillin->table[Preums+9]==0 || Nbre-grillin->table[Preums+10]==0 || Nbre-grillin->table[Preums+11]==0 || Nbre-grillin->table[Preums+18]==0 || Nbre-grillin->table[Preums+19]==0 || Nbre-grillin->table[Preums+20]==0)
     {
         return 0;
@@ -224,11 +224,10 @@ int TestColonne(grille *grillin, int alea1, int Nbre, int Increment)
 
 
 
-void CreationGrille(grille *grillin)
+int CreationGrille(grille *grillin)
 {
     srand(time(NULL));
     int alea1=0;
-    int alea2=0;
     int i=0;
     int j=0;
     int k=0;
@@ -242,49 +241,24 @@ void CreationGrille(grille *grillin)
     {
         grillin->table [j]=0;
     }
-
+/*
     for (j=0; j<81 ; j++)
     {
         printf("%d", grillin->table [j]);
     }
-
+*/
 
     for (i=0; i<9 ; i++)
     {
 
-        alea1 = rand ()%9;
-        alea1 ++ ;
-        alea2 = rand ()%81;
-
-
-        printf("alea1 : %d\n", alea1);
-        printf("alea2 : %d\n", alea2);
-
-
-        printf("On passe a la %d ligne ------------------------------------------------",i);
+        //printf("On passe a la %d ligne ------------------------------------------------",i);
 
         for (k=1; k<10 ; k++)
         {
             alea1 = rand ()%9;
             //alea1 = alea1 +1;
-            printf("%d",alea1);
 
-
-
-
-             /*
-            //TEST ajout cake
-            Col = TestColonne (grillin, alea1);
-            printf("Col = %d",Col);
-            Car = -1;
-            printf("Car = %d",Car);
-             */
-
-            // Test moi
-            /*
-            Col = TestColonne(grillin, alea1, k, i);
-            printf("Col = %d",Col);
-            */
+            //printf("%d",alea1);
 
 
             sortir = 0;
@@ -294,20 +268,20 @@ void CreationGrille(grille *grillin)
                 {
                     // test
                     Col = TestColonne(grillin, alea1, k, i);
-                    printf("Col = %d",Col);
+                    /*printf("Col = %d",Col);
                     if (Col == 0)
                     {
                         printf("**************COL**************\n");
-                    }
+                    }*/
                     //test
 
                     //test trouver carre
                     Car = TestCase (grillin, alea1, k, i);
-                    printf("\n`Car = %d",Car);
+                    /*printf("\n`Car = %d",Car);
                     if (Car == 0)
                     {
                         printf("**************CAR**************\n");
-                    }
+                    }*/
                     // test
 
                     // BUG A PREVOIR SUR CETTE IF
@@ -315,12 +289,13 @@ void CreationGrille(grille *grillin)
                     {
                         grillin->table [alea1 + 9*i] = k;
                         sortir=1;
-                        printf("\n\n");
+                        //printf("\n\n");
                     }
                     else
                     {
                         infi ++;
-                        alea1 = alea1 + 1;
+                        alea1 = rand ()%9;
+                        //alea1 = alea1 + 1;
                         if (alea1 ==9)
                         {
                             alea1 = 0;
@@ -331,7 +306,8 @@ void CreationGrille(grille *grillin)
                 else
                 {
                     infi ++;
-                    alea1 = alea1 + 1;
+                    alea1 = rand ()%9;
+                    //alea1 = alea1 + 1;
                     if (alea1 ==9)
                     {
                         alea1 = 0;
@@ -339,10 +315,11 @@ void CreationGrille(grille *grillin)
                 }
 
 
-                if (infi >= 24)
+                if (infi >= 100)
                 {
-                    printf("********************* ERREUR DE BOUCLE INFINI **********************");
-                    exit(EXIT_FAILURE);
+                    //printf("********************* ERREUR DE BOUCLE INFINI **********************");
+                    return 0;
+
                 }
 
 
@@ -352,6 +329,7 @@ void CreationGrille(grille *grillin)
             infi =0;
 
             // Test affichage
+            /*
             for (j=0; j<81 ; j++)
             {
                 printf("%d", grillin->table [j]);
@@ -362,7 +340,7 @@ void CreationGrille(grille *grillin)
                     compteur = 1;
                 }
 
-            }
+            }*/
 
 
 
@@ -393,5 +371,6 @@ void CreationGrille(grille *grillin)
         }
 
     }
+    return 1;
 
 }
