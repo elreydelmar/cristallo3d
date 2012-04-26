@@ -24,7 +24,7 @@ int main()
     {
         ok = CreationGrille(&grillin);
         infi++;
-        if (infi >= 1000000000)
+        if (infi >= 100000000)
         {
             printf("\n\n\n**** ERREUR NOMBRE DE GRILLES GENEREES MAXIMUMUM ET PAS DE RESULTAT ****\n\n");
             exit(EXIT_FAILURE);

@@ -84,7 +84,7 @@ int TrouveCarre(int NumCase)
 
 
 
-
+/*
 int TestCase(grille *grillin, int NumCase)
 {
     int i = 0, m = 0;
@@ -122,7 +122,7 @@ int TestCase(grille *grillin, int NumCase)
 
     return -1;
 }
-
+*/
 
 
 
@@ -340,7 +340,8 @@ int CreationGrille(grille *grillin)
                     compteur = 1;
                 }
 
-            }*/
+            }
+            */
 
 
 
