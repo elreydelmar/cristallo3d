@@ -235,7 +235,8 @@ int CreationGrille(grille *grillin)
     int Col=-1;
     int Car=-1;
     int sortir=0;
-    int infi=0;
+    int infi3=0;
+    int infi2=0;
 
     for (j=0; j<81 ; j++)
     {
@@ -293,7 +294,7 @@ int CreationGrille(grille *grillin)
                     }
                     else
                     {
-                        infi ++;
+                        infi3 ++;
                         alea1 = rand ()%9;
                         //alea1 = alea1 + 1;
                         if (alea1 ==9)
@@ -305,7 +306,7 @@ int CreationGrille(grille *grillin)
                 }
                 else
                 {
-                    infi ++;
+                    infi3 ++;
                     alea1 = rand ()%9;
                     //alea1 = alea1 + 1;
                     if (alea1 ==9)
@@ -315,10 +316,36 @@ int CreationGrille(grille *grillin)
                 }
 
 
-                if (infi >= 100)
+                if (infi3 >= 80)
                 {
                     //printf("********************* ERREUR DE BOUCLE INFINI **********************");
-                    return 0;
+                    //return 0;
+                    for (j=0; j<9 ; j++)
+                    {
+                        grillin->table [j + 9*i] = 0;
+                    }
+                    sortir = 1;
+                    k=0;
+                    infi2 ++;
+
+                    if (infi2 >= 60)
+                    {
+                        //printf("********************* ERREUR DE BOUCLE INFINI **********************");
+                        //return 0;
+                        for (j=0; j<9 ; j++)
+                        {
+                            grillin->table [j + 9*i] = 0;
+                        }
+                        for (j=0; j<9 ; j++)
+                        {
+                            grillin->table [j + 9*(i-1)] = 0;
+                        }
+                        sortir = 1;
+                        k=0;
+                        i--;
+
+
+                    }
 
                 }
 
@@ -326,12 +353,14 @@ int CreationGrille(grille *grillin)
 
             } while (sortir ==0);
 
-            infi =0;
+            infi3 =0;
 
-            // Test affichage
+            // TEST AFFICHAGE ENLEVER DES COMMENTAIRES SI ON VEUT VOIR LE DEROULEMENT DE LA GENERATION DE LA GRILLE
             /*
+            printf("\n\n");
             for (j=0; j<81 ; j++)
             {
+
                 printf("%d", grillin->table [j]);
                 compteur ++;
                 if (compteur==10)
@@ -346,13 +375,18 @@ int CreationGrille(grille *grillin)
 
 
 
+
+
+
+
             alea1 = 0;
         }
 
 
 
 
-
+        k=0;
+        infi2 = 0;
         // grillin->table [alea2] = alea1;
         // printf("chiffre dans la table : %d\n", grillin->table [alea2]);
 
@@ -374,4 +408,85 @@ int CreationGrille(grille *grillin)
     }
     return 1;
 
+}
+
+
+int PreparationGrille(grille * grillin, int  *Difficulte)
+{
+    // Nombre de chiffres retirés
+    int NbreChiffresRetires=0;
+
+    switch (*Difficulte) {
+    case (1) :
+        NbreChiffresRetires=40;
+        break;
+    case (2) :
+        NbreChiffresRetires=48;
+        break;
+    case (3) :
+        NbreChiffresRetires=56;
+        break;
+    }
+
+
+    //Declarations
+    int i=0;
+    srand(time(NULL));
+    int alea=0;
+    int compteur=1;
+    int j=0;
+    int temp=0;
+    int doublon=0;
+
+
+
+    for(i=1; i<(NbreChiffresRetires/2)+1; i++)
+    {
+        do
+        {
+            alea = rand ()%81;
+            if (grillin->table [alea] != 0)
+            {
+                grillin->table [alea] = 0;
+                grillin->table [80-alea] = 0;
+                doublon=0;
+            }
+            else
+            {
+                doublon=1;
+            }
+
+        } while (doublon!=0);
+
+
+    }
+
+
+    printf("\n\nGrille Preparee\n\n");
+    for (j=0; j<81 ; j++)
+    {
+        if (grillin->table [j] == 0)
+        {
+            printf(".");
+            temp++;
+        }
+        else
+        {
+            printf("%d", grillin->table [j]);
+        }
+
+        compteur ++;
+        if (compteur==10)
+        {
+            printf("\n");
+            compteur = 1;
+        }
+
+    }
+    printf("\n\n\n");
+
+
+    printf("Nombre de chiffres retires : %d", NbreChiffresRetires);
+    printf("\nNombre de chiffres retires pour de vrai: %d\n", temp);
+    return 1;
 }
