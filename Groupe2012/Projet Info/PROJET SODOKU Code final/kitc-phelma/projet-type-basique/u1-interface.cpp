@@ -97,6 +97,21 @@ void CreerInterface()
     gInterface.ChampNum -> value (0);
 */
 
+    gDonnees.Dark=0;
+    gDonnees.Done=0;
+    // Creation du bouton Vador
+    gInterface.BoutonVador = new Fl_Button(680, 260, 100, 35, "Dark Side") ;
+    gInterface.BoutonVador ->labelcolor( FL_RED ) ;
+    gInterface.BoutonVador->color( FL_BLACK ) ;
+    gInterface.BoutonVador->callback( BoutonVadorCB, NULL ) ;
+
+
+        // Creation du bouton Chercher Sol Vador
+    gInterface.BoutonChercherSolutions = new Fl_Button(650, 310, 140, 35, "Chercher Solutions") ;
+    gInterface.BoutonChercherSolutions ->labelcolor( FL_WHITE ) ;
+    gInterface.BoutonChercherSolutions->color( FL_DARK1 ) ;
+    gInterface.BoutonChercherSolutions->callback( BoutonChercherSolutionsCB, NULL ) ;
+    gInterface.BoutonChercherSolutions->hide();
 
 
 

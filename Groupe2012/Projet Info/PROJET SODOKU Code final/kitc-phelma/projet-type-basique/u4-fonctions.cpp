@@ -9,6 +9,7 @@
 // Librairie fmod pour le son
 #include <api/inc/fmod.h>
 #include <api/inc/fmod_errors.h>
+#include <FL/fl_ask.H>
 // Programmes locaux
 #include "u1-interface.h"
 #include "u4-fonctions.h"
@@ -573,6 +574,192 @@ grille grillin;
 grille GrilleResolue;
 grille GrilleTemp;
 
+
+
 int PosX;
 int PosY;
+
+
+
+
+void ResolutionGrille(grille *grillin)
+{
+    srand(time(NULL));
+    int alea1=0;
+    int i=0;
+    int j=0;
+    int k=0;
+    int l=0;
+    int m=0;
+    int compteur=1;
+    int Col=-1;
+    int Car=-1;
+    int sortir=0;
+    int infi3=0;
+    int infi2=0;
+    int Chiffre=0;
+    int Sauvegarde[81];
+    int infi4=0;
+
+    for (m=0;m<81;m++)
+    {
+        Sauvegarde[m]=grillin->table [m];
+    }
+
+    for (i=0; i<9 ; i++)
+    {
+
+        for (k=1; k<10 ; k++)
+        {
+            for (l=0; l<9 ; l++)
+            {
+                if (grillin->table [l + 9*i] == k)
+                {
+                    Chiffre=1;
+                }
+            }
+            if (Chiffre==0)
+            {
+
+            alea1 = rand ()%9;
+            //alea1 = alea1 +1;
+
+            //printf("%d",alea1);
+
+
+            sortir = 0;
+            do
+            {
+                if (grillin->table [alea1 + 9*i] == 0)
+                {
+                    // test
+                    Col = TestColonne(grillin, alea1, k, i);
+                    /*printf("Col = %d",Col);
+                    if (Col == 0)
+                    {
+                        printf("**************COL**************\n");
+                    }*/
+                    //test
+
+                    //test trouver carre
+                    Car = TestCase (grillin, alea1, k, i);
+                    /*printf("\n`Car = %d",Car);
+                    if (Car == 0)
+                    {
+                        printf("**************CAR**************\n");
+                    }*/
+                    // test
+
+                    // BUG A PREVOIR SUR CETTE IF
+                    if (Col==1 && Car==1)
+                    {
+                        grillin->table [alea1 + 9*i] = k;
+                        sortir=1;
+                        //printf("\n\n");
+                    }
+                    else
+                    {
+                        infi3 ++;
+                        alea1 = rand ()%9;
+                        //alea1 = alea1 + 1;
+                        if (alea1 ==9)
+                        {
+                            alea1 = 0;
+                        }
+                    }
+
+                }
+                else
+                {
+                    infi3 ++;
+                    alea1 = rand ()%9;
+                    //alea1 = alea1 + 1;
+                    if (alea1 ==9)
+                    {
+                        alea1 = 0;
+                    }
+                }
+
+
+                if (infi3 >= 80)
+                {
+                    //printf("********************* ERREUR DE BOUCLE INFINI **********************");
+                    //return 0;
+                    for (j=0; j<9 ; j++)
+                    {
+                        grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                    }
+                    sortir = 1;
+                    k=0;
+                    infi2 ++;
+
+                    if (infi2 >= 60)
+                    {
+                        //printf("********************* ERREUR DE BOUCLE INFINI **********************");
+                        //return 0;
+                        for (j=0; j<9 ; j++)
+                        {
+                            grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                        }
+                        for (j=0; j<9 ; j++)
+                        {
+                            grillin->table [j + 9*(i-1)] = Sauvegarde[j + 9*(i-1)];
+                        }
+                        infi4++;
+                        sortir = 1;
+                        k=0;
+                        i--;
+
+                        if (infi4 >= 20)
+                        {
+                            printf("********************* ERREUR DE BOUCLE INFINI **********************");
+                            //return 0;
+                            fl_alert("Votre grille n'est pas résolvable" );
+                            exit(0);
+
+
+                        }
+
+
+                    }
+
+                }
+
+
+
+            } while (sortir ==0);
+
+            infi3 =0;
+
+            alea1 = 0;
+
+            }
+            Chiffre=0;
+        }
+
+
+
+
+        k=0;
+        infi2 = 0;
+
+
+    }
+
+
+    printf("\n\n\n\n");
+    for (j=0; j<81 ; j++)
+    {
+        printf("%d", grillin->table [j]);
+        compteur ++;
+        if (compteur==10)
+        {
+            printf("\n");
+            compteur = 1;
+        }
+
+    }
+
+
+}
 

@@ -21,5 +21,7 @@ void ChampSaisieNumCB( Fl_Widget* w, void* data );
 void BoutonFacileCB ( Fl_Widget* w, void* data ) ;
 void BoutonMoyenCB ( Fl_Widget* w, void* data ) ;
 void BoutonExpertCB ( Fl_Widget* w, void* data ) ;
+void BoutonChercherSolutionsCB ( Fl_Widget* w, void* data ) ;
+void BoutonVadorCB ( Fl_Widget* w, void* data ) ;
 
 #endif // _u3_callbacks_h

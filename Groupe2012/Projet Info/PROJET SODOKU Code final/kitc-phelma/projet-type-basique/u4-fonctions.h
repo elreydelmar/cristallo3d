@@ -25,6 +25,8 @@ struct Donnees
     int CaseSaisieY;
     int ActuON;
     int DejaOccupe;
+    int Dark;
+    int Done;
 };
 
 // Déclaration des structures
@@ -39,6 +41,7 @@ extern struct grille grillin;
 extern struct grille GrilleResolue;
 extern struct grille GrilleTemp;
 
+
 extern int PosX;
 extern int PosY;
 
@@ -49,6 +52,7 @@ void InitialiserDonnees() ;
 void DeplacerBouleSansRebond() ;
 void DeplacerBouleAvecRebonds() ;
 void CreationGrille(grille *);
+void ResolutionGrille(grille *);
 void PreparationGrille(grille *, int);
 // Utilitaires
 void JouerSon(char *) ;         // Jouer un son

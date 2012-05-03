@@ -29,6 +29,8 @@ void TraiterCycleCB()
     gInterface.ZoneDessin->redraw() ;
     gInterface.BoutonKonami ->hide() ;
 
+    if (gDonnees.Dark!=1&&gDonnees.Done!=1)
+    {
 
     int ChiffresManquant=0;
     int i=0;
@@ -45,7 +47,12 @@ void TraiterCycleCB()
         Attente(0.4);
 
         fl_message("Vous avez complete la grille de sodoku : Bravo :)" );
-        exit(0);
+        //exit(0);
+        gDonnees.Done=1;
+        gInterface.BoutonChuck->hide();
+        gInterface.BoutonVador->hide();
+    }
+
     }
 
 
@@ -202,7 +209,7 @@ void BoutonExpertCB(Fl_Widget* w, void* data)
 
 void BoutonAideCB(Fl_Widget* w, void* data)
 {
-    fl_alert("Cliquer sur les cases vides pour remplir la grille de sudoku :)" );
+    fl_message("Cliquer sur les cases vides pour remplir la grille de sudoku :)" );
 }
 
 //Bouton d'affichage de la solution du sudoku...
@@ -253,13 +260,23 @@ void ChampSaisieNumCB( Fl_Widget* w, void* data )
     Valeur = gInterface.ChampSaisieNum->value() ;
     printf("Ca marche! : %d",Valeur);
 
+
     a = (gDonnees.CaseSaisieX / 50)-30;
     b = (gDonnees.CaseSaisieY / 50)-30;
     grillin.table[a+9*b]=Valeur;
 
-    if (grillin.table[a+9*b] != GrilleResolue.table[a+9*b])
+    if (gDonnees.Dark==0)
     {
-        fl_alert("Reponse incorrecte :'(" );
+        if (grillin.table[a+9*b] != GrilleResolue.table[a+9*b])
+        {
+            fl_alert("Reponse incorrecte :'(" );
+            grillin.table[a+9*b]=0;
+        }
+    }
+
+    if (Valeur>9||Valeur<1)
+    {
+        fl_alert("Reponse non comprise entre 0 et 9 :'(" );
         grillin.table[a+9*b]=0;
     }
 
@@ -268,4 +285,22 @@ void ChampSaisieNumCB( Fl_Widget* w, void* data )
 
 
 
+void BoutonVadorCB( Fl_Widget* w, void* data )
+{
+    gInterface.Fenetre->begin();
+    gInterface.Fenetre->color(FL_BLACK) ;
+    gInterface.Fenetre->end();
+    gInterface.Fenetre->show();
+    gInterface.BoutonChercherSolutions->show();
+    gInterface.BoutonAide->hide();
+    gInterface.BoutonExpert->hide();
+    gInterface.BoutonFacile->hide();
+    gInterface.BoutonMoyen->hide();
+    gDonnees.Dark=1;
+}
 
+
+void BoutonChercherSolutionsCB ( Fl_Widget* w, void* data )
+{
+    ResolutionGrille(&grillin);
+}

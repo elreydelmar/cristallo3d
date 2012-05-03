@@ -33,9 +33,11 @@ struct Interface
     Fl_Button*          BoutonFacile ;
     Fl_Button*          BoutonMoyen ;
     Fl_Button*          BoutonExpert ;
+    Fl_Button*          BoutonChercherSolutions;
     //Fl_Check_Button*    Solution ;
     Fl_Button*          BoutonAide ;
     Fl_Button*          BoutonKonami ;
+    Fl_Button*          BoutonVador;
     Fl_Value_Output*    ChampNum;
     Fl_Value_Input*     ChampSaisieNum;
     Fl_Group*           GroupeBoutonsSolution;
