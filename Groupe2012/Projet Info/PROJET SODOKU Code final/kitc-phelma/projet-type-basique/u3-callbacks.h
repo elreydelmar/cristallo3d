@@ -15,5 +15,6 @@ void CaseRebondCB( Fl_Widget* w, void* data ) ;
 void BoutonAideCB( Fl_Widget* w, void* data ) ;
 void SolutionCB ( Fl_Widget* w, void* data) ;
 void BoutonKonamiCB (Fl_Widget* w, void* data) ;
+void ChampNumCB (Fl_Widget* w, void* data) ;
 
 #endif // _u3_callbacks_h

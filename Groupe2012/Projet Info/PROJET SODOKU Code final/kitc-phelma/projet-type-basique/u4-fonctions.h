@@ -24,12 +24,25 @@ struct Donnees
 
 };
 
+// Déclaration des structures
+
+struct grille
+{
+    int table[81];
+} ;
+
+
+extern struct grille grillin;
+
+
 extern struct Donnees gDonnees;
 
 // Déclaration des sous-programmes
 void InitialiserDonnees() ;
 void DeplacerBouleSansRebond() ;
 void DeplacerBouleAvecRebonds() ;
+void CreationGrille(grille *);
+int PreparationGrille(grille *, int  *);
 // Utilitaires
 void JouerSon(char *) ;         // Jouer un son
 void Attente(double Seconds);   // Procedure d'attente

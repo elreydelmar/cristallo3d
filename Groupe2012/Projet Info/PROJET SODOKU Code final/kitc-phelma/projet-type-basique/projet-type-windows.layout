@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="main.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="689" topLine="21" />
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="579" topLine="9" />
 	</File>
-	<File name="main.h" open="0" top="0" tabpos="6">
+	<File name="main.h" open="1" top="0" tabpos="10">
+		<Cursor position="309" topLine="0" />
+	</File>
+	<File name="u1-interface.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1781" topLine="30" />
+	</File>
+	<File name="u1-interface.h" open="1" top="0" tabpos="3">
+		<Cursor position="1124" topLine="22" />
+	</File>
+	<File name="u2-dessin.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="1015" topLine="25" />
+	</File>
+	<File name="u2-dessin.h" open="1" top="0" tabpos="5">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="u1-interface.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2913" topLine="58" />
+	<File name="u3-callbacks.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="2189" topLine="0" />
 	</File>
-	<File name="u1-interface.h" open="1" top="0" tabpos="7">
-		<Cursor position="1088" topLine="6" />
+	<File name="u3-callbacks.h" open="1" top="0" tabpos="7">
+		<Cursor position="612" topLine="0" />
 	</File>
-	<File name="u2-dessin.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="625" topLine="0" />
+	<File name="u4-fonctions.cpp" open="1" top="1" tabpos="8">
+		<Cursor position="12849" topLine="528" />
 	</File>
-	<File name="u2-dessin.h" open="1" top="0" tabpos="8">
-		<Cursor position="0" topLine="0" />
-	</File>
-	<File name="u3-callbacks.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="3191" topLine="0" />
-	</File>
-	<File name="u3-callbacks.h" open="1" top="0" tabpos="9">
-		<Cursor position="566" topLine="0" />
-	</File>
-	<File name="u4-fonctions.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="770" topLine="0" />
-	</File>
-	<File name="u4-fonctions.h" open="1" top="0" tabpos="6">
-		<Cursor position="773" topLine="0" />
+	<File name="u4-fonctions.h" open="1" top="0" tabpos="9">
+		<Cursor position="549" topLine="17" />
 	</File>
 </CodeBlocks_layout_file>

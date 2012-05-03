@@ -8,6 +8,7 @@
 #include "u3-callbacks.h"
 #include "u4-fonctions.h"
 
+
 // Declaration pour utiliser iostream
 using namespace std;
 
@@ -21,6 +22,7 @@ void CreerInterface()
     gInterface.Fenetre = new Fl_Double_Window(800,600);
     gInterface.Fenetre->label("Sudoku qui tue ! ") ;
     gInterface.Fenetre->begin() ;
+    gInterface.Fenetre->color(FL_DARK_CYAN) ;
 
     // Creation de la zone de dessin
     gInterface.ZoneDessin = new DrawingArea(X_ZONE,Y_ZONE,L_ZONE,H_ZONE);
@@ -30,6 +32,8 @@ void CreerInterface()
 
     // Creation du bouton Quitter
     gInterface.BoutonQuitter = new Fl_Button(580, 460, 100, 20, "Quitter") ;
+    gInterface.BoutonQuitter ->labelcolor( FL_WHITE ) ;
+    gInterface.BoutonQuitter->color( FL_DARK_MAGENTA ) ;
     gInterface.BoutonQuitter->callback( BoutonQuitterCB, NULL ) ;
 
     //Création du bouton solution ou non :
@@ -39,11 +43,20 @@ void CreerInterface()
     gInterface.Solution->callback( SolutionCB, NULL ) ;
 
     //Konami code :)
-
     Fl_Button* BoutonKonami ;
 
     gInterface.BoutonKonami = new Fl_Button( 600, 500, 100, 20, "bouton Konami !" ) ;
     gInterface.BoutonKonami->callback( BoutonKonamiCB, NULL ) ;
+
+
+
+    //grille grillin;
+    CreationGrille(&grillin);
+
+    // Création bouton saisie num
+    Fl_Value_Output * ChampNum;
+    gInterface.ChampNum = new Fl_Value_Output( X_ZONE , Y_ZONE , 50, 50 , "");
+    gInterface.ChampNum -> value (0);
 
 
 

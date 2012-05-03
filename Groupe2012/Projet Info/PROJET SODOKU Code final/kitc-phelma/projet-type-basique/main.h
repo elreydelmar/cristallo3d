@@ -6,6 +6,24 @@
 // Declarations externes - inclusion des fichiers d'entete
 #include <FL/Fl_Widget.H>
 
+
+/*
+struct grille
+    {
+        int table[81];
+    } ;
+
+
+struct Carre
+    {
+        int Prems;
+        int Cases[8];
+    };
+
+ grille grillin;
+*/
+
+
 // Declaration de la classe DrawingArea
 class DrawingArea : public Fl_Widget
 {

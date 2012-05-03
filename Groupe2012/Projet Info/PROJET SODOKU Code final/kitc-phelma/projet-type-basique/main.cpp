@@ -9,6 +9,11 @@
 #include "u1-interface.h"
 #include "u3-callbacks.h"
 #include "u4-fonctions.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
 
 // Declaration pour utiliser iostream
 using namespace std;
@@ -19,6 +24,28 @@ void CycleCB( void* ) ;
 // Programme Principal
 int main (int argc, char ** argv)
 {
+
+    //grille grillin;
+    //grille GrilleResolue;
+    //int Difficulte=0;
+
+
+    //ok = CreationGrille(&grillin);
+
+    //GrilleResolue = grillin;
+
+/*
+    printf("\n\n Veuillez donner le niveau de difficulte (1 2 ou 3) :");
+    scanf("%d",&Difficulte);
+*/
+
+    //ok = PreparationGrille(&grillin, &Difficulte);
+
+
+
+
+
+
     // Creation de l'interface
     CreerInterface() ;
 

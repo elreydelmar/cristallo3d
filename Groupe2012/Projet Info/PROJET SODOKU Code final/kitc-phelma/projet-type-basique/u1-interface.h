@@ -32,10 +32,19 @@ struct Interface
     Fl_Check_Button*    Solution ;
     Fl_Button*          BoutonAide ;
     Fl_Button*          BoutonKonami ;
+    Fl_Value_Output*    ChampNum;
 } ;
 
 // Declaration des objets de l'interface generale - ne pas supprimer
 extern struct Interface gInterface ;
+
+
+
+ struct Carre
+    {
+        int Prems;
+        int Cases[8];
+    };
 
 
 

@@ -15,6 +15,7 @@
 // Declaration pour utiliser iostream
 using namespace std;
 
+
 // DessinerZone
 void ZoneDessinDessinerCB( Fl_Widget* widget, void* data )
 {
@@ -22,9 +23,74 @@ void ZoneDessinDessinerCB( Fl_Widget* widget, void* data )
     fl_color(FL_BLACK);
 
 
+
     //Image de fond pour le sudoku :)
 
-    Fl_JPEG_Image GrilleSudoku("C:\\Users\\Antoine\\Documents\\PHELMA\\Projet info\\kitc-phelma\\GrilleSudokuVide.jpg");
+    Fl_JPEG_Image GrilleSudoku("C:\\Users\\Antoine\\Desktop\\Cristallo3D\\Groupe2012\\Projet Info\\PROJET SODOKU Code final\\kitc-phelma\\GrilleSudokuVide.jpg");
 
     GrilleSudoku.draw(X_ZONE, Y_ZONE );
+
+    int i=0;
+    int j=0;
+
+
+    fl_font(FL_HELVETICA, 30);
+
+    for (i=0;i<9;i++)
+    {
+        for (j=0;j<9;j++)
+        {
+            if (grillin.table[j+9*i]==0)
+            {
+                fl_draw(" ",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==1)
+            {
+                fl_draw("1",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==2)
+            {
+                fl_draw("2",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==3)
+            {
+                fl_draw("3",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==4)
+            {
+                fl_draw("4",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==5)
+            {
+                fl_draw("5",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==6)
+            {
+                fl_draw("6",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==7)
+            {
+                fl_draw("7",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==8)
+            {
+                fl_draw("8",20 + 50*i, 40);
+            }
+            if (grillin.table[j+9*i]==9)
+            {
+                fl_draw("9",20 + 50*i, 40);
+            }
+        }
+
+
+
+    }
+
+
+
+
+
+
+
 }
+

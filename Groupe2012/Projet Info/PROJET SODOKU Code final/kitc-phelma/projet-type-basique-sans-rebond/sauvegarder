@@ -1,2 +1,0 @@
-CURRENTDIR="$(basename "$(pwd)")"
-tar cvzf "../sauvegardes/$CURRENTDIR.$(date +%d-%m-%Y-%H-%M).tar.gz" "../$CURRENTDIR"

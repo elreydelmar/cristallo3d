@@ -224,6 +224,35 @@ int TestColonne(grille *grillin, int alea1, int Nbre, int Increment)
 
 
 
+// JE PENSE QU'IL Y A DES BUGS
+
+int TestLigne(grille *grillin, int alea1, int Nbre, int Increment)
+{
+    int i,j;
+
+    for(i=alea1-1;i>9*Increment-1;i--)
+    {
+        if (Nbre - grillin->table[i] == 0)
+        {
+            return 0;
+        }
+    }
+
+    for(j=alea1+1;j<9*Increment+9;j++)
+    {
+        if (Nbre - grillin->table[j] == 0)
+        {
+            return 0;
+        }
+    }
+
+
+    return 1;
+}
+
+
+
+
 int CreationGrille(grille *grillin)
 {
     srand(time(NULL));
@@ -406,6 +435,7 @@ int CreationGrille(grille *grillin)
         }
 
     }
+
     return 1;
 
 }
