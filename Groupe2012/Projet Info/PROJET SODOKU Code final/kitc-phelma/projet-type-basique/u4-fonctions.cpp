@@ -470,12 +470,12 @@ void CreationGrille(grille *grillin)
 }
 
 
-int PreparationGrille(grille * grillin, int  *Difficulte)
+void PreparationGrille(grille * grillin, int Difficulte)
 {
     // Nombre de chiffres retirés
     int NbreChiffresRetires=0;
 
-    switch (*Difficulte) {
+    switch (Difficulte) {
     case (1) :
         NbreChiffresRetires=40;
         break;
@@ -547,7 +547,6 @@ int PreparationGrille(grille * grillin, int  *Difficulte)
 
     printf("Nombre de chiffres retires : %d", NbreChiffresRetires);
     printf("\nNombre de chiffres retires pour de vrai: %d\n", temp);
-    return 1;
 }
 
 
@@ -561,4 +560,19 @@ void VerifSolution ()
 
 }
 
+// Cette procedure permet une attente de x secondes, x peut etre en secondes mais aussi en flottant par exemple : 0.1 s
+void Attente ( double Seconds )
+{
+    clock_t Endwait;
+    Endwait = (int) (clock () + Seconds * CLOCKS_PER_SEC);
+    while (clock() < Endwait);
+}
+
+
 grille grillin;
+grille GrilleResolue;
+grille GrilleTemp;
+
+int PosX;
+int PosY;
+

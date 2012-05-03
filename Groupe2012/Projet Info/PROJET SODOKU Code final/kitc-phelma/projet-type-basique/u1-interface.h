@@ -18,10 +18,10 @@
 #include <FL/Fl_Value_Input.H>
 
 // Definition des constantes
-#define X_ZONE  20      // X de la zone
-#define Y_ZONE  40      // Y de la zone
-#define L_ZONE  400     // Largeur de la zone
-#define H_ZONE  400     // Hauteur de la zone
+#define X_ZONE  30      // X de la zone
+#define Y_ZONE  30      // Y de la zone
+#define L_ZONE  450     // Largeur de la zone
+#define H_ZONE  450     // Hauteur de la zone
 
 // Declaration des objets de l'interface
 struct Interface
@@ -29,10 +29,17 @@ struct Interface
     Fl_Double_Window*   Fenetre ;
     DrawingArea*        ZoneDessin ;
     Fl_Button*          BoutonQuitter ;
-    Fl_Check_Button*    Solution ;
+    Fl_Button*          BoutonChuck ;
+    Fl_Button*          BoutonFacile ;
+    Fl_Button*          BoutonMoyen ;
+    Fl_Button*          BoutonExpert ;
+    //Fl_Check_Button*    Solution ;
     Fl_Button*          BoutonAide ;
     Fl_Button*          BoutonKonami ;
     Fl_Value_Output*    ChampNum;
+    Fl_Value_Input*     ChampSaisieNum;
+    Fl_Group*           GroupeBoutonsSolution;
+    Fl_Round_Button*    BoutonSolOui;
 } ;
 
 // Declaration des objets de l'interface generale - ne pas supprimer

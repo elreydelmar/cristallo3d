@@ -21,7 +21,10 @@ struct Boule
 // Structure globale pour les variables fonctionnelles
 struct Donnees
 {
-
+    int CaseSaisieX;
+    int CaseSaisieY;
+    int ActuON;
+    int DejaOccupe;
 };
 
 // Déclaration des structures
@@ -33,7 +36,11 @@ struct grille
 
 
 extern struct grille grillin;
+extern struct grille GrilleResolue;
+extern struct grille GrilleTemp;
 
+extern int PosX;
+extern int PosY;
 
 extern struct Donnees gDonnees;
 
@@ -42,7 +49,7 @@ void InitialiserDonnees() ;
 void DeplacerBouleSansRebond() ;
 void DeplacerBouleAvecRebonds() ;
 void CreationGrille(grille *);
-int PreparationGrille(grille *, int  *);
+void PreparationGrille(grille *, int);
 // Utilitaires
 void JouerSon(char *) ;         // Jouer un son
 void Attente(double Seconds);   // Procedure d'attente

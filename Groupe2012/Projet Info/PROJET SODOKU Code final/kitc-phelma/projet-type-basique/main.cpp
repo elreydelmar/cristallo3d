@@ -66,6 +66,7 @@ void CycleCB( void* )
 {
     // Appel de la fonction TraiterCycleCB ( u3-callbacks )
     TraiterCycleCB() ;
+    ActualiserInterface();
 
     // Rearmement de la fonction cyclique
     Fl::add_timeout(DUREE_CYCLE, CycleCB, NULL ) ;

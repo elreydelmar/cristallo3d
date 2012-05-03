@@ -19,8 +19,8 @@ struct Interface gInterface ;
 void CreerInterface()
 {
     // Creation de la fenetre principale
-    gInterface.Fenetre = new Fl_Double_Window(800,600);
-    gInterface.Fenetre->label("Sudoku qui tue ! ") ;
+    gInterface.Fenetre = new Fl_Double_Window(800,515);
+    gInterface.Fenetre->label("Jeu Sudoku") ;
     gInterface.Fenetre->begin() ;
     gInterface.Fenetre->color(FL_DARK_CYAN) ;
 
@@ -31,16 +31,53 @@ void CreerInterface()
     gInterface.ZoneDessin->keyboard_callback( ZoneDessinClavierCB, NULL ) ;
 
     // Creation du bouton Quitter
-    gInterface.BoutonQuitter = new Fl_Button(580, 460, 100, 20, "Quitter") ;
+    gInterface.BoutonQuitter = new Fl_Button(680, 460, 100, 35, "Quitter") ;
     gInterface.BoutonQuitter ->labelcolor( FL_WHITE ) ;
-    gInterface.BoutonQuitter->color( FL_DARK_MAGENTA ) ;
+    gInterface.BoutonQuitter->color( FL_DARK_RED ) ;
     gInterface.BoutonQuitter->callback( BoutonQuitterCB, NULL ) ;
 
-    //Création du bouton solution ou non :
-    Fl_Check_Button* Solution ;
+    // Creation du bouton Difficulte 1
+    gInterface.BoutonFacile = new Fl_Button(500, 180, 80, 30, "Facile") ;
+    gInterface.BoutonFacile ->labelcolor( FL_WHITE ) ;
+    gInterface.BoutonFacile->color( FL_DARK_MAGENTA ) ;
+    gInterface.BoutonFacile->callback( BoutonFacileCB, NULL ) ;
 
-    gInterface.Solution = new Fl_Check_Button(80, 500, 100, 20, "Solution ?") ;
+        // Creation du bouton Difficulte 2
+    gInterface.BoutonMoyen = new Fl_Button(600, 180, 80, 30, "Moyen") ;
+    gInterface.BoutonMoyen ->labelcolor( FL_WHITE ) ;
+    gInterface.BoutonMoyen->color( FL_DARK_MAGENTA ) ;
+    gInterface.BoutonMoyen->callback( BoutonMoyenCB, NULL ) ;
+
+        // Creation du bouton Difficulte 3
+    gInterface.BoutonExpert = new Fl_Button(700, 180, 80, 30, "Expert") ;
+    gInterface.BoutonExpert ->labelcolor( FL_WHITE ) ;
+    gInterface.BoutonExpert->color( FL_DARK_MAGENTA ) ;
+    gInterface.BoutonExpert->callback( BoutonExpertCB, NULL ) ;
+
+    //Création du bouton solution ou non :
+    gInterface.GroupeBoutonsSolution = new Fl_Group( 520, 460, 100, 20, "" ) ;
+    gInterface.GroupeBoutonsSolution->begin() ;
+
+    gInterface.BoutonSolOui = new Fl_Round_Button( 520, 460, 100, 20, "Solution") ;
+    gInterface.BoutonSolOui->type(FL_RADIO_BUTTON) ;
+    gInterface.BoutonSolOui ->callback(BoutonSolutionCB, NULL ) ;
+
+
+    gInterface.GroupeBoutonsSolution->end();
+    gInterface.BoutonSolOui ->hide();
+
+    // Creation du bouton Chuck Norris
+    gInterface.BoutonChuck = new Fl_Button(510, 220, 100, 35, "Chuck Norris") ;
+    gInterface.BoutonChuck ->labelcolor( FL_WHITE ) ;
+    gInterface.BoutonChuck->color( FL_DARK_RED ) ;
+    gInterface.BoutonChuck->callback( BoutonChuckCB, NULL ) ;
+    gInterface.BoutonChuck -> hide();
+
+   /* Fl_Check_Button* Solution ;
+
+    gInterface.Solution = new Fl_Check_Button(520, 460, 100, 20, "Solution ?") ;
     gInterface.Solution->callback( SolutionCB, NULL ) ;
+    */
 
     //Konami code :)
     Fl_Button* BoutonKonami ;
@@ -51,19 +88,31 @@ void CreerInterface()
 
 
     //grille grillin;
-    CreationGrille(&grillin);
+    //CreationGrille(&grillin);
 
+/*
     // Création bouton saisie num
     Fl_Value_Output * ChampNum;
     gInterface.ChampNum = new Fl_Value_Output( X_ZONE , Y_ZONE , 50, 50 , "");
     gInterface.ChampNum -> value (0);
+*/
 
 
 
 
     // Creation du bouton Aide
-    gInterface.BoutonAide = new Fl_Button(580, 50, 100, 20, "Aide") ;
+    gInterface.BoutonAide = new Fl_Button(700, 400, 60, 25, "Aide") ;
     gInterface.BoutonAide->callback( BoutonAideCB, NULL ) ;
+
+
+    // Creation du machin de selection
+    Fl_Value_Input* ChampSaisieNum ;
+    gInterface.ChampSaisieNum = new Fl_Value_Input(30,30, 50, 50, "" ) ;
+    gInterface.ChampSaisieNum->when( FL_WHEN_ENTER_KEY | FL_WHEN_NOT_CHANGED ) ;
+    gInterface.ChampSaisieNum->callback( ChampSaisieNumCB, NULL ) ;
+    gInterface.ChampSaisieNum->hide();
+
+
 
     // Affichage de la fenetre
     gInterface.Fenetre->end();
@@ -72,6 +121,17 @@ void CreerInterface()
 
 void ActualiserInterface()
 {
+    gInterface.Fenetre->begin();
+    if (gDonnees.ActuON == 1 && gDonnees.DejaOccupe ==0)
+    {
+        gInterface.ChampSaisieNum ->hide();
+
+        gInterface.ChampSaisieNum = new Fl_Value_Input(gDonnees.CaseSaisieX,gDonnees.CaseSaisieY, 50, 50, "" ) ;
+
+    }
+    gInterface.Fenetre->end();
+    gInterface.Fenetre->show();
+    gDonnees.ActuON=0;
 
 }
 // Pour le menu du programme !

@@ -683,10 +683,11 @@
 	"u3-callbacks.h"
 	"u4-fonctions.h"
 
-1336039428 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u2-dessin.cpp
+1336071543 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u2-dessin.cpp
 	<iostream>
 	<FL/Fl.H>
 	<FL/fl_draw.H>
+	<FL/fl_ask.H>
 	"u1-interface.h"
 	"u2-dessin.h"
 	"u4-fonctions.h"
@@ -704,7 +705,7 @@
 1264524252 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\fltkwin\fl\fl_draw.h
 	"Enumerations.H"
 
-1336039537 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u1-interface.h
+1336068368 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u1-interface.h
 	"main.h"
 	<FL/Fl_Double_Window.H>
 	<FL/Fl_Button.H>
@@ -784,14 +785,14 @@
 	"Fl_Valuator.H"
 	"Fl_Input.H"
 
-1264524510 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u2-dessin.h
+1336059290 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u2-dessin.h
 
-1336039537 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u4-fonctions.h
+1336069530 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u4-fonctions.h
 
 1264524258 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\fltkwin\fl\fl_jpeg_image.h
 	"Fl_Image.H"
 
-1335550754 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u3-callbacks.cpp
+1336071304 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u3-callbacks.cpp
 	<iostream>
 	<FL/Fl.H>
 	<FL/fl_ask.H>
@@ -869,10 +870,10 @@
 1264524264 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\fltkwin\fl\fl_return_button.h
 	"Fl_Button.H"
 
-1336033341 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u3-callbacks.h
+1336065885 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u3-callbacks.h
 	<FL/Fl_Widget.H>
 
-1336036082 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u4-fonctions.cpp
+1336067481 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u4-fonctions.cpp
 	<iostream>
 	<stdlib.h>
 	<stdio.h>
@@ -897,7 +898,7 @@
 1296504574 c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\fmodwin\api\inc\fmod_errors.h
 	"fmod.h"
 
-1336036050 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\main.cpp
+1336066679 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\main.cpp
 	<iostream>
 	<FL/Fl.H>
 	"main.h"
@@ -909,7 +910,7 @@
 	<math.h>
 	<time.h>
 
-1336039788 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u1-interface.cpp
+1336071450 source:c:\users\antoine\desktop\cristallo3d\groupe2012\projet info\projet sodoku code final\kitc-phelma\projet-type-basique\u1-interface.cpp
 	<iostream>
 	"u1-interface.h"
 	"u2-dessin.h"
