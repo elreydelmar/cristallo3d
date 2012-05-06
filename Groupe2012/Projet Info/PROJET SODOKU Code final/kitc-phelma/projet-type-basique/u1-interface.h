@@ -39,9 +39,14 @@ struct Interface
     Fl_Button*          BoutonKonami ;
     Fl_Button*          BoutonVador;
     Fl_Value_Output*    ChampNum;
+    Fl_Value_Output*    Minutes;
+    Fl_Value_Output*    Heures;
+    Fl_Value_Output*    Secondes;
+
     Fl_Value_Input*     ChampSaisieNum;
     Fl_Group*           GroupeBoutonsSolution;
     Fl_Round_Button*    BoutonSolOui;
+    Fl_Output*          NotificationErreur;
 } ;
 
 // Declaration des objets de l'interface generale - ne pas supprimer

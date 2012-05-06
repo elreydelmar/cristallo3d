@@ -478,13 +478,13 @@ void PreparationGrille(grille * grillin, int Difficulte)
 
     switch (Difficulte) {
     case (1) :
-        NbreChiffresRetires=40;
+        NbreChiffresRetires=36;
         break;
     case (2) :
-        NbreChiffresRetires=48;
+        NbreChiffresRetires=44;
         break;
     case (3) :
-        NbreChiffresRetires=56;
+        NbreChiffresRetires=52;
         break;
     }
 
@@ -622,9 +622,6 @@ void ResolutionGrille(grille *grillin)
             {
 
             alea1 = rand ()%9;
-            //alea1 = alea1 +1;
-
-            //printf("%d",alea1);
 
 
             sortir = 0;
@@ -632,36 +629,21 @@ void ResolutionGrille(grille *grillin)
             {
                 if (grillin->table [alea1 + 9*i] == 0)
                 {
-                    // test
+
                     Col = TestColonne(grillin, alea1, k, i);
-                    /*printf("Col = %d",Col);
-                    if (Col == 0)
-                    {
-                        printf("**************COL**************\n");
-                    }*/
-                    //test
 
-                    //test trouver carre
                     Car = TestCase (grillin, alea1, k, i);
-                    /*printf("\n`Car = %d",Car);
-                    if (Car == 0)
-                    {
-                        printf("**************CAR**************\n");
-                    }*/
-                    // test
 
-                    // BUG A PREVOIR SUR CETTE IF
                     if (Col==1 && Car==1)
                     {
                         grillin->table [alea1 + 9*i] = k;
                         sortir=1;
-                        //printf("\n\n");
+
                     }
                     else
                     {
                         infi3 ++;
                         alea1 = rand ()%9;
-                        //alea1 = alea1 + 1;
                         if (alea1 ==9)
                         {
                             alea1 = 0;
@@ -681,10 +663,12 @@ void ResolutionGrille(grille *grillin)
                 }
 
 
-                if (infi3 >= 80)
+                if (infi3 >= 200)
                 {
-                    //printf("********************* ERREUR DE BOUCLE INFINI **********************");
-                    //return 0;
+                    for (j=0; j<9 ; j++)
+                    {
+                        grillin->table [j + 9*i] = 0;
+                    }
                     for (j=0; j<9 ; j++)
                     {
                         grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
@@ -693,10 +677,8 @@ void ResolutionGrille(grille *grillin)
                     k=0;
                     infi2 ++;
 
-                    if (infi2 >= 60)
+                    if (infi2 >= 200)
                     {
-                        //printf("********************* ERREUR DE BOUCLE INFINI **********************");
-                        //return 0;
                         for (j=0; j<9 ; j++)
                         {
                             grillin->table [j + 9*i] = Sauvegarde[j + 9*i];

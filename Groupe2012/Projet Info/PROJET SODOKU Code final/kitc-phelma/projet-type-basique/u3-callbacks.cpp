@@ -51,10 +51,32 @@ void TraiterCycleCB()
         gDonnees.Done=1;
         gInterface.BoutonChuck->hide();
         gInterface.BoutonVador->hide();
+        gDonnees.Chrono=0;
     }
 
     }
 
+
+    if (gDonnees.Chrono == 1)
+    {
+        gDonnees.Time++;
+
+        gDonnees.Seconds = gDonnees.Time / (200/3);
+        if (gDonnees.Seconds > 59)
+        {
+            gDonnees.Time=0;
+            gDonnees.Min++;
+        }
+        if (gDonnees.Min > 59)
+        {
+            gDonnees.Min=0;
+            gDonnees.Heu++;
+        }
+    }
+
+
+
+   // printf("%d",gDonnees.Seconds);
 
     // Code a activer en cas de probleme pour saisir les evenements du clavier
     // Probleme : si les evenements du clavier ne sont pas bien pris en compte pour agir sur la zone de dessin.
@@ -75,24 +97,36 @@ void ZoneDessinSourisCB( Fl_Widget* widget, void* data )
 
     if ( Fl::event() == FL_PUSH )
     {
-        printf("Mouse push = %i x = %i y = %i\n", Fl::event_button(), Fl::event_x(), Fl::event_y());
-        a = (Fl::event_x()-30)/50;
-        b = (Fl::event_y()-30)/50;
-
-        gDonnees.CaseSaisieX = a * 50 +30;
-        gDonnees.CaseSaisieY = b * 50 +30;
-        //gInterface.ChampSaisieNum->show();
-        printf("PosX : %d PosY : %d", gDonnees.CaseSaisieX, gDonnees.CaseSaisieY);
-        gDonnees.ActuON=1;
-        if (grillin.table[a+9*b]==0)
+        if(gDonnees.EnSaisie==1)
         {
-            gDonnees.DejaOccupe=0;
+
         }
         else
         {
-            gDonnees.DejaOccupe=1;
+            printf("Mouse push = %i x = %i y = %i\n", Fl::event_button(), Fl::event_x(), Fl::event_y());
+            a = (Fl::event_x()-30)/50;
+            b = (Fl::event_y()-30)/50;
+
+            gDonnees.CaseSaisieX = a * 50 +30;
+            gDonnees.CaseSaisieY = b * 50 +30;
+            //gInterface.ChampSaisieNum->show();
+            printf("PosX : %d PosY : %d", gDonnees.CaseSaisieX, gDonnees.CaseSaisieY);
+            gDonnees.ActuON=1;
+            if (grillin.table[a+9*b]==0)
+            {
+                gDonnees.DejaOccupe=0;
+                gDonnees.EnSaisie=1;
+            }
+            else
+            {
+                gDonnees.DejaOccupe=1;
+            }
+
         }
+
+
     }
+
 }
 
 // ZoneDessinClavierCB
@@ -177,6 +211,11 @@ void BoutonFacileCB(Fl_Widget* w, void* data)
     gInterface.BoutonExpert -> hide();
     gInterface.BoutonChuck -> show();
     gInterface.BoutonSolOui ->show();
+    gDonnees.Chrono=1;
+    gInterface.Secondes->show();
+    gInterface.Minutes->show();
+    gInterface.Heures->show();
+    gInterface.BoutonVador->hide();
 }
 
 void BoutonMoyenCB(Fl_Widget* w, void* data)
@@ -190,6 +229,11 @@ void BoutonMoyenCB(Fl_Widget* w, void* data)
     gInterface.BoutonExpert -> hide();
     gInterface.BoutonChuck -> show();
     gInterface.BoutonSolOui ->show();
+    gDonnees.Chrono=1;
+    gInterface.Secondes->show();
+    gInterface.Minutes->show();
+    gInterface.Heures->show();
+    gInterface.BoutonVador->hide();
 }
 
 void BoutonExpertCB(Fl_Widget* w, void* data)
@@ -203,6 +247,11 @@ void BoutonExpertCB(Fl_Widget* w, void* data)
     gInterface.BoutonExpert -> hide();
     gInterface.BoutonChuck -> show();
     gInterface.BoutonSolOui ->show();
+    gDonnees.Chrono=1;
+    gInterface.Secondes->show();
+    gInterface.Minutes->show();
+    gInterface.Heures->show();
+    gInterface.BoutonVador->hide();
 }
 
 //Bouton qui permet d'afficher l'aide...
@@ -259,26 +308,45 @@ void ChampSaisieNumCB( Fl_Widget* w, void* data )
     int b=0;
     Valeur = gInterface.ChampSaisieNum->value() ;
     printf("Ca marche! : %d",Valeur);
+    gInterface.ChampSaisieNum->hide() ;
 
-
-    a = (gDonnees.CaseSaisieX / 50)-30;
-    b = (gDonnees.CaseSaisieY / 50)-30;
+    printf("Blabla3");
+    a = (gDonnees.CaseSaisieX / 50);
+    b = (gDonnees.CaseSaisieY / 50);
+    printf("a:%d",a);
+    printf("b:%d",b);
     grillin.table[a+9*b]=Valeur;
+
+    printf("Blabla");
+
+    gDonnees.Incorrect=3;
 
     if (gDonnees.Dark==0)
     {
         if (grillin.table[a+9*b] != GrilleResolue.table[a+9*b])
         {
-            fl_alert("Reponse incorrecte :'(" );
+            //gInterface.NotificationErreur->value( "Reponse incorrecte" ) ;
+            printf("Reponse incorrecte");
+            gDonnees.Incorrect=1;
+            //fl_alert("Reponse incorrecte :'(" );
             grillin.table[a+9*b]=0;
+
         }
+
     }
 
-    if (Valeur>9||Valeur<1)
+    if (Valeur>9||Valeur<0)
     {
-        fl_alert("Reponse non comprise entre 0 et 9 :'(" );
+        //gInterface.NotificationErreur->value( "Valeur incorrecte" ) ;
+        //fl_alert("Reponse non comprise entre 0 et 9 :'(" );
+        gDonnees.Incorrect=2;
         grillin.table[a+9*b]=0;
     }
+
+
+    //gInterface.NotificationErreur->value( "" ) ;
+
+    gDonnees.EnSaisie=0;
 
 }
 

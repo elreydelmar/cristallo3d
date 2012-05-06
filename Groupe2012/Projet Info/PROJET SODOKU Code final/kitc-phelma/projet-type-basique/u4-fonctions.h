@@ -27,6 +27,13 @@ struct Donnees
     int DejaOccupe;
     int Dark;
     int Done;
+    int Time;
+    int Seconds;
+    int Min;
+    int Heu;
+    int Chrono;
+    int EnSaisie;
+    int Incorrect;
 };
 
 // Déclaration des structures

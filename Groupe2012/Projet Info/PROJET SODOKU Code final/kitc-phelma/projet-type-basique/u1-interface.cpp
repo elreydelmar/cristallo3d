@@ -22,7 +22,7 @@ void CreerInterface()
     gInterface.Fenetre = new Fl_Double_Window(800,515);
     gInterface.Fenetre->label("Jeu Sudoku") ;
     gInterface.Fenetre->begin() ;
-    gInterface.Fenetre->color(FL_DARK_CYAN) ;
+    gInterface.Fenetre->color(FL_DARK1) ;
 
     // Creation de la zone de dessin
     gInterface.ZoneDessin = new DrawingArea(X_ZONE,Y_ZONE,L_ZONE,H_ZONE);
@@ -38,20 +38,20 @@ void CreerInterface()
 
     // Creation du bouton Difficulte 1
     gInterface.BoutonFacile = new Fl_Button(500, 180, 80, 30, "Facile") ;
-    gInterface.BoutonFacile ->labelcolor( FL_WHITE ) ;
-    gInterface.BoutonFacile->color( FL_DARK_MAGENTA ) ;
+    gInterface.BoutonFacile ->labelcolor( FL_DARK_RED ) ;
+    gInterface.BoutonFacile->color( FL_WHITE ) ;
     gInterface.BoutonFacile->callback( BoutonFacileCB, NULL ) ;
 
         // Creation du bouton Difficulte 2
     gInterface.BoutonMoyen = new Fl_Button(600, 180, 80, 30, "Moyen") ;
-    gInterface.BoutonMoyen ->labelcolor( FL_WHITE ) ;
-    gInterface.BoutonMoyen->color( FL_DARK_MAGENTA ) ;
+    gInterface.BoutonMoyen ->labelcolor( FL_DARK_RED ) ;
+    gInterface.BoutonMoyen->color( FL_WHITE ) ;
     gInterface.BoutonMoyen->callback( BoutonMoyenCB, NULL ) ;
 
         // Creation du bouton Difficulte 3
     gInterface.BoutonExpert = new Fl_Button(700, 180, 80, 30, "Expert") ;
-    gInterface.BoutonExpert ->labelcolor( FL_WHITE ) ;
-    gInterface.BoutonExpert->color( FL_DARK_MAGENTA ) ;
+    gInterface.BoutonExpert ->labelcolor( FL_DARK_RED ) ;
+    gInterface.BoutonExpert->color( FL_WHITE ) ;
     gInterface.BoutonExpert->callback( BoutonExpertCB, NULL ) ;
 
     //Création du bouton solution ou non :
@@ -80,7 +80,6 @@ void CreerInterface()
     */
 
     //Konami code :)
-    Fl_Button* BoutonKonami ;
 
     gInterface.BoutonKonami = new Fl_Button( 600, 500, 100, 20, "bouton Konami !" ) ;
     gInterface.BoutonKonami->callback( BoutonKonamiCB, NULL ) ;
@@ -121,17 +120,44 @@ void CreerInterface()
 
 
     // Creation du machin de selection
-    Fl_Value_Input* ChampSaisieNum ;
+
     gInterface.ChampSaisieNum = new Fl_Value_Input(30,30, 50, 50, "" ) ;
     gInterface.ChampSaisieNum->when( FL_WHEN_ENTER_KEY | FL_WHEN_NOT_CHANGED ) ;
     gInterface.ChampSaisieNum->callback( ChampSaisieNumCB, NULL ) ;
     gInterface.ChampSaisieNum->hide();
 
 
+   // CHRONO
+
+    gInterface.Secondes = new Fl_Value_Output( 644, 140, 22, 22, "" ) ;
+    gInterface.Secondes->value( gDonnees.Seconds );
+    gInterface.Secondes->hide();
+
+
+
+    gInterface.Minutes = new Fl_Value_Output( 622,140, 22, 22, "" ) ;
+    gInterface.Minutes->value( gDonnees.Min );
+    gInterface.Minutes->hide();
+
+
+    gInterface.Heures = new Fl_Value_Output( 600, 140, 22, 22, "" ) ;
+    gInterface.Heures->value( gDonnees.Heu );
+    gInterface.Heures->hide();
+
+
+
+    // Affichage d'une erreur
+    gInterface.NotificationErreur = new Fl_Output( 500, 400, 180, 25, "" ) ;
 
     // Affichage de la fenetre
     gInterface.Fenetre->end();
     gInterface.Fenetre->show();
+
+
+
+
+
+
 }
 
 void ActualiserInterface()
@@ -142,8 +168,25 @@ void ActualiserInterface()
         gInterface.ChampSaisieNum ->hide();
 
         gInterface.ChampSaisieNum = new Fl_Value_Input(gDonnees.CaseSaisieX,gDonnees.CaseSaisieY, 50, 50, "" ) ;
-
+        gInterface.ChampSaisieNum->when( FL_WHEN_ENTER_KEY | FL_WHEN_NOT_CHANGED ) ;
+        gInterface.ChampSaisieNum->callback( ChampSaisieNumCB, NULL ) ;
+        gInterface.ChampSaisieNum->show();
     }
+    if (gDonnees.Incorrect==1)
+    {
+        gInterface.NotificationErreur->value( "Reponse incorrecte" ) ;
+    }
+    else if (gDonnees.Incorrect==2)
+    {
+        gInterface.NotificationErreur->value( "Valeur incorrecte" ) ;
+    }
+    else if (gDonnees.Incorrect==3)
+    {
+        gInterface.NotificationErreur->value( "" ) ;
+    }
+    gInterface.Secondes->value( gDonnees.Seconds );
+    gInterface.Minutes->value( gDonnees.Min );
+    gInterface.Heures->value( gDonnees.Heu );
     gInterface.Fenetre->end();
     gInterface.Fenetre->show();
     gDonnees.ActuON=0;

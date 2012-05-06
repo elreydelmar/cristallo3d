@@ -21,27 +21,33 @@ using namespace std;
 void ZoneDessinDessinerCB( Fl_Widget* widget, void* data )
 {
     // On efface toute la zone ( en dessinant dessus un rectangle plein, noir )
+
     fl_color(FL_BLACK);
+
+
+    if (gDonnees.EnSaisie==0)
+    {
+
+        Fl_JPEG_Image GrilleSudoku("C:\\Users\\Antoine\\Desktop\\Cristallo3D\\Groupe2012\\Projet Info\\PROJET SODOKU Code final\\kitc-phelma\\GrilleSudokuVide.jpg");
+
+        GrilleSudoku.draw(X_ZONE, Y_ZONE );
+    }
+
 
     //Image de fond pour le sudoku :)
     if (gDonnees.Dark==0)
     {
         Fl_JPEG_Image Hello("C:\\Users\\Antoine\\Desktop\\Cristallo3D\\Groupe2012\\Projet Info\\PROJET SODOKU Code final\\kitc-phelma\\Hello.jpg");
 
-        Hello.draw(X_ZONE+420, Y_ZONE-10 );
+        Hello.draw(X_ZONE+476, Y_ZONE-10 );
 
     }
     else if (gDonnees.Dark==1)
     {
         Fl_JPEG_Image Dark("C:\\Users\\Antoine\\Desktop\\Cristallo3D\\Groupe2012\\Projet Info\\PROJET SODOKU Code final\\kitc-phelma\\Dark.jpg");
 
-        Dark.draw(X_ZONE+420, Y_ZONE-10 );
+        Dark.draw(X_ZONE+470, Y_ZONE-10 );
     }
-
-
-    Fl_JPEG_Image GrilleSudoku("C:\\Users\\Antoine\\Desktop\\Cristallo3D\\Groupe2012\\Projet Info\\PROJET SODOKU Code final\\kitc-phelma\\GrilleSudokuVide.jpg");
-
-    GrilleSudoku.draw(X_ZONE, Y_ZONE );
 
 
 
