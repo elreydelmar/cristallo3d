@@ -79,7 +79,7 @@ void boutons_maille(Fenetre* fenetre)
     fenetre->nb_z = CreateWindow("EDIT", "1", WS_CHILD | WS_VISIBLE | ES_RIGHT | ES_NUMBER,ALINEA_MENU +  ALINEA_BLOC/2+45+150,Y_MAILLE +  2*Y_CHAR + 80, 20, Y_CHAR, fenetre->menu, (HMENU)ID_NB_Z, fenetre->instance, NULL);
 
     CreateWindow("STATIC", "Atome   :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2+32,Y_MAILLE +   11*Y_CHAR/2 + 55, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
-    fenetre->choix_atome = CreateWindow("COMBOBOX", "Atomes...", WS_CHILD | WS_VISIBLE | CBS_SORT | CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 50, 130, 20*Y_CHAR, fenetre->menu, (HMENU)ID_ATOME, fenetre->instance, NULL);
+    fenetre->choix_atome = CreateWindow("COMBOBOX", "Atomes...", WS_CHILD | WS_VISIBLE /*| CBS_SORT */| CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 50, 130, 20*Y_CHAR, fenetre->menu, (HMENU)ID_ATOME, fenetre->instance, NULL);
     CreateWindow("STATIC", "Couleur :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2 + 30,Y_MAILLE +   11*Y_CHAR/2 + 85, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
     fenetre->couleur = CreateWindow("COMBOBOX", "Couleur...", WS_CHILD | WS_VISIBLE |CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 80, 130, 20*Y_CHAR, fenetre->menu, (HMENU)ID_COULEUR, fenetre->instance, NULL);
         SendMessage(fenetre->couleur, CB_ADDSTRING, 0, (LONG) "Bleu clair");
