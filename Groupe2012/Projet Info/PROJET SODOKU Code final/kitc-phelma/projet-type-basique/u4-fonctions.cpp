@@ -551,15 +551,6 @@ void PreparationGrille(grille * grillin, int Difficulte)
 }
 
 
-void NouvelleGrille ()
-{
-
-}
-
-void VerifSolution ()
-{
-
-}
 
 // Cette procedure permet une attente de x secondes, x peut etre en secondes mais aussi en flottant par exemple : 0.1 s
 void Attente ( double Seconds )
@@ -582,7 +573,7 @@ int PosY;
 
 
 
-void ResolutionGrille(grille *grillin)
+void ResolutionGrilleAleatoire(grille *grillin)
 {
     srand(time(NULL));
     int alea1=0;
@@ -591,6 +582,11 @@ void ResolutionGrille(grille *grillin)
     int k=0;
     int l=0;
     int m=0;
+    int n=0, p=0, q=0;
+    int NombreLignesReecrites=1;
+    int CompteurLigneReussie=0;
+    int infi8=0;
+    int infi9=0;
     int compteur=1;
     int Col=-1;
     int Car=-1;
@@ -600,6 +596,16 @@ void ResolutionGrille(grille *grillin)
     int Chiffre=0;
     int Sauvegarde[81];
     int infi4=0;
+    int infi10=0;
+    int infi11=0;
+    int infi12=0;
+    int infi13=0;
+    int infi14=0;
+    int infi15=0;
+    int infi16=0;
+    int infi17=0;
+    int infi18=0;
+
 
     for (m=0;m<81;m++)
     {
@@ -608,6 +614,10 @@ void ResolutionGrille(grille *grillin)
 
     for (i=0; i<9 ; i++)
     {
+        if (i<0)
+        {
+            i=0;
+        }
 
         for (k=1; k<10 ; k++)
         {
@@ -637,6 +647,13 @@ void ResolutionGrille(grille *grillin)
                     if (Col==1 && Car==1)
                     {
                         grillin->table [alea1 + 9*i] = k;
+                        CompteurLigneReussie++;
+                        if (CompteurLigneReussie>=9)
+                        {
+                            infi8=0;
+                            NombreLignesReecrites=1;
+                            CompteurLigneReussie=0;
+                        }
                         sortir=1;
 
                     }
@@ -662,8 +679,45 @@ void ResolutionGrille(grille *grillin)
                     }
                 }
 
+                /*
+                if (infi3>=100)
+                {
+                    infi8++;
 
-                if (infi3 >= 200)
+                    if(infi8>=150)
+                    {
+                        NombreLignesReecrites++;
+                        if (NombreLignesReecrites>i+1)
+                        {
+                            NombreLignesReecrites--;
+                        }
+                        infi8=0;
+                    }
+
+
+                    //printf("infi8 = %d\n NombreLignesReecrites = %d", infi8,NombreLignesReecrites);
+
+                    for (n=0;n<NombreLignesReecrites;n++)
+                    {
+                        for (p=0;p<9;p++)
+                        {
+                           // printf("Before");
+                            grillin->table [p - 9*n] = 0;
+                            //printf("After");
+                        }
+                        for (q=0;q<9;q++)
+                        {
+                            grillin->table [p - 9*n] = Sauvegarde[p - 9*n];
+                        }
+                    }
+                    i=i-NombreLignesReecrites;
+                    k=9;
+                    sortir =1;
+                }
+                */
+
+
+                if (infi3 >= 200 && i>=0)
                 {
                     for (j=0; j<9 ; j++)
                     {
@@ -677,7 +731,7 @@ void ResolutionGrille(grille *grillin)
                     k=0;
                     infi2 ++;
 
-                    if (infi2 >= 200)
+                    if (infi2 >= 200 && i>=1)
                     {
                         for (j=0; j<9 ; j++)
                         {
@@ -692,13 +746,258 @@ void ResolutionGrille(grille *grillin)
                         k=0;
                         i--;
 
-                        if (infi4 >= 20)
-                        {
-                            printf("********************* ERREUR DE BOUCLE INFINI **********************");
-                            //return 0;
-                            fl_alert("Votre grille n'est pas résolvable" );
-                            exit(0);
 
+                        if (infi4 >= 200 && i>=2)
+                        {
+                            for (j=0; j<9 ; j++)
+                            {
+                                grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                            }
+                            for (j=0; j<9 ; j++)
+                            {
+                                grillin->table [j + 9*(i-1)] = Sauvegarde[j + 9*(i-1)];
+                            }
+                            for (j=0; j<9 ; j++)
+                            {
+                                grillin->table [j + 9*(i-2)] = Sauvegarde[j + 9*(i-2)];
+                            }
+                            infi10++;
+                            sortir = 1;
+                            k=0;
+                            i=i-2;
+
+                            if (infi10 >= 200 && i>=3)
+                            {
+                                for (j=0; j<9 ; j++)
+                                {
+                                    grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                                }
+                                for (j=0; j<9 ; j++)
+                                {
+                                    grillin->table [j + 9*(i-1)] = Sauvegarde[j + 9*(i-1)];
+                                }
+                                for (j=0; j<9 ; j++)
+                                {
+                                    grillin->table [j + 9*(i-2)] = Sauvegarde[j + 9*(i-2)];
+                                }
+                                for (j=0; j<9 ; j++)
+                                {
+                                    grillin->table [j + 9*(i-3)] = Sauvegarde[j + 9*(i-3)];
+                                }
+                                infi11++;
+                                sortir = 1;
+                                k=0;
+                                i=i-3;
+
+
+                                if (infi11 >= 200 && i>=4)
+                                {
+                                    for (j=0; j<9 ; j++)
+                                    {
+                                        grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                                    }
+                                    for (j=0; j<9 ; j++)
+                                    {
+                                        grillin->table [j + 9*(i-1)] = Sauvegarde[j + 9*(i-1)];
+                                    }
+                                    for (j=0; j<9 ; j++)
+                                    {
+                                        grillin->table [j + 9*(i-2)] = Sauvegarde[j + 9*(i-2)];
+                                    }
+                                    for (j=0; j<9 ; j++)
+                                    {
+                                        grillin->table [j + 9*(i-3)] = Sauvegarde[j + 9*(i-3)];
+                                    }
+                                    for (j=0; j<9 ; j++)
+                                    {
+                                        grillin->table [j + 9*(i-4)] = Sauvegarde[j + 9*(i-4)];
+                                    }
+                                    infi12++;
+                                    sortir = 1;
+                                    k=0;
+                                    i=i-4;
+
+                                    if (infi12 >= 200 && i>=5)
+                                    {
+                                        for (j=0; j<9 ; j++)
+                                        {
+                                            grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                                        }
+                                        for (j=0; j<9 ; j++)
+                                        {
+                                            grillin->table [j + 9*(i-1)] = Sauvegarde[j + 9*(i-1)];
+                                        }
+                                        for (j=0; j<9 ; j++)
+                                        {
+                                            grillin->table [j + 9*(i-2)] = Sauvegarde[j + 9*(i-2)];
+                                        }
+                                        for (j=0; j<9 ; j++)
+                                        {
+                                            grillin->table [j + 9*(i-3)] = Sauvegarde[j + 9*(i-3)];
+                                        }
+                                        for (j=0; j<9 ; j++)
+                                        {
+                                            grillin->table [j + 9*(i-4)] = Sauvegarde[j + 9*(i-4)];
+                                        }
+                                        for (j=0; j<9 ; j++)
+                                        {
+                                            grillin->table [j + 9*(i-5)] = Sauvegarde[j + 9*(i-5)];
+                                        }
+                                        infi13++;
+                                        sortir = 1;
+                                        k=0;
+                                        i=i-5;
+
+                                        if (infi13 >= 200 && i>=6)
+                                        {
+                                            for (j=0; j<9 ; j++)
+                                            {
+                                                grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                                            }
+                                            for (j=0; j<9 ; j++)
+                                            {
+                                                grillin->table [j + 9*(i-1)] = Sauvegarde[j + 9*(i-1)];
+                                            }
+                                            for (j=0; j<9 ; j++)
+                                            {
+                                                grillin->table [j + 9*(i-2)] = Sauvegarde[j + 9*(i-2)];
+                                            }
+                                            for (j=0; j<9 ; j++)
+                                            {
+                                                grillin->table [j + 9*(i-3)] = Sauvegarde[j + 9*(i-3)];
+                                            }
+                                            for (j=0; j<9 ; j++)
+                                            {
+                                                grillin->table [j + 9*(i-4)] = Sauvegarde[j + 9*(i-4)];
+                                            }
+                                            for (j=0; j<9 ; j++)
+                                            {
+                                                grillin->table [j + 9*(i-5)] = Sauvegarde[j + 9*(i-5)];
+                                            }
+                                            for (j=0; j<9 ; j++)
+                                            {
+                                                grillin->table [j + 9*(i-6)] = Sauvegarde[j + 9*(i-6)];
+                                            }
+                                            infi14++;
+                                            sortir = 1;
+                                            k=0;
+                                            i=i-6;
+
+                                            if (infi14 >= 200 && i>=7)
+                                            {
+                                                for (j=0; j<9 ; j++)
+                                                {
+                                                    grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                                                }
+                                                for (j=0; j<9 ; j++)
+                                                {
+                                                    grillin->table [j + 9*(i-1)] = Sauvegarde[j + 9*(i-1)];
+                                                }
+                                                for (j=0; j<9 ; j++)
+                                                {
+                                                    grillin->table [j + 9*(i-2)] = Sauvegarde[j + 9*(i-2)];
+                                                }
+                                                for (j=0; j<9 ; j++)
+                                                {
+                                                    grillin->table [j + 9*(i-3)] = Sauvegarde[j + 9*(i-3)];
+                                                }
+                                                for (j=0; j<9 ; j++)
+                                                {
+                                                    grillin->table [j + 9*(i-4)] = Sauvegarde[j + 9*(i-4)];
+                                                }
+                                                for (j=0; j<9 ; j++)
+                                                {
+                                                    grillin->table [j + 9*(i-5)] = Sauvegarde[j + 9*(i-5)];
+                                                }
+                                                for (j=0; j<9 ; j++)
+                                                {
+                                                    grillin->table [j + 9*(i-6)] = Sauvegarde[j + 9*(i-6)];
+                                                }
+                                                for (j=0; j<9 ; j++)
+                                                {
+                                                    grillin->table [j + 9*(i-7)] = Sauvegarde[j + 9*(i-7)];
+                                                }
+                                                infi15++;
+                                                sortir = 1;
+                                                k=0;
+                                                i=i-7;
+
+                                                if (infi15 >= 200 && i>=8)
+                                                {
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*i] = Sauvegarde[j + 9*i];
+                                                    }
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*(i-1)] = Sauvegarde[j + 9*(i-1)];
+                                                    }
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*(i-2)] = Sauvegarde[j + 9*(i-2)];
+                                                    }
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*(i-3)] = Sauvegarde[j + 9*(i-3)];
+                                                    }
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*(i-4)] = Sauvegarde[j + 9*(i-4)];
+                                                    }
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*(i-5)] = Sauvegarde[j + 9*(i-5)];
+                                                    }
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*(i-6)] = Sauvegarde[j + 9*(i-6)];
+                                                    }
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*(i-7)] = Sauvegarde[j + 9*(i-7)];
+                                                    }
+                                                    for (j=0; j<9 ; j++)
+                                                    {
+                                                        grillin->table [j + 9*(i-8)] = Sauvegarde[j + 9*(i-8)];
+                                                    }
+                                                    infi16++;
+                                                    sortir = 1;
+                                                    k=0;
+                                                    i=i-8;
+
+                                                    if (infi16 >= 50)
+                                                    {
+                                                        printf(" ************ ERREUR DE BOUCLE INFINI *********** \n Pas de solution a la grille");
+                                                        fl_alert("Cette grille n'a pas de solution" );
+                                                        exit(0);
+
+
+                                                    }
+
+
+
+
+                                                }
+
+
+
+                                            }
+
+
+
+                                        }
+
+
+
+                                    }
+
+
+
+                                }
+
+
+
+                            }
 
                         }
 
@@ -706,6 +1005,8 @@ void ResolutionGrille(grille *grillin)
                     }
 
                 }
+
+
 
 
 
@@ -719,11 +1020,19 @@ void ResolutionGrille(grille *grillin)
             Chiffre=0;
         }
 
-
+        //infi8=0;
+        //NombreLignesReecrites=1;
 
 
         k=0;
         infi2 = 0;
+        infi4 = 0;
+        infi10=0;
+        infi11=0;
+        infi12=0;
+        infi13=0;
+        infi14=0;
+        infi15=0;
 
 
     }
@@ -744,4 +1053,108 @@ void ResolutionGrille(grille *grillin)
 
 
 }
+
+
+
+
+
+
+
+void ResolutionGrilleReflechie(grille *grillin)
+{
+    srand(time(NULL));
+    int alea1=0;
+    int j=0;
+    int compteur=1;
+    int Once=0;
+    int a=0;
+    int b=0;
+    int c=0;
+    int d=0;
+    int e=0;
+    int f=0;
+    int g=0;
+    int i=0;
+    int k=0;
+    int Car=0;
+    int Col=0;
+    int Ligne=0;
+
+    for(a=0;a<100;a++)
+    {
+        for(b=0;b<81;b++)
+        {
+            if (grillin->table [b]!=0)
+            {
+
+            }
+            else
+            {
+                for (c=1;c<10;c++)
+                {
+                    i = b/9;
+                    alea1 = b - 9*i;
+                    Col = TestColonne(grillin, alea1, c, i);
+
+                    Car = TestCase (grillin, alea1, c, i);
+
+                    Ligne = TestLigne (grillin, alea1, c, i);
+
+                    if (Col == 1 && Car == 1 && Ligne == 1)
+                    {
+                        grillin->table [b] = c;
+                        Once ++;
+                    }
+                }
+                if (Once > 1)
+                {
+                    grillin->table [b] = 0;
+                }
+                Once = 0;
+            }
+        }
+    }
+
+
+
+    printf("\n\n\n\n");
+    for (j=0; j<81 ; j++)
+    {
+        printf("%d", grillin->table [j]);
+        compteur ++;
+        if (compteur==10)
+        {
+            printf("\n");
+            compteur = 1;
+        }
+
+    }
+
+
+}
+
+
+
+
+int CompteurCasesOccupees(grille *grillin)
+{
+    int compteur=0;
+    int i=0;
+
+    for(i=0;i<81;i++)
+    {
+        if(grillin->table [i]==0)
+        {
+
+        }
+        else if (grillin->table [i] !=0)
+        {
+            compteur++;
+        }
+    }
+    return compteur;
+
+
+}
+
 

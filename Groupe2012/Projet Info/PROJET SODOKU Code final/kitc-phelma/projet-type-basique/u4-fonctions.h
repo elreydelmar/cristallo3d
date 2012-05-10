@@ -59,12 +59,12 @@ void InitialiserDonnees() ;
 void DeplacerBouleSansRebond() ;
 void DeplacerBouleAvecRebonds() ;
 void CreationGrille(grille *);
-void ResolutionGrille(grille *);
+void ResolutionGrilleAleatoire(grille *);
+void ResolutionGrilleReflechie(grille *);
 void PreparationGrille(grille *, int);
+int CompteurCasesOccupees(grille *);
 // Utilitaires
 void JouerSon(char *) ;         // Jouer un son
 void Attente(double Seconds);   // Procedure d'attente
-void NouvelleGrille ();
-void VerifSolution () ;
 
 #endif // _u4_fonctions_h

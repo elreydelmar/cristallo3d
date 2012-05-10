@@ -370,5 +370,6 @@ void BoutonVadorCB( Fl_Widget* w, void* data )
 
 void BoutonChercherSolutionsCB ( Fl_Widget* w, void* data )
 {
-    ResolutionGrille(&grillin);
+    ResolutionGrilleAleatoire(&grillin);
+    //ResolutionGrilleReflechie(&grillin);
 }

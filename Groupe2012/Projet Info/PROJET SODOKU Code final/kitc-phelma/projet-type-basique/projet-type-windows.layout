@@ -5,13 +5,13 @@
 		<Cursor position="1270" topLine="0" />
 	</File>
 	<File name="main.h" open="1" top="0" tabpos="2">
-		<Cursor position="309" topLine="7" />
+		<Cursor position="309" topLine="0" />
 	</File>
 	<File name="u1-interface.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="6383" topLine="144" />
 	</File>
 	<File name="u1-interface.h" open="1" top="0" tabpos="4">
-		<Cursor position="1535" topLine="24" />
+		<Cursor position="1535" topLine="16" />
 	</File>
 	<File name="u2-dessin.cpp" open="1" top="0" tabpos="5">
 		<Cursor position="1416" topLine="18" />
@@ -19,16 +19,16 @@
 	<File name="u2-dessin.h" open="1" top="0" tabpos="6">
 		<Cursor position="181" topLine="0" />
 	</File>
-	<File name="u3-callbacks.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="7937" topLine="313" />
+	<File name="u3-callbacks.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="9219" topLine="320" />
 	</File>
 	<File name="u3-callbacks.h" open="1" top="0" tabpos="8">
 		<Cursor position="990" topLine="0" />
 	</File>
-	<File name="u4-fonctions.cpp" open="1" top="1" tabpos="9">
-		<Cursor position="15330" topLine="281" />
+	<File name="u4-fonctions.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="33396" topLine="1104" />
 	</File>
 	<File name="u4-fonctions.h" open="1" top="0" tabpos="10">
-		<Cursor position="664" topLine="14" />
+		<Cursor position="1248" topLine="14" />
 	</File>
 </CodeBlocks_layout_file>
