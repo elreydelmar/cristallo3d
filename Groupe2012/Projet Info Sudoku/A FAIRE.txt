@@ -1,0 +1,11 @@
+SUDOKU :
+
+Il faut commenter intégralement fichier.cpp
+Ensuite sortir une Release
+Ensuite créer un dossier correct pour le transporter
+
+Commencer le Pwpt
+
+MEttre tout sur clé
+
+Il faudra commencer à travailler en groupe pour la présentatio

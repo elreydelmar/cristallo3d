@@ -1,0 +1,26 @@
+Soutenance : le 25 mai
+
+par groupe : 10 minutes d'exposé (y compris démonstration du code)
++ 5 minutes de question
+
+Prévoir sur clé USB : 
+Source du code
+Rapport (format pdf)
+Présentation orale (pdf) (SOUTENANCE !!!!)
+
+
+
+On montrera notre code sur notre portable (plus la présentation Pwpt)
+
+
+
+
+
+Pour la présentation orale : 
+10 minutes, et chacun doit présenter une petite partie
+
+Préssentation du projet + Organisation du groupe (qui a fait quoi)
+ ==> Présenter Programme?
+Structure programme : insister sur les 2 parties algorithmiques (traiter cycle) et le graphisme (collision, mouvement, rebond, obstacles)
+ ==> Présenter programme?
+Conclusion :  Difficultés rencontrées et amélioration / Ressentis sur le projot

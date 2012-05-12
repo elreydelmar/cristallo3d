@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="actions.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="21107" topLine="0" />
+	</File>
+	<File name="boutons.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="7702" topLine="60" />
+	</File>
+	<File name="evenement.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="839" topLine="21" />
+	</File>
+	<File name="fenetre.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="252" topLine="0" />
+	</File>
+	<File name="fichier.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="geometrie.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="octree.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="0" topLine="1" />
+	</File>
+	<File name="premaille.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
