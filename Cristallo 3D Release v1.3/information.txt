@@ -1,0 +1,5 @@
+Bonjour,
+Bienvenue dans ce logiciel Cristallo3D version 1.1
+
+Ce logiciel a été développé dans un cadre scolaire à l'inp PHELMA
+Nous rappelons qu'il n'a pas un but lucratif
