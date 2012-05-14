@@ -133,15 +133,15 @@ void evenement_bouton(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
                 action_update_edit(g_fenetre->t_distance);
              break;
         case ID_NB_X :
-            if(HIWORD(wParam) == EN_CHANGE)
+            if(HIWORD(wParam) == CBN_SELCHANGE)
                 action_change_nb_x();
             break;
         case ID_NB_Y :
-            if(HIWORD(wParam) == EN_CHANGE)
+            if(HIWORD(wParam) == CBN_SELCHANGE)
                 action_change_nb_y();
             break;
         case ID_NB_Z :
-            if(HIWORD(wParam) == EN_CHANGE)
+            if(HIWORD(wParam) == CBN_SELCHANGE)
                 action_change_nb_z();
             break;
 

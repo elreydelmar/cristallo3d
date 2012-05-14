@@ -17,7 +17,7 @@ void init_event()
         event_status->anaglyphe = 0;
         event_status->retro = 0;
         event_status->dist_retro = 12;
-        event_status->distance = 12;
+        event_status->distance = 1;
         event_status->adresse_fichier[0] = 0;
         event_status->nom_fichier[0] = 0;
 
@@ -311,7 +311,7 @@ void action_generer()
     // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
     charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
     charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
-    MessageBox(NULL,"Maille générée","Maille",MB_OK); // TODO
+    //MessageBox(NULL,"Maille générée","Maille",MB_OK); // TODO
 
 
     supp_premaille(premaille);
@@ -655,73 +655,124 @@ void action_generer()
 
 void action_change_nb_x()
 {
+
+
     if(event_status == NULL)
         return;
-    char chaine [10];
-    *((WORD*) chaine) = 10;
-    int reussite = SendMessage(g_fenetre->nb_x, EM_GETLINE, 0, (LPARAM)chaine);
-    if(reussite == 0)
-        event_status->nb_x  = 1;
+
+    int a=12;
+    a = SendMessage(g_fenetre->nb_x, CB_GETCURSEL, 0, 0);
+    if (a!=0&&a!=1&&a!=2)
+    {
+        a = 0;
+    }
+    printf("%d\n",a);
+
+    if (a==0)
+    {
+        event_status->nb_x = 1;
+    }
+    else if (a==1)
+    {
+        event_status->nb_x = 5;
+    }
+    else if (a==2)
+    {
+        event_status->nb_x = 9;
+    }
     else
     {
-        int nombre = (int)chaine_to_double(chaine);
-        event_status->nb_x = (nombre > 0) ? nombre : 1;
-        // On genere l octree
-        if(event_status->maille != NULL)
-        {
-            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
-            // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
-            charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
-            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
-        }
+        event_status->nb_x = 1;
     }
+
+    if(event_status->maille != NULL)
+    {
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+        // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
+        charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+    }
+
+
 }
 
 void action_change_nb_y()
 {
+
     if(event_status == NULL)
-        return;
-    char chaine [10];
-    *((WORD*) chaine) = 10;
-    int reussite = SendMessage(g_fenetre->nb_y, EM_GETLINE, 0, (LPARAM)chaine);
-    if(reussite == 0)
-        event_status->nb_y  = 1;
+    return;
+
+    int a=12;
+    a = SendMessage(g_fenetre->nb_y, CB_GETCURSEL, 0, 0);
+    if (a!=0&&a!=1&&a!=2)
+    {
+        a = 0;
+    }
+    printf("%d\n",a);
+
+    if (a==0)
+    {
+        event_status->nb_y = 1;
+    }
+    else if (a==1)
+    {
+        event_status->nb_y = 5;
+    }
+    else if (a==2)
+    {
+        event_status->nb_y = 9;
+    }
     else
     {
-        int nombre = (int)chaine_to_double(chaine);
-        event_status->nb_y = (nombre > 0) ? nombre : 1;
-        // On genere l octree
-        if(event_status->maille != NULL)
-        {
-            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
-            // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
-            charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
-            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
-        }
+        event_status->nb_y = 1;
     }
+
+    if(event_status->maille != NULL)
+    {
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+        // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
+        charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+    }
+
 }
 
 void action_change_nb_z()
 {
     if(event_status == NULL)
-        return;
-    char chaine [10];
-    *((WORD*) chaine) = 10;
-    int reussite = SendMessage(g_fenetre->nb_z, EM_GETLINE, 0, (LPARAM)chaine);
-    if(reussite == 0)
-        event_status->nb_z  = 1;
+    return;
+
+    int a=12;
+    a = SendMessage(g_fenetre->nb_z, CB_GETCURSEL, 0, 0);
+    if (a!=0&&a!=1&&a!=2)
+    {
+        a = 0;
+    }
+    printf("%d\n",a);
+
+    if (a==0)
+    {
+        event_status->nb_z = 1;
+    }
+    else if (a==1)
+    {
+        event_status->nb_z = 5;
+    }
+    else if (a==2)
+    {
+        event_status->nb_z = 9;
+    }
     else
     {
-        int nombre = (int)chaine_to_double(chaine);
-        event_status->nb_z = (nombre > 0) ? nombre : 1;
-        // On genere l octree
-        if(event_status->maille != NULL)
-        {
-            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
-            // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
-            charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
-            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
-        }
+        event_status->nb_z = 1;
+    }
+
+    if(event_status->maille != NULL)
+    {
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+        // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
+        charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
+        charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
     }
 }
 
@@ -790,7 +841,13 @@ void action_change_espace()
 void action_defaut(HWND handle)
 {
     if(event_status->maille != NULL)
+    {
         camera_par_defaut();
+        event_status->nb_x=0;
+        event_status->nb_y=0;
+        event_status->nb_z=0;
+        action_generer();
+    }
     SendMessage(g_fenetre->trackball, BM_CLICK, 0, 0);
 
 }
@@ -994,6 +1051,8 @@ void display()
 
 void action_enregistrer()
 {
+    if (event_status->maille != NULL)
+    {
                 int i;
                 TCHAR buf[255];
                 UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
@@ -1030,6 +1089,11 @@ fprintf(fichier, "%d\n",event_status->maille->nb_type_atomes);
 
                 fclose(fichier);
                 MessageBox(NULL,"Session enregistrée","Enregistrement",MB_OK);
+            }
+            else
+            {
+                MessageBox(NULL,"Veuillez d'abord créer une session s'il vous plait","Enregistrement",MB_OK);
+            }
 
 
 }

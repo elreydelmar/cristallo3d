@@ -22,7 +22,7 @@
 	<stdlib.h>
 	"geometrie.h"
 
-1330984608 source:c:\users\antoine\desktop\cristallo3d\code final\actions.cpp
+1337017032 source:c:\users\antoine\desktop\cristallo3d\code final\actions.cpp
 	"actions.h"
 	"boutons.h"
 	<iostream>
@@ -116,7 +116,7 @@
 1329747609 source:c:\users\antoine\desktop\cristallo3d\code final\camera.cpp
 	"camera.h"
 
-1330910434 source:c:\users\antoine\desktop\cristallo3d\code final\evenement.cpp
+1337015422 source:c:\users\antoine\desktop\cristallo3d\code final\evenement.cpp
 	"evenement.h"
 
 1329747609 c:\users\antoine\desktop\cristallo3d\code final\evenement.h
@@ -131,7 +131,7 @@
 1329747608 source:c:\users\antoine\desktop\cristallo3d\code final\geometrie.cpp
 	"geometrie.h"
 
-1330965086 source:c:\users\antoine\desktop\cristallo3d\code final\maille.cpp
+1337019040 source:c:\users\antoine\desktop\cristallo3d\code final\maille.cpp
 	"maille.h"
 	<cstring>
 
@@ -144,4 +144,13 @@
 	"octree.h"
 
 1329747609 source:c:\users\antoine\desktop\cristallo3d\code final\ressources.rc
+
+1337018549 source:c:\users\antoine\desktop\cristallo3d\code final\boutons.cpp
+	"boutons.h"
+
+1333300697 source:c:\users\antoine\desktop\cristallo3d\code final\fichier.cpp
+	"fichier.h"
+
+1333300697 source:c:\users\antoine\desktop\cristallo3d\code final\premaille.cpp
+	"premaille.h"
 
