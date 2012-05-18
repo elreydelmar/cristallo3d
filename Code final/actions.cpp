@@ -1062,6 +1062,7 @@ void action_enregistrer()
 
 
                 strcat(buf, ".dat");
+
                 FILE * fichier = fopen(buf,"w");
                 if(fichier == NULL) // Test ouverture canal
                 {
