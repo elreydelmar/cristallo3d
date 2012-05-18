@@ -1,6 +1,7 @@
 #include "arbre.h"
 
 int poids(Arbre* element)
+
 {
     if(element == NULL)
         return 0;

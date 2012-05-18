@@ -108,7 +108,7 @@ LRESULT CALLBACK procedureFenetrePrincipale(HWND fenetrePrincipale, UINT message
                 boutons[19] = CreateWindow("EDIT", "F m -3 m", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL,185,ENTETE+85, 100, Y_CHAR, fenetrePrincipale, (HMENU)ID_NOMSG, instance, NULL);
 
                 boutons[11] = CreateWindow("BUTTON", "Atomes", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,ATOME+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
-                boutons[12] = CreateWindow("EDIT", "Na 0.00000 0.00000 0.00000 0.01849\r\nCl 0.50000 0.50000 0.50000 0.00000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,ATOME+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
+                boutons[12] = CreateWindow("EDIT", "Na 0.00000 0.00000 0.00000\r\nCl 0.50000 0.50000 0.50000", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,ATOME+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_NOMATOME, instance, NULL);
 
                 boutons[13] = CreateWindow("BUTTON", "Symétries", WS_CHILD | WS_VISIBLE|BS_GROUPBOX, 5,SYM+5, 475,Y_CHAR*5.8, fenetrePrincipale, NULL, instance, NULL);
                 boutons[14] = CreateWindow("EDIT", "x,y,z", WS_CHILD | WS_VISIBLE | ES_LEFT | ES_MULTILINE| WS_VSCROLL | ES_AUTOVSCROLL,10,SYM+25, 462, Y_CHAR*4, fenetrePrincipale, (HMENU)ID_SYM, instance, NULL);
@@ -166,11 +166,12 @@ return 0;
                 // LA QUIL FAUT METTRE
 {
 
-                TCHAR buf[1000];
+                TCHAR buf[1000]={"Mailles Personnelles\\"};
+                TCHAR buf1[300];
                 UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
                 UINT freefps;
-                freefps=GetDlgItemText(fenetrePrincipale, ID_NOMFICHIER, buf, 250);
-                //strcat(buf, ".cif");
+                freefps=GetDlgItemText(fenetrePrincipale, ID_NOMFICHIER, buf1, 250);
+                strcat(buf, buf1);
                 FILE * fichier = fopen(buf,"w");
                 if(fichier == NULL) // Test ouverture canal
                 {
