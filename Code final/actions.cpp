@@ -272,7 +272,7 @@ void action_parcourir()
                "Fichier CIF\0*.cif\0";
 
     ofn.nFilterIndex = 1;
-    ofn.lpstrInitialDir = "mailles";
+    ofn.lpstrInitialDir = "Ressources";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
     if (GetOpenFileName(&ofn)==TRUE)
@@ -854,7 +854,7 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    HINSTANCE err = ShellExecute(NULL,"open", "aide.pdf",NULL, "extern",SW_SHOWNORMAL);
+    HINSTANCE err = ShellExecute(NULL,"open", "aide.pdf",NULL, "Ressources",SW_SHOWNORMAL);
     if((int)err ==  SE_ERR_NOASSOC)
         MessageBox(NULL, "Erreur : Adobe Reader n'est pas associé avec les fichiers pdf", "Aide",MB_OK);
 }
@@ -1055,14 +1055,35 @@ void action_enregistrer()
     {
                 int i;
                 TCHAR buf[255];
+                //CHAR buf1[255];
                 UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
                 UINT freefps;
                 freefps=GetDlgItemText(g_fenetre->menu, ID_NOM, buf, 256);
-
-
-
                 strcat(buf, ".dat");
 
+
+OPENFILENAME ofn;
+    //CHAR szFile[255]={0};
+    CHAR szFileTitle[255]={0};
+
+    ZeroMemory(&ofn, sizeof(OPENFILENAME));
+    ofn.lStructSize = sizeof(OPENFILENAME);
+    ofn.hwndOwner = g_fenetre->fenetre;
+    ofn.lpstrFile = buf;
+    ofn.nMaxFile = 255;
+
+    ofn.lpstrFileTitle = szFileTitle;
+    ofn.nMaxFileTitle= 255;
+    ofn.lpstrFilter =
+               "Fichier DAT\0*.dat\0";
+
+    ofn.nFilterIndex = 0;
+    ofn.lpstrInitialDir = "Ressources";
+    ofn.Flags = OFN_EXPLORER|OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT|OFN_FILEMUSTEXIST;
+
+if (GetSaveFileName(&ofn)==TRUE)
+    {
+                //buf1=szFileTitle;
                 FILE * fichier = fopen(buf,"w");
                 if(fichier == NULL) // Test ouverture canal
                 {
@@ -1090,7 +1111,7 @@ fprintf(fichier, "%d\n",event_status->maille->nb_type_atomes);
 
                 fclose(fichier);
                 MessageBox(NULL,"Session enregistrée","Enregistrement",MB_OK);
-            }
+            }}
             else
             {
                 MessageBox(NULL,"Veuillez d'abord créer une session s'il vous plait","Enregistrement",MB_OK);
@@ -1101,7 +1122,7 @@ fprintf(fichier, "%d\n",event_status->maille->nb_type_atomes);
 
 void action_generer_personnelle()
 {
-system("mailleperso.exe");
+system("Ressources\\mailleperso.exe");
 }
 
 void action_charger()
@@ -1122,7 +1143,7 @@ OPENFILENAME ofn;
                "Fichier DAT\0*.dat\0";
 
     ofn.nFilterIndex = 1;
-    ofn.lpstrInitialDir = "mailles";
+    ofn.lpstrInitialDir = "Ressources";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
     if (GetOpenFileName(&ofn)==TRUE)

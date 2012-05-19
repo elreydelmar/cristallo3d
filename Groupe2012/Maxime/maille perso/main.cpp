@@ -166,17 +166,41 @@ return 0;
                 // LA QUIL FAUT METTRE
 {
 
-                TCHAR buf[1000]={"Mailles Personnelles\\"};
+                TCHAR buf[1000];
                 TCHAR buf1[300];
                 UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
                 UINT freefps;
                 freefps=GetDlgItemText(fenetrePrincipale, ID_NOMFICHIER, buf1, 250);
                 strcat(buf, buf1);
-                FILE * fichier = fopen(buf,"w");
+
+
+    OPENFILENAME ofn;
+    CHAR szFile[255]={0};
+    CHAR szFileTitle[255]={0};
+
+    ZeroMemory(&ofn, sizeof(OPENFILENAME));
+    ofn.lStructSize = sizeof(OPENFILENAME);
+    ofn.hwndOwner = fenetrePrincipale;
+    ofn.lpstrFile = buf;
+    ofn.nMaxFile = 255;
+
+    ofn.lpstrFileTitle = szFileTitle;
+    ofn.nMaxFileTitle= 255;
+    ofn.lpstrFilter =
+               "Fichier CIF\0*.cif\0";
+
+    ofn.nFilterIndex = 0;
+    ofn.lpstrInitialDir = "Mailles Personnelles";
+    ofn.Flags = OFN_EXPLORER|OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT|OFN_FILEMUSTEXIST;
+
+if (GetSaveFileName(&ofn)==TRUE)
+    {
+                FILE * fichier = fopen(szFileTitle,"w");
                 if(fichier == NULL) // Test ouverture canal
                 {
                     MessageBox(NULL,"Erreur Fichier","Enregistrement",MB_OK);
                 }
+                else{
 
 
                 //FILE * fichier = fopen("test.cif","w"); //on ouvre/crée le fichier en ecriture
@@ -235,21 +259,21 @@ return 0;
                 freefps=GetDlgItemText(fenetrePrincipale, ID_NOMATOME, buf, 256);
                 fprintf(fichier, "%s\r\n",buf);
 
-
-
-
 fclose(fichier);
-
 int REF2 = MessageBox(NULL,"fichier .cif créé\r\nVoulez-vous fermer l'éditeur ?","Enregistrement",MB_ICONINFORMATION | MB_YESNO);
 if (REF2==IDYES){
 PostQuitMessage(0);}
+
+                }}
+
+
 
 
 }
 
                     break;
                 case ID_AIDE:
-                    HINSTANCE err = ShellExecute(NULL,"open", "aide1.pdf",NULL, "extern2",SW_SHOWNORMAL);
+                    HINSTANCE err = ShellExecute(NULL,"open", "aide1.pdf",NULL, "Ressources",SW_SHOWNORMAL);
                     if((int)err ==  SE_ERR_NOASSOC)
                     MessageBox(NULL, "Erreur : Adobe Reader n'est pas associé avec les fichiers pdf", "Aide",MB_OK);
                     break;

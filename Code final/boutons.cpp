@@ -74,25 +74,26 @@ void boutons_maille(Fenetre* fenetre)
     CreateWindow("STATIC", "Nombre de maille :", WS_CHILD | WS_VISIBLE,ALINEA_MENU + ALINEA_BLOC,Y_MAILLE + 100, WIDTH_MENU-2*ALINEA_BLOC, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
 
     CreateWindow("STATIC", "x :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2,Y_MAILLE +  2*Y_CHAR + 94, 45, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
-    fenetre->nb_x = CreateWindow("COMBOBOX", "Couleur...", WS_CHILD | WS_VISIBLE |CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 20,Y_MAILLE +   2*Y_CHAR + 90, 40, 20*Y_CHAR, fenetre->menu, (HMENU)ID_NB_X, fenetre->instance, NULL);
+    fenetre->nb_x = CreateWindow("COMBOBOX", "x", WS_CHILD | WS_VISIBLE |CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 20,Y_MAILLE +   2*Y_CHAR + 90, 40, 20*Y_CHAR, fenetre->menu, (HMENU)ID_NB_X, fenetre->instance, NULL);
         SendMessage(fenetre->nb_x, CB_ADDSTRING, 0, (LONG) "1");
         SendMessage(fenetre->nb_x, CB_ADDSTRING, 0, (LONG) "3");
         SendMessage(fenetre->nb_x, CB_ADDSTRING, 0, (LONG) "5");
-
+        SendMessage(fenetre->nb_x, CB_SETCURSEL, 0, 0);
 
 
     CreateWindow("STATIC", "y :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2+ 75,Y_MAILLE +   2*Y_CHAR + 94, 45, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
-    fenetre->nb_y = CreateWindow("COMBOBOX", "Couleur...", WS_CHILD | WS_VISIBLE |CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 95,Y_MAILLE +   2*Y_CHAR + 90, 40, 20*Y_CHAR, fenetre->menu, (HMENU)ID_NB_Y, fenetre->instance, NULL);
+    fenetre->nb_y = CreateWindow("COMBOBOX", "y", WS_CHILD | WS_VISIBLE |CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 95,Y_MAILLE +   2*Y_CHAR + 90, 40, 20*Y_CHAR, fenetre->menu, (HMENU)ID_NB_Y, fenetre->instance, NULL);
         SendMessage(fenetre->nb_y, CB_ADDSTRING, 0, (LONG) "1");
         SendMessage(fenetre->nb_y, CB_ADDSTRING, 0, (LONG) "3");
         SendMessage(fenetre->nb_y, CB_ADDSTRING, 0, (LONG) "5");
+        SendMessage(fenetre->nb_y, CB_SETCURSEL, 0, 0);
 
     CreateWindow("STATIC", "z :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2+ 150,Y_MAILLE +   2*Y_CHAR + 94, 45, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
-    fenetre->nb_z = CreateWindow("COMBOBOX", "Couleur...", WS_CHILD | WS_VISIBLE |CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 170,Y_MAILLE +   2*Y_CHAR + 90, 40, 20*Y_CHAR, fenetre->menu, (HMENU)ID_NB_Z, fenetre->instance, NULL);
+    fenetre->nb_z = CreateWindow("COMBOBOX", "z", WS_CHILD | WS_VISIBLE |CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 170,Y_MAILLE +   2*Y_CHAR + 90, 40, 20*Y_CHAR, fenetre->menu, (HMENU)ID_NB_Z, fenetre->instance, NULL);
         SendMessage(fenetre->nb_z, CB_ADDSTRING, 0, (LONG) "1");
         SendMessage(fenetre->nb_z, CB_ADDSTRING, 0, (LONG) "3");
         SendMessage(fenetre->nb_z, CB_ADDSTRING, 0, (LONG) "5");
-
+        SendMessage(fenetre->nb_z, CB_SETCURSEL, 0, 0);
 
     CreateWindow("STATIC", "Atome   :", WS_CHILD | WS_VISIBLE,ALINEA_MENU +  ALINEA_BLOC/2+32,Y_MAILLE +   11*Y_CHAR/2 + 75, 130, Y_CHAR, fenetre->menu, NULL, fenetre->instance, NULL);
     fenetre->choix_atome = CreateWindow("COMBOBOX", "Atomes...", WS_CHILD | WS_VISIBLE /*| CBS_SORT */| CBS_DROPDOWNLIST,ALINEA_MENU +  ALINEA_BLOC/2 + 100,Y_MAILLE +   11*Y_CHAR/2 + 70, 130, 20*Y_CHAR, fenetre->menu, (HMENU)ID_ATOME, fenetre->instance, NULL);
