@@ -1054,37 +1054,39 @@ void action_enregistrer()
     if (event_status->maille != NULL)
     {
                 int i;
+                //buffeur qui contient le nom du fichier par défaut puis celui donné par l'utilisateur
                 TCHAR buf[255];
-                //CHAR buf1[255];
-                UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
+                //initialisation de la récupération des données
+                UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount);
                 UINT freefps;
+                // On récupère le nom du fichier et on lui ajoute l'extension .dat pour données
                 freefps=GetDlgItemText(g_fenetre->menu, ID_NOM, buf, 256);
                 strcat(buf, ".dat");
 
-
-OPENFILENAME ofn;
-    //CHAR szFile[255]={0};
+OPENFILENAME ofn; // On initialise la fenêtre de dialogue d'enregistrement
     CHAR szFileTitle[255]={0};
 
     ZeroMemory(&ofn, sizeof(OPENFILENAME));
     ofn.lStructSize = sizeof(OPENFILENAME);
     ofn.hwndOwner = g_fenetre->fenetre;
-    ofn.lpstrFile = buf;
-    ofn.nMaxFile = 255;
+    ofn.lpstrFile = buf; // nom par défaut
+    ofn.nMaxFile = 255; // taille maximale
 
     ofn.lpstrFileTitle = szFileTitle;
     ofn.nMaxFileTitle= 255;
     ofn.lpstrFilter =
-               "Fichier DAT\0*.dat\0";
+               "Fichier DAT\0*.dat\0"; // extension du fichier a enregistrer
 
     ofn.nFilterIndex = 0;
-    ofn.lpstrInitialDir = "Ressources";
+    ofn.lpstrInitialDir = "Ressources"; // répertoire par defaut
     ofn.Flags = OFN_EXPLORER|OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT|OFN_FILEMUSTEXIST;
 
+// on effectue l'enregistrement : on récupère le nom de fichier voulu par l'utilisateur
 if (GetSaveFileName(&ofn)==TRUE)
     {
                 //buf1=szFileTitle;
-                FILE * fichier = fopen(buf,"w");
+                FILE * fichier = fopen(buf,"w"); // on enregistre tous les parametres necessaires
+
                 if(fichier == NULL) // Test ouverture canal
                 {
                     MessageBox(NULL,"Erreur Fichier","Enregistrement",MB_OK);
@@ -1098,7 +1100,7 @@ if (GetSaveFileName(&ofn)==TRUE)
                 fprintf(fichier, "%s\n",buf);
                 fprintf(fichier, "%f\n",event_status->maille->agrandissement);
 
-fprintf(fichier, "%d\n",event_status->maille->nb_type_atomes);
+                fprintf(fichier, "%d\n",event_status->maille->nb_type_atomes);
 
                 for(i=0; i<event_status->maille->nb_type_atomes; i++)
                 {
@@ -1127,29 +1129,24 @@ system("Ressources\\mailleperso.exe");
 
 void action_charger()
 {
-OPENFILENAME ofn;
+OPENFILENAME ofn; // idem que pour enregistrer
     CHAR szFile[255]={0};
     CHAR szFileTitle[255]={0};
-
     ZeroMemory(&ofn, sizeof(OPENFILENAME));
     ofn.lStructSize = sizeof(OPENFILENAME);
     ofn.hwndOwner = g_fenetre->fenetre;
     ofn.lpstrFile = szFile;
     ofn.nMaxFile = 255;
-
     ofn.lpstrFileTitle = szFileTitle;
     ofn.nMaxFileTitle= 255;
-    ofn.lpstrFilter =
-               "Fichier DAT\0*.dat\0";
-
+    ofn.lpstrFilter ="Fichier DAT\0*.dat\0";
     ofn.nFilterIndex = 1;
     ofn.lpstrInitialDir = "Ressources";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
-    if (GetOpenFileName(&ofn)==TRUE)
+    if (GetOpenFileName(&ofn)==TRUE) // on effectue l'ouverture du fichier
     {
-
-
+        // On récupère le chemin puis le nom du fichier pour l'afficher sur l'interface
         strcpy(event_status->adresse_fichier, szFile);
         SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
 
@@ -1158,11 +1155,11 @@ OPENFILENAME ofn;
 
         strcpy(event_status->nom_fichier, szFileTitle);
         SendMessage(g_fenetre->nom, WM_SETTEXT, 0, (LPARAM)szFileTitle);
-
+        // On lit le fichier, renvoie les variables, et actualise l'interface
         FILE * fichier = fopen (szFile, "r");
 
-        TCHAR contenu [255];
-        //1ere ligne
+        TCHAR contenu [255]; // buffer qui va contenir les infos a charger
+        //Traitement de la 1ere ligne
         fgets (contenu, 255, fichier);
         dernier_element= strlen(contenu)-1;
         contenu[dernier_element]='\0';

@@ -201,10 +201,7 @@ if (GetSaveFileName(&ofn)==TRUE)
                     MessageBox(NULL,"Erreur Fichier","Enregistrement",MB_OK);
                 }
                 else{
-
-
-                //FILE * fichier = fopen("test.cif","w"); //on ouvre/crée le fichier en ecriture
-                // on crée un buffer qui recoit le texte de l'edit box
+                // On créé un fichier cif a l'aide des données rentrées par l'utilisateur
 
                 //AUTEUR
 

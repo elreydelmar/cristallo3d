@@ -27,7 +27,7 @@ LRESULT evenement_principale(HWND handle, UINT message, WPARAM wParam, LPARAM lP
 
             {
 
-            int REF = MessageBox(NULL, "Etes-vous sûr de vouloir de quitter ?", "Quitter",MB_ICONWARNING | MB_YESNO);
+            int REF = MessageBox(NULL, "Etes-vous sûr de vouloir quitter ?", "Quitter",MB_ICONWARNING | MB_YESNO);
             if (REF==IDYES){
             //end_event();
             PostQuitMessage(0);
