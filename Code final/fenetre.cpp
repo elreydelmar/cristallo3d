@@ -164,7 +164,7 @@ void afficher_image()
 {
     // On charge l image
     HBITMAP hBmp;
-    hBmp=(HBITMAP)LoadImage(NULL,"extern/grenoble-inp.bmp",IMAGE_BITMAP,0,0,LR_LOADFROMFILE);
+    hBmp=(HBITMAP)LoadImage(NULL,"C:\\Program Files\\Cristallo 3D\\Ressources\\grenoble-inp.bmp",IMAGE_BITMAP,0,0,LR_LOADFROMFILE);
     BITMAP bmp;
     RECT pos;
     GetWindowRect(g_fenetre->gl,&pos);

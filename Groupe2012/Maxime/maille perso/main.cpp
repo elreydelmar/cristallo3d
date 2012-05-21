@@ -190,7 +190,7 @@ return 0;
                "Fichier CIF\0*.cif\0";
 
     ofn.nFilterIndex = 0;
-    ofn.lpstrInitialDir = "Mailles Personnelles";
+    ofn.lpstrInitialDir = "C:\\Program Files\\Cristallo 3D\\Mailles Personnelles";
     ofn.Flags = OFN_EXPLORER|OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT|OFN_FILEMUSTEXIST;
 
 if (GetSaveFileName(&ofn)==TRUE)
@@ -270,7 +270,7 @@ PostQuitMessage(0);}
 
                     break;
                 case ID_AIDE:
-                    HINSTANCE err = ShellExecute(NULL,"open", "aide1.pdf",NULL, "Ressources",SW_SHOWNORMAL);
+                    HINSTANCE err = ShellExecute(NULL,"open", "aide1.pdf",NULL, "C:\\Program Files (x86)\\Cristallo 3D\\Ressources",SW_SHOWNORMAL);
                     if((int)err ==  SE_ERR_NOASSOC)
                     MessageBox(NULL, "Erreur : Adobe Reader n'est pas associé avec les fichiers pdf", "Aide",MB_OK);
                     break;

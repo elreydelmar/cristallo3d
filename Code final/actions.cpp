@@ -272,7 +272,7 @@ void action_parcourir()
                "Fichier CIF\0*.cif\0";
 
     ofn.nFilterIndex = 1;
-    ofn.lpstrInitialDir = "Ressources";
+    ofn.lpstrInitialDir = "C:\\Program Files\\Cristallo 3D\\Fichiers cif";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
     if (GetOpenFileName(&ofn)==TRUE)
@@ -854,7 +854,7 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    HINSTANCE err = ShellExecute(NULL,"open", "aide.pdf",NULL, "Ressources",SW_SHOWNORMAL);
+    HINSTANCE err = ShellExecute(NULL,"open", "aide.pdf",NULL, "C:\\Program Files\\Cristallo 3D\\Ressources",SW_SHOWNORMAL);
     if((int)err ==  SE_ERR_NOASSOC)
         MessageBox(NULL, "Erreur : Adobe Reader n'est pas associé avec les fichiers pdf", "Aide",MB_OK);
 }
@@ -1078,7 +1078,7 @@ OPENFILENAME ofn; // On initialise la fenêtre de dialogue d'enregistrement
                "Fichier DAT\0*.dat\0"; // extension du fichier a enregistrer
 
     ofn.nFilterIndex = 0;
-    ofn.lpstrInitialDir = "Ressources"; // répertoire par defaut
+    ofn.lpstrInitialDir = "C:\\Program Files\\Cristallo 3D\\Sessions Enregistrees"; // répertoire par defaut
     ofn.Flags = OFN_EXPLORER|OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT|OFN_FILEMUSTEXIST;
 
 // on effectue l'enregistrement : on récupère le nom de fichier voulu par l'utilisateur
@@ -1124,7 +1124,7 @@ if (GetSaveFileName(&ofn)==TRUE)
 
 void action_generer_personnelle()
 {
-system("Ressources\\mailleperso.exe");
+system("\"\"C:\"\\\"Program Files\"\\\"Cristallo 3D\"\\\"Ressources\"\\mailleperso.exe\"");
 }
 
 void action_charger()
@@ -1141,14 +1141,14 @@ OPENFILENAME ofn; // idem que pour enregistrer
     ofn.nMaxFileTitle= 255;
     ofn.lpstrFilter ="Fichier DAT\0*.dat\0";
     ofn.nFilterIndex = 1;
-    ofn.lpstrInitialDir = "Ressources";
+    ofn.lpstrInitialDir = "C:\\Program Files\\Cristallo 3D\\Sessions Enregistrees";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
     if (GetOpenFileName(&ofn)==TRUE) // on effectue l'ouverture du fichier
     {
         // On récupère le chemin puis le nom du fichier pour l'afficher sur l'interface
-        strcpy(event_status->adresse_fichier, szFile);
-        SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
+        //strcpy(event_status->adresse_fichier, szFile);
+        //SendMessage(g_fenetre->adresse, WM_SETTEXT, 0, (LPARAM)szFile);
 
         int dernier_element= strlen(szFileTitle)-4;
         szFileTitle[dernier_element]='\0';
@@ -1163,7 +1163,7 @@ OPENFILENAME ofn; // idem que pour enregistrer
         fgets (contenu, 255, fichier);
         dernier_element= strlen(contenu)-1;
         contenu[dernier_element]='\0';
-        SendMessage(g_fenetre->nb_x, WM_SETTEXT, 0,(LPARAM)contenu);
+        SendMessage(g_fenetre->nb_x, WM_SETCURSOR, 0,(LPARAM)contenu);
         action_change_nb_x();
         //seconde
         fgets (contenu, 255, fichier);
