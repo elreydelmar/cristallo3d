@@ -272,7 +272,7 @@ void action_parcourir()
                "Fichier CIF\0*.cif\0";
 
     ofn.nFilterIndex = 1;
-    ofn.lpstrInitialDir = "C:\\Program Files\\Cristallo 3D\\Fichiers cif";
+    ofn.lpstrInitialDir = "C:\\Program Files (x86)\\Cristallo 3D\\Fichiers cif";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
     if (GetOpenFileName(&ofn)==TRUE)
@@ -854,7 +854,7 @@ void action_defaut(HWND handle)
 
 void action_aide(HWND handle)
 {
-    HINSTANCE err = ShellExecute(NULL,"open", "aide.pdf",NULL, "C:\\Program Files\\Cristallo 3D\\Ressources",SW_SHOWNORMAL);
+    HINSTANCE err = ShellExecute(NULL,"open", "aide.pdf",NULL, "C:\\Program Files (x86)\\Cristallo 3D\\Ressources",SW_SHOWNORMAL);
     if((int)err ==  SE_ERR_NOASSOC)
         MessageBox(NULL, "Erreur : Adobe Reader n'est pas associé avec les fichiers pdf", "Aide",MB_OK);
 }
@@ -1078,7 +1078,7 @@ OPENFILENAME ofn; // On initialise la fenêtre de dialogue d'enregistrement
                "Fichier DAT\0*.dat\0"; // extension du fichier a enregistrer
 
     ofn.nFilterIndex = 0;
-    ofn.lpstrInitialDir = "C:\\Program Files\\Cristallo 3D\\Sessions Enregistrees"; // répertoire par defaut
+    ofn.lpstrInitialDir = "C:\\Program Files (x86)\\Cristallo 3D\\Sessions Enregistrees"; // répertoire par defaut
     ofn.Flags = OFN_EXPLORER|OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT|OFN_FILEMUSTEXIST;
 
 // on effectue l'enregistrement : on récupère le nom de fichier voulu par l'utilisateur
@@ -1124,7 +1124,7 @@ if (GetSaveFileName(&ofn)==TRUE)
 
 void action_generer_personnelle()
 {
-system("\"\"C:\"\\\"Program Files\"\\\"Cristallo 3D\"\\\"Ressources\"\\mailleperso.exe\"");
+system("\"\"C:\"\\\"Program Files (x86)\"\\\"Cristallo 3D\"\\\"Ressources\"\\\"mailleperso (x86).exe\"");
 }
 
 void action_charger()
@@ -1141,7 +1141,7 @@ OPENFILENAME ofn; // idem que pour enregistrer
     ofn.nMaxFileTitle= 255;
     ofn.lpstrFilter ="Fichier DAT\0*.dat\0";
     ofn.nFilterIndex = 1;
-    ofn.lpstrInitialDir = "C:\\Program Files\\Cristallo 3D\\Sessions Enregistrees";
+    ofn.lpstrInitialDir = "C:\\Program Files (x86)\\Cristallo 3D\\Sessions Enregistrees";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
     if (GetOpenFileName(&ofn)==TRUE) // on effectue l'ouverture du fichier
@@ -1163,20 +1163,84 @@ OPENFILENAME ofn; // idem que pour enregistrer
         fgets (contenu, 255, fichier);
         dernier_element= strlen(contenu)-1;
         contenu[dernier_element]='\0';
-        SendMessage(g_fenetre->nb_x, WM_SETCURSOR, 0,(LPARAM)contenu);
-        action_change_nb_x();
+        SendMessage(g_fenetre->nb_x, WM_SETTEXT, 0,(LPARAM)contenu);
+        event_status->nb_x= atoi(contenu);
+        if (event_status->nb_x==1)
+        {
+            event_status->nb_x = 1;
+        }
+        else if (event_status->nb_x==3)
+        {
+            event_status->nb_x = 5;
+        }
+        else if (event_status->nb_x==5)
+        {
+            event_status->nb_x = 9;
+        }
+        else
+        {
+            event_status->nb_x = 1;
+        }
+
+        printf("Charger session en x : %d\n",event_status->nb_x);
         //seconde
         fgets (contenu, 255, fichier);
         dernier_element= strlen(contenu)-1;
         contenu[dernier_element]='\0';
         SendMessage(g_fenetre->nb_y, WM_SETTEXT, 0,(LPARAM)contenu);
-        action_change_nb_y();
+        event_status->nb_y= atoi(contenu);
+        if (event_status->nb_y==1)
+        {
+            event_status->nb_y = 1;
+        }
+        else if (event_status->nb_y==3)
+        {
+            event_status->nb_y = 5;
+        }
+        else if (event_status->nb_y==5)
+        {
+            event_status->nb_y = 9;
+        }
+        else
+        {
+            event_status->nb_y = 1;
+        }
+
+        printf("Charger session en y : %d\n",event_status->nb_y);
         //troisieme...
         fgets (contenu, 255, fichier);
         dernier_element= strlen(contenu)-1;
         contenu[dernier_element]='\0';
         SendMessage(g_fenetre->nb_z, WM_SETTEXT, 0, (LPARAM)contenu);
-        action_change_nb_z();
+        event_status->nb_z= atoi(contenu);
+        if (event_status->nb_z==1)
+        {
+            event_status->nb_z = 1;
+        }
+        else if (event_status->nb_z==3)
+        {
+            event_status->nb_z = 5;
+        }
+        else if (event_status->nb_z==5)
+        {
+            event_status->nb_z = 9;
+        }
+        else
+        {
+            event_status->nb_z = 1;
+        }
+
+        printf("Charger session en z : %d\n",event_status->nb_z);
+
+
+        // On regenère l'octree
+        if(event_status->maille != NULL)
+        {
+            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+            // BUG A REGLER SI ON REPREND LE PROJET DE GROUPE
+            charger_octree(event_status->maille, event_status->nb_x+2, event_status->nb_y+2, event_status->nb_z+2);
+            charger_octree(event_status->maille, event_status->nb_x, event_status->nb_y, event_status->nb_z);
+        }
 
         fgets (contenu, 255, fichier);
         float nbs_espace_atome = atof (contenu);
