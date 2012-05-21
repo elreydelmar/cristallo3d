@@ -1,0 +1,9 @@
+Bonjour et bienvenue dans le logiciel Cristallo3D, dans sa version 1.4 pour Windows 32 bits.
+Nous vous invitons à bien vérifier, avant d'installer, que votre version de Windows est compatible avec celle du logiciel, ici 32 bits.
+
+Faites d'abord un clic droit sur l'onglet ORDINATEUR du menu démarrer.
+Sélectionnez ensuite PROPRIETES, sur la fenêtre qui apparaît est affichée votre version de Windows. 
+
+
+
+Ce logicel a été réalisé par des étudiants de l'école Phelma du groupe Grenoble INP, et n'est pas à but lucratif.
