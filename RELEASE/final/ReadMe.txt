@@ -1,4 +1,4 @@
-#########################################Fichier ReadMe################################################
+#########################################  Fichier ReadMe  ################################################
 
 
 /!\ Si les boutons afichant l'aide et la maille personnelle nefonctionnent pas : 
