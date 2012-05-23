@@ -116,7 +116,7 @@ int DrawingArea::handle(int event)
                 (* _mouse_callback_function ) ( this, _mouse_callback_data ) ;
             return 1 ;
             break ;
-        case FL_ENTER : // Necessaire pour la prise en compte de FL_MOVE
+        case FL_ENTER :
             return 1 ;
             break ;
         case FL_MOVE :
@@ -134,7 +134,6 @@ int DrawingArea::handle(int event)
         case FL_FOCUS:
             return 1 ;
             break ;
-
 
         default:
             return Fl_Widget::handle(event);
