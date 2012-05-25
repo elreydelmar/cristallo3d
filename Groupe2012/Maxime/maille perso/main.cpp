@@ -166,14 +166,14 @@ return 0;
                 // LA QUIL FAUT METTRE
 {
 
-                TCHAR buf[1000];
+                TCHAR buf[300];
                 TCHAR buf1[300];
                 UINT GetDlgItemText (HWND hDlg,int nIDDlgItem,LPTSTR lpString,int nMaxCount); //initialisation
                 UINT freefps;
                 freefps=GetDlgItemText(fenetrePrincipale, ID_NOMFICHIER, buf1, 250);
-                strcat(buf, buf1);
+                //strcat(buf, buf1);
 
-
+/*
     OPENFILENAME ofn;
     CHAR szFile[255]={0};
     CHAR szFileTitle[255]={0};
@@ -194,8 +194,8 @@ return 0;
     ofn.Flags = OFN_EXPLORER|OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT|OFN_FILEMUSTEXIST;
 
 if (GetSaveFileName(&ofn)==TRUE)
-    {
-                FILE * fichier = fopen(szFileTitle,"w");
+    {*/
+                FILE * fichier = fopen(buf1,"w");
                 if(fichier == NULL) // Test ouverture canal
                 {
                     MessageBox(NULL,"Erreur Fichier","Enregistrement",MB_OK);
@@ -261,7 +261,7 @@ int REF2 = MessageBox(NULL,"fichier .cif créé\r\nVoulez-vous fermer l'éditeur ?"
 if (REF2==IDYES){
 PostQuitMessage(0);}
 
-                }}
+                }/*}*/
 
 
 
